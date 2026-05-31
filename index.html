@@ -184,13 +184,24 @@ header{margin-bottom:16px;padding-top:10px}
 
 .fc-actions{display:flex;gap:10px;margin-top:18px;padding-top:14px;border-top:1px solid var(--border)}
 
-.fc-btn{flex:1;padding:12px 8px;border-radius:10px;border:2px solid;
-  font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer;transition:all .15s}
+.fc-btn{flex:1;padding:12px 6px;border-radius:10px;border:2px solid;
+  font-family:var(--font);font-size:12.5px;font-weight:700;cursor:pointer;transition:all .15s}
 
 .fc-no{border-color:#fca5a5;color:#dc2626;background:#fef2f2}
 .fc-no:hover{background:#fee2e2}
+.fc-amber{border-color:#fcd34d;color:#b45309;background:#fffbeb}
+.fc-amber:hover{background:#fef3c7}
 .fc-yes{border-color:var(--mid);color:var(--accent);background:var(--bg-subj)}
 .fc-yes:hover{background:var(--light)}
+
+/* Review-tricky-cards button + badge */
+#btn-review{padding:6px 12px;border-radius:8px;border:2px solid #fcd34d;background:#fffbeb;
+  color:#b45309;font-family:var(--font);font-size:12.5px;font-weight:700;cursor:pointer;
+  display:none;align-items:center;gap:6px;transition:all .15s}
+#btn-review:hover{background:#fef3c7}
+#btn-review.active{background:#b45309;color:#fff;border-color:#b45309}
+#review-count{background:#b45309;color:#fff;border-radius:10px;padding:1px 7px;font-size:11px;min-width:18px;text-align:center}
+#btn-review.active #review-count{background:#fff;color:#b45309}
 
 /* ── MULTIPLE CHOICE ─────────────────────────────────────── */
 .mc-card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);
@@ -337,6 +348,7 @@ header{margin-bottom:16px;padding-top:10px}
       <button class="pill-btn" data-mode="fc">📚 Cards</button>
       <button class="pill-btn" data-mode="mc">✏️ Quiz</button>
     </div>
+    <button id="btn-review" title="Drill the cards you've found tricky">🔁 Review tricky<span id="review-count">0</span></button>
   </div>
 
   <div class="progress-row">
@@ -389,10 +401,19 @@ const AQA_BIO_P1H_JUN23='AQA Jun 2023 Biology Paper 1H';
 const AQA_BIO_P1H_NOV20='AQA Nov 2020 Biology Paper 1H';
 const AQA_BIO_P2H_JUN23='AQA Jun 2023 Biology Paper 2H';
 const AQA_BIO_P2H_JUN24='AQA Jun 2024 Biology Paper 2H';
+const AQA_BIO_P1H_JUN18='AQA Jun 2018 Biology Paper 1H';
 
 const QB = {
 
 'cell-biology': { name: 'Cell Biology', fc: [
+  {q:'Shell-less eggs placed in distilled water gained mass. Explain why.', a:'Water moved into each egg by osmosis, from the dilute solution (water) to the more concentrated solution inside the egg, through the partially permeable membrane.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'In an egg-in-water investigation, how could a student modify it to find the concentration of the solution inside the egg?', a:'Place eggs in a range of known sugar/salt concentrations, measure the percentage change in mass for each, plot a graph, and read off the concentration where there is no change in mass (the isotonic point).', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Calcium ions move from an egg shell (0.6 units) into the cytoplasm (2.1 units). Explain how.', a:'By active transport: ions move against the concentration gradient (low to high), which requires energy from respiration.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Shell-less eggs placed in distilled water gained mass. Explain why.', a:'Water moved into each egg by osmosis, from the dilute solution (water) to the more concentrated solution inside the egg, through the partially permeable membrane.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'In an egg-in-water investigation, how could a student modify it to find the concentration of the solution inside the egg?', a:'Place eggs in a range of known sugar/salt concentrations, measure the percentage change in mass for each, plot a graph, and read off the concentration where there is no change in mass (the isotonic point).', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Calcium ions move from an egg shell (0.6 units) into the cytoplasm (2.1 units). Explain how.', a:'By active transport: ions move against the concentration gradient (low to high), which requires energy from respiration.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'What is the difference between a prokaryotic and a eukaryotic cell?', a:'Eukaryotic cells (animals, plants, fungi) have a true nucleus and membrane-bound organelles. Prokaryotic cells (bacteria) are smaller, have no nucleus — their DNA is a single loop free in the cytoplasm, often with plasmids.', t:'F'},
+  {q:'How do you calculate magnification?', a:'Magnification = image size ÷ real (actual) size. Rearrange to find any one value if the other two are known.', t:'F'},
   {q:'What is the function of the cell membrane?', a:'Controls what enters and leaves the cell, providing a selective barrier between the cell and its environment.'},
   {q:'Name three structures found in plant cells but NOT animal cells.', a:'Cell wall, chloroplasts, and a large permanent vacuole.'},
   {q:'What is the function of mitochondria?', a:'Site of aerobic respiration — they produce ATP (energy) for the cell.'},
@@ -459,6 +480,29 @@ const QB = {
 ]},
 
 'organisation': { name: 'Organisation', fc: [
+  {q:'Which two blood vessels carry deoxygenated blood? (aorta, coronary artery, pulmonary artery, pulmonary vein or vena cava?)', a:'The pulmonary artery and the vena cava. The vena cava returns deoxygenated blood to the heart and the pulmonary artery carries it to the lungs.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Metabolism includes the formation of lipids. Give one other metabolic reaction in cells.', a:'Examples: respiration (breakdown of glucose), protein synthesis from amino acids, or the breakdown of excess proteins to form urea.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'How do you calculate a percentage decrease in metabolic rate?', a:'Percentage decrease = (decrease in metabolic rate / original metabolic rate) x 100.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Urea is transported in blood plasma. Name two other substances transported in plasma.', a:'Any two of: dissolved glucose, carbon dioxide, hormones, and other soluble products of digestion (e.g. amino acids).', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Explain why having more red blood cells per cm3 of blood is an advantage to an athlete.', a:'More red blood cells carry more haemoglobin, so more oxygen is transported to the muscles, allowing more aerobic respiration and more energy release for exercise.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Compare the structure of an artery with the structure of a vein.', a:'Arteries have thick, muscular and elastic walls with a narrow lumen to withstand high pressure; veins have thinner walls, a wider lumen and valves to prevent backflow of low-pressure blood.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'What condition can be treated by fitting an artificial pacemaker?', a:'An irregular or abnormally slow heart rhythm/heartbeat.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Why does an aphid mouthpiece contain a high concentration of dissolved sugars after feeding from a plant stem?', a:'It pierces the phloem, which transports (translocates) the dissolved sugars made during photosynthesis.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Describe how you would test a milk sample for protein and for reducing sugar.', a:'For protein: add Biuret solution, which turns purple/lilac if protein is present. For reducing sugar: add Benedict\'s solution and heat in a water bath, which turns green/yellow/orange/brick-red if sugar is present.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'In a lipase-and-milk experiment, explain why an alkaline indicator eventually became colourless.', a:'Lipase breaks the fats (lipids) down into fatty acids and glycerol; the fatty acids lower the pH below 10, turning the indicator colourless.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Explain why milk with bile turned the indicator colourless faster than milk without bile.', a:'Bile emulsifies fats into small droplets, increasing the surface area for lipase to act on, so fatty acids form faster and the pH falls more quickly.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Metabolism includes the formation of lipids. Give one other metabolic reaction in cells.', a:'Examples: respiration (breakdown of glucose), protein synthesis from amino acids, or the breakdown of excess proteins to form urea.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'How do you calculate a percentage decrease in metabolic rate?', a:'Percentage decrease = (decrease in metabolic rate / original metabolic rate) x 100.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Urea is transported in blood plasma. Name two other substances transported in plasma.', a:'Any two of: dissolved glucose, carbon dioxide, hormones, and other soluble products of digestion (e.g. amino acids).', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Explain why having more red blood cells per cm3 of blood is an advantage to an athlete.', a:'More red blood cells carry more haemoglobin, so more oxygen is transported to the muscles, allowing more aerobic respiration and more energy release for exercise.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Compare the structure of an artery with the structure of a vein.', a:'Arteries have thick, muscular and elastic walls with a narrow lumen to withstand high pressure; veins have thinner walls, a wider lumen and valves to prevent backflow of low-pressure blood.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'What condition can be treated by fitting an artificial pacemaker?', a:'An irregular or abnormally slow heart rhythm/heartbeat.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Why does an aphid mouthpiece contain a high concentration of dissolved sugars after feeding from a plant stem?', a:'It pierces the phloem, which transports (translocates) the dissolved sugars made during photosynthesis.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Describe how you would test a milk sample for protein and for reducing sugar.', a:'For protein: add Biuret solution, which turns purple/lilac if protein is present. For reducing sugar: add Benedict\'s solution and heat in a water bath, which turns green/yellow/orange/brick-red if sugar is present.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'In a lipase-and-milk experiment, explain why an alkaline indicator eventually became colourless.', a:'Lipase breaks the fats (lipids) down into fatty acids and glycerol; the fatty acids lower the pH below 10, turning the indicator colourless.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Explain why milk with bile turned the indicator colourless faster than milk without bile.', a:'Bile emulsifies fats into small droplets, increasing the surface area for lipase to act on, so fatty acids form faster and the pH falls more quickly.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Put these in order of size: tissue, organ, cell, organ system.', a:'Cell → tissue → organ → organ system. Cells of one type form a tissue; tissues form an organ; organs working together form an organ system.', t:'F'},
+  {q:'What are the roles of the three main types of blood vessel?', a:'Arteries carry blood away from the heart at high pressure (thick muscular walls); veins return blood to the heart at low pressure (have valves); capillaries are one cell thick for exchange of substances with tissues.', t:'F'},
   {q:'What is the order of organisation from smallest to largest?', a:'Cell → Tissue → Organ → Organ system → Organism.'},
   {q:'What are the four main chambers of the heart?', a:'Right atrium, right ventricle, left atrium, left ventricle.'},
   {q:'What is the role of amylase?', a:'An enzyme that digests starch into maltose/sugars. Produced in the salivary glands and pancreas.'},
@@ -519,6 +563,7 @@ const QB = {
   {q:'Explain the effect of a partly blocked coronary artery on the human body. (6 marks)', a:'Blockage reduces blood flow to heart muscle. Less oxygen and glucose delivered to cardiac muscle cells. Less aerobic respiration in heart cells → less ATP/energy produced. Heart muscle cannot contract as effectively → heart rate/output decreases. Less oxygen and glucose also delivered to the rest of the body. Cells respire less → less energy for muscle contraction, growth, repair. Person may feel fatigue, chest pain (angina) or — if artery fully blocked — a heart attack.', s:AQA_BIO_P1H_JUN23, t:'H'},
   {q:'Explain why bursting of red blood cells causes tiredness.', a:'Fewer red blood cells available → less haemoglobin → less oxygen carried to cells. Less oxygen for aerobic respiration → less ATP/energy released. Less energy available for muscle contraction → tiredness/fatigue.', s:AQA_BIO_P1H_JUN23},
 ], mc: [
+  {q:'Which two blood vessels carry deoxygenated blood?', o:['Pulmonary artery and vena cava','Aorta and pulmonary vein','Coronary artery and aorta','Pulmonary vein and vena cava'], c:0, e:'The vena cava returns deoxygenated blood to the heart and the pulmonary artery carries it to the lungs.', t:'H', s:AQA_BIO_P1H_JUN18},
   {q:'Which blood vessels are affected by coronary heart disease?', o:['Arteries','Capillaries','Veins','Lymph vessels'], c:0, e:'Coronary heart disease affects the coronary arteries — fatty plaques build up inside them, narrowing the vessels and restricting blood flow to the heart.', s:AQA},
   {q:'Which blood vessel carries oxygenated blood from the lungs to the heart?', o:['Pulmonary artery','Vena cava','Pulmonary vein','Aorta'], c:2, e:'The pulmonary vein carries oxygenated blood from the lungs back to the left atrium of the heart.'},
   {q:'What is the optimum pH for pepsin (stomach enzyme)?', o:['pH 7','pH 2','pH 8','pH 14'], c:1, e:'Pepsin works best at pH 2 — matching the acidic stomach environment created by hydrochloric acid.'},
@@ -534,6 +579,17 @@ const QB = {
 ]},
 
 'infection': { name: 'Infection & Response', fc: [
+  {q:'What type of drug can a doctor prescribe to kill bacteria in a serious Salmonella infection? (antibiotics, antivirals, painkillers or antihistamines?)', a:'Antibiotics - they kill bacteria but do not work on viruses.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Salmonella infection causes vomiting and diarrhoea. What produces these symptoms?', a:'Toxins (poisons) released by the Salmonella bacteria.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Explain why a person with AIDS may take longer than a healthy person to recover from a Salmonella infection.', a:'AIDS damages the immune system (fewer functioning white blood cells/lymphocytes), so fewer antibodies are made and pathogens are destroyed more slowly.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'In a disc-diffusion experiment on cleaning liquids, give one change that would let the scientist check if the results are repeatable.', a:'Repeat the test using more discs/Petri dishes under the same conditions and compare the results.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Describe how a scientist produces a monoclonal antibody against a virus protein (e.g. PVY).', a:'Inject the protein (antigen) into a mouse so it makes lymphocytes; fuse these lymphocytes with tumour (myeloma) cells to form hybridoma cells; these divide rapidly and produce large amounts of identical (monoclonal) antibody, which is collected and purified.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Salmonella infection causes vomiting and diarrhoea. What produces these symptoms?', a:'Toxins (poisons) released by the Salmonella bacteria.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Explain why a person with AIDS may take longer than a healthy person to recover from a Salmonella infection.', a:'AIDS damages the immune system (fewer functioning white blood cells/lymphocytes), so fewer antibodies are made and pathogens are destroyed more slowly.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'In a disc-diffusion experiment on cleaning liquids, give one change that would let the scientist check if the results are repeatable.', a:'Repeat the test using more discs/Petri dishes under the same conditions and compare the results.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Describe how a scientist produces a monoclonal antibody against a virus protein (e.g. PVY).', a:'Inject the protein (antigen) into a mouse so it makes lymphocytes; fuse these lymphocytes with tumour (myeloma) cells to form hybridoma cells; these divide rapidly and produce large amounts of identical (monoclonal) antibody, which is collected and purified.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Name the four types of pathogen and give an example disease of each.', a:'Bacteria (e.g. salmonella), viruses (e.g. measles), fungi (e.g. rose black spot), protists (e.g. malaria).', t:'F'},
+  {q:'Give three ways the human body defends against pathogens before they enter the blood.', a:'Skin acts as a barrier; the nose has hairs and mucus to trap pathogens; the trachea and bronchi have mucus and cilia; the stomach produces hydrochloric acid to kill pathogens.', t:'F'},
   {q:'What are the four types of pathogen?', a:'Bacteria, viruses, fungi, and protists.'},
   {q:'What type of defence are thorns on a plant (mechanical, chemical, or physical)?', a:'Mechanical (also accept physical). Thorns deter herbivores / prevent animals from eating the plant.', s:AQA_BIO_P1H_NOV20},
   {q:'What type of defence are poisonous berries on a plant?', a:'Chemical defence. The toxic chemicals deter animals from eating the berries/plant.', s:AQA_BIO_P1H_NOV20},
@@ -577,6 +633,7 @@ const QB = {
   {q:'In a monoclonal antibody urine test (Figure 6), describe the evidence that shows athlete B\'s test did not work and suggest a reason why.', a:'Evidence: the control area for athlete B did not turn blue (no blue band in the control area). Reason: the urine did not move through the strip — e.g. incorrect urine volume used / strip damaged or faulty / strip not fully dipped in urine.', img:'bio_jun23_fig6', s:AQA_BIO_P1H_JUN23},
   {q:'Describe how scientists make monoclonal antibodies using a hybridoma cell.', a:'1. Hybridoma cells divide rapidly and produce the specific antibody. 2. The hybridoma cells are cloned (grown in large quantities). 3. The monoclonal antibodies are collected and purified from the culture medium.', s:AQA_BIO_P1H_JUN23},
 ], mc: [
+  {q:'What type of drug can a doctor prescribe to kill bacteria in a serious Salmonella infection?', o:['Antibiotics','Antivirals','Painkillers','Antihistamines'], c:0, e:'Antibiotics kill bacteria; they do not work on viruses.', t:'H', s:AQA_BIO_P1H_JUN18},
   {q:'Which type of pathogen is treated with antibiotics?', o:['Viruses','Fungi','Bacteria','Protists'], c:2, e:'Antibiotics specifically target bacterial structures and are ineffective against viruses, fungi, and protists.'},
   {q:'What is an antigen?', o:['A protein produced by white blood cells','A toxin produced by bacteria','A molecule on the surface of a pathogen that triggers an immune response','A type of white blood cell'], c:2, e:'Antigens are molecules on the surface of pathogens that the immune system recognises as foreign.'},
   {q:'What is the correct order of drug testing?', o:['Human trials → animal testing → computer modelling','Computer modelling → animal testing → clinical trials','Clinical trials → computer modelling → animal testing','Animal testing → clinical trials → computer modelling'], c:1, e:'Drugs are first modelled on computers, then tested on animals for safety, then through clinical trials.'},
@@ -596,7 +653,12 @@ const QB = {
 ]},
 
 'bioenergetics': { name: 'Bioenergetics', fc: [
-  {q:'Write the word equation for photosynthesis.', a:'Carbon dioxide + water → glucose + oxygen (using light energy).'},
+  {q:'Explain how a magnesium deficiency causes yellow leaves and stunted growth in plants.', a:'Magnesium is needed to make chlorophyll; without it leaves make less chlorophyll (so look yellow) and carry out less photosynthesis, producing less glucose for growth, so the plant is stunted.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Explain how a magnesium deficiency causes yellow leaves and stunted growth in plants.', a:'Magnesium is needed to make chlorophyll; without it leaves make less chlorophyll (so look yellow) and carry out less photosynthesis, producing less glucose for growth, so the plant is stunted.', t:'H', s:AQA_BIO_P1H_JUN18},
+  {q:'Is photosynthesis exothermic or endothermic, and what does this mean?', a:'Endothermic — it takes in (absorbs) energy from the surroundings, in this case light energy, to drive the reaction.', t:'F'},
+  {q:'Give four uses of the glucose made in photosynthesis.', a:'Any four: used in respiration; converted to starch for storage; used to make cellulose for cell walls; used to make amino acids/proteins (with nitrate); stored as fats/oils in seeds.'},
+  {q:'Why does aerobic respiration release more energy than anaerobic respiration?', a:'Aerobic respiration fully breaks glucose down to carbon dioxide and water, releasing all its stored energy. Anaerobic respiration only partly breaks glucose down (to lactic acid or ethanol), so far less energy is transferred.', t:'H'},
+  {q:'How are root hair cells adapted to absorb water and minerals?', a:'They have a large surface area (long projection), thin walls for a short diffusion path, and many mitochondria to provide energy for active transport of minerals.', t:'F'},
   {q:'Describe how plants gain energy for the photosynthesis reaction.', a:'Light is captured/absorbed by chlorophyll in the chloroplasts.', s:AQA_BIO_P1H_NOV20},
   {q:'Why does the rate of photosynthesis decrease above 35°C?', a:'Enzymes (e.g. those involved in photosynthesis) begin to denature — the active site loses its shape so substrates can no longer bind, reducing the rate.', s:AQA_BIO_P1H_NOV20},
   {q:'Give one factor that should be controlled in an investigation of temperature on photosynthesis rate.', a:'Any one: light intensity; carbon dioxide concentration; size/amount of pondweed; pondweed species.', s:AQA_BIO_P1H_NOV20},
@@ -643,6 +705,11 @@ const QB = {
 
 'homeostasis': { name: 'Homeostasis', fc: [
   {q:'What is homeostasis?', a:'The maintenance of a stable internal environment despite changes in external conditions. Examples: temperature, blood glucose, water balance.'},
+  {q:'Which hormone lowers blood glucose, and which raises it?', a:'Insulin lowers blood glucose (causing cells/liver to take up glucose and store it as glycogen). Glucagon raises blood glucose (causing the liver to break glycogen back into glucose).', t:'F'},
+  {q:'What is the difference between Type 1 and Type 2 diabetes?', a:'Type 1: the pancreas produces little or no insulin (usually treated with insulin injections). Type 2: body cells stop responding properly to insulin (often linked to obesity; managed by diet and exercise).', t:'F'},
+  {q:'Explain how the body cools down when too hot.', a:'Vasodilation — blood vessels near the skin widen so more blood flows near the surface, losing heat by radiation. Sweat glands release sweat, which evaporates and takes heat from the body.', t:'H'},
+  {q:'What is negative feedback?', a:'A control mechanism where a change in a condition triggers a response that counteracts the change, returning the level back towards the normal set point.', t:'H'},
+  {q:'What does ADH do, and where is it released from?', a:'ADH (antidiuretic hormone), released from the pituitary gland, makes the kidney tubules more permeable so more water is reabsorbed into the blood, producing less, more concentrated urine.', t:'H'},
   {q:'What are the three parts of the nervous system response pathway?', a:'Receptor (detects stimulus) → Coordinator (CNS: brain and spinal cord) → Effector (muscle or gland produces response).'},
   {q:'What is a reflex arc?', a:'A rapid automatic response bypassing the brain. Path: receptor → sensory neurone → relay neurone (spinal cord) → motor neurone → effector.'},
   {q:'How does the body respond when blood glucose is too high?', a:'Pancreas releases insulin. Liver and muscle cells absorb glucose and convert it to glycogen for storage. Blood glucose falls back to normal.'},
@@ -689,6 +756,8 @@ const QB = {
 ]},
 
 'inheritance': { name: 'Inheritance & Evolution', fc: [
+  {q:'Define the terms gene, allele, dominant and recessive.', a:'A gene is a section of DNA coding for a protein. An allele is a version of a gene. A dominant allele is expressed even if only one copy is present; a recessive allele is only expressed when two copies are present.', t:'F'},
+  {q:'What is the difference between genotype and phenotype?', a:'Genotype is the combination of alleles an organism has (e.g. Bb); phenotype is the physical characteristic that results (e.g. brown eyes).', t:'F'},
   {q:'What is a gene?', a:'A section of DNA that codes for a specific protein. Genes are found on chromosomes in the nucleus.'},
   {q:'What is the difference between genotype and phenotype?', a:'Genotype = the alleles an organism has. Phenotype = the observable characteristics resulting from genotype and environment.'},
   {q:'What is the difference between dominant and recessive alleles?', a:'Dominant alleles are expressed when only one copy is present. Recessive alleles are only expressed when two copies are present (homozygous recessive).'},
@@ -742,6 +811,8 @@ const QB = {
 ]},
 
 'ecology': { name: 'Ecology', fc: [
+  {q:'Define the terms population, community, habitat and ecosystem.', a:'Population: all organisms of one species in an area. Community: all the populations of different species in an area. Habitat: the place where an organism lives. Ecosystem: the community plus the non-living (abiotic) parts of the environment, interacting together.', t:'F'},
+  {q:'Why does the amount of biomass decrease at each stage up a food chain?', a:'Energy is lost at each trophic level through respiration, movement, heat, and material lost in waste (faeces) and uneaten parts, so less energy and biomass is available to the next level.', t:'H'},
   {q:'What is the difference between a habitat, population, and community?', a:'Habitat = where an organism lives. Population = all organisms of one species in an area. Community = all populations of different species in an area.'},
   {q:'What is an ecosystem?', a:'A community of organisms and the non-living (abiotic) environment they interact with, functioning as a system.'},
   {q:'What are abiotic factors? Give three examples.', a:'Non-living environmental factors. Examples: temperature, light intensity, water availability, pH, wind speed, CO₂ concentration.'},
@@ -814,6 +885,9 @@ const QB_PHYSICS = {
 // ── PAPER 1 TOPICS ──────────────────────────────────────────────────────────
 
 'energy': { name: 'Energy', fc: [
+  {q:'Name the main energy stores.', a:'Kinetic, thermal (internal), chemical, gravitational potential, elastic potential, nuclear, magnetic, and electrostatic.', t:'F'},
+  {q:'State the equation for gravitational potential energy and what each term means.', a:'$E_p = mgh$: mass (kg) × gravitational field strength (N/kg) × height (m), giving energy in joules.', t:'F'},
+  {q:'A 0.50 kg ball is dropped from 2.0 m. Using g = 9.8 N/kg, how much kinetic energy does it have just before impact?', a:'About 9.8 J. All GPE converts to KE: $E_p = mgh = 0.50 × 9.8 × 2.0 = 9.8$ J.', t:'H'},
   {q:'State the law of conservation of energy.', a:'Energy cannot be created or destroyed — only transferred between stores or dissipated. The total energy in a closed system remains constant.'},
   {q:'What is the equation for kinetic energy?', a:'KE = ½mv² where m = mass (kg) and v = velocity (m/s). Unit: joules (J).', t:'H'},
   {q:'What is the equation for gravitational potential energy?', a:'GPE = mgh where m = mass (kg), g = gravitational field strength (N/kg), h = height (m).', t:'H'},
@@ -892,6 +966,9 @@ const QB_PHYSICS = {
 ]},
 
 'electricity': { name: 'Electricity', fc: [
+  {q:'State the equation linking charge, current and time.', a:'$Q = It$: charge (coulombs) = current (amps) × time (seconds).', t:'F'},
+  {q:'What is the difference between series and parallel circuits for current?', a:'In series the current is the same everywhere. In parallel the current splits between branches and recombines, so branch currents add up to the total.', t:'F'},
+  {q:'Why does the resistance of a filament lamp increase as current increases?', a:'A larger current heats the filament more, so the metal ions vibrate more and impede electron flow, raising resistance — giving a curved I–V graph.', t:'H'},
   {q:'What is the difference between current, potential difference, and resistance?', a:'Current (A): rate of flow of charge. Potential difference/voltage (V): energy transferred per unit charge. Resistance (Ω): opposition to current flow.'},
   {q:'State Ohm\'s Law.', a:'For an ohmic conductor at constant temperature, current is directly proportional to potential difference: V = IR.'},
   {q:'What does an ammeter measure and how is it connected?', a:'Current (in amperes, A). Connected in series with the component being measured.', t:'F'},
@@ -1003,6 +1080,9 @@ const QB_PHYSICS = {
 ]},
 
 'particle-model': { name: 'Particle Model of Matter', fc: [
+  {q:'What is meant by the density of a material?', a:'Mass per unit volume, $\\rho = m/V$, measured in kg/m³ (or g/cm³). It depends on how much matter is packed into a space.', t:'F'},
+  {q:'What is specific latent heat?', a:'The energy needed to change the state of 1 kg of a substance with no change in temperature: $E = mL$.', t:'H'},
+  {q:'Why does temperature stay constant while a substance is melting or boiling?', a:'The energy supplied breaks the bonds/forces between particles (increasing potential energy) rather than increasing their kinetic energy, so temperature does not change during the state change.', t:'H'},
   {q:'Describe particles in a solid.', a:'Closely packed in a regular lattice. Vibrate about fixed positions. Cannot move past each other. Very strong forces of attraction.'},
   {q:'Describe particles in a liquid.', a:'Close together but in a random arrangement. Can flow past each other. Weaker forces than in a solid.'},
   {q:'Describe particles in a gas.', a:'Far apart. Move rapidly and randomly in all directions. Negligible forces between particles. Fill the available container.'},
@@ -1082,6 +1162,9 @@ const QB_PHYSICS = {
 ]},
 
 'atomic-structure': { name: 'Atomic Structure & Radioactivity', fc: [
+  {q:'Name the three types of nuclear radiation and their relative ionising power.', a:'Alpha (most ionising, least penetrating), beta (medium), gamma (least ionising, most penetrating).', t:'F'},
+  {q:'What is meant by the half-life of a radioactive isotope?', a:'The average time taken for half the unstable nuclei in a sample to decay (or for the count rate/activity to halve).'},
+  {q:'A sample has activity 800 Bq and a half-life of 2 hours. What is its activity after 6 hours?', a:'100 Bq. Three half-lives pass: 800 → 400 → 200 → 100 Bq.', t:'H'},
   {q:'Describe the nuclear model of the atom.', a:'A tiny, dense, positively charged nucleus (protons + neutrons) surrounded by electrons in shells. Most of the atom is empty space.'},
   {q:'What are the relative masses and charges of a proton, neutron, and electron?', a:'Proton: mass 1, charge +1. Neutron: mass 1, charge 0. Electron: mass ~0, charge −1.'},
   {q:'What is atomic number and mass number?', a:'Atomic number (Z) = number of protons. Mass number (A) = protons + neutrons. Neutrons = A − Z.'},
@@ -1157,6 +1240,9 @@ const QB_PHYSICS = {
 // ── PAPER 2 TOPICS ──────────────────────────────────────────────────────────
 
 'forces': { name: 'Forces', fc: [
+  {q:'What is the difference between a scalar and a vector quantity? Give an example of each.', a:'A scalar has magnitude only (e.g. speed, mass); a vector has magnitude and direction (e.g. velocity, force).', t:'F'},
+  {q:'State Newton\'s Second Law as an equation.', a:'$F = ma$: resultant force (N) = mass (kg) × acceleration (m/s²).', t:'F'},
+  {q:'What is meant by the terminal velocity of a falling object?', a:'The constant maximum velocity reached when the drag (air resistance) equals the weight, so the resultant force is zero and acceleration stops.', t:'H'},
   {q:'What is the difference between scalar and vector quantities?', a:'Scalar: magnitude only (e.g. speed, mass, energy). Vector: magnitude and direction (e.g. velocity, force, acceleration, momentum, displacement).'},
   {q:'State Newton\'s First Law of Motion.', a:'An object remains at rest or in uniform motion unless acted on by a resultant force.'},
   {q:'State Newton\'s Second Law of Motion.', a:'The resultant force on an object equals mass × acceleration: F = ma (N, kg, m/s²).'},
@@ -1246,6 +1332,9 @@ const QB_PHYSICS = {
 ]},
 
 'waves': { name: 'Waves', fc: [
+  {q:'What is the difference between a transverse and a longitudinal wave?', a:'In a transverse wave the oscillations are perpendicular to the direction of energy transfer (e.g. light); in a longitudinal wave they are parallel, forming compressions and rarefactions (e.g. sound).', t:'F'},
+  {q:'State the wave speed equation.', a:'$v = f\\lambda$: wave speed (m/s) = frequency (Hz) × wavelength (m).', t:'F'},
+  {q:'List the electromagnetic spectrum in order of increasing frequency.', a:'Radio, microwave, infrared, visible light, ultraviolet, X-rays, gamma rays.'},
   {q:'What is the difference between transverse and longitudinal waves?', a:'Transverse: oscillations perpendicular to direction of energy transfer (e.g. light, water). Longitudinal: oscillations parallel to direction of energy transfer (e.g. sound) — compressions and rarefactions.'},
   {q:'Define amplitude, frequency, wavelength, and wave speed.', a:'Amplitude: maximum displacement from equilibrium. Frequency (Hz): waves per second. Wavelength (m): distance between identical adjacent points. Wave speed (m/s): distance per second.'},
   {q:'State the wave equation.', a:'v = fλ where v = wave speed (m/s), f = frequency (Hz), λ = wavelength (m).'},
@@ -1332,6 +1421,13 @@ const QB_PHYSICS = {
   {q:'In an electromagnet investigation, a student varies both the current AND the number of turns simultaneously. Why is this method not valid?', a:'To investigate how one variable (e.g. current) affects the strength of the electromagnet, all other variables must be controlled (kept constant). The student changed two independent variables (current AND number of turns) at the same time, so it is impossible to determine which variable caused any change in strength. The investigation does not follow the fair-test principle.', s:AQA_P2H_JUN19},
   {q:'How does increasing the current in a wire affect the strength of an electromagnet?', a:'Increasing the current increases the magnetic field strength produced by the electromagnet — it can hold a greater weight/attract stronger. This is because a larger current produces a stronger magnetic field in the coil around the iron core.', s:AQA_P2H_JUN19},
   {q:'Increasing turns from 10 to 20 has a greater effect on electromagnet strength than increasing from 20 to 30 turns. What does this suggest?', a:'The relationship between number of turns and electromagnet strength is non-linear — there are diminishing returns. The first doubling (10→20) produces a larger increase in strength than the second increment (20→30), suggesting the strength increases less steeply at higher numbers of turns.', t:'H', s:AQA_P2H_JUN19},
+  {q:'Describe the shape and direction of the magnetic field around a bar magnet.', a:'Field lines form closed loops that emerge from the north pole and curve round to enter the south pole. They are closest together (strongest field) near the poles and spread out (weaker field) further away.', t:'F'},
+  {q:'How can you use a plotting compass to show the magnetic field around a bar magnet?', a:'Place the compass near the magnet; the needle aligns with the field. Mark the direction, move the compass to the tip of the arrow, and repeat to trace a field line. The compass needle always points along the field, from N to S.', t:'F'},
+  {q:'Name three magnetic materials.', a:'Iron, steel, cobalt and nickel are all magnetic (attracted to magnets). Steel is used for permanent magnets; iron for temporary ones like electromagnet cores.', t:'F'},
+  {q:'State two ways to increase the strength of an electromagnet.', a:'Any two of: increase the current; increase the number of turns on the coil; add or use a soft iron core; move the poles closer to the object.'},
+  {q:'Give three uses of electromagnets.', a:'Any three: scrapyard crane (lifting/dropping cars), electric bell, relay/circuit breaker, maglev trains, loudspeakers, electric motors.', t:'F'},
+  {q:'Why is soft iron, rather than steel, used for the core of an electromagnet?', a:'Soft iron is easily magnetised and demagnetised, so the electromagnet can be switched on and off. Steel keeps its magnetism, which would prevent the field being turned off.'},
+  {q:'Why does the National Grid use step-up transformers before transmission?', a:'Stepping up the voltage reduces the current for the same power transmitted. Lower current means much less energy is wasted as heat in the cables (power loss ∝ I²R), making transmission more efficient.', t:'H'},
 ], mc: [
   {q:'A transformer has 100 primary turns and 500 secondary turns. Input = 20 V. Output?', o:['4 V','20 V','100 V','500 V'], c:2, e:'Vs = Vp × (ns/np) = 20 × 500/100 = 100 V. Step-up transformer.', t:'H'},
   {q:'Fleming\'s Left-Hand Rule is used for:', o:['Generators','Transformers','The motor effect (force on current in a field)','Electromagnetic induction'], c:2, e:'Left-Hand Rule → motor effect: a current in a magnetic field experiences a force. Right-Hand Rule is used for generators.'},
@@ -1339,6 +1435,10 @@ const QB_PHYSICS = {
   {q:'What is a step-down transformer used for?', o:['Increasing voltage to reduce current losses in cables','Decreasing voltage to a safer level for homes and appliances','Converting AC to DC','Generating electricity'], c:1, e:'Step-down transformers reduce the high National Grid voltage (e.g. 400 000 V) to safer levels for homes (230 V) and industry.', t:'F'},
   {q:'A cable carries a current from A to B in the Earth\'s magnetic field (Figure 13). Which direction is the force on the cable?', o:['Down','Left','Right','Up'], c:3, e:'⚠️ DIAGRAM REQUIRED — Figure 13 shows the cable between two poles. Using Fleming\'s Left-Hand Rule with the Earth\'s magnetic field direction and the current direction A→B as shown, the force on the cable is upward. (The exact answer depends on Figure 13 geometry — this is the typical AQA answer for a horizontal cable with northward field component and current east-west.)', t:'H', s:AQA_P2H_22},
   {q:'The force on a current-carrying wire F = BIl. If current doubles, force:', o:['Halves','Stays the same','Doubles','Quadruples'], c:2, e:'F = BIl — force is directly proportional to I. Double I → double F.', t:'H'},
+  {q:'Magnetic field lines around a bar magnet point:', o:['From south pole to north pole','From north pole to south pole','Always in straight lines','Towards the magnet from all directions'], c:1, e:'By convention field lines run from N to S outside the magnet.', t:'F'},
+  {q:'Which material is best for the core of an electromagnet?', o:['Steel','Copper','Soft iron','Aluminium'], c:2, e:'Soft iron magnetises and demagnetises easily, so the field can be switched on and off.'},
+  {q:'Which of these is NOT a way to strengthen an electromagnet?', o:['Increase the current','Add more turns to the coil','Use a soft iron core','Increase the length of the connecting wires'], c:3, e:'Lengthening the connecting wires adds resistance and does not increase field strength.', t:'F'},
+  {q:'Stepping up voltage for transmission reduces power loss because:', o:['Higher voltage means lower current, and losses depend on I²R','Higher voltage has less resistance','Electrons move faster','It converts AC to DC'], c:0, e:'For a fixed power, raising V lowers I; since heat loss = I²R, lower current sharply cuts losses.', t:'H'},
 ]},
 
 'space-physics': { name: 'Space Physics', fc: [
@@ -1396,6 +1496,7 @@ const QB_CHEM = {
 // ── PAPER 1 TOPICS ──────────────────────────────────────────────────────────
 
 'atomic-structure': { name: 'Atomic Structure & Periodic Table', fc: [
+  {q:'Compare the plum pudding model of the atom with the modern model.', a:'Plum pudding: positive charge spread throughout, electrons embedded randomly, no nucleus, mass spread out, no empty space. Modern: protons and neutrons in a tiny central nucleus, electrons in shells/energy levels, atom mostly empty space with positive charge concentrated at the centre.', s:AQA_CHEM_P1H24},
   {q:'What are the relative masses and charges of protons, neutrons, and electrons?', a:'Proton: mass 1, charge +1. Neutron: mass 1, charge 0. Electron: mass ~0, charge −1.'},
   {q:'How are elements arranged in the modern periodic table?', a:'In order of increasing atomic number (protons). Elements in the same group have the same number of outer electrons and similar chemical properties.'},
   {q:'How does electronic structure relate to the periodic table?', a:'Period number = number of electron shells. Group number = number of outer electrons (groups 1–7). Shells fill: 1st = 2, 2nd = 8, 3rd = 8.'},
@@ -1426,6 +1527,7 @@ const QB_CHEM = {
 ]},
 
 'bonding': { name: 'Bonding, Structure & Properties', fc: [
+  {q:'Explain why propane (a small molecule) has a low boiling point.', a:'Propane is a small, simple molecule with weak intermolecular forces between molecules. Only a little energy is needed to overcome these forces (the covalent bonds are not broken).', s:AQA_CHEM_P1H24},
   {q:'What is ionic bonding?', a:'Transfer of electrons from metal to non-metal, forming oppositely charged ions. Strong electrostatic attraction holds ions in a giant ionic lattice.'},
   {q:'What is covalent bonding?', a:'Sharing of a pair of electrons between two non-metal atoms. Each shared pair is one covalent bond.'},
   {q:'What is metallic bonding?', a:'Metal atoms lose outer electrons forming a lattice of positive ions surrounded by a "sea" of delocalised electrons. Strong electrostatic attraction throughout.'},
@@ -1450,6 +1552,10 @@ const QB_CHEM = {
 ]},
 
 'quantitative-chemistry': { name: 'Quantitative Chemistry', fc: [
+  {q:'12.5 g is the maximum theoretical mass of a salt. The percentage yield is 92.8%. Calculate the mass of salt actually produced.', a:'mass = (% yield ÷ 100) × maximum theoretical mass = (92.8 ÷ 100) × 12.5 = 11.6 g.', t:'H', s:AQA_CHEM_P1H24},
+  {q:'Calculate the percentage by mass of iron in Fe₃O₄ (Ar: O=16, Fe=56).', a:'Mr of Fe₃O₄ = (3×56)+(4×16) = 232. % Fe = (3×56 ÷ 232) × 100 = (168÷232)×100 = 72.4%.', t:'H', s:AQA_CHEM_P1H24},
+  {q:'2 Fe₂O₃ + 3 C → 4 Fe + 3 CO₂. Calculate the volume of CO₂ at rtp from 40.0 kg of Fe₂O₃ (Mr Fe₂O₃=160; molar volume = 24 dm³).', a:'40.0 kg = 40000 g. Moles Fe₂O₃ = 40000÷160 = 250. Moles CO₂ = 250 × 3/2 = 375. Volume = 375 × 24 = 9000 dm³.', t:'H', s:AQA_CHEM_P1H24},
+  {q:'0.0045 mol of NaOH is titrated with 0.15 mol/dm³ HCl (NaOH + HCl → NaCl + H₂O). Calculate the volume of acid needed, in cm³.', a:'Moles HCl = moles NaOH = 0.0045. Volume = 0.0045 ÷ 0.15 = 0.030 dm³ = 30 cm³.', t:'H', s:AQA_CHEM_P1H24},
   {q:'What is relative atomic mass (Ar)?', a:'The average mass of an atom of an element relative to 1/12 the mass of carbon-12. Takes into account the natural abundance of all isotopes.'},
   {q:'What is relative formula mass (Mr)?', a:'The sum of all relative atomic masses in a formula. E.g. Mr of H₂O = (2 × 1) + 16 = 18.'},
   {q:'What is a mole?', a:'The amount of substance containing 6.02 × 10²³ (Avogadro\'s number) particles. One mole of a substance has a mass equal to its Mr in grams.'},
@@ -1461,6 +1567,8 @@ const QB_CHEM = {
   {q:'What is the molar volume of a gas at RTP?', a:'At room temperature and pressure (RTP), 1 mole of any gas occupies 24 dm³ (24 000 cm³). Volume = n × 24 dm³.', t:'H'},
   {q:'How do you calculate Mr from a chemical formula?', a:'Add up the Ar values for all atoms in the formula. E.g. Mr of CO₂ = 12 + (2 × 16) = 44. (Use the Ar values given in the question or periodic table.)', t:'F'},
 ], mc: [
+  {q:'0.12 mol of iron reacts with 0.18 mol of Cl₂. Which is the correct equation?', o:['Fe + Cl₂ → FeCl₂','Fe + 3 Cl₂ → FeCl₆','2 Fe + Cl₂ → 2 FeCl','2 Fe + 3 Cl₂ → 2 FeCl₃'], c:3, e:'The mole ratio 0.12:0.18 = 2:3, so 2 Fe : 3 Cl₂. The balanced equation is 2 Fe + 3 Cl₂ → 2 FeCl₃.', t:'H', s:AQA_CHEM_P1H24},
+  {q:'What is the ratio of the numbers of ions in Fe₃O₄?', o:['2 Fe²⁺ : 1 Fe³⁺ : 4 O²⁻','1 Fe²⁺ : 2 Fe³⁺ : 4 O²⁻','3 Fe²⁺ : 4 O²⁻','3 Fe³⁺ : 4 O²⁻'], c:1, e:'Fe₃O₄ contains 1 Fe²⁺ and 2 Fe³⁺ ions, balancing 4 O²⁻ ions: (2) + (2×3) = 8 = 4×2.', t:'H', s:AQA_CHEM_P1H24},
   {q:'What is the Mr of CO₂? (C = 12, O = 16)', o:['28','40','44','32'], c:2, e:'Mr = 12 + (2 × 16) = 12 + 32 = 44.'},
   {q:'How many moles are in 36 g of water? (Mr of H₂O = 18)', o:['0.5 mol','1 mol','2 mol','18 mol'], c:2, e:'n = m/Mr = 36/18 = 2 mol.', t:'H'},
   {q:'A reaction gives 4.5 g of product; theoretical yield is 9 g. Percentage yield?', o:['25%','45%','50%','90%'], c:2, e:'% yield = (actual/theoretical) × 100 = (4.5/9) × 100 = 50%.'},
@@ -1470,6 +1578,19 @@ const QB_CHEM = {
 ]},
 
 'chemical-changes': { name: 'Chemical Changes', fc: [
+  {q:'Complete the word equation: copper carbonate + sulfuric acid → ?', a:'copper sulfate + water + carbon dioxide.', s:AQA_CHEM_P1H24},
+  {q:'When making a soluble salt, give one observation showing the carbonate is in excess.', a:'Solid (copper carbonate) remains unreacted in the mixture / there is no more effervescence (bubbling/fizzing).', s:AQA_CHEM_P1H24},
+  {q:'Why is the mixture filtered when preparing a soluble salt from an insoluble base?', a:'To remove the excess (unreacted) solid copper carbonate from the salt solution.', s:AQA_CHEM_P1H24},
+  {q:'Name a piece of equipment used to warm a filtrate gently to start crystallisation.', a:'An electric heater or a water bath (not a Bunsen burner).', s:AQA_CHEM_P1H24},
+  {q:'Why are copper and sodium NOT used to react with an acid to make a salt?', a:'Copper is too unreactive (below hydrogen in the reactivity series) so does not react with the acid. Sodium is too reactive — the reaction would be dangerous/explosive.', s:AQA_CHEM_P1H24},
+  {q:'Describe what happens to calcium and chlorine atoms when calcium chloride forms.', a:'Each calcium atom loses 2 electrons and each chlorine atom gains 1 electron, so one Ca reacts with two Cl, forming Ca²⁺ and Cl⁻ ions with full outer shells.', s:AQA_CHEM_P1H24},
+  {q:'Why can solid calcium chloride not be electrolysed?', a:'The ions are in fixed positions and cannot move, so they cannot carry charge. It must be molten or in solution.', s:AQA_CHEM_P1H24},
+  {q:'Name the product formed at the negative electrode when aqueous calcium chloride is electrolysed.', a:'Hydrogen (because calcium is more reactive than hydrogen, so hydrogen is discharged instead).', s:AQA_CHEM_P1H24},
+  {q:'Copper chromate solution contains blue Cu²⁺ ions and yellow CrO₄²⁻ ions. Explain what is seen during electrolysis.', a:'Blue Cu²⁺ ions move to the negative electrode (cathode) and yellow CrO₄²⁻ ions move to the positive electrode (anode), so the colours separate towards opposite electrodes.', t:'H', s:AQA_CHEM_P1H24},
+  {q:'What is meant by a weak acid?', a:'An acid that is only partially ionised (partially dissociated) in aqueous solution.', s:AQA_CHEM_P1H24},
+  {q:'Explain what happens to the pH of an acid as it is diluted with water.', a:'The pH increases, because the concentration of hydrogen ions (H⁺) decreases.', s:AQA_CHEM_P1H24},
+  {q:'Before adding acid from the burette in a titration, give three steps (naming equipment).', a:'Use a volumetric pipette to measure the alkali into a conical flask; add an indicator to the alkali; take the initial burette reading (stand the flask on a white tile).', s:AQA_CHEM_P1H24},
+  {q:'Explain why calcium reacts more vigorously than magnesium with the same concentration of hydrochloric acid.', a:'Calcium\'s outer electrons are further from the nucleus (more shells) and more shielded, so they are less strongly attracted and positive ions form more easily (electrons lost more easily).', t:'H', s:AQA_CHEM_P1H24},
   {q:'State the reactivity series (most to least reactive).', a:'Potassium > Sodium > Lithium > Calcium > Magnesium > Aluminium > (Carbon) > Zinc > Iron > (Hydrogen) > Copper > Silver > Gold > Platinum.'},
   {q:'What is a displacement reaction?', a:'A more reactive metal displaces a less reactive metal from its salt solution. E.g. Zn + CuSO₄ → ZnSO₄ + Cu.'},
   {q:'Define oxidation and reduction in terms of electrons (OIL RIG).', a:'Oxidation Is Loss of electrons. Reduction Is Gain of electrons. (OIL RIG.)'},
@@ -1481,6 +1602,7 @@ const QB_CHEM = {
   {q:'What is neutralisation?', a:'Acid + base → salt + water. H⁺(aq) + OH⁻(aq) → H₂O(l). pH moves towards 7.'},
   {q:'What test confirms hydrogen gas is produced?', a:'Hold a burning splint near the gas — you hear a "squeaky pop". Hydrogen ignites and burns rapidly.', t:'F'},
 ], mc: [
+  {q:'What is the half equation at the positive electrode when aqueous calcium chloride is electrolysed?', o:['2 Cl⁻ → Cl₂ + 2 e⁻','Cl₂ + 2 e⁻ → 2 Cl⁻','4 OH⁻ → O₂ + 2 H₂O + 4 e⁻','O₂ + 2 H₂O + 4 e⁻ → 4 OH⁻'], c:0, e:'At the positive electrode (anode) chloride ions are oxidised (lose electrons): 2 Cl⁻ → Cl₂ + 2 e⁻.', t:'H', s:AQA_CHEM_P1H24},
   {q:'Which metal displaces iron from iron(II) sulfate solution?', o:['Copper','Silver','Magnesium','Lead'], c:2, e:'Magnesium is above iron in the reactivity series: Mg + FeSO₄ → MgSO₄ + Fe. Copper and silver are below iron.'},
   {q:'In electrolysis, what occurs at the cathode?', o:['Oxidation: electrons are lost','Reduction: electrons are gained','Anions are discharged','Acid is produced'], c:1, e:'Cathode is negative; positive cations are attracted and gain electrons — this is reduction. OIL RIG: cathode = reduction.'},
   {q:'What gas is produced at the anode during electrolysis of concentrated brine?', o:['Oxygen','Hydrogen','Chlorine','Sodium'], c:2, e:'At high Cl⁻ concentration, Cl⁻ ions are preferentially discharged: 2Cl⁻ − 2e⁻ → Cl₂.'},
@@ -1490,6 +1612,14 @@ const QB_CHEM = {
 ]},
 
 'energy-changes': { name: 'Energy Changes', fc: [
+  {q:'In the zinc + copper sulfate reaction, temperature rises as more zinc is added then levels off. Explain.', a:'The temperature rises because the reaction is exothermic (energy transferred to the surroundings). Once zinc is in excess and the copper sulfate is used up, no further reaction occurs so the temperature stops rising.', t:'H', s:AQA_CHEM_P1H24},
+  {q:'Why does a polystyrene cup give more accurate temperature-change results than a glass beaker?', a:'Polystyrene is a better thermal insulator, so less energy (heat) is transferred to the surroundings.', s:AQA_CHEM_P1H24},
+  {q:'Complete the ionic equation with state symbols: Zn(s) + Cu²⁺(aq) → ?', a:'Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s).', t:'H', s:AQA_CHEM_P1H24},
+  {q:'Four trials give 37.6, 37.2, 37.8, 37.4 °C. Calculate the mean and its uncertainty.', a:'Mean = (37.6+37.2+37.8+37.4)÷4 = 150÷4 = 37.5 °C. Uncertainty = ±(range÷2) = ±(0.6÷2) = ±0.3 °C.', t:'H', s:AQA_CHEM_P1H24},
+  {q:'Suggest one reason for random errors in a temperature-rise experiment when no measuring mistakes were made.', a:'The starting temperature may differ between trials, or stirring may be inconsistent (or inconsistent use of a lid).', s:AQA_CHEM_P1H24},
+  {q:'A nickel electrode is the 0.00 V reference. Voltages: Mg +2.12, Zn +0.51, Cu −0.59, Ag −1.05 V. Order the metals by reactivity and justify.', a:'Most→least reactive: Mg, Zn, Ni, Cu, Ag. The more reactive the metal, the higher (more positive) the voltage produced against nickel.', t:'H', s:AQA_CHEM_P1H24},
+  {q:'Describe how a hydrogen fuel cell produces a potential difference.', a:'Hydrogen is oxidised (loses electrons) electrochemically to produce water; the resulting flow of electrons round the external circuit creates the potential difference.', t:'H', s:AQA_CHEM_P1H24},
+  {q:'For C₃H₈ + 5 O₂ → 3 CO₂ + 4 H₂O the overall change is −2219 kJ/mol. Bond energies: C–C 347, O=O 498, C=O 805, O–H 464. Find the C–H bond energy X.', a:'Bonds broken = 2(347)+8X+5(498) = 3184+8X. Bonds made = 6(805)+8(464) = 8542. Energy released = made − broken: 2219 = 8542 − (3184+8X) → 8X = 3139 → X = 392 kJ/mol.', t:'H', s:AQA_CHEM_P1H24},
   {q:'What is an exothermic reaction?', a:'A reaction that transfers energy to the surroundings — temperature of surroundings rises. Examples: combustion, neutralisation, oxidation, many displacement reactions.'},
   {q:'What is an endothermic reaction?', a:'A reaction that absorbs energy from the surroundings — temperature falls. Examples: thermal decomposition, dissolving ammonium nitrate.'},
   {q:'What is activation energy?', a:'The minimum energy that colliding particles must have for a reaction to occur. Shown as the peak on a reaction profile diagram.'},
@@ -1500,6 +1630,7 @@ const QB_CHEM = {
   {q:'How does a hydrogen fuel cell work?', a:'Hydrogen is oxidised at the anode; oxygen is reduced at the cathode; water is produced. Chemical energy converts directly to electrical energy — more efficient than combustion.', t:'H'},
   {q:'Is combustion exothermic or endothermic? How do you know?', a:'Exothermic — it releases energy to the surroundings as heat and light. The temperature of the surroundings increases.', t:'F'},
 ], mc: [
+  {q:'The reaction between propane and oxygen is exothermic. Which reaction profile is correct?', o:['Products higher in energy than reactants','Products lower in energy than reactants, with an activation energy hump','Reactants and products at equal energy','A straight downward line with no activation energy'], c:1, e:'In an exothermic reaction the products are at a lower energy than the reactants; the activation energy is the energy hump from reactants up to the peak.', t:'H', s:AQA_CHEM_P1H24},
   {q:'A reaction causes a temperature decrease. It is:', o:['Exothermic','Endothermic','Neutral','A combustion reaction'], c:1, e:'Endothermic reactions absorb energy from surroundings — temperature falls. Exothermic reactions release energy — temperature rises.'},
   {q:'A catalyst increases reaction rate because it:', o:['Increases activation energy','Provides a lower-energy alternative reaction pathway','Gets used up during the reaction','Increases the temperature'], c:1, e:'A catalyst lowers the activation energy — more collisions now have enough energy to react. The catalyst is unchanged overall.'},
   {q:'Energy to break bonds = 400 kJ; energy released forming bonds = 500 kJ. ΔH =', o:['+900 kJ/mol','+100 kJ/mol','−100 kJ/mol','−900 kJ/mol'], c:2, e:'ΔH = energy in − energy out = 400 − 500 = −100 kJ/mol. Negative = exothermic.', t:'H'},
@@ -1858,6 +1989,7 @@ function loginSuccess(name){
   var display=name.charAt(0).toUpperCase()+name.slice(1);
   document.getElementById('user-greeting').textContent=display;
   startApp();
+  loadCardStats();
 }
 
 async function tryAutoLogin(){
@@ -1893,6 +2025,104 @@ async function saveSession(){
   }catch(e){console.log('Save error:',e);}
 }
 
+// ── CARD-LEVEL MASTERY TRACKING ───────────────────────────────────────────────
+// In-memory mirror of the user's cardStats docs: { cardId: {state,greenStreak,...} }
+let cardStatsCache = {};
+
+async function loadCardStats(){
+  cardStatsCache={};
+  if(!currentUser)return;
+  try{
+    const snap=await db.collection('cardStats')
+      .where('user','==',currentUser).limit(2000).get();
+    snap.docs.forEach(d=>{const v=d.data(); if(v.cardId)cardStatsCache[v.cardId]=v;});
+  }catch(e){console.log('cardStats load error:',e);}
+  updateReviewBadge();
+}
+
+// Apply the state machine for one grade, update cache + Firestore.
+// grade: 'red' | 'amber' | 'green'  (MC maps correct→green, incorrect→red)
+function gradeCard(card,grade){
+  if(!currentUser||!card||!card._id)return;
+  const id=card._id;
+  const prev=cardStatsCache[id]||{state:'learning',greenStreak:0,timesSeen:0,timesWrong:0};
+  let greenStreak=prev.greenStreak||0;
+  let state=prev.state||'learning';
+  if(grade==='green'){
+    greenStreak+=1;
+    // Two consecutive greens clears the card to mastered.
+    // A single green never promotes a card INTO review — it keeps its current state.
+    if(greenStreak>=2) state='mastered';
+  } else { // red or amber → (re)enter review, reset streak
+    greenStreak=0;
+    state='review';
+  }
+  const rec={
+    user:currentUser, cardId:id,
+    subject:card._subject, topic:card._topicKey, mode:S.mode,
+    state, greenStreak, lastGrade:grade,
+    timesSeen:(prev.timesSeen||0)+1,
+    timesWrong:(prev.timesWrong||0)+(grade==='green'?0:1),
+    updated:firebase.firestore.FieldValue.serverTimestamp()
+  };
+  cardStatsCache[id]=rec;          // synchronous: review list/badge stay correct
+  updateReviewBadge();
+  db.collection('cardStats').doc(currentUser+'_'+id)
+    .set(rec,{merge:true}).catch(e=>console.log('grade save error:',e));
+}
+
+function reviewCount(){
+  let n=0;
+  for(const k in cardStatsCache){if(cardStatsCache[k].state==='review')n++;}
+  return n;
+}
+
+function updateReviewBadge(){
+  const btn=document.getElementById('btn-review');
+  if(!btn)return;
+  const n=reviewCount();
+  document.getElementById('review-count').textContent=n;
+  btn.style.display = currentUser ? 'inline-flex' : 'none';
+}
+
+// Build the "card mastery" breakdown (mastered / to-review / learning) from cardStatsCache.
+function masterySummaryHtml(){
+  var keys=Object.keys(cardStatsCache);
+  if(!keys.length)return '';
+  var tot={mastered:0,review:0,learning:0};
+  var bySubj={};
+  keys.forEach(function(k){
+    var r=cardStatsCache[k];
+    var st=r.state||'learning';
+    if(tot[st]===undefined)st='learning';
+    tot[st]++;
+    var sj=r.subject||'?';
+    if(!bySubj[sj])bySubj[sj]={mastered:0,review:0,learning:0};
+    bySubj[sj][st]++;
+  });
+  function chip(label,n,colour){
+    return '<div class="prog-stat"><div class="n" style="color:'+colour+'">'+n+'</div><div class="l">'+label+'</div></div>';
+  }
+  var html='<h3 style="margin:14px 0 6px">🃏 Card mastery</h3>';
+  html+='<div class="prog-summary">'
+    +chip('Mastered',tot.mastered,'#16a34a')
+    +chip('To review',tot.review,'#d97706')
+    +chip('Learning',tot.learning,'#64748b')
+    +'</div>';
+  ['biology','physics','chemistry','maths'].forEach(function(sj){
+    var b=bySubj[sj]; if(!b)return;
+    var info=SUBJECTS[sj];
+    html+='<div class="prog-topic">'
+      +'<div class="prog-topic-name">'+info.icon+' '+info.name+'</div>'
+      +'<div class="prog-topic-score">'
+      +'<span style="color:#16a34a">✅ '+b.mastered+'</span> &nbsp; '
+      +'<span style="color:#d97706">🔁 '+b.review+'</span> &nbsp; '
+      +'<span style="color:#64748b">📖 '+b.learning+'</span>'
+      +'</div></div>';
+  });
+  return html;
+}
+
 async function showProgress(){
   var modal=document.getElementById('progress-modal');
   var content=document.getElementById('prog-content');
@@ -1914,7 +2144,10 @@ async function showProgress(){
     });
 
     if(!sessions.length){
-      content.innerHTML='<p class="prog-empty">No sessions yet!<br>Complete a deck to start tracking your progress. 🚀</p>';
+      var mh=masterySummaryHtml();
+      content.innerHTML = mh
+        ? mh+'<p class="prog-empty" style="margin-top:14px">Complete a deck to track quiz scores too. 🚀</p>'
+        : '<p class="prog-empty">No sessions yet!<br>Complete a deck to start tracking your progress. 🚀</p>';
       return;
     }
 
@@ -1999,6 +2232,7 @@ const SUBJECTS = {
 const S = {
   subject:'biology', tier:'H', topic:'all', mode:'fc',
   cards:[], index:0, flipped:false, done:false,
+  reviewMode:false,
   fcKnow:0, fcSeen:0,
   mcScore:0, mcTotal:0, mcAnswered:false, mcSelected:null
 };
@@ -2010,14 +2244,48 @@ function shuffle(arr){
   return a;
 }
 
+// Stable card ID: djb2 hash of subject|topicKey|question text → base36
+function hashStr(str){
+  let h=5381;
+  for(let i=0;i<str.length;i++){h=((h<<5)+h+str.charCodeAt(i))|0;}
+  return (h>>>0).toString(36);
+}
+function makeCardId(subjectKey,topicKey,card){
+  return subjectKey+':'+topicKey+':'+hashStr(card.q||'');
+}
+
+// Every card across all subjects/topics for the given mode, with identity attached.
+function allCards(mode){
+  let out=[];
+  for(const[subjKey,subj] of Object.entries(SUBJECTS)){
+    if(!subj.data)continue;
+    for(const[key,topic] of Object.entries(subj.data)){
+      const pool=mode==='fc'?(topic.fc||[]):(topic.mc||[]);
+      pool.forEach(q=>out.push({...q,
+        topicName:topic.name,_subject:subjKey,_topicKey:key,
+        _id:makeCardId(subjKey,key,q)}));
+    }
+  }
+  return out;
+}
+
 function getCards(){
+  // Review mode: every card currently in the "review" pile, for the active mode.
+  if(S.reviewMode){
+    const due=allCards(S.mode).filter(c=>{
+      const st=cardStatsCache[c._id];
+      return st && st.state==='review';
+    });
+    return shuffle(due);
+  }
   const subj=SUBJECTS[S.subject];
   let out=[];
   for(const[key,topic] of Object.entries(subj.data)){
     if(S.topic!=='all'&&key!==S.topic)continue;
     const pool=S.mode==='fc'?(topic.fc||[]):(topic.mc||[]);
     const filtered=pool.filter(q=>!q.t||q.t===S.tier);
-    out.push(...filtered.map(q=>({...q,topicName:topic.name})));
+    out.push(...filtered.map(q=>({...q,topicName:topic.name,
+      _subject:S.subject,_topicKey:key,_id:makeCardId(S.subject,key,q)})));
   }
   return shuffle(out);
 }
@@ -2087,7 +2355,11 @@ function renderCard(){
   const area=document.getElementById('card-area');
   if(S.done){renderComplete(area);return;}
   if(!S.cards.length){
-    area.innerHTML='<div class="empty">No questions match this selection.<br>Try a different tier or topic.</div>';
+    if(S.reviewMode){
+      area.innerHTML='<div class="empty">🎉 Nothing to review in '+(S.mode==='fc'?'Cards':'Quiz')+' right now!<br>Cards you mark <b>Don\'t know</b> or <b>Partly</b> (or get wrong in Quiz) appear here until you get them right twice in a row.</div>';
+    } else {
+      area.innerHTML='<div class="empty">No questions match this selection.<br>Try a different tier or topic.</div>';
+    }
     return;
   }
   const card=S.cards[S.index];
@@ -2145,12 +2417,14 @@ function renderFC(area,card){
       +cardImg(card)
       +'<p class="card-text">'+card.a+'</p>'
       +'<div class="fc-actions">'
-      +'<button class="fc-btn fc-no" id="fc-no">✗ Still learning</button>'
+      +'<button class="fc-btn fc-no" id="fc-no">✗ Don\'t know</button>'
+      +'<button class="fc-btn fc-amber" id="fc-amber">~ Partly</button>'
       +'<button class="fc-btn fc-yes" id="fc-yes">✓ Got it</button>'
       +'</div>'
       +'</div>';
-    document.getElementById('fc-no').addEventListener('click',()=>fcAnswer(false));
-    document.getElementById('fc-yes').addEventListener('click',()=>fcAnswer(true));
+    document.getElementById('fc-no').addEventListener('click',()=>fcAnswer('red'));
+    document.getElementById('fc-amber').addEventListener('click',()=>fcAnswer('amber'));
+    document.getElementById('fc-yes').addEventListener('click',()=>fcAnswer('green'));
   }
 }
 
@@ -2218,13 +2492,16 @@ function renderComplete(area){
 }
 
 // ── ACTIONS ───────────────────────────────────────────────────────────────────
-function fcAnswer(knew){
+function fcAnswer(grade){
   S.fcSeen++;
-  if(knew){
+  const card=S.cards[S.index];
+  gradeCard(card,grade);
+  if(grade==='green'){
     S.fcKnow++;
     if(S.index>=S.cards.length-1){S.done=true;}
     else{S.index++;S.flipped=false;}
   } else {
+    // red or amber → move this card to the back to revisit this session
     const c=S.cards.splice(S.index,1)[0];
     S.cards.push(c);
     S.flipped=false;
@@ -2236,7 +2513,10 @@ function fcAnswer(knew){
 function answerMC(i){
   if(S.mcAnswered)return;
   S.mcAnswered=true; S.mcSelected=i; S.mcTotal++;
-  if(i===S.cards[S.index].c)S.mcScore++;
+  const card=S.cards[S.index];
+  const correct=(i===card.c);
+  if(correct)S.mcScore++;
+  gradeCard(card, correct?'green':'red');
   render();
 }
 
@@ -2259,21 +2539,37 @@ function prevCard(){
 }
 
 // ── EVENT LISTENERS ───────────────────────────────────────────────────────────
+function exitReview(){
+  S.reviewMode=false;
+  const rb=document.getElementById('btn-review');
+  if(rb)rb.classList.remove('active');
+}
+
 document.querySelectorAll('.subj-tab').forEach(b=>b.addEventListener('click',()=>{
+  exitReview();
   S.subject=b.dataset.subject; S.topic='all';
   applyTheme(); populateTopics(); loadCards(); render();
 }));
 
 document.querySelectorAll('#tier-toggle .pill-btn').forEach(b=>b.addEventListener('click',()=>{
+  exitReview();
   S.tier=b.dataset.tier; loadCards(); render();
 }));
 
 document.querySelectorAll('#mode-toggle .pill-btn').forEach(b=>b.addEventListener('click',()=>{
+  // Mode (Cards/Quiz) is allowed inside review mode — just reload the deck.
   S.mode=b.dataset.mode; loadCards(); render();
 }));
 
 document.getElementById('topic-select').addEventListener('change',e=>{
+  exitReview();
   S.topic=e.target.value; loadCards(); render();
+});
+
+document.getElementById('btn-review').addEventListener('click',()=>{
+  S.reviewMode=!S.reviewMode;
+  document.getElementById('btn-review').classList.toggle('active',S.reviewMode);
+  loadCards(); render();
 });
 
 document.getElementById('btn-next').addEventListener('click',nextCard);
