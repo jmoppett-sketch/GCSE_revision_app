@@ -6,6 +6,10 @@
 <title>GCSE Revision — Biology · Physics · Chemistry</title>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<!-- KaTeX for maths equation rendering (iOS-friendly) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 <style>
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -319,6 +323,7 @@ header{margin-bottom:16px;padding-top:10px}
       <button class="subj-tab" data-subject="biology">🧬 Biology</button>
       <button class="subj-tab" data-subject="physics">⚛️ Physics</button>
       <button class="subj-tab" data-subject="chemistry">🧪 Chemistry</button>
+      <button class="subj-tab" data-subject="maths">📐 Maths</button>
     </nav>
   </header>
 
@@ -382,6 +387,8 @@ const AQA_BIO_P1H_JUN24='AQA Jun 2024 Biology Paper 1H';
 const AQA_BIO_P1H_JUN22='AQA Jun 2022 Biology Paper 1H';
 const AQA_BIO_P1H_JUN23='AQA Jun 2023 Biology Paper 1H';
 const AQA_BIO_P1H_NOV20='AQA Nov 2020 Biology Paper 1H';
+const AQA_BIO_P2H_JUN23='AQA Jun 2023 Biology Paper 2H';
+const AQA_BIO_P2H_JUN24='AQA Jun 2024 Biology Paper 2H';
 
 const QB = {
 
@@ -647,6 +654,28 @@ const QB = {
   {q:'How does the skin regulate body temperature?', a:'Too hot: vasodilation (more blood to skin surface), sweating (evaporation cools). Too cold: vasoconstriction (less blood to skin), shivering (muscle contraction generates heat).', t:'H'},
   {q:'What is a reflex action and why is it useful?', a:'A rapid, automatic response to a stimulus that does not involve conscious thought. Useful because it is faster than a voluntary response — protects the body from harm.', t:'F'},
   {q:'What does insulin do?', a:'Lowers blood glucose level. It causes liver and muscle cells to take up glucose from the blood and convert it to glycogen for storage.', t:'F'},
+  {q:'What is accommodation in the eye?', a:'The adjustment of the eye\'s focus from a distant object to a near object (or vice versa) by changing the shape of the lens.', s:AQA_BIO_P2H_JUN23},
+  {q:'What happens to the shape of the lens when focusing on a near object?', a:'The ciliary muscles contract, the suspensory ligaments slacken, and the lens becomes fatter (more convex/rounder) to increase its refracting power.', s:AQA_BIO_P2H_JUN23},
+  {q:'Describe how muscles in the iris help a person see clearly when moving from a dimly-lit area to a brightly-lit area.', a:'In bright light, the circular muscles in the iris contract and the radial muscles relax. This makes the pupil smaller (constricts), reducing the amount of light entering the eye to prevent damage to the retina.', s:AQA_BIO_P2H_JUN23},
+  {q:'Plan an investigation to test the effect of drinking coffee on reaction time. Include the test and how to make it valid.', a:'Method: use a ruler-drop test — measure the distance the ruler falls before the participant catches it; convert to reaction time. Variables to control: same time of day, same participant posture, same amount of coffee consumed, same rest period before testing, same number of practice trials, participants should not have consumed caffeine beforehand. Measure reaction time before and after coffee. Repeat measurements and calculate mean. Use a control group drinking decaffeinated coffee. Results valid because only coffee (caffeine) is the independent variable.', s:AQA_BIO_P2H_JUN23},
+  {q:'Explain how thyroxine causes an increase in body temperature.', a:'Thyroxine increases the metabolic rate — it speeds up chemical reactions in cells. This releases more energy (heat) from respiration, raising body temperature.', s:AQA_BIO_P2H_JUN23, t:'H'},
+  {q:'Explain how a decrease in ADH concentration from 3.75 to 1.25 nanograms/dm³ changes urine production.', a:'With less ADH, fewer aquaporin channels are inserted into kidney tubule walls. Less water is reabsorbed from the filtrate back into the blood. More water remains in the tubule, so urine volume increases and urine concentration (dissolved substances) decreases. The man would produce more dilute urine at a higher rate.', s:AQA_BIO_P2H_JUN23, t:'H'},
+  {q:'What does a higher concentration of ADH in the blood cause?', a:'ADH causes the kidney tubules to become more permeable to water. More water is reabsorbed into the blood, producing a smaller volume of more concentrated urine.', s:AQA_BIO_P2H_JUN23, t:'H'},
+  {q:'Why did a student place bean seedling apparatus in a dark cupboard when investigating gravitropism?', a:'To prevent phototropism (growth towards light) from affecting the results — placing in the dark ensures only gravity is causing the change in direction of root growth.', s:AQA_BIO_P2H_JUN24},
+  {q:'Why is a control apparatus needed when investigating the effect of gravity on root growth?', a:'The control (apparatus B, kept upright) shows how roots grow when there is no change in direction of gravity. This allows comparison to show that bending in apparatus A is caused by gravity and not another factor.', s:AQA_BIO_P2H_JUN24},
+  {q:'In a gravitropism investigation, how would a root from a vertical control apparatus (B) look different from a root that has been turned on its side (A)?', a:'The root in the vertical control would grow straight downwards (no bending). The root in the sideways apparatus would have curved/bent downwards (geotropic response due to auxin redistribution).', s:AQA_BIO_P2H_JUN24},
+  {q:'Explain how auxin causes a root to grow downwards when the seedling is placed on its side.', a:'Auxin moves to the lower side of the root. At higher concentrations, auxin inhibits cell elongation in roots. Cells on the upper side elongate more than cells on the lower side. This causes the root to bend and grow downwards (towards gravity).', s:AQA_BIO_P2H_JUN24, t:'H'},
+  {q:'Give two uses of auxin in agriculture or horticulture.', a:'Any two: (1) Rooting powder — encourages root growth in cuttings. (2) Selective weedkiller — high concentrations kill broad-leaved weeds without harming grass. (3) Fruit ripening/development. (4) Promoting cell elongation in stems for plant tissue culture.', s:AQA_BIO_P2H_JUN24},
+  {q:'Suggest two reasons why a farmer would spray an apple tree with gibberellin.', a:'Any two: (1) To promote stem elongation/increase plant height. (2) To stimulate seed germination. (3) To increase fruit size. (4) To break dormancy in seeds or buds.', s:AQA_BIO_P2H_JUN24},
+  {q:'Suggest two ways to improve the ruler-drop test for measuring human reaction time.', a:'Any two: (1) Repeat the test multiple times and calculate a mean. (2) Ensure the person cannot see when the ruler is dropped (use a screen). (3) Practise trials first to remove the learning effect. (4) Use the same person each time. (5) Use a computer-based test for greater precision.', s:AQA_BIO_P2H_JUN24},
+  {q:'Give two ways that coordination by the endocrine system differs from coordination by the nervous system.', a:'Any two: (1) Endocrine responses are slower than nervous responses. (2) Endocrine responses last longer. (3) Hormones travel in the blood; nerve impulses travel along neurones. (4) Endocrine responses can affect many organs simultaneously; nervous responses are targeted to specific effectors.', s:AQA_BIO_P2H_JUN24},
+  {q:'Name one hormone produced by the pituitary gland (gland A in a diagram of female endocrine glands).', a:'DIAGRAM REQUIRED: Any one of FSH (follicle-stimulating hormone), LH (luteinising hormone), ADH (antidiuretic hormone), or growth hormone. The pituitary controls many other endocrine glands.', s:AQA_BIO_P2H_JUN24, t:'H'},
+  {q:'Name one hormone produced by the ovaries (gland B in a diagram of female endocrine glands).', a:'DIAGRAM REQUIRED: Oestrogen or progesterone. These regulate the menstrual cycle and female secondary sexual characteristics.', s:AQA_BIO_P2H_JUN24},
+  {q:'Describe two effects of adrenaline on the human body.', a:'Any two: (1) Increases heart rate — more blood delivered to muscles. (2) Dilates pupils — improves vision in an emergency. (3) Increases blood glucose — glycogen broken down to provide energy. (4) Diverts blood to muscles (vasoconstriction in gut, vasodilation in muscles). (5) Increases breathing rate.', s:AQA_BIO_P2H_JUN24},
+  {q:'Explain the use of hormones in contraception and in the treatment of infertility.', a:'Contraception: oral contraceptives contain oestrogen and/or progesterone. These inhibit FSH production, preventing follicle maturation and egg release (ovulation). No egg = no fertilisation. Treatment of infertility: FSH and LH are given to stimulate the ovaries to mature and release eggs. This increases the chance of natural fertilisation or is used in IVF where eggs are collected, fertilised outside the body, and placed back in the uterus.', s:AQA_BIO_P2H_JUN24, t:'H'},
+  {q:'Explain what is meant by the term homeostasis.', a:'The maintenance of a stable internal environment within the body despite changes in external conditions. Homeostasis keeps conditions such as blood glucose level, body temperature, and water balance within narrow limits for cells to function properly.', s:AQA_BIO_P2H_JUN24},
+  {q:'Describe what happens to glucose, protein, and urea in the kidneys.', a:'Glucose: filtered from blood into the tubule; all of it is reabsorbed back into the blood (selective reabsorption) — none in urine (normally). Protein: molecules are too large to be filtered; they remain in the blood. Urea: filtered from blood into the tubule; some is reabsorbed but most remains in the filtrate and is excreted in urine.', s:AQA_BIO_P2H_JUN24},
+  {q:'Explain how ADH affects the production and concentration of urine.', a:'When blood water concentration is low, the pituitary gland releases more ADH. ADH makes the kidney collecting ducts and tubules more permeable to water. More water is reabsorbed from the filtrate back into the blood by osmosis. This produces a smaller volume of more concentrated urine. When blood water concentration is high, less ADH is released, less water is reabsorbed, and a larger volume of more dilute urine is produced.', s:AQA_BIO_P2H_JUN24, t:'H'},
 ], mc: [
   {q:'Which organ monitors and controls blood glucose?', o:['Liver','Kidneys','Pancreas','Adrenal glands'], c:2, e:'The pancreas detects blood glucose levels and releases insulin or glucagon to regulate them.'},
   {q:'Blood glucose is very high. Which hormone is released?', o:['Glucagon','Adrenaline','Insulin','ADH'], c:2, e:'Insulin is released by the pancreas when blood glucose is too high, stimulating cells to absorb and store glucose.'},
@@ -655,6 +684,8 @@ const QB = {
   {q:'What is the purpose of FSH in the menstrual cycle?', o:['Triggers ovulation','Maintains uterus lining','Stimulates follicle development and egg maturation','Causes menstruation'], c:2, e:'FSH from the pituitary stimulates follicles in the ovary to mature and produce oestrogen.', t:'H'},
   {q:'A patient cannot produce insulin. Which condition do they have?', o:['Type 2 diabetes','Obesity','Type 1 diabetes','Hypoglycaemia'], c:2, e:'In Type 1 diabetes, the immune system destroys insulin-producing beta cells in the pancreas.'},
   {q:'What is the purpose of a reflex arc?', o:['To allow conscious decision-making','To produce a rapid automatic response without waiting for the brain to process it','To connect the two hemispheres of the brain','To regulate blood glucose'], c:1, e:'Reflex arcs bypass the brain — the response is coordinated by the spinal cord, making it much faster than a conscious reaction.', t:'F'},
+  {q:'What is the term for the adjustment of the eye\'s focus from a distant to a near object?', o:['Adaptation','Myopia','Accommodation','Hyperopia'], c:2, e:'Accommodation is the process by which the lens changes shape to focus on objects at different distances. Myopia and hyperopia are eye defects.', s:AQA_BIO_P2H_JUN23},
+  {q:'Which TWO of these are reasons for surrounding seedlings with damp blotting paper in a gravitropism investigation?', o:['To prevent photosynthesis in roots','To prevent mould growth on roots','To prevent water affecting root growth direction','To provide enough water for root growth'], c:3, e:'The damp blotting paper provides water needed for root growth (so the root can elongate and respond) and prevents mould/desiccation. It is NOT to provide minerals or prevent photosynthesis in roots. In this question, tick "To prevent growth of mould" and "To provide enough water for root growth".', s:AQA_BIO_P2H_JUN24},
 ]},
 
 'inheritance': { name: 'Inheritance & Evolution', fc: [
@@ -671,6 +702,30 @@ const QB = {
   {q:'What is variation, and what causes it?', a:'Differences between individuals of the same species. Causes: genetic variation (different alleles), environmental factors, or a combination of both.', t:'F'},
   {q:'How do you use a Punnett square?', a:'Write one parent\'s alleles along the top, the other\'s down the side. Fill each box with the allele from its row and column. Shows possible genotypes of offspring and their probabilities.', t:'F'},
   {q:'Give three differences between sexual reproduction and asexual reproduction (other than number of parents).', a:'Any three: (1) Sexual: produces genetically different offspring; asexual: produces genetically identical offspring (clones). (2) Sexual: involves fusion of gametes; asexual: does not. (3) Sexual: involves meiosis; asexual: involves mitosis only. (4) Sexual: produces variation (useful for natural selection); asexual: no variation introduced.', s:AQA_BIO_P1H_JUN23},
+  {q:'Suggest one advantage of growing tomato plants that are genetically different.', a:'Any one: if a disease strikes, not all plants will be equally susceptible — some may be resistant and survive. OR: different plants may thrive in slightly different conditions.', s:AQA_BIO_P2H_JUN23},
+  {q:'Suggest one advantage of growing tomato plants that are genetically identical.', a:'Any one: all plants produce the same quality/size/taste of tomatoes — consistent product for supermarkets. OR: all plants respond the same way to conditions so they can be managed uniformly.', s:AQA_BIO_P2H_JUN23},
+  {q:'What is tissue culture and why is it used to produce genetically identical plants?', a:'Tissue culture involves taking a small sample of plant cells and growing them in a sterile nutrient medium. The cells divide by mitosis, producing genetically identical clones of the original plant.', s:AQA_BIO_P2H_JUN23},
+  {q:'Genetically identical tomato plants in the same garden do not all grow to the same height. Give one reason why.', a:'Environmental factors differ between individual plants — for example, differences in light levels, water availability, mineral ion concentration in the soil, or temperature.', s:AQA_BIO_P2H_JUN23},
+  {q:'Why would you expect a cross between XX (female) and XY (male) dogs to give equal numbers of male and female offspring?', a:'The male produces equal numbers of X-bearing and Y-bearing sperm. Each has an equal probability (0.5) of fertilising an egg (all X). So 50% of offspring are XX (female) and 50% XY (male).', s:AQA_BIO_P2H_JUN23},
+  {q:'Suggest two control variables a farmer should use when comparing growth and egg-production rates of two chicken varieties.', a:'Any two: same diet/amount of food; same temperature; same light levels; same space per bird; same age at start; same water supply; same housing conditions.', s:AQA_BIO_P2H_JUN23},
+  {q:'Give the reason a farmer used 500 chickens of each variety rather than a smaller number.', a:'To make results more reliable/repeatable. A larger sample reduces the effect of anomalous results and gives a more accurate mean, making the conclusion more valid.', s:AQA_BIO_P2H_JUN23},
+  {q:'Describe how selective breeding could produce a new chicken variety good for both meat and egg production.', a:'1) Select the best-growing bird from variety A and the highest egg-producing bird from variety B. 2) Breed them together. 3) From offspring, select those showing both rapid growth and high egg production. 4) Breed selected offspring together. 5) Repeat selection and breeding over many generations until the new variety breeds true for both traits.', s:AQA_BIO_P2H_JUN23},
+  {q:'A woman (hh) cannot produce FSH. Both parents produce FSH. What are the parents\' genotypes? Explain how they can have a child who cannot produce FSH.', a:'Parents must both be carriers: Hh × Hh. Punnett square gives: HH, Hh, Hh, hh. The hh offspring (25% probability) cannot produce FSH. Each parent passed on one h allele to the woman.', s:AQA_BIO_P2H_JUN23, t:'H'},
+  {q:'The woman (hh) has a child with a man who is heterozygous (Hh). Explain why the probability the child produces FSH is 0.5.', a:'Cross: hh × Hh. Gametes from woman: all h. Gametes from man: H or h. Offspring: Hh or hh (1:1 ratio). Hh can make FSH (H is dominant); hh cannot. Probability of producing FSH = 0.5.', s:AQA_BIO_P2H_JUN23, t:'H'},
+  {q:'Explain why a lack of FSH causes underdeveloped breasts.', a:'FSH stimulates the ovaries to produce oestrogen. Without FSH, oestrogen levels stay low. Oestrogen drives development of secondary sexual characteristics including breast tissue, so low oestrogen means breasts remain underdeveloped.', s:AQA_BIO_P2H_JUN23, t:'H'},
+  {q:'Give evidence from an FSH injection experiment that follicles in the ovaries release oestrogen.', a:'DIAGRAM REQUIRED: As the total volume of follicles increases after FSH injections, the concentration of oestrogen in the blood also increases. This correlation suggests the growing follicles are the source of oestrogen.', s:AQA_BIO_P2H_JUN23, t:'H'},
+  {q:'How many chromosomes are in one human cell at the start and at the end of meiosis?', a:'Start (diploid body cell): 46 chromosomes. End (haploid gametes): 23 chromosomes. Meiosis halves the chromosome number.', s:AQA_BIO_P2H_JUN23, t:'H'},
+  {q:'Explain why the halving of chromosome number during meiosis is important for sexual reproduction.', a:'When two haploid gametes (each with 23 chromosomes) fuse at fertilisation, the resulting zygote has the correct diploid number (46). If gametes were not haploid, each generation would double the chromosome number.', s:AQA_BIO_P2H_JUN23, t:'H'},
+  {q:'Describe how meiosis produces genetically different cells.', a:'(1) Crossing over: homologous chromosomes exchange segments of DNA during the first division, creating new combinations of alleles. (2) Independent assortment: chromosomes line up randomly and segregate independently, so different combinations of maternal and paternal chromosomes end up in each cell.', s:AQA_BIO_P2H_JUN23, t:'H'},
+  {q:'What type of molecules are the bases A, C, G and T found in a DNA molecule?', a:'They are nucleotide bases (nitrogen-containing bases / organic bases). A=adenine, T=thymine, C=cytosine, G=guanine. They are part of nucleotides, which are the monomers of DNA.', s:AQA_BIO_P2H_JUN23},
+  {q:'What is a mutation? (AQA Jun 2024 P2H)', a:'A change in the sequence of DNA bases (nucleotides) in an organism\'s genome. Mutations can alter the protein coded for by a gene, and are the ultimate source of new alleles and genetic variation.', s:AQA_BIO_P2H_JUN24},
+  {q:'Describe the process of natural selection.', a:'(1) Individuals in a population show variation due to random mutations. (2) Some individuals have adaptations making them better suited to the environment. (3) These individuals are more likely to survive, reproduce, and pass on their beneficial alleles. (4) Over many generations, the frequency of beneficial alleles increases in the population.', s:AQA_BIO_P2H_JUN24},
+  {q:'Explain how having yellow and black markings helps the hoverfly survive, even though it has no sting.', a:'The wasp (which has a sting) also has yellow and black markings. Predators learn to avoid wasps because of their sting. When predators see the hoverfly\'s similar markings, they avoid it too. This is mimicry — the hoverfly benefits from the warning colouration of the wasp without needing a sting.', s:AQA_BIO_P2H_JUN24},
+  {q:'What is a dominant allele?', a:'An allele that is always expressed in the phenotype, even when only one copy is present (i.e. in a heterozygous individual). It masks the effect of the recessive allele.', s:AQA_BIO_P2H_JUN24},
+  {q:'Persons 6 and 7: person 6 is Dd (heterozygous polydactyly); person 7 is dd (no polydactyly). Show how the probability of a child having polydactyly is 0.5.', a:'Punnett square Dd × dd: offspring are Dd, Dd, dd, dd. Two of four offspring are Dd (have polydactyly as D is dominant). Probability = 2/4 = 0.5.', s:AQA_BIO_P2H_JUN24, t:'H'},
+  {q:'One allele in every 50 in the UK is the cystic fibrosis (CF) allele. Explain why only 1 person in 2500 has CF.', a:'CF is recessive. To have CF, a person must inherit two CF alleles (ff). Probability of inheriting one CF allele = 1/50. Probability of inheriting CF alleles from both parents = 1/50 × 1/50 = 1/2500. So only 1 in 2500 people has CF.', s:AQA_BIO_P2H_JUN24, t:'H'},
+  {q:'Explain how GM soya bean plants and glyphosate can increase the yield of soya beans.', a:'GM soya plants contain a gene making them resistant to the herbicide glyphosate. Normal soya plants are killed by glyphosate. The farmer sprays glyphosate on the field — all weeds are killed but the GM soya is unharmed. With weeds eliminated, the soya plants have less competition for water, mineral ions, and light, so they grow more vigorously and yield more.', s:AQA_BIO_P2H_JUN24},
+  {q:'Suggest two non-ethical reasons why some people are concerned about GM soya bean plants.', a:'Any two: (1) GM genes could spread to wild plant populations via pollen, creating herbicide-resistant weeds. (2) Killing all weeds with glyphosate reduces biodiversity and removes habitat/food for insects and wildlife. (3) Long-term effects of GM food on human health are unknown. (4) GM crops could reduce crop diversity, increasing vulnerability to disease.', s:AQA_BIO_P2H_JUN24},
 ], mc: [
   {q:'Two carriers (Ff × Ff) have children. What proportion will have cystic fibrosis (ff)?', o:['1/4 (25%)','1/2 (50%)','3/4 (75%)','All of them'], c:0, e:'Punnett square gives FF, Ff, Ff, ff. Only ff has cystic fibrosis = 1 in 4 (25%).'},
   {q:'Where is DNA found in a eukaryotic cell?', o:['Mitochondria only','Nucleus, and also in mitochondria/chloroplasts','Ribosomes','Cell membrane'], c:1, e:'Most DNA is in the nucleus as chromosomes, but small amounts are also in mitochondria (and chloroplasts in plants).', t:'H'},
@@ -679,6 +734,11 @@ const QB = {
   {q:'What determines whether a baby is male or female?', o:['The mother\'s chromosomes only','Whether egg or sperm is larger','The sex chromosome in the sperm (X = girl, Y = boy)','Temperature during pregnancy'], c:2, e:'Females are XX, males are XY. All eggs carry X. Sperm carry X or Y. Y sperm → XY (male); X sperm → XX (female).'},
   {q:'What is the role of meiosis in sexual reproduction?', o:['Produces identical cells for growth','Produces four genetically different cells with half the chromosome number','Repairs damaged DNA','Produces body cells with 46 chromosomes'], c:1, e:'Meiosis produces haploid gametes (23 chromosomes). Genetic variation comes from random assortment and crossing over.', t:'H'},
   {q:'A plant has purple flowers (dominant, P) and a plant has white flowers (recessive, p). Both are homozygous. What colour are all the offspring (F1)?', o:['All white','All purple','Half purple, half white','Three-quarters purple'], c:1, e:'PP × pp → all offspring are Pp (heterozygous). Since P is dominant, all F1 offspring show purple flowers.', t:'F'},
+  {q:'What is tissue culture?', o:['Cross-breeding two different plant varieties','Growing genetically identical plants from small cell samples in a sterile nutrient medium','Injecting plant cells with new genes','Treating seeds with hormones to speed up germination'], c:1, e:'Tissue culture uses plant cells grown in sterile conditions on nutrient agar. Cells divide by mitosis, producing genetically identical clones of the original plant.', s:AQA_BIO_P2H_JUN23},
+  {q:'Why did the farmer use a large sample of 500 chickens of each variety?', o:['To save money on feed','To make results more valid and reliable by reducing the effect of anomalous results','Because regulations require it','To allow more varieties to be compared'], c:1, e:'A larger sample size means that anomalous individual results have less influence on the mean, giving a more reliable and valid conclusion.', s:AQA_BIO_P2H_JUN23},
+  {q:'What are the bases A, C, G and T in a DNA molecule?', o:['Amino acids','Sugars','Nucleotide (nitrogen-containing) bases','Phosphate groups'], c:2, e:'A (adenine), T (thymine), C (cytosine) and G (guanine) are the four nucleotide bases in DNA. A pairs with T; C pairs with G. They are part of nucleotides.', s:AQA_BIO_P2H_JUN23},
+  {q:'Which two scientists suggested the theory of evolution by natural selection?', o:['Alexander Fleming and Carl Woese','Alfred Wallace and Alexander Fleming','Alfred Wallace and Charles Darwin','Charles Darwin and Carl Woese'], c:2, e:'Alfred Wallace and Charles Darwin independently developed the theory of evolution by natural selection. Wallace wrote to Darwin and they published jointly in 1858.', s:AQA_BIO_P2H_JUN24},
+  {q:'Polydactyly is caused by a dominant allele. A person without polydactyly has which genotype?', o:['DD','Dd','dd','Dd or DD'], c:2, e:'A dominant allele is expressed even in one copy (Dd would show polydactyly). For the person to have no polydactyly (recessive phenotype), they must have two recessive alleles: dd.', s:AQA_BIO_P2H_JUN24},
 ]},
 
 'ecology': { name: 'Ecology', fc: [
@@ -695,6 +755,24 @@ const QB = {
   {q:'What is the water cycle?', a:'Water evaporates from oceans/plants (transpiration), condenses to form clouds, falls as precipitation, runs into rivers or soaks into groundwater.'},
   {q:'What is a food chain? What do the arrows represent?', a:'A food chain shows feeding relationships between organisms. Arrows point from prey to predator and show the direction of energy transfer.', t:'F'},
   {q:'What is the difference between a producer and a consumer?', a:'Producer: an organism that makes its own food by photosynthesis (e.g. a plant). Consumer: an organism that eats other organisms to obtain energy.', t:'F'},
+  {q:'What evidence do scientists use to classify two animals as different species?', a:'They cannot interbreed (mate) to produce fertile offspring. If two organisms can produce fertile offspring together, they are the same species.', s:AQA_BIO_P2H_JUN23},
+  {q:'Describe how carbon in dead leaves is recycled and used by living trees.', a:'Decomposers (bacteria and fungi) break down the organic compounds in dead leaves by feeding on them (decomposition/decay). This releases carbon as CO₂ through the decomposers\' respiration. Plants absorb CO₂ from the air through stomata during photosynthesis, using it to make glucose and other organic compounds. These become part of the plant\'s body (cellulose, starch etc.).', s:AQA_BIO_P2H_JUN23},
+  {q:'Describe how nitrogen in dead leaves is recycled and used by living trees.', a:'Decomposers break down nitrogen-containing compounds (proteins, DNA) in dead leaves into ammonium ions. Nitrifying bacteria convert ammonium ions into nitrate ions in the soil. Plant roots absorb nitrate ions by active transport. Plants use nitrates to make proteins and DNA.', s:AQA_BIO_P2H_JUN23, t:'H'},
+  {q:'Suggest one improvement to an experiment testing temperature\'s effect on milk decay (measured by pH change).', a:'Any one: use more temperature values (e.g. 5 values not 3); repeat each temperature and calculate a mean; stir milk to ensure even temperature; use a wider range of temperatures; use more precise pH measurement (data logger/pH probe).', s:AQA_BIO_P2H_JUN23},
+  {q:'Explain why the pH of milk changes more quickly at higher temperatures.', a:'Milk contains lipids. At higher temperatures, the enzymes (lipases) produced by decomposing microorganisms have more kinetic energy. Enzyme-substrate complexes form more frequently. Lipids are broken down faster, producing more fatty acids. More fatty acids lower the pH more quickly.', s:AQA_BIO_P2H_JUN23, t:'H'},
+  {q:'Explain why scientists studying rainforest regeneration expressed their results as percentages of the control areas.', a:'Different control areas may have had different numbers of tree species to start with. Expressing as a percentage of the control allows fair comparison between sites — it standardises the data and removes the effect of natural variation between areas.', s:AQA_BIO_P2H_JUN23},
+  {q:'Give two reasons why an increase in the diversity of trees in a rainforest leads to an increase in animal diversity.', a:'(1) More tree species provide more types of food (seeds, fruit, leaves) for different animals. (2) More tree species provide more types of habitat/shelter/nesting sites for different animal species.', s:AQA_BIO_P2H_JUN23},
+  {q:'Explain how our understanding of evolution has developed through fossil evidence and improved understanding of genetics.', a:'Fossil evidence: fossils show gradual changes in species over millions of years, providing evidence that organisms evolved from simpler ancestors. They show organisms that existed in the past and went extinct. The order in rock strata shows evolutionary sequence. Genetics: understanding of DNA showed that mutations are the source of new heritable variation. Genes are passed from parent to offspring, so beneficial mutations spread through populations. DNA comparisons between species show how closely related they are, confirming and extending evolutionary trees. This explained the mechanism of natural selection at a molecular level, which Darwin could not do.', s:AQA_BIO_P2H_JUN23},
+  {q:'Why are brambling and chaffinch considered most closely related among four UK bird species?', a:'They belong to the same genus (Fringilla) — brambling is Fringilla montifringilla and chaffinch is Fringilla coelebs. Organisms in the same genus share a more recent common ancestor than organisms in different genera.', s:AQA_BIO_P2H_JUN23},
+  {q:'Explain why most of the dead plant remains in a waterlogged peat bog do not decay.', a:'Decomposers (bacteria and fungi) need oxygen for aerobic respiration to break down the dead material. The peat bog has very little oxygen (anaerobic conditions). The low pH also inhibits the enzymes of decomposers. Without active decomposition, dead plant material accumulates and is preserved.', s:AQA_BIO_P2H_JUN24},
+  {q:'Explain how the destruction of peat bogs and the burning/use of peat affects the temperature of the Earth\'s atmosphere.', a:'Peat bogs store large amounts of carbon in the dead plant remains. When peat bogs are drained/destroyed, microorganisms decompose the plant material, releasing CO₂. When peat is burned as fuel, CO₂ is also released. When peat is used as compost and decomposes, CO₂ and methane are released. CO₂ and methane are greenhouse gases. They trap heat energy radiated from the Earth\'s surface, causing the Earth\'s atmosphere to warm up (enhanced greenhouse effect).', s:AQA_BIO_P2H_JUN24},
+  {q:'Suggest one improvement to a method for sampling the number of tadpoles in a pond by collecting 10 dm³ at a time.', a:'Any one: collect a larger volume of water each time; sample more times/from more locations to get a better estimate of the whole pond; use a net to sample more efficiently; mark tadpoles before releasing to enable mark-recapture estimation.', s:AQA_BIO_P2H_JUN24},
+  {q:'In a tadpole sampling table, totals at 3 weeks = 32; samples 1, 2, 3 are 9, 7, 10 respectively. Calculate value X (sample 4 at 3 weeks).', a:'X = 32 − 9 − 7 − 10 = 6.', s:AQA_BIO_P2H_JUN24},
+  {q:'Suggest two reasons why tadpoles in a pond died after 4 weeks (no new tadpoles hatched).', a:'Any two: (1) Predation — tadpoles eaten by fish, birds, or other animals. (2) Competition for food — less food available as numbers compete for resources. (3) Disease/parasites. (4) Changes in abiotic conditions — temperature drop or oxygen reduction. (5) As tadpoles grow into frogs they leave the water.', s:AQA_BIO_P2H_JUN24},
+  {q:'Calculate the area of land (in m²) needed to grow enough maize to feed 1000 chickens to full size. (Energy per chicken = 46 MJ; chickens use 80% of maize energy; maize = 16 MJ/kg; 1 hectare produces 16.4 tonnes; 1 hectare = 10,000 m²)', a:'Step 1: total energy needed = 1000 × 46 = 46,000 MJ. Step 2: maize energy needed = 46,000 ÷ 0.8 = 57,500 MJ. Step 3: maize mass needed = 57,500 ÷ 16 = 3593.75 kg. Step 4: area in hectares = 3593.75 ÷ 16,400 = 0.2191 ha. Step 5: area in m² = 0.2191 × 10,000 = 2190 m² (3 sig figs).', s:AQA_BIO_P2H_JUN24, t:'H'},
+  {q:'Calculate the ratio of chicken biomass to maize seed biomass in its simplest form. (1000 chickens; mean mass 2.2 kg; 4200 kg maize seeds)', a:'Chicken biomass = 1000 × 2.2 = 2200 kg. Maize = 4200 kg. Ratio = 2200 : 4200. Simplify by dividing by 200 → 11 : 21.', s:AQA_BIO_P2H_JUN24},
+  {q:'Chickens can use 80% of maize biomass for respiration and growth. What happens to the remaining 20%?', a:'It is lost as undigested material in faeces/egested waste. (The 20% passes through the gut and is excreted — it is not absorbed.)/', s:AQA_BIO_P2H_JUN24},
+  {q:'Table 2 shows QPM maize has less leucine than normal maize. Suggest why a diet with less leucine does not slow chicken growth.', a:'Leucine is not an essential amino acid that chickens cannot make — or there is still enough leucine present in QPM for normal growth requirements. The gains in other essential amino acids (lysine, tryptophan) compensate and improve overall protein quality.', s:AQA_BIO_P2H_JUN24},
 ], mc: [
   {q:'Food chain: grass → rabbit → fox. If rabbits decrease, what happens?', o:['Grass decreases, fox increases','Grass increases, fox decreases','Both increase','Both decrease'], c:1, e:'Fewer rabbits → less grazing so grass increases. Foxes have less food so fox population decreases.'},
   {q:'Which of these is an abiotic factor?', o:['Predation','Competition for food','Temperature','Presence of disease'], c:2, e:'Abiotic factors are non-living. Temperature is abiotic. Predation, competition, and disease are biotic factors.'},
@@ -703,6 +781,13 @@ const QB = {
   {q:'What is the purpose of a quadrat in fieldwork?', o:['To measure soil depth','To count organisms in a sample area and estimate population size','To test water quality','To measure light intensity'], c:1, e:'Quadrats are square frames placed randomly. Organisms within are counted to estimate population size across a larger area.'},
   {q:'Which process converts nitrates in soil into nitrogen gas?', o:['Nitrification','Nitrogen fixation','Denitrification','Decomposition'], c:2, e:'Denitrification by bacteria in waterlogged soils converts nitrates into nitrogen gas, which returns to the atmosphere.', t:'H'},
   {q:'What is a producer in a food chain?', o:['An animal that eats plants','An organism that makes its own food by photosynthesis','An organism at the top of the food chain','A decomposer'], c:1, e:'Producers (usually plants) make their own food via photosynthesis. They form the base of every food chain and capture energy from the Sun.', t:'F'},
+  {q:'What name is given to all of the organisms living in the same habitat?', o:['A population','A food chain','A community','An ecosystem'], c:2, e:'A community = all organisms of different species living in the same habitat. A population = all organisms of one species. An ecosystem includes the non-living environment too.', s:AQA_BIO_P2H_JUN23},
+  {q:'What is the evidence scientists use to classify two animals as different species?', o:['They are different sizes','They cannot breed together to produce fertile offspring','They live in different parts of the habitat','They eat different foods'], c:1, e:'The biological species concept: two organisms are different species if they cannot interbreed to produce fertile offspring. Size, diet, and habitat differences alone are not sufficient.', s:AQA_BIO_P2H_JUN23},
+  {q:'Which pair of bird species are most closely related if one is Fringilla montifringilla (brambling) and another is Fringilla coelebs (chaffinch)?', o:['Brambling and goldfinch','Bullfinch and chaffinch','Brambling and chaffinch','Bullfinch and goldfinch'], c:2, e:'Both brambling and chaffinch belong to the genus Fringilla, meaning they share a more recent common ancestor than species in different genera.', s:AQA_BIO_P2H_JUN23},
+  {q:'Moss in a stable peat bog produces biomass at 340 g/m²/year. What is the approximate biomass transferred to primary consumers?', o:['0.34 g/m²/year','3.4 g/m²/year','34 g/m²/year','340 g/m²/year'], c:2, e:'Only about 10% of biomass is transferred between trophic levels. 10% of 340 = 34 g/m²/year reaches primary consumers.', s:AQA_BIO_P2H_JUN24},
+  {q:'The sundew plant absorbs phosphates from digested insects. Which substance can it make using phosphates?', o:['Cellulose','DNA','Glycerol','Starch'], c:1, e:'DNA contains phosphate groups as part of its nucleotide structure. Phosphates are also needed for ATP. Cellulose and starch are carbohydrates; glycerol is a lipid component — none require phosphate.', s:AQA_BIO_P2H_JUN24},
+  {q:'The sundew plant absorbs nitrogen compounds from digested insects. Which substance can it make using nitrogen?', o:['Fatty acid','Glucose','Lactic acid','Protein'], c:3, e:'Proteins are made from amino acids, which all contain nitrogen. Fatty acids, glucose, and lactic acid are carbon-based and do not require nitrogen.', s:AQA_BIO_P2H_JUN24},
+  {q:'Which amino acids are found in significantly higher proportions in Quality Protein Maize (QPM) compared to normal maize?', o:['Lysine and tryptophan','Lysine and valine','Threonine and tryptophan','Threonine and valine'], c:0, e:'From Table 2: lysine increases from 28.9 to 41.9 g/kg (+45%) and tryptophan from 7.3 to 16.3 g/kg (+123%). Valine and threonine show smaller relative increases.', s:AQA_BIO_P2H_JUN24},
 ]}
 
 }; // end QB
@@ -1304,6 +1389,8 @@ const QB_PHYSICS = {
 // t:'H' = Higher only | t:'F' = Foundation only | no t = both tiers
 // Papers to add: 8462/1H, 8462/1F, 8462/2H, 8462/2F
 
+const AQA_CHEM_P1H24='AQA Jun 2024 Chemistry Paper 1H';
+
 const QB_CHEM = {
 
 // ── PAPER 1 TOPICS ──────────────────────────────────────────────────────────
@@ -1321,6 +1408,11 @@ const QB_CHEM = {
   {q:'What is the trend in reactivity going down group 1?', a:'Reactivity increases — outer electron is further from the nucleus, less attracted, more easily lost. Lower ionisation energy.'},
   {q:'What is the trend in reactivity going down group 7?', a:'Reactivity decreases — larger atoms attract an extra electron less strongly. More reactive halogen can displace a less reactive one.'},
   {q:'How do you work out the number of protons, neutrons, and electrons in an atom?', a:'Protons = atomic number. Electrons = atomic number (neutral atom). Neutrons = mass number − atomic number.', t:'F'},
+  {q:'Give one similarity and one difference in the electronic structures of sodium and potassium.', a:'Similarity: both have one outer-shell electron. Difference: sodium has 3 electron shells; potassium has 4 electron shells.', s:AQA_CHEM_P1H24},
+  {q:'Give two observations when potassium reacts with water.', a:'Any two: effervescence/bubbles; potassium floats; potassium moves around on the surface; potassium melts into a ball; a lilac/violet flame; a small explosion/pop.', s:AQA_CHEM_P1H24},
+  {q:'What colour does universal indicator turn in potassium hydroxide solution, and why?', a:'Blue/violet/purple — because potassium hydroxide is alkaline (contains OH⁻ ions), so the pH is above 7.', s:AQA_CHEM_P1H24},
+  {q:'Name the two early models of the atom: (A) a diffuse ball of positive charge with electrons embedded throughout; (B) a central nucleus with electrons in circular orbits.', a:'Model A = plum pudding (Thomson) model. Model B = Bohr (nuclear/planetary) model.', s:AQA_CHEM_P1H24},
+  {q:'Define isotopes in terms of subatomic particles.', a:'Atoms of the same element (same number of protons) but with different numbers of neutrons, giving different mass numbers.', s:AQA_CHEM_P1H24},
 ], mc: [
   {q:'Which species has the same electronic structure as a noble gas?', o:['Na⁺','Cl','Na','Fe²⁺'], c:0, e:'Na (2,8,1) loses one electron → Na⁺ (2,8) — same as neon (a noble gas). This is why Na⁺ is stable.'},
   {q:'The atomic number of an atom with 8 protons and 9 neutrons is:', o:['9','17','8','1'], c:2, e:'Atomic number = number of protons = 8. (Mass number = 8 + 9 = 17; this is oxygen-17.)'},
@@ -1329,6 +1421,8 @@ const QB_CHEM = {
   {q:'Why are elements in the same group chemically similar?', o:['Same mass number','Same number of electron shells','Same number of outer electrons','All are metals'], c:2, e:'Chemical behaviour is determined by valence (outer) electrons. Elements in the same group have the same number of outer electrons.'},
   {q:'An atom has 6 protons and 7 neutrons. Its mass number is:', o:['6','7','13','1'], c:2, e:'Mass number = protons + neutrons = 6 + 7 = 13. (Carbon-13.)'},
   {q:'How many electrons does a sodium atom (atomic number 11) have?', o:['11','12','23','1'], c:0, e:'In a neutral atom, electrons = protons = atomic number = 11. Electronic structure: 2, 8, 1.', t:'F'},
+  {q:'Which combination of solutions reacts when mixed?', o:['Chlorine and potassium fluoride','Chlorine and potassium bromide','Bromine and potassium fluoride','Bromine and potassium chloride'], c:1, e:'Chlorine is more reactive than bromine, so it displaces bromide from solution: Cl₂ + 2KBr → 2KCl + Br₂. A more reactive halogen displaces a less reactive one.', s:AQA_CHEM_P1H24},
+  {q:'Which describes trends going DOWN Group 7?', o:['Relative molecular mass decreases and boiling point decreases','Relative molecular mass decreases and boiling point increases','Relative molecular mass increases and boiling point decreases','Relative molecular mass increases and boiling point increases'], c:3, e:'Going down Group 7, atoms get larger (more shells) → higher relative molecular mass and stronger intermolecular forces → higher boiling point.', s:AQA_CHEM_P1H24},
 ]},
 
 'bonding': { name: 'Bonding, Structure & Properties', fc: [
@@ -1344,6 +1438,8 @@ const QB_CHEM = {
   {q:'What are fullerenes? Give one use.', a:'Carbon structures shaped like cages or tubes (e.g. C₆₀ buckminsterfullerene, carbon nanotubes). Uses: drug delivery, lubricants, reinforcing materials.', t:'H'},
   {q:'What are nanoparticles and why do they have unusual properties?', a:'Particles 1–100 nm in size. Extremely high surface area to volume ratio — a far greater proportion of atoms are on the surface. Properties can differ significantly from bulk material.', t:'H'},
   {q:'What type of bond forms between a metal and a non-metal?', a:'Ionic bonding. The metal loses electrons to form positive ions; the non-metal gains electrons to form negative ions. E.g. Na gives an electron to Cl → Na⁺Cl⁻.', t:'F'},
+  {q:'Describe how iron conducts thermal energy.', a:'Thermal energy is transferred by delocalised electrons, which move through the metallic lattice and carry kinetic energy from hotter to cooler regions.', s:AQA_CHEM_P1H24},
+  {q:'Explain why alloys are harder than pure metals.', a:'In an alloy, atoms of different sizes are present. The different-sized atoms distort the regular layers, so the layers cannot slide over each other as easily — making the alloy harder.', s:AQA_CHEM_P1H24},
 ], mc: [
   {q:'Which type of bonding involves the transfer of electrons?', o:['Covalent','Metallic','Ionic','Van der Waals'], c:2, e:'Ionic bonding: electrons transfer from metal to non-metal → oppositely charged ions held by electrostatic attraction.'},
   {q:'Why do metals conduct electricity?', o:['They have mobile ions','They have delocalised electrons free to carry charge','They are liquid at room temperature','They have simple molecular structures'], c:1, e:'Metallic bonding produces a sea of delocalised electrons that move through the structure and carry electrical charge.'},
@@ -1513,6 +1609,196 @@ const QB_CHEM = {
 
 }; // end QB_CHEM
 
+// Edexcel GCSE Maths figure images (base64 PNG dictionary).
+// Keys referenced by questions via an `img:'key_name'` field.
+// Same structure as bio_images.js. Entries MUST be comma-separated.
+const IMGS_MATHS = {
+  // 'maths_jun23_q5': 'data:image/png;base64,...'
+};
+
+// Edexcel GCSE (9-1) Mathematics Question Bank — Foundation focus
+// Specification: Edexcel 1MA1
+// Format: fc = flashcards {q, a, t, s}, mc = multiple choice {q, o, c, e, t, s}
+// t:'H' = Higher only | t:'F' = Foundation only | no t = both tiers
+// Maths in LaTeX between $...$ delimiters, rendered by KaTeX auto-render.
+// Topics: number, algebra, ratio-proportion-rates, geometry-measures, probability, statistics
+
+const QB_MATHS = {
+
+// ── NUMBER ──────────────────────────────────────────────────────────────────
+'number': { name: 'Number', fc: [
+  {q:'Write $0.000\\,42$ in standard form.', a:'$4.2 \\times 10^{-4}$. Move the decimal point 4 places right to get $4.2$, so the power is $-4$.'},
+  {q:'Work out $\\frac{2}{3} + \\frac{1}{4}$.', a:'$\\frac{8}{12} + \\frac{3}{12} = \\frac{11}{12}$. Use a common denominator of $12$.'},
+  {q:'Find the Highest Common Factor (HCF) of $24$ and $36$.', a:'$12$. $24 = 2^3 \\times 3$ and $36 = 2^2 \\times 3^2$; take the lowest power of each shared prime: $2^2 \\times 3 = 12$.'},
+  {q:'Find the Lowest Common Multiple (LCM) of $6$ and $8$.', a:'$24$. $6 = 2 \\times 3$, $8 = 2^3$; take the highest power of each prime: $2^3 \\times 3 = 24$.'},
+  {q:'Round $3.846$ to $2$ significant figures.', a:'$3.8$. The third significant figure is $4$, so round down.'},
+  {q:'Estimate $\\frac{29.8 \\times 4.1}{0.49}$ by rounding each number to 1 s.f.', a:'$\\frac{30 \\times 4}{0.5} = \\frac{120}{0.5} = 240$.'},
+  {q:'Write $\\frac{3}{8}$ as a decimal.', a:'$0.375$. Divide $3 \\div 8$.', t:'F'},
+  {q:'What is $5^0$?', a:'$1$. Any non-zero number to the power $0$ equals $1$.'},
+  {q:'Work out $2^{-3}$.', a:'$\\frac{1}{2^3} = \\frac{1}{8}$. A negative power means the reciprocal.'},
+  {q:'Increase $\\pounds 80$ by $15\\%$.', a:'$\\pounds 92$. $15\\%$ of $80 = 12$, so $80 + 12 = 92$ (or multiply by $1.15$).'},
+  {q:'Write the number $18\\,475$ correct to the nearest thousand.', a:'$18\\,000$. The hundreds digit is $4$, so round down.', t:'F'},
+  {q:'Write $0.3$ as a percentage.', a:'$30\\%$. Multiply by $100$.', t:'F'},
+  {q:'Find the square root of $64$.', a:'$8$. $8 \\times 8 = 64$.', t:'F'},
+  {q:'Work out $-12 \\div -4$.', a:'$3$. A negative divided by a negative gives a positive.', t:'F'},
+  {q:'Write $23\\%$ as a fraction.', a:'$\\frac{23}{100}$.', t:'F'},
+  {q:'Write down the value of the $3$ in the number $62\\,837$.', a:'$30$ (it is in the tens column).', t:'F'},
+  {q:'Write down three prime numbers between $20$ and $40$.', a:'Any three of $23, 29, 31, 37$.', t:'F'},
+  {q:'Write $5.3 \\times 10^{4}$ as an ordinary number.', a:'$53\\,000$.', t:'F'},
+  {q:'Write $90$ as a product of its prime factors.', a:'$2 \\times 3^2 \\times 5$.', t:'F'},
+  {q:'Find the HCF of $63$ and $105$.', a:'$21$. $63 = 3^2 \\times 7$ and $105 = 3 \\times 5 \\times 7$; shared factors give $3 \\times 7 = 21$.', t:'F'},
+], mc: [
+  {q:'$0.000\\,067$ in standard form is:', o:['$6.7 \\times 10^{-5}$','$6.7 \\times 10^{5}$','$67 \\times 10^{-6}$','$6.7 \\times 10^{-6}$'], c:0, e:'Move the point 5 places right to reach $6.7$, so the index is $-5$: $6.7 \\times 10^{-5}$.'},
+  {q:'$\\frac{3}{4} \\times \\frac{2}{9}$ simplifies to:', o:['$\\frac{6}{36}$','$\\frac{1}{6}$','$\\frac{5}{13}$','$\\frac{6}{13}$'], c:1, e:'$\\frac{3 \\times 2}{4 \\times 9} = \\frac{6}{36} = \\frac{1}{6}$.'},
+  {q:'The LCM of $4$ and $10$ is:', o:['$2$','$40$','$20$','$14$'], c:2, e:'$4 = 2^2$, $10 = 2 \\times 5$. LCM $= 2^2 \\times 5 = 20$.'},
+  {q:'$\\sqrt{144}$ equals:', o:['$11$','$12$','$72$','$14$'], c:1, e:'$12 \\times 12 = 144$.', t:'F'},
+  {q:'$45\\%$ written as a fraction in simplest form is:', o:['$\\frac{45}{100}$','$\\frac{9}{20}$','$\\frac{4}{5}$','$\\frac{1}{2}$'], c:1, e:'$\\frac{45}{100} = \\frac{9}{20}$ dividing top and bottom by $5$.'},
+  {q:'$3^4$ equals:', o:['$12$','$27$','$81$','$64$'], c:2, e:'$3 \\times 3 \\times 3 \\times 3 = 81$.'},
+  {q:'$5000$ millilitres changed to litres is:', o:['$5$ litres','$50$ litres','$0.5$ litres','$500$ litres'], c:0, e:'$1000\\text{ ml} = 1$ litre, so $5000 \\div 1000 = 5$.', t:'F'},
+  {q:'The multiple of $7$ between $30$ and $40$ is:', o:['$32$','$35$','$36$','$28$'], c:1, e:'$7 \\times 5 = 35$.', t:'F'},
+  {q:'$\\frac{31}{100}$ written as a decimal is:', o:['$0.031$','$3.1$','$0.31$','$31.0$'], c:2, e:'Hundredths, so $0.31$.', t:'F'},
+  {q:'The list $0.21,\\ 0.2,\\ 0.03,\\ 0.1,\\ 0.16$ in order, smallest first, starts with:', o:['$0.1$','$0.03$','$0.16$','$0.2$'], c:1, e:'$0.03$ is the smallest value.', t:'F'},
+  {q:'$273 \\times 54$ equals:', o:['$14\\,742$','$13\\,742$','$1\\,638$','$14\\,642$'], c:0, e:'$273 \\times 54 = 14\\,742$.', t:'F'},
+  {q:'$7.4 \\times 10^{-5}$ as an ordinary number is:', o:['$0.000074$','$0.0000074$','$740000$','$0.00074$'], c:0, e:'Move the point $5$ places left: $0.000074$.', t:'F'},
+]},
+
+// ── ALGEBRA ─────────────────────────────────────────────────────────────────
+'algebra': { name: 'Algebra', fc: [
+  {q:'Solve $3x + 7 = 22$.', a:'$x = 5$. Subtract $7$: $3x = 15$; divide by $3$: $x = 5$.'},
+  {q:'Expand and simplify $3(x + 4) + 2(x - 1)$.', a:'$5x + 10$. $3x + 12 + 2x - 2 = 5x + 10$.'},
+  {q:'Factorise $x^2 + 7x + 12$.', a:'$(x + 3)(x + 4)$. Two numbers multiplying to $12$ and adding to $7$ are $3$ and $4$.'},
+  {q:'Make $y$ the subject of $4x + 2y = 10$.', a:'$y = \\frac{10 - 4x}{2} = 5 - 2x$.'},
+  {q:'Solve the simultaneous equations $x + y = 10$ and $x - y = 4$.', a:'$x = 7$, $y = 3$. Add the equations: $2x = 14$, so $x = 7$; then $y = 3$.'},
+  {q:'Write the $n$th term of the sequence $5, 8, 11, 14, \\dots$', a:'$3n + 2$. Common difference $3$, and $3 \\times 1 + 2 = 5$.'},
+  {q:'Simplify $\\frac{x^5}{x^2}$.', a:'$x^3$. Subtract the indices: $5 - 2 = 3$.'},
+  {q:'Solve $2(x - 3) = 8$.', a:'$x = 7$. Expand: $2x - 6 = 8$, so $2x = 14$, $x = 7$.', t:'F'},
+  {q:'Expand $(x + 5)(x + 2)$.', a:'$x^2 + 7x + 10$. Multiply each pair (FOIL).'},
+  {q:'Simplify $7a + a - 5a$.', a:'$3a$. $7 + 1 - 5 = 3$.', t:'F'},
+  {q:'Solve $2(4x - 5) = 18$.', a:'$x = 3.5$. Expand: $8x - 10 = 18$, so $8x = 28$, $x = 3.5$.', t:'F'},
+  {q:'Find the $n$th term of the sequence $1, 5, 9, 13, \\dots$', a:'$4n - 3$. Common difference $4$, and $4 \\times 1 - 3 = 1$.', t:'F'},
+  {q:'Factorise $6x - 15$.', a:'$3(2x - 5)$. The HCF of $6$ and $15$ is $3$.', t:'F'},
+  {q:'Factorise $m^2 + 5m$.', a:'$m(m + 5)$. Take out the common factor $m$.', t:'F'},
+  {q:'Simplify $2c \\times 3d$.', a:'$6cd$. Multiply the numbers: $2 \\times 3 = 6$.', t:'F'},
+  {q:'$w = 40 - t^2$. Work out $w$ when $t = -5$.', a:'$15$. $(-5)^2 = 25$, so $w = 40 - 25 = 15$.', t:'F'},
+  {q:'A number machine does $\\times 2$ then $-10$. Find the output when the input is $13$.', a:'$16$. $13 \\times 2 = 26$, then $26 - 10 = 16$.', t:'F'},
+  {q:'Simplify $m \\times m \\times m \\times m$.', a:'$m^4$.', t:'F'},
+], mc: [
+  {q:'Solve $5x - 4 = 16$.', o:['$x = 4$','$x = 2.4$','$x = 100$','$x = 3$'], c:0, e:'$5x = 20$, so $x = 4$.'},
+  {q:'Factorise fully $6x + 9$.', o:['$3(2x + 3)$','$6(x + 9)$','$3(2x + 9)$','$2(3x + 9)$'], c:0, e:'HCF of $6$ and $9$ is $3$: $3(2x + 3)$.'},
+  {q:'The $n$th term of $7, 12, 17, 22, \\dots$ is:', o:['$5n + 7$','$5n + 2$','$7n + 5$','$n + 5$'], c:1, e:'Difference $5$, and $5(1) + 2 = 7$, so $5n + 2$.'},
+  {q:'Simplify $4a + 3b - a + 2b$.', o:['$3a + 5b$','$5a + 5b$','$3a + b$','$4a + 6b$'], c:0, e:'$4a - a = 3a$ and $3b + 2b = 5b$.', t:'F'},
+  {q:'Solve $\\frac{x}{3} = 6$.', o:['$x = 2$','$x = 9$','$x = 18$','$x = 3$'], c:2, e:'Multiply both sides by $3$: $x = 18$.'},
+  {q:'Expand $(x - 4)(x + 4)$.', o:['$x^2 - 16$','$x^2 + 16$','$x^2 - 8x - 16$','$x^2 - 8$'], c:0, e:'Difference of two squares: $x^2 - 16$.'},
+  {q:'Simplify $7a + a - 5a$.', o:['$3a$','$2a$','$13a$','$a$'], c:0, e:'$7 + 1 - 5 = 3$, giving $3a$.', t:'F'},
+  {q:'Factorise $6x - 15$.', o:['$3(2x - 5)$','$2(3x - 15)$','$3(2x - 15)$','$6(x - 15)$'], c:0, e:'HCF is $3$: $3(2x - 5)$.', t:'F'},
+  {q:'The $n$th term of $1, 5, 9, 13, \\dots$ is:', o:['$4n + 1$','$4n - 3$','$n + 4$','$5n - 4$'], c:1, e:'Difference $4$, and $4(1) - 3 = 1$.', t:'F'},
+  {q:'$T = x + 2y$. When $x = 3$ and $y = -4$, $T$ equals:', o:['$-5$','$11$','$-1$','$5$'], c:0, e:'$3 + 2(-4) = 3 - 8 = -5$.', t:'F'},
+  {q:'A number machine does $\\times 2$ then $-10$. Which input gives output $28$?', o:['$9$','$19$','$38$','$23$'], c:1, e:'Reverse: $28 + 10 = 38$, then $\\div 2 = 19$.', t:'F'},
+]},
+
+// ── RATIO, PROPORTION & RATES OF CHANGE ─────────────────────────────────────
+'ratio-proportion-rates': { name: 'Ratio, Proportion & Rates of Change', fc: [
+  {q:'Share $\\pounds 60$ in the ratio $2 : 3$.', a:'$\\pounds 24$ and $\\pounds 36$. There are $5$ parts; $60 \\div 5 = 12$ per part, so $2 \\times 12 = 24$ and $3 \\times 12 = 36$.'},
+  {q:'A car travels $150\\text{ km}$ in $2$ hours. What is its average speed?', a:'$75\\text{ km/h}$. Speed $= \\frac{\\text{distance}}{\\text{time}} = \\frac{150}{2}$.'},
+  {q:'$5$ pens cost $\\pounds 2.00$. How much do $8$ pens cost?', a:'$\\pounds 3.20$. One pen costs $40\\text{p}$, so $8 \\times 40\\text{p} = \\pounds 3.20$.'},
+  {q:'Simplify the ratio $12 : 18$.', a:'$2 : 3$. Divide both parts by the HCF, $6$.'},
+  {q:'A recipe for $4$ people uses $200\\text{ g}$ of flour. How much for $6$ people?', a:'$300\\text{ g}$. $200 \\div 4 = 50\\text{ g}$ per person; $50 \\times 6 = 300\\text{ g}$.'},
+  {q:'Convert $\\pounds 1 = \\$1.25$. How many dollars is $\\pounds 40$?', a:'$\\$50$. $40 \\times 1.25 = 50$.', t:'F'},
+  {q:'The density of a metal is $8\\text{ g/cm}^3$. What is the mass of $5\\text{ cm}^3$?', a:'$40\\text{ g}$. Mass $= \\text{density} \\times \\text{volume} = 8 \\times 5$.'},
+  {q:'Write $24 : 36$ as a ratio in its simplest form.', a:'$2 : 3$. Divide both parts by the HCF, $12$.', t:'F'},
+  {q:'A map scale is $1\\text{ cm}$ represents $4\\text{ km}$. How far apart in real life are two towns $8\\text{ cm}$ apart on the map?', a:'$32\\text{ km}$. $8 \\times 4 = 32$.', t:'F'},
+  {q:'A recipe for $20$ biscuits needs $200\\text{ g}$ of flour. How much flour is needed for $30$ biscuits?', a:'$300\\text{ g}$. $30$ is $1.5 \\times 20$, so $200 \\times 1.5 = 300\\text{ g}$.', t:'F'},
+  {q:'Lizzie cycles $36\\text{ km}$ in $3$ hours. What is her average speed?', a:'$12\\text{ km/h}$. $\\frac{36}{3} = 12$.', t:'F'},
+  {q:'$\\pounds 3500$ is invested for $6$ years at $2.5\\%$ simple interest per year. How much interest is paid in total?', a:'$\\pounds 525$. $3500 \\times 0.025 = 87.5$ per year; $87.5 \\times 6 = 525$.', t:'F'},
+  {q:'Packs of batteries: $4$ for $\\pounds 1.80$, $8$ for $\\pounds 3.20$, $12$ for $\\pounds 6.00$. Which is best value?', a:'The pack of $8$. Cost per battery: $45\\text{p}$, $40\\text{p}$, $50\\text{p}$ — the pack of $8$ is cheapest each.', t:'F'},
+], mc: [
+  {q:'Share $\\pounds 45$ in the ratio $4 : 5$. The larger share is:', o:['$\\pounds 20$','$\\pounds 25$','$\\pounds 5$','$\\pounds 9$'], c:1, e:'$9$ parts; $45 \\div 9 = 5$. Larger share $= 5 \\times 5 = \\pounds 25$.'},
+  {q:'A train covers $240\\text{ km}$ in $3$ hours. Its average speed is:', o:['$80\\text{ km/h}$','$720\\text{ km/h}$','$60\\text{ km/h}$','$8\\text{ km/h}$'], c:0, e:'$\\frac{240}{3} = 80\\text{ km/h}$.'},
+  {q:'The ratio $20 : 30 : 50$ in simplest form is:', o:['$2 : 3 : 5$','$1 : 2 : 3$','$4 : 6 : 10$','$2 : 3 : 4$'], c:0, e:'Divide each part by $10$.', t:'F'},
+  {q:'$3\\text{ kg}$ of apples cost $\\pounds 4.50$. The cost of $5\\text{ kg}$ is:', o:['$\\pounds 7.50$','$\\pounds 9.00$','$\\pounds 1.50$','$\\pounds 6.00$'], c:0, e:'$1\\text{ kg} = \\pounds 1.50$, so $5\\text{ kg} = \\pounds 7.50$.'},
+  {q:'$30\\%$ of a number is $18$. The number is:', o:['$54$','$60$','$48$','$5.4$'], c:1, e:'$1\\% = \\frac{18}{30} = 0.6$, so $100\\% = 60$.'},
+  {q:'$24$ cows to $36$ sheep as a ratio in simplest form is:', o:['$2 : 3$','$3 : 2$','$4 : 6$','$1 : 2$'], c:0, e:'Divide both by $12$: $2 : 3$.', t:'F'},
+  {q:'A map scale is $1\\text{ cm} : 4\\text{ km}$. A road $10\\text{ km}$ long is how long on the map?', o:['$40\\text{ cm}$','$2.5\\text{ cm}$','$14\\text{ cm}$','$6\\text{ cm}$'], c:1, e:'$10 \\div 4 = 2.5\\text{ cm}$.', t:'F'},
+  {q:'A shortbread recipe for $20$ biscuits uses $120\\text{ g}$ of butter. For $30$ biscuits you need:', o:['$180\\text{ g}$','$150\\text{ g}$','$240\\text{ g}$','$200\\text{ g}$'], c:0, e:'$30 = 1.5 \\times 20$, so $120 \\times 1.5 = 180\\text{ g}$.', t:'F'},
+  {q:'A company of $25\\,000$ workers grows by $6\\%$ per year for $3$ years. The total is about:', o:['$29\\,775$','$29\\,500$','$32\\,000$','$26\\,500$'], c:0, e:'$25\\,000 \\times 1.06^3 \\approx 29\\,775$.', t:'F'},
+]},
+
+// ── GEOMETRY & MEASURES ─────────────────────────────────────────────────────
+'geometry-measures': { name: 'Geometry & Measures', fc: [
+  {q:'What is the sum of the interior angles of a triangle?', a:'$180^\\circ$.'},
+  {q:'Find the area of a circle with radius $5\\text{ cm}$. (Use $\\pi = 3.14$.)', a:'$78.5\\text{ cm}^2$. Area $= \\pi r^2 = 3.14 \\times 5^2 = 3.14 \\times 25$.'},
+  {q:'State Pythagoras’ theorem.', a:'$a^2 + b^2 = c^2$, where $c$ is the hypotenuse (the longest side, opposite the right angle).'},
+  {q:'Find the hypotenuse of a right triangle with legs $3\\text{ cm}$ and $4\\text{ cm}$.', a:'$5\\text{ cm}$. $c = \\sqrt{3^2 + 4^2} = \\sqrt{25} = 5$.'},
+  {q:'What is the sum of the interior angles of a pentagon?', a:'$540^\\circ$. Use $(n-2) \\times 180 = 3 \\times 180$.'},
+  {q:'Find the circumference of a circle with diameter $10\\text{ cm}$. (Use $\\pi = 3.14$.)', a:'$31.4\\text{ cm}$. Circumference $= \\pi d = 3.14 \\times 10$.'},
+  {q:'How many degrees are in each exterior angle of a regular hexagon?', a:'$60^\\circ$. Exterior angles sum to $360^\\circ$; $360 \\div 6 = 60$.'},
+  {q:'Find the volume of a cuboid $2\\text{ cm} \\times 3\\text{ cm} \\times 4\\text{ cm}$.', a:'$24\\text{ cm}^3$. Volume $= l \\times w \\times h$.', t:'F'},
+  {q:'What is the area of a triangle with base $8\\text{ cm}$ and height $5\\text{ cm}$?', a:'$20\\text{ cm}^2$. Area $= \\frac{1}{2} \\times b \\times h = \\frac{1}{2} \\times 8 \\times 5$.'},
+  {q:'Three straight lines meet at a point. Two of the angles are $220^\\circ$ and $90^\\circ$. Find the third angle $x$.', a:'$50^\\circ$. Angles around a point sum to $360^\\circ$: $360 - 220 - 90 = 50$.', t:'F'},
+  {q:'Change $800\\text{ cm}$ to metres.', a:'$8\\text{ m}$. $100\\text{ cm} = 1\\text{ m}$, so $800 \\div 100 = 8$.', t:'F'},
+  {q:'Write down the mathematical name for the straight line that goes from one side of a circle to the other through the centre.', a:'The diameter.', t:'F'},
+  {q:'A right-angled triangle has hypotenuse $19\\text{ cm}$ and one short side $10\\text{ cm}$. Find the other side (to 3 s.f.).', a:'$16.2\\text{ cm}$. $\\sqrt{19^2 - 10^2} = \\sqrt{261} = 16.155\\ldots$', t:'F'},
+  {q:'Change $5000\\text{ millilitres}$ to litres.', a:'$5\\text{ litres}$.', t:'F'},
+], mc: [
+  {q:'Angles on a straight line add up to:', o:['$90^\\circ$','$180^\\circ$','$360^\\circ$','$270^\\circ$'], c:1, e:'Angles on a straight line sum to $180^\\circ$.', t:'F'},
+  {q:'The area of a rectangle $7\\text{ cm}$ by $4\\text{ cm}$ is:', o:['$11\\text{ cm}^2$','$22\\text{ cm}^2$','$28\\text{ cm}^2$','$28\\text{ cm}$'], c:2, e:'Area $= 7 \\times 4 = 28\\text{ cm}^2$.'},
+  {q:'In a right triangle the hypotenuse is:', o:['The shortest side','The side opposite the right angle','Always vertical','The side next to the right angle'], c:1, e:'The hypotenuse is the longest side, opposite the right angle.'},
+  {q:'The interior angles of a quadrilateral sum to:', o:['$180^\\circ$','$360^\\circ$','$540^\\circ$','$90^\\circ$'], c:1, e:'$(4-2) \\times 180 = 360^\\circ$.'},
+  {q:'A circle has radius $7\\text{ cm}$. Using $\\pi = \\frac{22}{7}$, its circumference is:', o:['$22\\text{ cm}$','$44\\text{ cm}$','$154\\text{ cm}$','$14\\text{ cm}$'], c:1, e:'$C = 2\\pi r = 2 \\times \\frac{22}{7} \\times 7 = 44\\text{ cm}$.'},
+  {q:'Angles around a point add up to:', o:['$180^\\circ$','$360^\\circ$','$90^\\circ$','$270^\\circ$'], c:1, e:'A full turn is $360^\\circ$.', t:'F'},
+  {q:'Change $800\\text{ cm}$ to metres:', o:['$8\\text{ m}$','$80\\text{ m}$','$0.8\\text{ m}$','$8000\\text{ m}$'], c:0, e:'$800 \\div 100 = 8\\text{ m}$.', t:'F'},
+  {q:'The mathematical name for a straight line from the centre of a circle to its edge is the:', o:['Diameter','Radius','Chord','Tangent'], c:1, e:'A radius goes from the centre to the circumference.', t:'F'},
+  {q:'The volume of a cuboid $2\\text{ cm} \\times 5\\text{ cm} \\times 3\\text{ cm}$ is:', o:['$10\\text{ cm}^3$','$30\\text{ cm}^3$','$25\\text{ cm}^3$','$15\\text{ cm}^3$'], c:1, e:'$2 \\times 5 \\times 3 = 30\\text{ cm}^3$.', t:'F'},
+]},
+
+// ── PROBABILITY ─────────────────────────────────────────────────────────────
+'probability': { name: 'Probability', fc: [
+  {q:'A fair six-sided die is rolled. What is the probability of rolling an even number?', a:'$\\frac{3}{6} = \\frac{1}{2}$. Even numbers are $2, 4, 6$.'},
+  {q:'The probability it rains is $0.3$. What is the probability it does NOT rain?', a:'$0.7$. Probabilities of complementary events sum to $1$: $1 - 0.3$.'},
+  {q:'A bag has $4$ red and $6$ blue counters. What is $P(\\text{red})$?', a:'$\\frac{4}{10} = \\frac{2}{5}$.'},
+  {q:'A spinner is spun $200$ times. $P(\\text{green}) = 0.25$. How many greens are expected?', a:'$50$. Expected frequency $= 0.25 \\times 200$.'},
+  {q:'Two coins are flipped. What is the probability of two heads?', a:'$\\frac{1}{4}$. The outcomes are HH, HT, TH, TT — one of four gives two heads.'},
+  {q:'What does a probability of $0$ mean?', a:'The event is impossible — it cannot happen.', t:'F'},
+  {q:'Coin A lands heads with probability $0.6$ and coin B with probability $0.55$. What is the probability both land heads?', a:'$0.33$. Multiply independent probabilities: $0.6 \\times 0.55 = 0.33$.', t:'F'},
+  {q:'A bag of $1$p and $2$p coins totals $40$p. The value of the $1$p coins equals the value of the $2$p coins. What is $P(\\text{taking a }1\\text{p coin})$?', a:'$\\frac{2}{3}$. Each value is $20$p, so $20$ one-pennies and $10$ two-pennies: $\\frac{20}{30} = \\frac{2}{3}$.', t:'F'},
+  {q:'A coin is flipped $3$ times. How many possible outcomes (e.g. HHT) are there?', a:'$8$. $2 \\times 2 \\times 2 = 8$.', t:'F'},
+  {q:'$24$ yellow discs are in a bag and $P(\\text{yellow}) = 0.16$. How many discs are in the bag altogether?', a:'$150$. $24 \\div 0.16 = 150$.', t:'F'},
+], mc: [
+  {q:'A fair die is rolled. $P(\\text{rolling a } 5)$ is:', o:['$\\frac{1}{5}$','$\\frac{1}{6}$','$\\frac{5}{6}$','$\\frac{1}{2}$'], c:1, e:'One favourable outcome out of six equally likely: $\\frac{1}{6}$.', t:'F'},
+  {q:'$P(\\text{event}) = 0.85$. The probability it does not happen is:', o:['$0.15$','$0.85$','$1.85$','$0$'], c:0, e:'$1 - 0.85 = 0.15$.'},
+  {q:'A bag has $3$ green, $5$ yellow and $2$ red sweets. $P(\\text{yellow})$ is:', o:['$\\frac{5}{10}$','$\\frac{1}{5}$','$\\frac{3}{10}$','$\\frac{1}{2}$'], c:0, e:'$\\frac{5}{10} = \\frac{1}{2}$ — both $\\frac{5}{10}$ shown is correct as written.'},
+  {q:'Which value could NOT be a probability?', o:['$0$','$0.5$','$1$','$1.4$'], c:3, e:'Probabilities lie between $0$ and $1$ inclusive, so $1.4$ is impossible.'},
+  {q:'Coin A lands heads with probability $0.6$, coin B with probability $0.55$. $P(\\text{both heads})$ is:', o:['$1.15$','$0.33$','$0.575$','$0.3$'], c:1, e:'$0.6 \\times 0.55 = 0.33$.', t:'F'},
+  {q:'A spinner has three sections marked $1, 2, 3$ but they are different sizes. The probability of landing on $2$ is:', o:['Always $\\frac{1}{3}$','Not necessarily $\\frac{1}{3}$, as sections differ','$\\frac{1}{2}$','$0$'], c:1, e:'Equal probability needs equal-sized sections.', t:'F'},
+  {q:'A coin is flipped $3$ times. The number of possible outcomes is:', o:['$3$','$6$','$8$','$9$'], c:2, e:'$2^3 = 8$.', t:'F'},
+  {q:'$24$ yellow discs give $P(\\text{yellow}) = 0.16$. The total number of discs is:', o:['$100$','$120$','$150$','$144$'], c:2, e:'$24 \\div 0.16 = 150$.', t:'F'},
+]},
+
+// ── STATISTICS ──────────────────────────────────────────────────────────────
+'statistics': { name: 'Statistics', fc: [
+  {q:'Find the mean of $4, 7, 9, 4, 6$.', a:'$6$. Sum $= 30$, and $30 \\div 5 = 6$.'},
+  {q:'Find the median of $3, 8, 1, 6, 9$.', a:'$6$. In order: $1, 3, 6, 8, 9$; the middle value is $6$.'},
+  {q:'Find the mode of $2, 5, 5, 7, 9, 5$.', a:'$5$. It appears most often (three times).'},
+  {q:'Find the range of $12, 5, 8, 20, 3$.', a:'$17$. Range $= 20 - 3$ (largest minus smallest).'},
+  {q:'What type of correlation does a scatter graph show if points rise from left to right?', a:'Positive correlation — as one variable increases, so does the other.'},
+  {q:'Find the median of $4, 1, 7, 2$.', a:'$3$. In order: $1, 2, 4, 7$; the median is the mean of the two middle values $\\frac{2+4}{2} = 3$.', t:'F'},
+  {q:'The drinks ordered in a cafe were: coffee $30$, hot chocolate $10$, tea $50$. Which is the mode?', a:'Tea — it was ordered most often ($50$).', t:'F'},
+  {q:'In a travel survey the bars show: bus $8$, car $5$, cycle $3$, walk $7$. How many more students walk than cycle?', a:'$4$. $7 - 3 = 4$.', t:'F'},
+  {q:'A stem-and-leaf diagram shows $15$ values. Which value is the median?', a:'The $8$th value when listed in order (the middle of $15$).', t:'F'},
+  {q:'Find the range of $45, 53, 81, 61, 47$.', a:'$36$. $81 - 45 = 36$ (largest minus smallest).', t:'F'},
+], mc: [
+  {q:'The mean of $5, 5, 8, 10, 12$ is:', o:['$8$','$10$','$40$','$5$'], c:0, e:'Sum $= 40$; $40 \\div 5 = 8$.', t:'F'},
+  {q:'The range of $15, 22, 8, 30, 11$ is:', o:['$22$','$30$','$8$','$15$'], c:0, e:'$30 - 8 = 22$.'},
+  {q:'The mode of $1, 2, 2, 3, 3, 3, 4$ is:', o:['$2$','$3$','$4$','$1$'], c:1, e:'$3$ occurs most frequently.'},
+  {q:'The median of $9, 2, 7, 4, 10, 6$ (6 values) is:', o:['$6.5$','$7$','$6$','$5$'], c:0, e:'Ordered: $2,4,6,7,9,10$; median $= \\frac{6+7}{2} = 6.5$.'},
+  {q:'Drinks ordered: coffee $30$, hot chocolate $10$, tea $50$. The mode is:', o:['Coffee','Hot chocolate','Tea','No mode'], c:2, e:'Tea has the highest frequency.', t:'F'},
+  {q:'In a chart, walk $= 7$ and cycle $= 3$. How many more walk than cycle?', o:['$3$','$4$','$10$','$7$'], c:1, e:'$7 - 3 = 4$.', t:'F'},
+  {q:'The median of an ordered list of $15$ values is the:', o:['$7$th value','$8$th value','mean of $7$th and $8$th','$15$th value'], c:1, e:'For $15$ values the middle is the $8$th.', t:'F'},
+  {q:'The range of $45, 53, 81, 61, 47$ is:', o:['$36$','$34$','$81$','$45$'], c:0, e:'$81 - 45 = 36$.', t:'F'},
+]}
+
+};
+
 // ── FIREBASE ──────────────────────────────────────────────────────────────────
 const firebaseConfig = {
   apiKey: "AIzaSyAQYONvlea-y3ywiJXvIA1As_wQoovNvbU",
@@ -1663,7 +1949,7 @@ async function showProgress(){
     }
 
     // Per subject
-    ['biology','physics','chemistry'].forEach(function(subj){
+    ['biology','physics','chemistry','maths'].forEach(function(subj){
       var subjSessions=sessions.filter(function(s){return s.subject===subj;});
       if(!subjSessions.length)return;
       var subjInfo=SUBJECTS[subj];
@@ -1705,7 +1991,8 @@ async function showProgress(){
 const SUBJECTS = {
   biology:   { name:'Biology',   icon:'🧬', accent:'#16a34a', mid:'#22c55e', light:'#bbf7d0', bg:'#f0fdf4', data:QB },
   physics:   { name:'Physics',   icon:'⚛️', accent:'#1d4ed8', mid:'#3b82f6', light:'#bfdbfe', bg:'#eff6ff', data:QB_PHYSICS },
-  chemistry: { name:'Chemistry', icon:'🧪', accent:'#b45309', mid:'#f59e0b', light:'#fde68a', bg:'#fffbeb', data:QB_CHEM }
+  chemistry: { name:'Chemistry', icon:'🧪', accent:'#b45309', mid:'#f59e0b', light:'#fde68a', bg:'#fffbeb', data:QB_CHEM },
+  maths:     { name:'Maths',     icon:'📐', accent:'#7c3aed', mid:'#8b5cf6', light:'#ddd6fe', bg:'#f5f3ff', data:typeof QB_MATHS!=='undefined'?QB_MATHS:{} }
 };
 
 // ── STATE ─────────────────────────────────────────────────────────────────────
@@ -1806,6 +2093,21 @@ function renderCard(){
   const card=S.cards[S.index];
   if(S.mode==='fc') renderFC(area,card);
   else renderMC(area,card);
+  typesetMath(area);
+}
+
+// Render LaTeX ($...$) via KaTeX, if loaded. Safe no-op otherwise.
+function typesetMath(el){
+  if(typeof renderMathInElement!=='function')return;
+  try{
+    renderMathInElement(el,{
+      delimiters:[
+        {left:'$$',right:'$$',display:true},
+        {left:'$',right:'$',display:false}
+      ],
+      throwOnError:false
+    });
+  }catch(e){/* ignore render errors so the card still shows */}
 }
 
 function badges(card){
@@ -1818,7 +2120,8 @@ function badges(card){
 
 function cardImg(card){
   if(!card.img) return '';
-  const src = (typeof IMGS !== 'undefined' && IMGS[card.img]) ? IMGS[card.img] : '';
+  let src = (typeof IMGS !== 'undefined' && IMGS[card.img]) ? IMGS[card.img] : '';
+  if(!src && typeof IMGS_MATHS !== 'undefined' && IMGS_MATHS[card.img]) src = IMGS_MATHS[card.img];
   if(!src) return '';
   return '<div class="card-img-wrap"><img class="card-img" src="'+src+'" alt="Exam figure"></div>';
 }
@@ -2017,11 +2320,12 @@ function startApp(){
     var bio=typeof QB!=='undefined'?Object.keys(QB).length:0;
     var phy=typeof QB_PHYSICS!=='undefined'?Object.keys(QB_PHYSICS).length:0;
     var che=typeof QB_CHEM!=='undefined'?Object.keys(QB_CHEM).length:0;
-    if(!bio||!phy||!che){
+    var mat=typeof QB_MATHS!=='undefined'?Object.keys(QB_MATHS).length:0;
+    if(!bio||!phy||!che||!mat){
       var d=document.getElementById('ios-error');
       d.style.display='block';
       d.style.background='#b45309';
-      d.textContent='QB LOAD ERROR\nBiology topics: '+bio+'\nPhysics topics: '+phy+'\nChemistry topics: '+che;
+      d.textContent='QB LOAD ERROR\nBiology topics: '+bio+'\nPhysics topics: '+phy+'\nChemistry topics: '+che+'\nMaths topics: '+mat;
       return;
     }
     applyTheme();
