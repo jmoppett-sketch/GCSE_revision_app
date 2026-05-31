@@ -2161,6 +2161,9 @@ async function showProgress(){
       +'<div class="prog-stat"><div class="n">'+avgPctAll+'%</div><div class="l">Avg Score</div></div>'
       +'</div>';
 
+    // Card mastery breakdown (mastered / to-review / learning)
+    html+=masterySummaryHtml();
+
     // Weak topics alert
     var topicMap={};
     sessions.forEach(function(s){
