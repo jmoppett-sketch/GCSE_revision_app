@@ -248,7 +248,7 @@ header{margin-bottom:16px;padding-top:10px}
 
 .nav-btn{padding:11px 18px;border-radius:12px;border:2px solid var(--border);
   background:var(--card);font-family:var(--font);font-size:13px;font-weight:700;
-  color:var(--text-mid);cursor:pointer;transition:all .15s;min-height:44px}
+  color:var(--text-mid);cursor:pointer;transition:all .15s;min-height:44px;white-space:nowrap}
 
 .nav-btn:hover:not(:disabled){border-color:var(--mid);color:var(--accent)}
 .nav-btn:disabled{opacity:.35;cursor:default}
@@ -1967,6 +1967,21 @@ const QB_CHEM = {
   {q:'Hydrogen is collected over water during a reaction. Explain why the volume of hydrogen collected is less than the volume produced.', a:'Some hydrogen escapes before the stopper is inserted (the reaction starts immediately), and some hydrogen remains in the flask and delivery tube.', t:'H', s:AQA_CHEM_P2H24},
   {q:'Explain how increasing the temperature affects the rate of reaction between zinc and sulfuric acid.', a:'It increases the rate. Particles gain more energy and move faster, so collisions happen more frequently and a greater proportion of collisions have enough energy to react.', t:'H', s:AQA_CHEM_P2H24},
   {q:'Which two words describe the reaction between hydrogen and oxygen forming water, which can also be decomposed by electricity?', a:'Combustion and reversible.', t:'H', s:AQA_CHEM_P2H24},
+
+  {q:'In the reaction of zinc with sulfuric acid, hydrogen gas is collected over time. Suggest why a stopper must be put in the conical flask as quickly as possible.', a:'So that none of the hydrogen gas produced escapes before timing/collection begins, which would make the measured volume and rate inaccurate.', t:'H', s:AQA_CHEM_P2H23},
+  {q:'In a metal-acid reaction the rate of reaction (cm3/s) for four trials collecting 20 cm3 of gas was 0.78, 0.81, 0.68 and 0.81. Determine the mean time taken, ignoring anomalous results.', a:'0.68 is anomalous, so ignore it. Mean rate = (0.78+0.81+0.81)/3 = 0.80 cm3/s. Mean time = volume / mean rate = 20 / 0.80 = 25 s.', t:'H', s:AQA_CHEM_P2H23},
+  {q:'Give two changes to a metal-acid reaction that would increase the time taken to collect a fixed volume of gas (i.e. decrease the rate).', a:'Any two: use a lower temperature; use acid of a lower concentration; use larger pieces of the metal (smaller surface area).', t:'H', s:AQA_CHEM_P2H23},
+  {q:'Describe the test for hydrogen gas and give the result.', a:'Hold a lighted splint at the mouth of the test tube. Result: the gas burns with a squeaky pop.', s:AQA_CHEM_P2H23},
+  {q:'Explain how a manganese dioxide catalyst increases the rate of decomposition of hydrogen peroxide.', a:'It provides a different reaction pathway with a lower activation energy, so a greater proportion of collisions have enough energy to react. The catalyst is not used up.', t:'H', s:AQA_CHEM_P2H23},
+  {q:'Hydrogen peroxide decomposes to oxygen and water in an open flask on a balance, and the total mass decreases. Explain why.', a:'Oxygen gas is produced and escapes from the open flask into the air, so the mass of the flask and contents decreases.', t:'H', s:AQA_CHEM_P2H23},
+  {q:'A tangent to a mass-loss curve has been drawn at 75 s. Describe how to determine the rate of reaction at that time.', a:'DIAGRAM REQUIRED: Find the gradient of the tangent: divide the change in mass (y) by the corresponding change in time (x) along the tangent line. The rate equals this gradient in g/s (to 2 sig figs).', t:'H', s:AQA_CHEM_P2H23},
+  {q:'A catalysed decomposition of 50 cm3 of 2.0 mol/dm3 hydrogen peroxide is repeated with 50 cm3 of 1.0 mol/dm3 hydrogen peroxide. Describe how the mass-loss curve changes.', a:'DIAGRAM REQUIRED: The line is less steep at the start (slower initial rate) and levels off at half the total mass lost, because there is half the amount of hydrogen peroxide.', t:'H', s:AQA_CHEM_P2H23},
+  {q:'For hydrated copper sulfate \u21cc anhydrous copper sulfate + water, 4.68 g of hydrated salt gives 2.99 g of anhydrous salt. Calculate the maximum mass of water produced from 11.7 g of hydrated copper sulfate.', a:'Water from 4.68 g = 4.68 - 2.99 = 1.69 g. For 11.7 g: 1.69 x (11.7/4.68) = 1.69 x 2.5 = 4.23 g.', t:'H', s:AQA_CHEM_P2H23},
+  {q:'Changing 4.68 g of hydrated copper sulfate to 2.99 g of anhydrous copper sulfate takes in 1.47 kJ. Calculate the energy transferred to the surroundings when 15.0 g of anhydrous copper sulfate is rehydrated.', a:'The reverse reaction releases the same energy per gram. Energy = 1.47 x (15.0 / 2.99) = 7.38 kJ.', t:'H', s:AQA_CHEM_P2H23},
+  {q:'For 2HI(g) \u21cc H2(g) + I2(g), explain the effect of increasing the pressure on the equilibrium position.', a:'There is no effect on the position of equilibrium, because there are equal numbers of gas molecules on both sides (2 on each side).', t:'H', s:AQA_CHEM_P2H23},
+  {q:'What is the effect of adding a catalyst on the position of equilibrium of a reversible reaction?', a:'No effect on the position of equilibrium. A catalyst speeds up the forward and reverse reactions equally, so equilibrium is reached faster but the equilibrium amounts are unchanged.', t:'H', s:AQA_CHEM_P2H23},
+  {q:'Explain why the concentrations of substances do not change once a reversible reaction reaches dynamic equilibrium.', a:'At dynamic equilibrium the forward and reverse reactions continue at the same rate, so substances are formed and used up at equal rates, keeping concentrations constant (in a closed system).', t:'H', s:AQA_CHEM_P2H23},
+  {q:'For 2NO2(g, brown) \u21cc N2O4(g, colourless), the mixture is compressed to increase the pressure. State and explain the colour change.', a:'The mixture becomes a lighter shade of brown. Higher pressure shifts the equilibrium to the side with fewer gas molecules (N2O4), reducing the amount of brown NO2.', t:'H', s:AQA_CHEM_P2H23},
 ], mc: [
   {q:'Marble chips react faster when ground to powder because:', o:['Powder has lower activation energy','Powder has greater surface area giving more collision sites','Powder contains more moles of CaCO₃','Powder increases temperature'], c:1, e:'Smaller particles → greater surface area exposed to acid → more frequent collisions → faster rate.'},
   {q:'A brown mixture of NO₂ and N₂O₄ (2NO₂ ⇌ N₂O₄) is compressed in a syringe, increasing the pressure. Once a new equilibrium is reached the mixture is:', o:['A darker shade of brown','The same shade of brown','A lighter shade of brown','Colourless'], c:2, e:'Increasing pressure shifts equilibrium to the side with fewer gas molecules (N₂O₄, colourless), so the mixture becomes a lighter shade of brown.', t:'H', s:AQA_CHEM_P2H23},
@@ -1977,6 +1992,9 @@ const QB_CHEM = {
   {q:'Which of these increases the rate of a reaction?', o:['Cooling the reactants','Using larger pieces of solid reactant','Adding a catalyst','Reducing the concentration of reactants'], c:2, e:'A catalyst provides a lower activation energy pathway → more successful collisions per second → faster rate. The other options all decrease rate.', t:'F'},
   {q:'Figure shows the yield of SO3 falls as temperature rises in 2SO2 + O2 reversible 2SO3. Which statement is correct?', o:['Yield is greater at higher T because exothermic','Yield is greater at higher T because endothermic','Yield is smaller at higher T because exothermic','Yield is smaller at higher T because endothermic'], c:2, e:'The forward reaction is exothermic, so raising temperature shifts equilibrium back towards reactants, lowering the yield of SO3.', t:'H', s:AQA_CHEM_P2H24},
   {q:'The catalyst for oxidising SO2 to SO3 is a metal oxide. Which is the most likely metal?', o:['Aluminium','Barium','Potassium','Vanadium'], c:3, e:'Vanadium (as vanadium(V) oxide) is the transition metal catalyst used in the Contact process.', t:'H', s:AQA_CHEM_P2H24},
+
+  {q:'For 2NO2(g) \u21cc N2O4(g) where the forward reaction is exothermic, what happens to the equilibrium position if the temperature is increased?', o:['Shifts to the left','Shifts to the right','Stays the same','Stops completely'], c:0, e:'Increasing temperature favours the endothermic reverse reaction, so equilibrium shifts left towards NO2.', t:'H', s:AQA_CHEM_P2H23},
+  {q:'A blue copper compound A + hydrochloric acid \u21cc yellow copper compound B + water; at equilibrium the mixture is green. How can it be made more yellow?', o:['Add more hydrochloric acid','Add more water','Leave it for 30 minutes','Cool the mixture'], c:0, e:'Adding more hydrochloric acid (a reactant) shifts the equilibrium to the right, making more of the yellow compound B.', t:'H', s:AQA_CHEM_P2H23},
 ]},
 
 'organic-chemistry': { name: 'Organic Chemistry', fc: [
@@ -2002,6 +2020,17 @@ const QB_CHEM = {
   {q:'Compound A contains an alkene functional group. What is seen when it is shaken with bromine water?', a:'The orange bromine water turns colourless (is decolourised).', t:'H', s:AQA_CHEM_P2H24},
   {q:'Compound A has the formula C4H6O2. Write a balanced equation for its complete combustion.', a:'2 C4H6O2 + 9 O2 -> 8 CO2 + 6 H2O.', t:'H', s:AQA_CHEM_P2H24},
   {q:'What word describes polymers that melt when heated, and why do some polymers not melt when heated?', a:'Polymers that melt are thermosoftening (thermoplastic). Thermosetting polymers do not melt because they have cross-links (covalent bonds) between the polymer chains, and too much energy would be needed to overcome these.', t:'H', s:AQA_CHEM_P2H24},
+
+  {q:'Burning 1.00 g of each alcohol releases: ethanol 29.6 kJ/g and heptanol 39.8 kJ/g. Calculate the mass of ethanol that must be burned to release the same energy as 1.00 g of heptanol.', a:'Mass of ethanol = 39.8 / 29.6 = 1.34 g.', t:'H', s:AQA_CHEM_P2H23},
+  {q:'The energy released per gram by alcohols increases with carbon number (ethanol 29.6 up to heptanol 39.8 kJ/g). Estimate the energy released when 1.00 g of octanol (C8H17OH) is burned.', a:'DIAGRAM REQUIRED: Plot energy against number of carbon atoms and extrapolate to 8 carbons; estimated value about 40.5 kJ (accept ~40-41 kJ).', t:'H', s:AQA_CHEM_P2H23},
+  {q:'What is reacted with ethanol to produce ethanoic acid?', a:'An oxidising agent (ethanol is oxidised to ethanoic acid).', s:AQA_CHEM_P2H23},
+  {q:'Draw the displayed structural formula of the carboxylic acid functional group -COOH.', a:'DIAGRAM REQUIRED: A carbon double-bonded to one oxygen (C=O) and single-bonded to an O-H group: -C(=O)-O-H.', s:AQA_CHEM_P2H23},
+  {q:'Give a product of the reaction of ethanoic acid with (a) sodium carbonate and (b) ethanol.', a:'(a) Sodium carbonate produces carbon dioxide (plus a salt and water). (b) Ethanol produces ethyl ethanoate (an ester).', s:AQA_CHEM_P2H23},
+  {q:'Chloroethene (CH2=CHCl) forms an addition polymer. Complete the equation for the production of poly(chloroethene).', a:'DIAGRAM REQUIRED: n CH2=CHCl -> -(CH2-CHCl)-n. The C=C double bond opens to form a long saturated chain with the repeating unit shown in brackets with subscript n and continuation bonds.', s:AQA_CHEM_P2H23},
+  {q:'Poly(ethene) is strengthened with wood particles embedded in a poly(ethene) matrix. What general name is given to materials like this?', a:'A composite (composite material).', s:AQA_CHEM_P2H23},
+  {q:'Beta-alanine (H2NCH2CH2COOH) polymerises to form a polypeptide and a small molecule. Name the small molecule produced.', a:'Water (it is condensation polymerisation).', t:'H', s:AQA_CHEM_P2H23},
+  {q:'A naturally occurring polymer is made only from glucose units. Suggest its identity.', a:'Starch (cellulose or glycogen are also acceptable) - a polymer of glucose. The repeating unit is a single glucose-derived unit.', t:'H', s:AQA_CHEM_P2H23},
+  {q:'A naturally occurring polymer is made from four different monomers and has a spiral double-stranded shape. Name the type of monomer and the shape.', a:'The monomers are nucleotides; the shape is a double helix. (The polymer is DNA.)', t:'H', s:AQA_CHEM_P2H23},
 ], mc: [
   {q:'Ethene decolourises bromine water because it:', o:['Burns in the bromine','Undergoes addition across the C=C double bond','Dissolves the bromine','Is a saturated hydrocarbon'], c:1, e:'The C=C bond reacts with Br₂ in an addition reaction: CH₂=CH₂ + Br₂ → CH₂BrCH₂Br. Orange → colourless.'},
   {q:'Limewater, used to test for carbon dioxide, is an aqueous solution of:', o:['calcium chloride','calcium hydroxide','calcium nitrate','calcium sulfate'], c:1, e:'Limewater is a solution of calcium hydroxide. CO₂ reacts with it to form insoluble calcium carbonate, turning it cloudy.', s:AQA_CHEM_P2H23},
@@ -2012,6 +2041,9 @@ const QB_CHEM = {
   {q:'What is the general formula for alkenes?', o:['CₙH₂ₙ₊₂','CₙH₂ₙ','CₙH₂ₙ₋₂','CₙHₙ'], c:1, e:'Alkenes: CₙH₂ₙ (one C=C double bond). Alkanes: CₙH₂ₙ₊₂ (fully saturated).'},
   {q:'Crude oil is separated by fractional distillation. Shorter-chain fractions:', o:['Condense near the bottom of the column and have high boiling points','Condense near the top of the column and have lower boiling points','Are less flammable than long-chain fractions','Cannot be used as fuels'], c:1, e:'Shorter hydrocarbon chains have weaker intermolecular forces and lower boiling points — they condense higher up the cooler column.', t:'F'},
   {q:'Many molecules of an alkene monomer join to form a polymer. What type of polymer is formed?', o:['Addition polymer','Condensation polymer','DNA','Protein'], c:0, e:'Alkene monomers join by addition polymerisation, with no other product formed.', t:'H', s:AQA_CHEM_P2H24},
+
+  {q:'What is reacted with ethanol to produce ethanoic acid?', o:['A halogen','An alkali metal','An oxidising agent','Water'], c:2, e:'Ethanol is oxidised to ethanoic acid, so an oxidising agent is required.', s:AQA_CHEM_P2H23},
+  {q:'Beta-alanine polymerises to form a polypeptide. What small molecule is also produced?', o:['Carbon dioxide','Water','Hydrogen','Ammonia'], c:1, e:'Amino acids join by condensation polymerisation, releasing a water molecule at each link.', t:'H', s:AQA_CHEM_P2H23},
 ]},
 
 'chemical-analysis': { name: 'Chemical Analysis', fc: [
@@ -2042,6 +2074,14 @@ const QB_CHEM = {
   {q:'Dye A gives two spots and dye B gives one spot on a chromatogram. Compare their purity.', a:'A is impure (a mixture) because it contains two dyes / two spots. B is pure because it contains one dye / one spot.', t:'H', s:AQA_CHEM_P2H24},
   {q:'A dye has an Rf value of 0.48 and moved 5.4 cm. Calculate the distance moved by the solvent front.', a:'Rf = distance moved by dye / distance moved by solvent, so distance moved by solvent = 5.4/0.48 = 11.25 cm.', t:'H', s:AQA_CHEM_P2H24},
   {q:'Why is the Rf value of a dye not affected by how far the solvent front is allowed to travel?', a:'Because Rf is the ratio of the distance moved by the spot to the distance moved by the solvent, and this ratio stays constant.', t:'H', s:AQA_CHEM_P2H24},
+
+  {q:'A water-soluble medicine may contain potassium ions and bromide ions. Describe a method (flame test plus silver nitrate) to show both are present, with the results.', a:'Flame test for K+: dip a clean nichrome wire in dilute nitric acid then into the sample and hold it in a blue Bunsen flame - a lilac flame shows potassium ions. Halide test for Br-: dissolve the sample in water, add dilute nitric acid then silver nitrate solution - a cream precipitate (silver bromide) shows bromide ions.', t:'H', s:AQA_CHEM_P2H23},
+  {q:'Name an instrumental method that can show the presence of potassium ions, and give one advantage over a chemical flame test.', a:'Flame emission spectroscopy. Advantage (any one): more accurate/sensitive, faster, detects very small amounts, or can identify ions in a mixture.', s:AQA_CHEM_P2H23},
+  {q:'In paper chromatography, suggest two mistakes a student might make when setting up the apparatus.', a:'Any two: the start line/spot is below the solvent level so the sample dissolves into the solvent; the start line is drawn in ink rather than pencil; the solvent level is too high; the paper touches the side of the beaker.', s:AQA_CHEM_P2H23},
+  {q:'In chromatography a dye moves a distance X while the solvent moves 12.0 cm, giving an Rf of 0.60. Determine X.', a:'X = Rf x distance moved by solvent = 0.60 x 12.0 = 7.2 cm.', t:'H', s:AQA_CHEM_P2H23},
+  {q:'Explain why the same dye can give different Rf values on two different types of chromatography paper.', a:'Rf depends on the balance between how strongly the dye is attracted to the stationary phase (the paper) and its solubility in the mobile phase (solvent). Different papers attract the dye to different extents, so it travels different distances relative to the solvent, giving different Rf values.', t:'H', s:AQA_CHEM_P2H23},
+  {q:'Other than changing the chromatography paper, suggest one change that could give a different Rf value for a dye.', a:'Use a different solvent (mobile phase).', s:AQA_CHEM_P2H23},
+  {q:'Describe a test to show the presence of copper(II) ions in a solution, and give the result.', a:'Add sodium hydroxide solution. Result: a blue precipitate (copper(II) hydroxide) forms.', s:AQA_CHEM_P2H23},
 ], mc: [
   {q:'A substance in chromatography has Rf = 0.75. The solvent front moved 16 cm. How far did the substance travel?', o:['10 cm','12 cm','14 cm','21 cm'], c:1, e:'Distance = Rf × solvent front = 0.75 × 16 = 12 cm.', t:'H'},
   {q:'A yellow/orange flame in a flame test indicates:', o:['Potassium','Sodium','Copper','Calcium'], c:1, e:'Sodium ions (Na⁺) give a characteristic persistent yellow/orange flame. K⁺: lilac. Cu²⁺: green. Ca²⁺: orange-red.'},
@@ -2050,6 +2090,8 @@ const QB_CHEM = {
   {q:'In paper chromatography, a pure substance produces:', o:['Multiple spots at different Rf values','A single spot at a specific Rf value','No spots','A smeared line'], c:1, e:'A pure substance contains only one compound → one spot with a single Rf value. A mixture produces multiple spots.', t:'F'},
   {q:'Describe the test for oxygen gas and its result.', o:['A lit splint pops','A glowing splint relights','Limewater turns milky','Damp litmus paper bleaches white'], c:1, e:'Oxygen relights a glowing splint. The squeaky pop is hydrogen; limewater turning milky is carbon dioxide; bleaching damp litmus is chlorine.', t:'H', s:AQA_CHEM_P2H24},
   {q:'Suggest one advantage of gas chromatography (an instrumental method) over paper chromatography.', o:['It is cheaper to set up','It is more sensitive, accurate and faster','It needs a larger sample','It works without any solvent'], c:1, e:'Instrumental methods are more sensitive and accurate, faster, and can use smaller samples than paper chromatography.', t:'H', s:AQA_CHEM_P2H24},
+
+  {q:'Which instrumental method is used to detect metal ions such as potassium ions in a sample?', o:['Chromatography','Flame emission spectroscopy','Filtration','Distillation'], c:1, e:'Flame emission spectroscopy detects and identifies metal ions and their concentrations from their emission spectra.', s:AQA_CHEM_P2H23},
 ]},
 
 'atmosphere': { name: 'Chemistry of the Atmosphere', fc: [
@@ -2067,6 +2109,12 @@ const QB_CHEM = {
   {q:'How does carbon monoxide affect the body?', a:'CO binds irreversibly to haemoglobin in red blood cells, reducing their ability to carry oxygen. Can be fatal at high concentrations. It is colourless and odourless — very dangerous.', t:'F'},
   {q:'Explain how oxides of nitrogen are produced when fuels are burned in engines or boilers.', a:'The high temperatures cause nitrogen and oxygen from the air to react together, forming oxides of nitrogen.', t:'H', s:AQA_CHEM_P2H24},
   {q:'Burning hydrogen produces no CO2 but more oxides of nitrogen than natural gas. Give one positive and one negative environmental impact of burning hydrogen instead of natural gas.', a:'Positive: less climate change / global warming because no carbon dioxide is produced. Negative: more oxides of nitrogen are produced, causing more acid rain and respiratory problems.', t:'H', s:AQA_CHEM_P2H24},
+
+  {q:'Other than carbon dioxide and methane, name a greenhouse gas.', a:'Water vapour.', s:AQA_CHEM_P2H23},
+  {q:'Explain why an increase in world population may have caused the increase in carbon dioxide concentration in the atmosphere.', a:'More people means more demand for energy and transport, so more fossil fuels are burned (combustion), releasing CO2. More land is cleared (deforestation), so fewer trees remove CO2 by photosynthesis.', s:AQA_CHEM_P2H23},
+  {q:'Explain why an increase in world population may have caused the increase in methane concentration in the atmosphere.', a:'More demand for food means more cattle/livestock farming (methane from digestion) and more rice paddy fields; more waste in landfill also releases methane as it decomposes.', s:AQA_CHEM_P2H23},
+  {q:'Describe two potential effects of an increase in the mean temperature of the Earths atmosphere.', a:'Any two: melting polar ice caps/glaciers and rising sea levels causing flooding; more frequent or severe extreme weather; changes to rainfall patterns affecting farming; loss of habitats and changes to species distribution.', s:AQA_CHEM_P2H23},
+  {q:'Most scientists link the rising mean temperature to greenhouse gases. Give one reason why some scientists do not accept this theory.', a:'Any one: the climate is very complex and hard to model; data may be incomplete or cover only a short time; it is hard to prove the rise is caused by the gases rather than natural variation; bias or speculation in some reports.', s:AQA_CHEM_P2H23},
 ], mc: [
   {q:'Which gas made up most of Earth\'s early atmosphere?', o:['Oxygen','Nitrogen','Carbon dioxide','Methane'], c:2, e:'Early atmosphere was dominated by CO₂ from volcanic outgassing — similar to Mars and Venus today.'},
   {q:'Carbon dioxide and methane are greenhouse gases. Which of the following is also a greenhouse gas?', o:['Chlorine','Nitrogen','Oxygen','Water vapour'], c:3, e:'Water vapour is a greenhouse gas. Chlorine, nitrogen and oxygen are not greenhouse gases.', s:AQA_CHEM_P2H23},
@@ -2075,6 +2123,8 @@ const QB_CHEM = {
   {q:'Burning fossil fuels containing sulfur produces:', o:['Carbon dioxide','Carbon monoxide','Sulfur dioxide','Nitrogen dioxide'], c:2, e:'S + O₂ → SO₂. This dissolves in rainwater to form acid rain, damaging ecosystems and buildings.'},
   {q:'The approximate percentage of oxygen in the atmosphere is:', o:['0.04%','21%','78%','1%'], c:1, e:'~78% N₂, ~21% O₂, ~0.9% Ar, ~0.04% CO₂. Oxygen is the second most abundant gas.'},
   {q:'Which gas in the atmosphere absorbs and re-emits infrared radiation, contributing to the greenhouse effect?', o:['Nitrogen','Oxygen','Argon','Carbon dioxide'], c:3, e:'CO₂ is a greenhouse gas — it traps IR radiation. Nitrogen, oxygen, and argon are not greenhouse gases.', t:'F'},
+
+  {q:'Which of these is also a greenhouse gas?', o:['Chlorine','Nitrogen','Oxygen','Water vapour'], c:3, e:'Water vapour is a greenhouse gas, along with carbon dioxide and methane. Nitrogen and oxygen are not.', s:AQA_CHEM_P2H23},
 ]},
 
 'using-resources': { name: 'Using Resources', fc: [
@@ -2108,6 +2158,14 @@ const QB_CHEM = {
   {q:'Evaluate using aluminium alloy versus bamboo for bicycle frames.', a:'Bamboo is renewable and lasts longer (10-15 years), but is more expensive and uses agricultural land. Aluminium alloy is stronger and has a lower mass (faster, easier to carry) and is recyclable, but it is a finite resource, costs less yet lasts less long. Both have sustainable disposal (recycling or burning for heat). A reasoned judgement either way is acceptable.', t:'H', s:AQA_CHEM_P2H24},
   {q:'Why do aluminium alloy bicycle frames not need protection from corrosion?', a:'Aluminium forms a thin oxide coating on its surface which prevents water, air and oxygen reaching the metal underneath.', t:'H', s:AQA_CHEM_P2H24},
   {q:'In a composite of carbon fibres in a polymer resin, what name is given to the carbon fibre component and to the polymer resin component?', a:'The carbon fibre is the reinforcement; the polymer resin is the matrix (binder).', t:'H', s:AQA_CHEM_P2H24},
+
+  {q:'Copper can be extracted from low-grade ores by bioleaching. Describe what is meant by bioleaching.', a:'Bacteria break down/feed on low-grade ores to produce a solution (leachate) containing copper compounds, from which the copper can then be extracted (e.g. by displacement or electrolysis).', t:'H', s:AQA_CHEM_P2H23},
+  {q:'A soil is low in nitrogen and potassium but has enough phosphorus. Available fertilisers: potassium chloride (K 52%, GBP0.24/kg), ammonium nitrate (N 35%, GBP0.23/kg), diammonium hydrogen phosphate (N 21%, P 23%, GBP0.35/kg). Evaluate which to use.', a:'Use potassium chloride (supplies the needed potassium cheaply) and ammonium nitrate (supplies the needed nitrogen cheaply with the highest %N). Avoid diammonium hydrogen phosphate: it is the most expensive and mainly supplies phosphorus, which the soil already has enough of.', t:'H', s:AQA_CHEM_P2H23},
+  {q:'How is potassium chloride obtained from the Earth?', a:'It is mined (dug out of the ground as a mineral deposit).', s:AQA_CHEM_P2H23},
+  {q:'Name one compound, other than potassium chloride, that could supply potassium to improve agricultural productivity.', a:'Potassium sulfate (or potassium nitrate / potassium carbonate).', s:AQA_CHEM_P2H23},
+  {q:'Ammonium nitrate is made from nitric acid. Name a compound needed to produce nitric acid.', a:'Ammonia (it is oxidised to make nitric acid).', s:AQA_CHEM_P2H23},
+  {q:'Plants absorb phosphorus from compounds dissolved in rainwater. Suggest why phosphate rock cannot be used directly as a fertiliser.', a:'The phosphate compounds in phosphate rock are insoluble in water, so plants cannot absorb the phosphorus; the rock must first be treated with acid to make soluble compounds.', s:AQA_CHEM_P2H23},
+  {q:'Name the salts produced when phosphate rock is treated with (a) sulfuric acid and (b) phosphoric acid.', a:'(a) Sulfuric acid gives single superphosphate - a mixture of calcium sulfate and calcium phosphate. (b) Phosphoric acid gives triple superphosphate - calcium phosphate.', t:'H', s:AQA_CHEM_P2H23},
 ], mc: [
   {q:'The Haber process uses ~450°C rather than a lower temperature because:', o:['Lower temperature melts the catalyst','Higher T favours the forward exothermic reaction','450°C gives a practical rate; higher temperatures lower the equilibrium yield','Lower temperature gives zero yield'], c:2, e:'Higher T speeds up rate but shifts the exothermic equilibrium left (less NH₃). 450°C is the industrial compromise.', t:'H'},
   {q:'What is the purpose of chlorination in water treatment?', o:['To add calcium for healthy teeth','To kill harmful microorganisms, making water safe to drink','To remove dissolved salt ions','To adjust pH to exactly 7'], c:1, e:'Chlorine is added as a disinfectant to kill bacteria and other pathogens in drinking water.'},
@@ -2784,6 +2842,9 @@ function render(){
     b.classList.toggle('active',b.dataset.mode===S.mode));
   renderProgress();
   renderCard();
+  // KaTeX auto-render walks text nodes and can strip the Next button's label
+  // after the first card. Re-assert it every render so it never disappears.
+  document.getElementById('btn-next').textContent='Next →';
 }
 
 function renderProgress(){
