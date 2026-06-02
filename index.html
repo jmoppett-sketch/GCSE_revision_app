@@ -112,6 +112,30 @@ header{margin-bottom:16px;padding-top:10px}
 .admin-del{margin-top:14px;width:100%;padding:9px;border-radius:8px;border:2px solid #fecaca;
   background:#fef2f2;color:#dc2626;font-family:var(--font);font-size:12px;font-weight:700;cursor:pointer}
 .admin-del:hover{background:#fee2e2;border-color:#dc2626}
+#btn-add-q{padding:6px 10px;border-radius:8px;border:2px solid var(--accent);
+  background:var(--card);color:var(--accent);font-family:var(--font);font-size:12px;font-weight:700;cursor:pointer}
+#addq-modal{display:none;position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:1000;
+  align-items:flex-start;justify-content:center;padding:24px 14px;overflow-y:auto}
+#addq-box{background:var(--card,#fff);border-radius:16px;max-width:540px;width:100%;padding:22px;
+  box-shadow:0 20px 50px rgba(0,0,0,.3);font-family:var(--font)}
+.addq-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.addq-header h2{font-size:18px;margin:0}
+#addq-close{background:none;border:none;font-size:18px;cursor:pointer;color:#64748b}
+.addq-row{display:flex;gap:12px;margin-bottom:12px}
+.addq-row label{flex:1}
+#addq-box label{display:block;font-size:12px;font-weight:700;color:#475569;margin-bottom:10px}
+.addq-full{display:block}
+#addq-box select,#addq-box input[type=text],#addq-box textarea{width:100%;margin-top:4px;padding:9px 10px;
+  border:1px solid #cbd5e1;border-radius:8px;font-size:14px;font-family:var(--font);font-weight:400;color:#0f172a}
+#addq-box textarea{resize:vertical}
+.addq-opt{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.addq-opt input[type=text]{margin-top:0}
+.addq-opt input[type=radio]{width:18px;height:18px;flex:none}
+.addq-actions{display:flex;justify-content:flex-end;margin-top:6px}
+#addq-save{background:var(--accent,#7c3aed);color:#fff;border:none;border-radius:9px;padding:11px 20px;
+  font-size:14px;font-weight:700;cursor:pointer;font-family:var(--font)}
+#addq-msg{font-size:13px;font-weight:600;margin:6px 0;min-height:16px}
+.addq-note{font-size:11px;color:#94a3b8;margin-top:10px}
 #btn-signout{background:none;border:none;font-size:11px;color:var(--muted);
   cursor:pointer;font-family:var(--font);padding:2px 0;text-decoration:underline}
 
@@ -334,6 +358,7 @@ header{margin-bottom:16px;padding-top:10px}
       <div class="header-user" id="header-user" style="display:none">
         <span class="user-greeting" id="user-greeting"></span>
         <button id="btn-progress">📊 Progress</button>
+        <button id="btn-add-q" title="Add a question" style="display:none">➕ Add</button>
         <button id="btn-admin" title="Admin tools">🔒</button>
       </div>
     </div>
@@ -379,6 +404,65 @@ header{margin-bottom:16px;padding-top:10px}
   </div>
 
 </div>
+
+<!-- ── ADD QUESTION MODAL (admin) ──────────────────────────── -->
+<div id="addq-modal">
+  <div id="addq-box">
+    <div class="addq-header">
+      <h2>➕ Add a question</h2>
+      <button id="addq-close">✕</button>
+    </div>
+    <div class="addq-row">
+      <label>Subject
+        <select id="addq-subject"></select>
+      </label>
+      <label>Topic
+        <select id="addq-topic"></select>
+      </label>
+    </div>
+    <div class="addq-row">
+      <label>Type
+        <select id="addq-type">
+          <option value="fc">Flashcard</option>
+          <option value="mc">Multiple choice</option>
+        </select>
+      </label>
+      <label>Tier
+        <select id="addq-tier">
+          <option value="H">Higher</option>
+          <option value="F">Foundation</option>
+        </select>
+      </label>
+    </div>
+    <label class="addq-full">Question
+      <textarea id="addq-q" rows="2" placeholder="Type the question. Keep it self-contained."></textarea>
+    </label>
+
+    <div id="addq-fc-fields">
+      <label class="addq-full">Answer
+        <textarea id="addq-a" rows="2" placeholder="The answer shown when the card is flipped."></textarea>
+      </label>
+    </div>
+
+    <div id="addq-mc-fields" style="display:none">
+      <label class="addq-full">Options (mark the correct one)</label>
+      <div class="addq-opt"><input type="radio" name="addq-correct" value="0" checked><input type="text" id="addq-o0" placeholder="Option A"></div>
+      <div class="addq-opt"><input type="radio" name="addq-correct" value="1"><input type="text" id="addq-o1" placeholder="Option B"></div>
+      <div class="addq-opt"><input type="radio" name="addq-correct" value="2"><input type="text" id="addq-o2" placeholder="Option C"></div>
+      <div class="addq-opt"><input type="radio" name="addq-correct" value="3"><input type="text" id="addq-o3" placeholder="Option D"></div>
+      <label class="addq-full">Explanation
+        <textarea id="addq-e" rows="2" placeholder="Shown after answering (optional but recommended)."></textarea>
+      </label>
+    </div>
+
+    <p id="addq-msg"></p>
+    <div class="addq-actions">
+      <button id="addq-save">Save question</button>
+    </div>
+    <p class="addq-note">Saved questions appear immediately for everyone, tagged “Custom”. You can delete them later with the 🗑 button in admin mode.</p>
+  </div>
+</div>
+
 <div id="ios-error" style="display:none;position:fixed;top:0;left:0;right:0;background:#dc2626;color:#fff;padding:12px 16px;font-size:13px;font-family:monospace;z-index:9999;white-space:pre-wrap;word-break:break-all"></div>
 <script>
 window.onerror=function(msg,src,line,col,err){
@@ -414,10 +498,20 @@ const AQA_BIO_P1H_SQP24='AQA Specimen 2024 Biology Paper 1H';
 const AQA_BIO_P2H_JUN22='AQA Jun 2022 Biology Paper 2H';
 const AQA_BIO_P2H_NOV20='AQA Nov 2020 Biology Paper 2H';
 const AQA_BIO_P2H_NOV21='AQA Nov 2021 Biology Paper 2H';
+const AQA_BIO_P2H_SQP24='AQA Specimen 2024 Biology Paper 2H';
+const AQA_BIO_P1F_NOV20='AQA Nov 2020 Biology Paper 1F';
 
 const QB = {
 
 'cell-biology': { name: 'Cell Biology', fc: [
+  {q:'Sub-cellular structures: state the function of (a) the cell membrane, (b) the mitochondria, (c) the ribosomes.', a:'(a) Cell membrane - controls the transport of substances into and out of the cell; (b) mitochondria - where energy is released (by aerobic respiration); (c) ribosomes - where proteins are made.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'The image width of a cell is 40 mm and its real width is 0.1 mm. Calculate the magnification.', a:'magnification = size of image / size of real object = 40 / 0.1 = x400.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'Name the chemical that the genetic material in chromosomes is made from.', a:'DNA (deoxyribonucleic acid).', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'Explain how a transplant of bone marrow stem cells can help to treat medical conditions.', a:'Bone marrow stem cells can differentiate into many other types of cell, so they can cure diseases where new cells are needed or cells are damaged (e.g. leukaemia, anaemia).', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'What is meant by the term diffusion?', a:'The spreading out / net movement of particles (molecules) from an area of higher concentration to an area of lower concentration (down a concentration gradient).', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'Carbon dioxide diffuses from the air into the mesophyll cells of a leaf. Give two changes that would increase the rate at which it diffuses in.', a:'Any two: increased carbon dioxide concentration in the air (steeper gradient); increased number of stomata that are open.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'Name the process by which water molecules enter a root hair cell.', a:'Osmosis.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'Nitrate ions are at a lower concentration in the soil than inside a root hair cell. Explain how the nitrate ions are transported into the cell.', a:'By active transport: the ions move against the concentration gradient (from lower to higher concentration), which requires energy released by respiration.', t:'F', s:AQA_BIO_P1F_NOV20},
   {q:'Pond water was diluted from 2.5 cm3 to 10 cm3. 14 algal cells were counted in a 0.2 mm x 0.2 mm x 0.1 mm volume. Calculate the number of algal cells in 1.0 mm3 of undiluted pond water.', a:'Counting volume = 0.2 x 0.2 x 0.1 = 0.004 mm3. Cells per mm3 of diluted water = 14 / 0.004 = 3500. Dilution factor = 10 / 2.5 = 4, so undiluted = 3500 x 4 = 14 000 (1.4 x 10^4) cells per mm3.', t:'H', s:AQA_BIO_P2H_JUN22},
   {q:'In a cell-counting method, why is the pond water diluted before being placed on the slide?', a:'To spread the cells out and reduce the number per square so they are easier to count accurately with less overlap.', t:'H', s:AQA_BIO_P2H_JUN22},
   {q:'A student used a thin coverslip that bent downwards instead of a thick flat one. Explain how this affects the algal cell count.', a:'The bent coverslip reduces the depth/volume of water under it, so fewer cells lie in the counting square, giving a lower cell count.', t:'H', s:AQA_BIO_P2H_JUN22},
@@ -493,6 +587,12 @@ const QB = {
   {q:'A clear zone where no bacteria grew around an antibiotic disc is a circle of radius 1.1 cm. Calculate its area using pi = 3.14 and give the unit.', a:'Area = pi x r-squared = 3.14 x 1.1-squared = 3.80 cm-squared (3.7994 cm2).', t:'H', s:AQA_BIO_P1H_NOV21},
   {q:'Suggest one way to improve an investigation comparing the effectiveness of different antibiotics on bacteria.', a:'Any one: repeat and calculate a mean; repeat and eliminate anomalies; use a control disc (e.g. soaked in water only); test on different types of bacteria.', t:'H', s:AQA_BIO_P1H_NOV21},
 ], mc: [
+  {q:'What is the function of the cell wall in a plant or algal cell?', o:['To contain the genetic material','To stop the chloroplasts leaking out','To strengthen the cell','To release energy'], c:2, e:'The cell wall (made of cellulose in plants/algae) strengthens and supports the cell.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'Which part of an algal cell makes it green in colour?', o:['Cellulose','Chloroplast','Cytoplasm','Nucleus'], c:1, e:'Chloroplasts contain the green pigment chlorophyll, which absorbs light for photosynthesis.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'A microscope image of a cell is blurred. What should the student do to get a clear image?', o:['Adjust the focus knob','Make the light dimmer','Put water on the slide','Increase the magnification'], c:0, e:'Adjusting the focus knob sharpens the image; the other changes do not bring it into focus.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'Which process makes two genetically identical new body cells for growth and repair?', o:['Differentiation','Fertilisation','Mitosis','Meiosis'], c:2, e:'Mitosis produces two identical diploid daughter cells for growth and repair.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'A cell divides to form two new cells every 24 hours. How many days will it take for one cell to divide into 8 cells?', o:['1','3','6','8'], c:1, e:'1 to 2 to 4 to 8 is three divisions, so 3 x 24 hours = 3 days.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'What is one section of genetic material on a chromosome that codes for a specific protein called?', o:['A gamete','A gene','A nucleus','A ribosome'], c:1, e:'A gene is a section of DNA that codes for a particular protein.', t:'F', s:AQA_BIO_P1F_NOV20},
   {q:'Why is pond water diluted before counting algal cells under a microscope?', o:['To kill the algae','To spread the cells out so they are easier to count','To add nutrients','To make them photosynthesise'], c:1, e:'Diluting reduces the number of cells per square so they overlap less and can be counted accurately.', t:'H', s:AQA_BIO_P2H_JUN22},
   {q:'Plants move mineral ions from a low concentration in the soil to a high concentration in root cells. What process is used?', o:['Active transport','Diffusion','Evaporation','Osmosis'], c:0, e:'Moving ions against the concentration gradient (low to high) needs energy, so it is active transport.', t:'H', s:AQA_BIO_P1H_SQP24},
   {q:'Which organelle is responsible for aerobic respiration?', o:['Nucleus','Ribosome','Mitochondria','Chloroplast'], c:2, e:'Mitochondria are the site of aerobic respiration, producing ATP from glucose and oxygen.'},
@@ -517,6 +617,13 @@ const QB = {
 ]},
 
 'organisation': { name: 'Organisation', fc: [
+  {q:'The safe maximum heart rate for exercise is calculated as 220 minus age in years. Calculate the safe maximum heart rate for a 45-year-old man.', a:'220 - 45 = 175 beats per minute.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'Explain the ways the body responds to vigorous exercise.', a:'Heart rate increases to pump more blood (oxygen and glucose) to the muscles and remove carbon dioxide/lactic acid faster; breathing rate and depth increase to take in more oxygen and remove more carbon dioxide; this supplies the muscles for increased (aerobic) respiration. If oxygen supply is insufficient, anaerobic respiration occurs, producing lactic acid and an oxygen debt.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'Explain how the structure of an artery is related to its function.', a:'Arteries have thick muscular and elastic walls and a narrow lumen, which withstand and maintain the high blood pressure of blood being pushed away from the heart.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'A red blood cell has no nucleus and contains haemoglobin. Explain how each adaptation helps it carry out its function.', a:'Having no nucleus leaves more room for haemoglobin (so it carries more oxygen); haemoglobin binds to and carries oxygen around the body.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'A blood test shows a platelet count of 50 when the normal range is 140-400. Suggest one symptom the patient might show, and why.', a:'Continued bleeding / more bruising / blood that does not clot properly, because platelets are needed for blood clotting.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'Describe how a student could test a liquid extracted from leaves for glucose (a reducing sugar), including the result if glucose is present.', a:'Add Benedict\'s solution to the liquid and heat it in a water bath (about 65 C or above). If glucose is present the blue colour changes to green, yellow, orange or brick-red.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'Explain how the human lungs are adapted for efficient gas exchange by diffusion.', a:'Many alveoli give a large surface area; the alveoli and capillary walls are thin (one cell thick) giving a short diffusion path; a large capillary network/good blood supply removes oxygen and brings carbon dioxide quickly; ventilation (breathing) maintains a steep concentration gradient.', t:'F', s:AQA_BIO_P1F_NOV20},
   {q:'In which organ are excess amino acids broken down, producing urea?', a:'The liver - excess amino acids are deaminated to form ammonia, which is converted to urea.', t:'H', s:AQA_BIO_P2H_JUN22},
   {q:'A person lacks the enzyme that breaks down a toxic substance. Explain why the substance builds up in their blood.', a:'Without the enzyme the toxic substance cannot be broken down into harmless products, but it is still made from amino acids, so it accumulates and diffuses from the cells into the blood.', t:'H', s:AQA_BIO_P2H_JUN22},
   {q:'Explain why a toxic substance reaches a high concentration in the urine of someone who cannot break it down.', a:'The toxic substance passes from the blood through the filter in the kidney into the tubule, and because it is not reabsorbed back into the blood it leaves the body in the urine.', t:'H', s:AQA_BIO_P2H_JUN22},
@@ -635,6 +742,7 @@ const QB = {
   {q:'Explain why blood group O red blood cells can be given to patients of any blood group.', a:'Group O red blood cells have no antigens on their surface, so the recipient\'s antibodies cannot bind to them and no clumping occurs.', t:'H', s:AQA_BIO_P1H_NOV21},
   {q:'A tumour blocks the tube leading from the gall bladder to the small intestine. Explain why this person has difficulty digesting fat.', a:'No/less bile reaches the small intestine, so there is less emulsification of fat and therefore a smaller surface area for lipase to work on; bile also neutralises stomach acid, so without it the small intestine is too acidic for lipase to work at its optimum pH.', t:'H', s:AQA_BIO_P1H_NOV21},
 ], mc: [
+  {q:'What is the name of the liquid part of the blood that carries the blood cells around the body?', o:['Cell sap','Plasma','Saliva','Urine'], c:1, e:'Plasma is the straw-coloured liquid that transports blood cells, nutrients, hormones, carbon dioxide and urea.', t:'F', s:AQA_BIO_P1F_NOV20},
   {q:'Excess amino acids are broken down in which organ, forming urea?', o:['Kidney','Liver','Pancreas','Small intestine'], c:1, e:'The liver deaminates excess amino acids to form ammonia, which is converted to urea. The kidney then removes urea from the blood.', t:'H', s:AQA_BIO_P2H_JUN22},
   {q:'A toxic substance in the blood ends up in the urine because, in the kidney, it is:', o:['Filtered out and not reabsorbed','Reabsorbed completely','Broken down by enzymes','Turned into glucose'], c:0, e:'Small molecules are filtered from the blood in the kidney; substances the body does not reabsorb (like this toxin) pass out in the urine.', t:'H', s:AQA_BIO_P2H_JUN22},
   {q:'Which reagent and result correctly identifies protein in a food sample?', o:['Benedicts solution - brick-red','Biuret reagent - purple','Iodine solution - blue-black','Sudan III - red layer'], c:1, e:'Biuret reagent turns purple/mauve when protein is present.', s:AQA_BIO_P1H_SQP24},
@@ -659,6 +767,14 @@ const QB = {
 ]},
 
 'infection': { name: 'Infection & Response', fc: [
+  {q:'Name one type of microorganism, other than a virus, that causes disease in humans.', a:'Bacteria (also accept fungi or protists).', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'Give two defence systems that prevent microorganisms infecting the human body.', a:'Any two: hydrochloric acid produced by the stomach; the skin acting as a barrier covering the whole body. (Also acceptable: mucus/cilia in airways, tears/lysozyme.)', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'Complete: in a vaccine the measles virus is ____, and if the virus later enters the body the immune system reaction will be ____.', a:'Weakened (or dead/inactive); fast (because memory cells produce antibodies rapidly).', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'How is the measles virus spread from one person to another?', a:'By coughs and sneezes (droplets in the air).', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'What is meant by the incubation time of a disease?', a:'The usual time from exposure to a pathogen until the first symptoms appear.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'Several children were exposed to the chickenpox virus but did not develop the disease. Suggest one reason why.', a:'Any one: they had been vaccinated; they were already immune / had had it before; they already had antibodies; they did not receive enough virus from the infected child.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'A child with chickenpox was given antibiotics but did not recover any faster. Suggest why.', a:'Chickenpox is caused by a virus, and antibiotics do not kill viruses (they only kill bacteria).', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'A gorse plant has sharp thorns. Suggest how this adapts the plant to defend itself.', a:'The thorns / spikes / prickles physically stop animals (herbivores) from eating it.', t:'F', s:AQA_BIO_P1F_NOV20},
   {q:'Why should tools be washed in disinfectant after being used on plants infected with tobacco mosaic virus (TMV)?', a:'To kill the virus and prevent it spreading to healthy plants.', s:AQA_BIO_P1H_SQP24},
   {q:'Describe two ways the human body prevents the entry of microorganisms.', a:'Any two: stomach acid kills pathogens in food; skin acts as a barrier/produces antimicrobial secretions; nasal hairs trap pathogens; mucus in the trachea/bronchi traps pathogens and cilia waft it to the throat to be swallowed.', s:AQA_BIO_P1H_SQP24},
   {q:'Explain what testing must be done before a new drug (e.g. an Ebola treatment) can be used on people.', a:'Pre-clinical trials on cells, tissues and live animals to test toxicity, dosage and efficacy; then clinical trials on healthy volunteers and patients starting at very low doses to monitor safety/side effects before finding the optimum dose; often double-blind using a placebo with random allocation; results are peer reviewed to prevent false claims.', t:'H', s:AQA_BIO_P1H_SQP24},
@@ -723,6 +839,9 @@ const QB = {
   {q:'In a monoclonal antibody urine test (Figure 6), describe the evidence that shows athlete B\'s test did not work and suggest a reason why.', a:'Evidence: the control area for athlete B did not turn blue (no blue band in the control area). Reason: the urine did not move through the strip — e.g. incorrect urine volume used / strip damaged or faulty / strip not fully dipped in urine.', img:'bio_jun23_fig6', s:AQA_BIO_P1H_JUN23},
   {q:'Describe how scientists make monoclonal antibodies using a hybridoma cell.', a:'1. Hybridoma cells divide rapidly and produce the specific antibody. 2. The hybridoma cells are cloned (grown in large quantities). 3. The monoclonal antibodies are collected and purified from the culture medium.', s:AQA_BIO_P1H_JUN23},
 ], mc: [
+  {q:'How does the immune system destroy microorganisms that enter the body?', o:['Platelets kill the microorganisms','Red blood cells stick to the microorganisms','White blood cells engulf the microorganisms','Plasma dissolves the microorganisms'], c:2, e:'Phagocytes (white blood cells) engulf and digest pathogens.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'A plant produces poisonous berries to stop animals eating it. Which type of defence mechanism is this?', o:['Chemical','Mechanical','Physical','Structural'], c:0, e:'Poisons/toxins are a chemical defence; thorns are mechanical/physical.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'In a drug trial, some patients take tablets made from sugar that contain no drug. What are these tablets called?', o:['Antibiotics','Antibodies','Painkillers','Placebos'], c:3, e:'A placebo contains no active drug and is used as a control/comparison in trials.', t:'F', s:AQA_BIO_P1F_NOV20},
   {q:'In the lungworm lifecycle, the snail carries the worm to the dog. What type of organism is the snail?', o:['Fungus','Parasite','Protist','Vector'], c:3, e:'An organism that spreads a pathogen without causing the disease itself is a vector.', s:AQA_BIO_P1H_SQP24},
   {q:'What type of drug can a doctor prescribe to kill bacteria in a serious Salmonella infection?', o:['Antibiotics','Antivirals','Painkillers','Antihistamines'], c:0, e:'Antibiotics kill bacteria; they do not work on viruses.', t:'H', s:AQA_BIO_P1H_JUN18},
   {q:'Which type of pathogen is treated with antibiotics?', o:['Viruses','Fungi','Bacteria','Protists'], c:2, e:'Antibiotics specifically target bacterial structures and are ineffective against viruses, fungi, and protists.'},
@@ -744,6 +863,14 @@ const QB = {
 ]},
 
 'bioenergetics': { name: 'Bioenergetics', fc: [
+  {q:'Complete the word equation for photosynthesis: ____ + ____ -> ____ + oxygen.', a:'carbon dioxide + water -> glucose + oxygen.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'Describe how the energy for the photosynthesis reaction is gained by plants.', a:'Light is absorbed (captured) by chlorophyll in the chloroplasts, providing the energy for the reaction.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'Three repeat measurements of the rate of photosynthesis were 18.5, 19.3 and 19.5 cm3/hour. Calculate the mean.', a:'(18.5 + 19.3 + 19.5) / 3 = 57.3 / 3 = 19.1 cm3/hour.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'In an experiment measuring oxygen given off by pondweed, one result was anomalous. Suggest one possible cause of an anomalous result.', a:'Any one: a scale/value was misread (measurement error); an air bubble was in the syringe/apparatus; the lamp was moved (light intensity changed); the temperature changed; a different size/mass of pondweed was used.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'Students investigated the effect of temperature on the rate of photosynthesis in pondweed. Give one factor they should have kept constant.', a:'Any one: light intensity; carbon dioxide concentration; size/amount/species of pondweed.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'Why does the rate of photosynthesis decrease as temperature rises from 35 C to 45 C?', a:'The enzymes controlling photosynthesis denature - the shape of the active site changes - so they work less effectively.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'Give two uses of the glucose made by a plant.', a:'Any two: used in respiration to release energy; stored as starch; converted to cellulose for cell walls; used to make amino acids/proteins; stored as oils/fats.', t:'F', s:AQA_BIO_P1F_NOV20},
+  {q:'The roots of a plant absorb nitrate ions from the soil. Explain why nitrate ions are needed by the plant.', a:'Nitrate ions are used to make amino acids, which are used to make proteins needed for growth.', t:'F', s:AQA_BIO_P1F_NOV20},
   {q:'TMV reduces the chlorophyll in a plants leaves. Explain why this causes stunted growth.', a:'Less chlorophyll means less photosynthesis, so less glucose is made; with less glucose there is less energy released by respiration for growth and fewer materials (amino acids/proteins/cellulose) can be made for growth.', t:'H', s:AQA_BIO_P1H_SQP24},
   {q:'Suggest how an experiment on anaerobic respiration in yeast could be changed to give a reproducible measure of the rate, including apparatus.', a:'Collect the CO2 gas produced using a gas syringe or measuring cylinder over water, and measure the volume collected in a set time using a timer; repeat to check reproducibility.', t:'H', s:AQA_BIO_P1H_SQP24},
   {q:'Compare anaerobic respiration in a yeast cell with anaerobic respiration in a muscle cell.', a:'Yeast produces ethanol and CO2 (fermentation), whereas muscle produces lactic acid and no CO2; both release only a small amount of energy.', t:'H', s:AQA_BIO_P1H_SQP24},
@@ -876,7 +1003,34 @@ const QB = {
   {q:'Explain what is meant by the term homeostasis.', a:'The maintenance of a stable internal environment within the body despite changes in external conditions. Homeostasis keeps conditions such as blood glucose level, body temperature, and water balance within narrow limits for cells to function properly.', s:AQA_BIO_P2H_JUN24},
   {q:'Describe what happens to glucose, protein, and urea in the kidneys.', a:'Glucose: filtered from blood into the tubule; all of it is reabsorbed back into the blood (selective reabsorption) — none in urine (normally). Protein: molecules are too large to be filtered; they remain in the blood. Urea: filtered from blood into the tubule; some is reabsorbed but most remains in the filtrate and is excreted in urine.', s:AQA_BIO_P2H_JUN24},
   {q:'Explain how ADH affects the production and concentration of urine.', a:'When blood water concentration is low, the pituitary gland releases more ADH. ADH makes the kidney collecting ducts and tubules more permeable to water. More water is reabsorbed from the filtrate back into the blood by osmosis. This produces a smaller volume of more concentrated urine. When blood water concentration is high, less ADH is released, less water is reabsorbed, and a larger volume of more dilute urine is produced.', s:AQA_BIO_P2H_JUN24, t:'H'},
+  {q:'In dim light, describe what happens to the iris muscles and the pupil.', a:'The circular muscles of the iris relax and the radial muscles contract, so the pupil dilates (widens) to let more light into the eye.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'A person has blurred vision because light does not focus on the retina. Explain how glasses correct this.', a:'The lens in the glasses refracts (bends) the light before it enters the eye so that it focuses correctly on the retina.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Give two ways to improve the ruler-drop method of measuring reaction time so it gives valid results.', a:'Any two: drop the ruler from the same height each time; release it without applying any force; keep the thumb the same distance from the ruler at the start; use the same hand each time; rest the arm on the table in the same way.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Ruler-drop distances (mm) recorded were 117, 120, 115, 106, 123, 125 and 106. What is the median?', a:'Ordered: 106, 106, 115, 117, 120, 123, 125 - the middle value is 117 mm.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Why is measuring reaction time with a computer program more valid than using a dropped ruler?', a:'There is no advance warning of when the stimulus will change, so the person cannot anticipate it; and the computer timer measures time more precisely (higher resolution) than reading a distance from a ruler.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'After a head injury a person finds it hard to name familiar objects and cannot remember recent events. Suggest which part of the brain has been damaged.', a:'The cerebral cortex (cerebrum).', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'After a head injury a person staggers and sways when walking. Suggest which part of the brain has been damaged.', a:'The cerebellum, which controls balance and coordination of movement.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Explain how blood glucose concentration is controlled in a non-diabetic person when it becomes too high.', a:'The pancreas detects the high glucose and releases insulin; insulin causes glucose to move from the blood into cells; excess glucose is converted to glycogen and stored in the liver and muscles, so the blood glucose level falls.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Explain what happens in a non-diabetic person when blood glucose becomes too low.', a:'The pancreas releases glucagon; glucagon causes glycogen stored in the liver to be converted back into glucose, which is released into the blood, raising the glucose level.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Compare the causes of type 1 and type 2 diabetes.', a:'In type 1 diabetes the pancreas produces little or no insulin; in type 2 diabetes the body cells no longer respond properly to insulin.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'How is type 1 diabetes treated, and how is type 2 diabetes usually treated?', a:'Type 1 is treated with insulin injections; type 2 is usually treated with a controlled diet, exercise and weight loss (and sometimes drugs).', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'The UK population was 6.5 x 10^7. Diagnosed diabetes was 3.45 x 10^6 and estimated undiagnosed was 5.49 x 10^5. Calculate the percentage with diabetes to 2 significant figures.', a:'Total = 3.45x10^6 + 5.49x10^5 = 3.999x10^6. (3.999x10^6 / 6.5x10^7) x 100 = 6.15, which rounds to 6.2%.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Why is a blood test more reliable than a urine test for diagnosing diabetes?', a:'A blood test measures the current glucose concentration directly, whereas glucose in urine may have other causes or may be several hours old and not reflect the current level.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Why must a patient not eat for 8 hours before a glucose tolerance test?', a:'So the results are not affected by glucose from recently eaten food; this gives a low, known starting point and allows time for insulin to act on any food glucose.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Hyperthyroidism is caused by an overactive thyroid gland. Suggest what would happen in the body.', a:'Too much thyroxine is released into the blood, which raises the basal metabolic rate, increasing the rate of respiration and the breakdown/formation of proteins, lipids and glycogen.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Describe the roles of FSH and LH in the menstrual cycle.', a:'FSH causes an egg to mature in the ovary and stimulates the ovaries to produce oestrogen; LH stimulates the release of the mature egg (ovulation).', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'The progesterone-only mini-pill must be taken at the same time each day. Explain why missing a dose reduces how well it prevents pregnancy.', a:'Missing a dose causes the progesterone level to drop; FSH is then no longer inhibited, so an egg matures, and LH is no longer inhibited, so the egg is released - it can then be fertilised, so pregnancy becomes possible.', t:'H', s:AQA_BIO_P2H_SQP24},
 ], mc: [
+  {q:'In dim light, what happens to the pupil of the eye?', o:['It constricts','It dilates','It stays the same size','It changes colour'], c:1, e:'In dim light the radial muscles contract and circular muscles relax, dilating the pupil to let in more light.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'In bright light, which iris muscles contract to make the pupil smaller?', o:['Radial muscles','Circular muscles','Ciliary muscles','Suspensory ligaments'], c:1, e:'In bright light the circular muscles contract (and radial relax), constricting the pupil.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'A person cannot name familiar objects or remember recent events after a head injury. Which part of the brain is most likely damaged?', o:['Cerebellum','Cerebral cortex','Medulla','Spinal cord'], c:1, e:'The cerebral cortex is responsible for language, memory and higher functions.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'A person staggers and sways when walking after a head injury. Which part of the brain is most likely damaged?', o:['Cerebellum','Cerebral cortex','Medulla','Hypothalamus'], c:0, e:'The cerebellum controls balance and coordination of movement.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Which hormone does the pancreas release when blood glucose is too high?', o:['Glucagon','Insulin','Thyroxine','Adrenaline'], c:1, e:'Insulin lowers blood glucose by moving it into cells and storing it as glycogen.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'What is the cause of type 1 diabetes?', o:['Cells stop responding to insulin','The pancreas produces little or no insulin','Too much insulin is made','The liver stops storing glycogen'], c:1, e:'Type 1 diabetes is caused by the pancreas failing to produce enough insulin; type 2 is caused by cells not responding to insulin.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'How is type 2 diabetes usually treated first?', o:['Insulin injections','A controlled diet and exercise','Kidney dialysis','Antibiotics'], c:1, e:'Type 2 diabetes is usually managed first with diet, exercise and weight loss.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Which hormone stimulates the release of a mature egg (ovulation)?', o:['FSH','LH','Oestrogen','Progesterone'], c:1, e:'LH (luteinising hormone) triggers ovulation; FSH causes the egg to mature.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'An overactive thyroid gland (hyperthyroidism) releases too much of which hormone, raising the metabolic rate?', o:['Insulin','Thyroxine','Adrenaline','FSH'], c:1, e:'Excess thyroxine raises the basal metabolic rate.', t:'H', s:AQA_BIO_P2H_SQP24},
+
   {q:'What causes the skin to appear red during exercise?', o:['Constriction of blood vessels in the skin','Dilation of blood vessels in the skin','Decrease in heart rate','Blood vessels moving deeper into the skin'], c:1, e:'Vasodilation widens skin blood vessels, bringing more blood near the surface so the skin looks red and loses heat.', t:'H', s:AQA_BIO_P2H_NOV21},
   {q:'Which hormone stimulates ovulation (the release of an egg)?', o:['FSH','Oestrogen','LH','Progesterone'], c:2, e:'LH from the pituitary gland triggers ovulation around the middle of the cycle.', t:'H', s:AQA_BIO_P2H_NOV21},
   {q:'Which of these is a use of gibberellins in plants?', o:['To kill weeds','To help roots form','To increase fruit size','To ripen fruit in storage'], c:2, e:'Gibberellins are used to increase fruit size, end seed dormancy/promote germination, and promote flowering. Auxins help roots form; ethene ripens fruit.', t:'H', s:AQA_BIO_P2H_NOV20},
@@ -972,7 +1126,21 @@ const QB = {
   {q:'One allele in every 50 in the UK is the cystic fibrosis (CF) allele. Explain why only 1 person in 2500 has CF.', a:'CF is recessive. To have CF, a person must inherit two CF alleles (ff). Probability of inheriting one CF allele = 1/50. Probability of inheriting CF alleles from both parents = 1/50 × 1/50 = 1/2500. So only 1 in 2500 people has CF.', s:AQA_BIO_P2H_JUN24, t:'H'},
   {q:'Explain how GM soya bean plants and glyphosate can increase the yield of soya beans.', a:'GM soya plants contain a gene making them resistant to the herbicide glyphosate. Normal soya plants are killed by glyphosate. The farmer sprays glyphosate on the field — all weeds are killed but the GM soya is unharmed. With weeds eliminated, the soya plants have less competition for water, mineral ions, and light, so they grow more vigorously and yield more.', s:AQA_BIO_P2H_JUN24},
   {q:'Suggest two non-ethical reasons why some people are concerned about GM soya bean plants.', a:'Any two: (1) GM genes could spread to wild plant populations via pollen, creating herbicide-resistant weeds. (2) Killing all weeds with glyphosate reduces biodiversity and removes habitat/food for insects and wildlife. (3) Long-term effects of GM food on human health are unknown. (4) GM crops could reduce crop diversity, increasing vulnerability to disease.', s:AQA_BIO_P2H_JUN24},
+  {q:'Charles Darwin proposed natural selection. A rival theory said characteristics acquired during an organism\'s life could be inherited. Who proposed that theory?', a:'Jean-Baptiste Lamarck.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Explain how the fossil of an animal such as a snake may have formed in rock.', a:'The animal was covered/buried in sediment or mud; the soft parts decayed (or were eaten) while the hard parts/bones did not; over time minerals entered the bones or replaced them, forming a fossil.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Two rat snakes evolved from a common ancestor: a green species living in grass and a pale brown species living in dry, dusty ground. Explain how natural selection produced the green species.', a:'Variation in colour arose from mutations/different alleles; green individuals were better camouflaged in the grassy environment; they were more likely to avoid predators and catch food, so survived and bred; they passed the alleles for green colour to offspring; over many generations green became the common colour.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Give one reason why a species might become extinct.', a:'Any one: a change to the environment, a new predator, a new disease, a new (more successful) competitor, or a catastrophic event.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Give two reasons, other than reducing allergies, why people might selectively breed cats.', a:'Any two: for a desired appearance/aesthetic features; for a docile/calm temperament (not aggressive); to avoid specific genetic defects.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Describe one problem that inbreeding can cause in selectively bred animals.', a:'They are more likely to inherit and pass on recessive genetic disorders, and may be more susceptible to disease (reduced variation).', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'A chemical called Fel D1 triggers cat allergies, and different cats make different amounts. Explain how selective breeding could produce cats that make very little Fel D1.', a:'Select the parents that produce the least Fel D1; breed them together; from the offspring select those producing the least Fel D1 and breed them; repeat over many generations until the cats produce very little Fel D1.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'A single-base mutation changes one triplet/codon in a gene so the enzyme it codes for no longer works. Explain how the mutation stops the enzyme working.', a:'The change alters the amino acid coded for, changing the sequence of amino acids in the protein; the protein folds into a different shape, so the active site shape changes; the substrate no longer fits the active site, so the enzyme cannot catalyse its reaction.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'A recessive allele (a) causes a condition. A heterozygous mother (Aa) and a homozygous recessive father (aa) have a child. Use a Punnett square to give the probability and genotype of an affected child.', a:'Cross Aa x aa gives offspring Aa, Aa, aa, aa. Probability of being affected = 1/2 (50%), and affected children have genotype aa.', t:'H', s:AQA_BIO_P2H_SQP24},
 ], mc: [
+  {q:'The theory that characteristics acquired during an organism\'s lifetime are passed to its offspring was proposed by whom?', o:['Charles Darwin','Jean-Baptiste Lamarck','Gregor Mendel','Alfred Wallace'], c:1, e:'Lamarck proposed the inheritance of acquired characteristics; Darwin (and Wallace) proposed natural selection, and Mendel founded genetics.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Most snakes in a grassy habitat are green. Which statement best explains how green colour became common?', o:['Individual snakes turned green during their lives','Green snakes were camouflaged, so survived and bred more','The grass stained the snakes green','Snakes chose to become green'], c:1, e:'Better-camouflaged green snakes avoid predators and catch prey, so they survive, breed and pass on the alleles for green colour - this is natural selection.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'In DNA, which bases always pair together?', o:['Adenine-Guanine','Adenine-Thymine','Adenine-Cytosine','Guanine-Thymine'], c:1, e:'Adenine pairs with thymine (A-T) and cytosine pairs with guanine (C-G) - complementary base pairing.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'A recessive allele (a) causes a disorder. For the cross Aa x aa, what percentage of offspring are expected to have the disorder?', o:['0%','25%','50%','75%'], c:2, e:'Aa x aa gives Aa, Aa, aa, aa - half (50%) are aa and affected.', t:'H', s:AQA_BIO_P2H_SQP24},
+
   {q:'What type of cell division produces gametes such as sperm and egg cells?', o:['Mitosis','Meiosis','Binary fission','Differentiation'], c:1, e:'Gametes are produced by meiosis, which halves the chromosome number.', t:'H', s:AQA_BIO_P2H_NOV21},
   {q:'A person who is heterozygous for the sickle-cell allele (HAHS) is described as having what?', o:['Sickle cell anaemia','Sickle cell trait','Normal red blood cells only','Two mutated alleles'], c:1, e:'Heterozygous (HAHS) individuals have sickle cell trait and are generally healthy.', t:'H', s:AQA_BIO_P2H_NOV21},
   {q:'Which classification group lies between Class and Family?', o:['Kingdom','Order','Genus','Phylum'], c:1, e:'The order is: Kingdom, Phylum, Class, Order, Family, Genus, Species.', t:'H', s:AQA_BIO_P2H_NOV21},
@@ -1073,7 +1241,26 @@ const QB = {
   {q:'Calculate the ratio of chicken biomass to maize seed biomass in its simplest form. (1000 chickens; mean mass 2.2 kg; 4200 kg maize seeds)', a:'Chicken biomass = 1000 × 2.2 = 2200 kg. Maize = 4200 kg. Ratio = 2200 : 4200. Simplify by dividing by 200 → 11 : 21.', s:AQA_BIO_P2H_JUN24},
   {q:'Chickens can use 80% of maize biomass for respiration and growth. What happens to the remaining 20%?', a:'It is lost as undigested material in faeces/egested waste. (The 20% passes through the gut and is excreted — it is not absorbed.)/', s:AQA_BIO_P2H_JUN24},
   {q:'Table 2 shows QPM maize has less leucine than normal maize. Suggest why a diet with less leucine does not slow chicken growth.', a:'Leucine is not an essential amino acid that chickens cannot make — or there is still enough leucine present in QPM for normal growth requirements. The gains in other essential amino acids (lysine, tryptophan) compensate and improve overall protein quality.', s:AQA_BIO_P2H_JUN24},
+  {q:'In an airtight compost heap, anaerobic decay takes place. Give one reason a gardener might not want to make compost this way.', a:'Anaerobic decay produces methane, which is a greenhouse gas that contributes to global warming.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Fertile compost needs a carbon:nitrogen ratio of about 25:1. A material contains 9.80 g of carbon and 0.20 g of nitrogen. Work out its carbon:nitrogen ratio.', a:'9.80 / 0.20 = 49, so the ratio is 49:1.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Three composting materials have carbon:nitrogen ratios of 7:1, 20:1 and 49:1. Fertile compost needs about 25:1. Which is best and why?', a:'The 20:1 material, because its ratio is closest to the ideal 25:1.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Explain how the carbon in dead leaves is recycled into the growth of new leaves.', a:'Microorganisms/decomposers (bacteria and fungi) break down the dead leaves and respire, releasing the carbon as carbon dioxide; plants take in this CO2 and use it in photosynthesis to make glucose; the glucose is used to make cellulose/proteins needed to grow new leaves.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Give three conditions that would cause a strawberry to decay more quickly.', a:'Any three: a higher temperature, more oxygen, more water/moisture, and more decay-causing microorganisms (bacteria/fungi/mould).', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Mould spores are hazardous. Give one safety precaution a student should take when investigating mould growth.', a:'Wear a face mask (to avoid inhaling spores); wearing gloves is also acceptable.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Describe how to test the hypothesis \'the higher the temperature, the faster mould grows\' using slices of bread, mould spores and sealable bags.', a:'Cut bread slices to the same size; add the same number of mould spores to each; seal each in a plastic bag; keep the bags at a range of different temperatures (e.g. fridge, room, incubator); leave each for the same length of time; measure the percentage cover of mould on each; repeat for reliability.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Give one variable that should be controlled in an investigation into how temperature affects mould growth on bread.', a:'Any one: the type/amount of bread, the size of the bread pieces, the number of mould spores added, or the amount of moisture.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Give two possible disadvantages of intensive farming methods, other than animal welfare/ethics.', a:'Any two: diseases spread more rapidly between closely housed animals; antibiotics can build up in the food chain (or overuse causes resistance); increased use of fossil fuels to heat the buildings.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Explain how keeping pigs in a warm, enclosed environment increases the efficiency of food production.', a:'Less energy/heat is lost keeping the body warm, and less energy is used in movement, so more of the energy from food is available for growth - more of the food is converted into body mass.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'The number of seals caught fell from 362 thousand in 2004 to 67 thousand in 2010. Calculate the percentage decrease.', a:'(362 - 67) / 362 x 100 = 81.5% (accept 81 or 81.49%).', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'A newspaper claimed that food security is poor in some communities because they eat fewer traditional foods such as seal. Suggest two reasons this conclusion might not be correct.', a:'They may eat other foods instead, so might still have food security; and we do not know whether other (traditional) food sources have also declined.', t:'H', s:AQA_BIO_P2H_SQP24},
 ], mc: [
+  {q:'Anaerobic decay in an airtight compost heap produces which gas?', o:['Oxygen','Methane','Nitrogen','Chlorine'], c:1, e:'Anaerobic (no oxygen) decay by microorganisms produces methane, a greenhouse gas.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'A composting material contains 9.80 g of carbon and 0.20 g of nitrogen. What is its carbon:nitrogen ratio?', o:['10:1','20:1','49:1','25:1'], c:2, e:'9.80 / 0.20 = 49, so the ratio is 49:1.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Fertile compost needs a carbon:nitrogen ratio of about 25:1. Which material is best to use?', o:['A material with ratio 7:1','A material with ratio 20:1','A material with ratio 49:1','A material with ratio 100:1'], c:1, e:'20:1 is closest to the ideal 25:1.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Which organisms break down the carbon compounds in dead leaves?', o:['Producers','Decomposers (microorganisms)','Predators','Herbivores'], c:1, e:'Decomposers such as bacteria and fungi break down dead material and respire, releasing carbon dioxide.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'Which condition would make food decay faster?', o:['Lower temperature','Less moisture','More oxygen','Fewer microorganisms'], c:2, e:'More oxygen speeds aerobic decay; higher temperature, more moisture and more microorganisms also speed decay.', t:'H', s:AQA_BIO_P2H_SQP24},
+  {q:'The number of seals caught fell from 362 thousand to 67 thousand. The percentage decrease is closest to:', o:['18%','50%','82%','95%'], c:2, e:'(362-67)/362 x 100 = 81.5%, which rounds to about 82%.', t:'H', s:AQA_BIO_P2H_SQP24},
+
   {q:'Which of these is an abiotic factor affecting plant growth on a lawn?', o:['Rabbits eating the plants','Trampling by people','Soil pH','Competition from other plants'], c:2, e:'Soil pH is a non-living (abiotic) factor; the others are living (biotic) factors.', t:'H', s:AQA_BIO_P2H_NOV21},
   {q:'How do algae obtain the energy they need?', o:['By eating other organisms','By photosynthesis','By absorbing it from the water','By respiration only'], c:1, e:'Algae are producers and make their own food by photosynthesis.', t:'H', s:AQA_BIO_P2H_NOV21},
   {q:'What is the advantage of golden rice compared with non-GM rice?', o:['It contains protein-rich mycoprotein','It has improved nutritional value','It produces human insulin','It is resistant to all pests'], c:1, e:'Golden rice is genetically modified to contain beta-carotene (a source of vitamin A), giving it improved nutritional value.', t:'H', s:AQA_BIO_P2H_NOV20},
@@ -1729,12 +1916,18 @@ const AQA_CHEM_P1H24='AQA Jun 2024 Chemistry Paper 1H';
 const AQA_CHEM_P2H24='AQA Jun 2024 Chemistry Paper 2H';
 const AQA_CHEM_P1H23='AQA Jun 2023 Chemistry Paper 1H';
 const AQA_CHEM_P2H23='AQA Jun 2023 Chemistry Paper 2H';
+const AQA_CHEM_P1F23='AQA Jun 2023 Chemistry Paper 1F';
+const AQA_CHEM_P1H22='AQA Jun 2022 Chemistry Paper 1H';
 
 const QB_CHEM = {
 
 // ── PAPER 1 TOPICS ──────────────────────────────────────────────────────────
 
 'atomic-structure': { name: 'Atomic Structure & Periodic Table', fc: [
+  {q:'An atom of element Z has 3 electrons, 4 neutrons and 3 protons. Name element Z and explain how you know.', a:'Lithium. The number of protons (3) is the atomic number, and element 3 in the periodic table is lithium.', t:'F', s:AQA_CHEM_P1F23},
+  {q:'Give the electronic structure (electron arrangement) of an atom that has 3 electrons.', a:'2,1 (two electrons in the first shell, one in the second).', t:'F', s:AQA_CHEM_P1F23},
+  {q:'Carbon has isotopes with mass numbers 12, 13 and 14. State what is the SAME and what is DIFFERENT about the number of particles in these isotopes.', a:'Same: number of protons (and electrons). Different: number of neutrons.', s:AQA_CHEM_P1F23},
+  {q:'DIAGRAM REQUIRED: Draw a labelled diagram of an atom of lithium that has 3 protons and 4 neutrons in the nucleus, showing the electrons in shells.', a:'DIAGRAM REQUIRED: a nucleus containing 3 protons and 4 neutrons, surrounded by 3 electrons arranged 2,1 in two shells.', t:'F', s:AQA_CHEM_P1F23},
   {q:'Describe the plum pudding model of the atom.', a:'The atom is a ball of positive charge with negative electrons embedded in it (like plums in a pudding). There is no nucleus.', s:AQA_CHEM_P1H23},
   {q:'Write the electron, proton and neutron in order of their discovery (earliest to latest).', a:'Electron (earliest), then proton, then neutron (latest).', s:AQA_CHEM_P1H23},
   {q:'Tennessine (Ts) has atomic number 117. Predict its number of outer shell electrons and give a reason.', a:'7 outer shell electrons. Reason: tennessine is in Group 7 of the periodic table, and the group number equals the number of outer shell electrons.', t:'H', s:AQA_CHEM_P1H23},
@@ -1763,7 +1956,18 @@ const QB_CHEM = {
   {q:'Name the two early models of the atom: (A) a diffuse ball of positive charge with electrons embedded throughout; (B) a central nucleus with electrons in circular orbits.', a:'Model A = plum pudding (Thomson) model. Model B = Bohr (nuclear/planetary) model.', s:AQA_CHEM_P1H24},
   {q:'Define isotopes in terms of subatomic particles.', a:'Atoms of the same element (same number of protons) but with different numbers of neutrons, giving different mass numbers.', s:AQA_CHEM_P1H24},
   {q:'Table 1 gives Group 0 densities (mg/cm³): He(Z=2) 0.2, Ne(Z=10) 0.8, Ar(Z=18) 1.6, Xe(Z=54) 5.4, Rn(Z=86) 9.1. Estimate the density of krypton (Z=36).', a:'DIAGRAM REQUIRED: Plot density against atomic number and read off at Z=36. Krypton density ≈ 3.4 mg/cm³ (accept 3.0–3.8).', t:'H', s:AQA_CHEM_P1H24},
+  {q:'An element is a dull (non-shiny) solid with a low melting point of 44 °C and does not conduct electricity. Is it most likely a metal or a non-metal? Explain.', a:'A non-metal. Non-metals are typically dull, have low melting points and do not conduct electricity, whereas metals are shiny, have high melting points and conduct electricity.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'An element R can form ions with formulae R²⁺ and R³⁺ (it has more than one ion charge). What type of element is R most likely to be?', a:'A transition element (transition metal). Transition metals can form ions with different charges (variable oxidation states).', t:'H', s:AQA_CHEM_P1H22},
+  {q:'Give two differences between the physical properties of the Group 1 metals and the transition elements.', a:'Any two: transition elements have higher melting points (Group 1 metals have low melting points); transition elements are harder/stronger (Group 1 metals are soft); transition elements are denser (Group 1 metals have low density).', t:'H', s:AQA_CHEM_P1H22},
+  {q:'Give the electronic structure (electron arrangement) of an aluminium atom (atomic number 13).', a:'2,8,3', t:'H', s:AQA_CHEM_P1H22},
+  {q:'Describe how metals conduct electricity. Answer in terms of electrons.', a:'Metals have delocalised (free) electrons. When a voltage is applied these electrons move/flow through the structure, carrying the electrical charge.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'Predict one observation, when rubidium and potassium are each added to water, that shows rubidium is more reactive than potassium.', a:'Any one: rubidium reacts more vigorously/faster; rubidium ignites or produces a (lilac) flame/sparks; rubidium fizzes more / moves faster / explodes.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'Rubidium is below potassium in Group 1. Explain why rubidium is more reactive than potassium.', a:'Rubidium atoms are larger / have more electron shells, so the outer electron is further from the nucleus and more shielded. The outer electron is held less strongly (weaker attraction), so it is lost more easily, making rubidium more reactive.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'Balance the equation for the reaction of rubidium with water: Rb + H₂O → ? Give the products and balance it.', a:'2 Rb + 2 H₂O → 2 RbOH + H₂ (forms rubidium hydroxide and hydrogen).', t:'H', s:AQA_CHEM_P1H22},
 ], mc: [
+  {q:'Which subatomic particle has no electrical charge?', o:['Electron','Neutron','Proton','Ion'], c:1, e:'The neutron has no charge. Protons are +1, electrons are -1.', t:'F', s:AQA_CHEM_P1F23},
+  {q:'Which two particles have approximately the same relative mass?', o:['An electron and a neutron','An electron and a proton','A neutron and a proton','All three are equal'], c:2, e:'A neutron and a proton both have a relative mass of 1. An electron has a relative mass of about 1/1835 (negligible).', t:'F', s:AQA_CHEM_P1F23},
+  {q:'The atoms of the isotopes of an element always have the same number of which particle?', o:['Neutrons','Protons','Both neutrons and protons','Nucleons'], c:1, e:'Isotopes are atoms of the same element, so they have the same number of protons; only the number of neutrons differs.', s:AQA_CHEM_P1F23},
   {q:'Which species has the same electronic structure as a noble gas?', o:['Na⁺','Cl','Na','Fe²⁺'], c:0, e:'Na (2,8,1) loses one electron → Na⁺ (2,8) — same as neon (a noble gas). This is why Na⁺ is stable.'},
   {q:'Which element has atoms with the same electronic structure as the chloride ion (Cl⁻)?', o:['Sodium','Argon','Fluorine','Sulfur'], c:1, e:'A chloride ion has gained one electron: Cl⁻ has 18 electrons (2,8,8), the same as argon (atomic number 18).', t:'H', s:AQA_CHEM_P1H23},
   {q:'The atomic number of an atom with 8 protons and 9 neutrons is:', o:['9','17','8','1'], c:2, e:'Atomic number = number of protons = 8. (Mass number = 8 + 9 = 17; this is oxygen-17.)'},
@@ -1777,6 +1981,9 @@ const QB_CHEM = {
 ]},
 
 'bonding': { name: 'Bonding, Structure & Properties', fc: [
+  {q:'Explain, in terms of structure, why graphite conducts electricity and why graphite is soft.', a:'Graphite conducts electricity because it has delocalised electrons that are free to move and carry charge. It is soft because there are no covalent bonds between its layers, so the layers can slide over each other.', s:AQA_CHEM_P1F23},
+  {q:'Solder is an alloy of tin and lead. Explain why solder is harder than pure tin.', a:'The tin and lead atoms are different sizes. This distorts the regular layers of atoms so the layers cannot easily slide over each other, making the alloy harder.', s:AQA_CHEM_P1F23},
+  {q:'DIAGRAM REQUIRED: Sodium chloride forms a giant ionic lattice. Describe (or complete a diagram of) the arrangement of the ions in solid sodium chloride.', a:'DIAGRAM REQUIRED: a regular 3D cubic lattice of alternating Na+ and Cl- ions, each ion surrounded by oppositely charged ions.', s:AQA_CHEM_P1F23},
   {q:'Draw a dot and cross diagram for a molecule of hydrogen chloride (HCl), showing outer shell electrons only.', a:'DIAGRAM REQUIRED: H and Cl share one pair of electrons (a single covalent bond). Show one shared pair between H and Cl (one dot, one cross), with Cl having three further non-bonding pairs (6 electrons) around it.', s:AQA_CHEM_P1H23},
   {q:'Methane is a gas at room temperature but poly(ethene) is a solid. Explain why they exist in different states.', a:'Both have weak intermolecular forces between molecules. Methane is a small molecule with weak intermolecular forces that need little energy to overcome, so it is a gas. Poly(ethene) molecules are very long/large, so there are many more intermolecular forces between chains; much more energy is needed to overcome them, so it is a solid.', t:'H', s:AQA_CHEM_P1H23},
   {q:'Describe how metals conduct electricity.', a:'Metals have delocalised (free) electrons that are not attached to any one atom. These electrons are free to move through the structure and carry electrical charge.', s:AQA_CHEM_P1H23},
@@ -1796,16 +2003,34 @@ const QB_CHEM = {
   {q:'What type of bond forms between a metal and a non-metal?', a:'Ionic bonding. The metal loses electrons to form positive ions; the non-metal gains electrons to form negative ions. E.g. Na gives an electron to Cl → Na⁺Cl⁻.', t:'F'},
   {q:'Describe how iron conducts thermal energy.', a:'Thermal energy is transferred by delocalised electrons, which move through the metallic lattice and carry kinetic energy from hotter to cooler regions.', s:AQA_CHEM_P1H24},
   {q:'Explain why alloys are harder than pure metals.', a:'In an alloy, atoms of different sizes are present. The different-sized atoms distort the regular layers, so the layers cannot slide over each other as easily — making the alloy harder.', s:AQA_CHEM_P1H24},
+  {q:'Describe the structure and bonding of diamond.', a:'Diamond has a giant covalent structure. Each carbon atom forms four strong covalent bonds to other carbon atoms, making a rigid 3D lattice.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'Explain why diamond has a very high melting point.', a:'Diamond is a giant covalent structure in which every carbon atom is joined by strong covalent bonds. A very large amount of energy is needed to break the many strong covalent bonds, so the melting point is very high.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'Molecules such as C₇₀ (a fullerene) can be used in medicine to carry drugs around the body. Suggest one reason why the C₇₀ molecule is suitable for this use.', a:'Its hollow, cage-like (spherical) structure can trap/hold a drug molecule inside and carry/deliver it.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'DIAGRAM REQUIRED: Draw a dot-and-cross diagram showing the outer shell electrons in a molecule of Si₂H₆ (each Si bonds to the other Si and to three H atoms).', a:'DIAGRAM REQUIRED: two silicon atoms joined by a shared pair (Si–Si single covalent bond), each silicon also sharing a pair of electrons with three hydrogen atoms, so every Si has four bonding pairs and every H has one shared pair.', t:'H', s:AQA_CHEM_P1H22},
 ], mc: [
+  {q:'Carbon is made of only one type of atom. Which type of substance is carbon?', o:['Compound','Element','Mixture','Solution'], c:1, e:'A substance made of only one type of atom is an element.', t:'F', s:AQA_CHEM_P1F23},
+  {q:'What happens to the atoms in pure tin as the solid tin melts?', o:['They gain energy and their arrangement becomes less ordered','They gain energy and their arrangement becomes more ordered','They lose energy and their arrangement becomes less ordered','They lose energy and their arrangement becomes more ordered'], c:0, e:'Melting requires energy input; the particles gain energy and become less ordered (solid lattice to free-moving liquid).', s:AQA_CHEM_P1F23},
+  {q:'Which type of small particle is often referred to as dust?', o:['Coarse particle','Fine particle','Nanoparticle','Atom'], c:0, e:'Coarse particles (PM10) are commonly called dust. Fine particles and nanoparticles are much smaller.', t:'F', s:AQA_CHEM_P1F23},
+  {q:'A spherical coarse particle has a diameter of 4000 nm and a fine particle has a diameter of 200 nm. How many times larger is the diameter of the coarse particle?', o:['2 times','5 times','20 times','50 times'], c:2, e:'4000 / 200 = 20 times larger.', s:AQA_CHEM_P1F23},
+  {q:'A sun cream contains titanium oxide. What is one advantage of using nanoparticles of titanium oxide rather than normal-sized particles?', o:['A smaller mass of nanoparticles is needed to be effective','Nanoparticles cost more for the same mass','Nanoparticles have a lower surface area to volume ratio','Nanoparticles are easier to see on the skin'], c:0, e:'Nanoparticles have a very high surface area to volume ratio, so a smaller mass is needed to be effective.', s:AQA_CHEM_P1F23},
+  {q:'Titanium oxide contains Ti(4+) ions and O(2-) ions. What is the formula of titanium oxide?', o:['TiO2','TiO4','Ti2O','Ti4O2'], c:0, e:'To balance charges, one Ti4+ needs two O2- ions: TiO2.', s:AQA_CHEM_P1F23},
   {q:'Which type of bonding involves the transfer of electrons?', o:['Covalent','Metallic','Ionic','Van der Waals'], c:2, e:'Ionic bonding: electrons transfer from metal to non-metal → oppositely charged ions held by electrostatic attraction.'},
   {q:'Why do metals conduct electricity?', o:['They have mobile ions','They have delocalised electrons free to carry charge','They are liquid at room temperature','They have simple molecular structures'], c:1, e:'Metallic bonding produces a sea of delocalised electrons that move through the structure and carry electrical charge.'},
   {q:'Diamond has a very high melting point because:', o:['It has strong intermolecular forces','It has ionic bonds','It has a giant covalent structure — every atom bonded by strong covalent bonds throughout','It is made of very heavy atoms'], c:2, e:'Diamond: giant covalent lattice where every C atom bonds to 4 others by strong covalent bonds. Enormous energy needed to break them.'},
   {q:'A substance has a low melting point and does not conduct electricity in any state. It is most likely:', o:['An ionic compound','A metallic element','A simple molecular substance','A giant covalent structure'], c:2, e:'Low melting point → weak intermolecular forces. No electrical conduction in any state → no free ions or electrons. Matches a simple molecular substance.'},
   {q:'Sodium chloride conducts electricity when molten because:', o:['It forms covalent bonds when heated','The Na⁺ and Cl⁻ ions become free to move and carry charge','Electrons become delocalised','It becomes a simple molecular substance'], c:1, e:'Melting breaks down the lattice structure, freeing the ions to move. Mobile ions can carry electrical charge through the liquid.', t:'F'},
   {q:'Why do nanoparticles have different properties from bulk materials?', o:['Different chemical formula','Much higher surface area to volume ratio','Always toxic','Made of different elements'], c:1, e:'The extremely high surface area to volume ratio means a far greater proportion of atoms are on the surface, giving different physical/chemical properties.', t:'H'},
+  {q:'Name the type of bonding in compounds formed between metals and non-metals.', o:['Covalent','Metallic','Ionic','Intermolecular'], c:2, e:'Metals lose electrons and non-metals gain them, forming oppositely charged ions held together by ionic bonds.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'Figure 6 represents the hollow cage-like molecule C₇₀. What is the name of this type of molecule?', o:['Fullerene','Graphene','Nanotube','Polymer'], c:0, e:'Hollow, cage-like molecules of carbon (such as C₆₀ and C₇₀) are called fullerenes.', t:'H', s:AQA_CHEM_P1H22},
 ]},
 
 'quantitative-chemistry': { name: 'Quantitative Chemistry', fc: [
+  {q:'A sodium hydroxide solution has a concentration of 4.00 g/dm3. Calculate the mass of sodium hydroxide in 25.0 cm3 of this solution. (1 dm3 = 1000 cm3)', a:'Volume = 25.0/1000 = 0.025 dm3. Mass = 0.025 x 4.00 = 0.1 g.', t:'F', s:AQA_CHEM_P1F23},
+  {q:'Calculate the relative formula mass (Mr) of Fe2O3. (Ar: Fe = 56, O = 16)', a:'Mr = (2 x 56) + (3 x 16) = 112 + 48 = 160.', s:AQA_CHEM_P1F23},
+  {q:'For the reaction CuO + H2 -> Cu + H2O, calculate the percentage atom economy for making copper. (Ar Cu = 63.5; Mr H2 = 2, CuO = 79.5)', a:'Atom economy = 63.5 / (2 + 79.5) x 100 = 63.5/81.5 x 100 = 77.9%.', t:'H', s:AQA_CHEM_P1F23},
+  {q:'A solder contains 6 lead atoms for every 24 tin atoms. Calculate the percentage of the atoms that are lead.', a:'Total atoms = 6 + 24 = 30. Percentage lead = 6/30 x 100 = 20%.', s:AQA_CHEM_P1F23},
+  {q:'A cubic nanoparticle has a volume of 27 nm3 (each side = 3 nm). Using surface area = 6 x area of one face, calculate the surface area and the simplest surface area : volume ratio.', a:'Area of one face = 3 x 3 = 9 nm2. Surface area = 6 x 9 = 54 nm2. Ratio = 54 : 27 = 2 : 1.', s:AQA_CHEM_P1F23},
+  {q:'Element R has two isotopes: mass number 6 (7.6% abundance) and mass number 7 (92.4% abundance). Calculate the relative atomic mass of R to 1 decimal place.', a:'Ar = (6 x 7.6 + 7 x 92.4) / 100 = (45.6 + 646.8)/100 = 692.4/100 = 6.9.', s:AQA_CHEM_P1F23},
   {q:'Balance the equation: CuFeS2 + O2 → CuSO4 + FeSO4 (chalcopyrite reacting with oxygen).', a:'CuFeS2 + 4O2 → CuSO4 + FeSO4. (Cu 1, Fe 1, S 2, O 8 on each side.)', t:'H', s:AQA_CHEM_P2H23},
   {q:'Calculate the percentage by mass of copper in CuFeS2. (Ar: S 32, Fe 56, Cu 63.5)', a:'Mr = 63.5 + 56 + (2×32) = 183.5. % Cu = (63.5 ÷ 183.5) × 100 = 34.6%.', t:'H', s:AQA_CHEM_P2H23},
   {q:'An amino acid has Mr = 75. The –COOH section has formula CO2H. Calculate the relative formula mass of the –COOH section. (Ar: H 1, C 12, N 14, O 16)', a:'COOH = 12 + 16 + 16 + 1 = 45.', t:'H', s:AQA_CHEM_P2H23},
@@ -1831,7 +2056,13 @@ const QB_CHEM = {
   {q:'Four trials gave sodium chloride concentrations of 35.2, 34.6, 36.4 and 33.8 g/dm3. Sodium ions are 39.3 percent by mass of NaCl. Calculate the mean concentration of sodium ions.', a:'Mean NaCl = (35.2+34.6+36.4+33.8)/4 = 140/4 = 35.0 g/dm3. Mean Na+ = 35.0 x 39.3/100 = 13.8 g/dm3.', t:'H', s:AQA_CHEM_P2H24},
   {q:'Air is 20 percent oxygen. Calculate the volume of air needed to react with 3.50 dm3 of hydrogen, given 2H2 + O2 -> 2H2O.', a:'Volume of oxygen = 3.50/2 = 1.75 dm3. Volume of air = 1.75 x 100/20 = 8.75 dm3.', t:'H', s:AQA_CHEM_P2H24},
   {q:'14 cm3 of hydrogen gas was collected. The volume of one mole of any gas at rtp is 24 dm3. Calculate the moles of hydrogen.', a:'14 cm3 = 0.014 dm3. Moles = 0.014/24 = 5.8 x 10^-4 mol.', t:'H', s:AQA_CHEM_P2H24},
+  {q:'Calculate the number of C₇₀ molecules that can be made from one mole of carbon atoms. (Avogadro constant = 6.02 × 10²³ per mole.)', a:'One mole of carbon atoms = 6.02 × 10²³ atoms. Each C₇₀ molecule uses 70 atoms, so number of molecules = 6.02 × 10²³ ÷ 70 = 8.6 × 10²¹.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'Neon has three isotopes: mass 20 (90.48%), mass 21 (0.27%) and mass 22 (9.25%). Calculate the relative atomic mass (Ar) of neon to 3 significant figures.', a:'Ar = (20×90.48 + 21×0.27 + 22×9.25) ÷ 100 = (1809.6 + 5.67 + 203.5) ÷ 100 = 2018.77 ÷ 100 = 20.2 (3 s.f.).', t:'H', s:AQA_CHEM_P1H22},
+  {q:'Calculate the minimum mass of magnesium needed to completely reduce 1.2 kg of silicon dioxide. Equation: 2 Mg + SiO₂ → Si + 2 MgO. (Ar: O=16, Mg=24, Si=28.)', a:'Mr(SiO₂)=28+32=60. Moles SiO₂ = 1200 g ÷ 60 = 20 mol. From the equation 2 mol Mg per 1 mol SiO₂, so moles Mg = 40 mol. Mass = 40 × 24 = 960 g.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'30 cm³ of Si₂H₆ reacts with 150 cm³ (excess) of oxygen: 2 Si₂H₆(g) + 7 O₂(g) → 4 SiO₂(s) + 6 H₂O(g). Calculate the total volume of gases present after the reaction (same temperature and pressure).', a:'O₂ used = 30 × 7/2 = 105 cm³, so O₂ left = 150 − 105 = 45 cm³. H₂O(g) made = 30 × 6/2 = 90 cm³ (SiO₂ is solid, so not counted). Total gas volume = 45 + 90 = 135 cm³.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'25.00 cm³ of hydrochloric acid reacted with 23.50 cm³ of 0.100 mol/dm³ barium hydroxide. Equation: 2 HCl + Ba(OH)₂ → BaCl₂ + 2 H₂O. Calculate the concentration of the hydrochloric acid in mol/dm³.', a:'Moles Ba(OH)₂ = 0.100 × 23.50/1000 = 0.00235 mol. Ratio HCl:Ba(OH)₂ = 2:1, so moles HCl = 0.00470 mol. Concentration = 0.00470 ÷ (25.00/1000) = 0.188 mol/dm³.', t:'H', s:AQA_CHEM_P1H22},
 ], mc: [
+  {q:'12 g of carbon contains 6.02 x 10^23 atoms. Which expression gives the mass of one atom of carbon?', o:['12 / (6.02 x 10^23)','(6.02 x 10^23) / 12','12 x 6.02 x 10^23','6.02 x 10^23 - 12'], c:0, e:'Mass of one atom = total mass / number of atoms = 12 / (6.02 x 10^23) grams.', t:'F', s:AQA_CHEM_P1F23},
   {q:'0.12 mol of iron reacts with 0.18 mol of Cl₂. Which is the correct equation?', o:['Fe + Cl₂ → FeCl₂','Fe + 3 Cl₂ → FeCl₆','2 Fe + Cl₂ → 2 FeCl','2 Fe + 3 Cl₂ → 2 FeCl₃'], c:3, e:'The mole ratio 0.12:0.18 = 2:3, so 2 Fe : 3 Cl₂. The balanced equation is 2 Fe + 3 Cl₂ → 2 FeCl₃.', t:'H', s:AQA_CHEM_P1H24},
   {q:'Fe₂O₃ + 3 C → 2 Fe + 3 CO. Which expression gives the mass of carbon needed to produce 1 mole of iron? (C = 12)', o:['(1/3) × 12 g','(3/2) × 12 g','1 × 12 g','3 × 12 g'], c:1, e:'3 mol of carbon produce 2 mol of iron, so 1 mol of iron needs 3/2 mol of carbon = (3/2) × 12 g = 18 g.', t:'H', s:AQA_CHEM_P1H23},
   {q:'What is the ratio of the numbers of ions in Fe₃O₄?', o:['2 Fe²⁺ : 1 Fe³⁺ : 4 O²⁻','1 Fe²⁺ : 2 Fe³⁺ : 4 O²⁻','3 Fe²⁺ : 4 O²⁻','3 Fe³⁺ : 4 O²⁻'], c:1, e:'Fe₃O₄ contains 1 Fe²⁺ and 2 Fe³⁺ ions, balancing 4 O²⁻ ions: (2) + (2×3) = 8 = 4×2.', t:'H', s:AQA_CHEM_P1H24},
@@ -1844,6 +2075,18 @@ const QB_CHEM = {
 ]},
 
 'chemical-changes': { name: 'Chemical Changes', fc: [
+  {q:'Which ion is always produced by acids in aqueous solution, and which ion is always produced by alkalis in aqueous solution?', a:'Acids produce H+ ions. Alkalis produce OH- ions.', s:AQA_CHEM_P1F23},
+  {q:'In an acid-alkali titration, a repeated trial gives a volume of acid that is much larger than the others. Suggest one reason for this anomalous result.', a:'Any one: the acid was not added drop by drop near the end point; the flask was not swirled; the apparatus was not rinsed; the burette/pipette was misread; too much was added past the end point.', s:AQA_CHEM_P1F23},
+  {q:'Suggest one reason why platinum is used to make jewellery.', a:'It is unreactive so it does not tarnish/corrode; it has an attractive shiny appearance; it can be shaped easily (malleable).', s:AQA_CHEM_P1F23},
+  {q:'Give two observations that could be seen when a piece of sodium is added to water.', a:'Any two: it fizzes/produces bubbles of gas; it moves around on the surface; it floats; it melts into a ball; it gets smaller and disappears.', s:AQA_CHEM_P1F23},
+  {q:'Give one reason why molten sodium chloride conducts electricity. Refer to ions in your answer.', a:'In the molten (liquid) state the ions are free to move, so they can carry the charge.', s:AQA_CHEM_P1F23},
+  {q:'During the electrolysis of molten potassium chloride, name the product formed at the negative electrode and the product formed at the positive electrode.', a:'Potassium is formed at the negative electrode; chlorine is formed at the positive electrode.', s:AQA_CHEM_P1F23},
+  {q:'Balance the equation for the extraction of iron: Fe2O3 + 3C -> __Fe + __CO', a:'Fe2O3 + 3C -> 2Fe + 3CO.', s:AQA_CHEM_P1F23},
+  {q:'In the reaction Fe2O3 + 3C -> 2Fe + 3CO, how does the equation show that the iron oxide is reduced?', a:'The iron oxide loses oxygen (reduction is loss of oxygen).', s:AQA_CHEM_P1F23},
+  {q:'In an experiment, metals are added to solutions of different metal sulfates. Give one observation that would show a displacement reaction had taken place.', a:'A colour change (in the solution or on the metal), or a temperature change/heat released.', s:AQA_CHEM_P1F23},
+  {q:'Four metals are tested in each other\'s sulfate solutions. Metal D displaces A, B and C; metal B displaces A and C; metal A displaces only C; metal C displaces none. Put the metals in order of reactivity (most to least) and give a reason.', a:'Order: D, B, A, C (most to least reactive). Reason: a more reactive metal displaces a less reactive metal from its compound, so the metal that carries out the most displacements is the most reactive.', s:AQA_CHEM_P1F23},
+  {q:'Describe how to make pure, dry crystals of zinc chloride from zinc carbonate and dilute hydrochloric acid.', a:'Add zinc carbonate to warm dilute hydrochloric acid until it is in excess (some solid remains and there is no more fizzing). Filter to remove the excess zinc carbonate. Heat the filtrate (e.g. on a water bath) to evaporate some water to the point of crystallisation. Leave the solution to crystallise, then pat the crystals dry.', s:AQA_CHEM_P1F23},
+  {q:'Other than zinc carbonate, name two substances that each react with dilute hydrochloric acid to make zinc chloride.', a:'Zinc (metal) and zinc oxide (zinc hydroxide is also acceptable).', s:AQA_CHEM_P1F23},
   {q:'Plan a method to make pure, dry crystals of zinc chloride from zinc carbonate and dilute hydrochloric acid.', a:'Add excess zinc carbonate to dilute hydrochloric acid and stir until no more reacts (solid remains, so all the acid is used up). Filter to remove the excess zinc carbonate. Heat the zinc chloride solution (filtrate) to evaporate some water to the point of crystallisation. Leave to cool so crystals form, then filter off and pat dry the crystals.', s:AQA_CHEM_P1H23},
   {q:'Name two substances (other than zinc carbonate) that can each react with dilute acid to make zinc chloride.', a:'Any two of: zinc (metal), zinc oxide, zinc hydroxide.', s:AQA_CHEM_P1H23},
   {q:'Write a balanced symbol equation for the reaction between barium and hydrochloric acid.', a:'Ba + 2 HCl → BaCl₂ + H₂.', t:'H', s:AQA_CHEM_P1H23},
@@ -1880,7 +2123,32 @@ const QB_CHEM = {
   {q:'What is neutralisation?', a:'Acid + base → salt + water. H⁺(aq) + OH⁻(aq) → H₂O(l). pH moves towards 7.'},
   {q:'What test confirms hydrogen gas is produced?', a:'Hold a burning splint near the gas — you hear a "squeaky pop". Hydrogen ignites and burns rapidly.', t:'F'},
   {q:'Bicycle chains are made from an iron alloy and rust without protection. Paint cannot be used. Suggest how to protect them from rusting.', a:'Coat them with oil or grease, galvanise them (zinc coat), or make them from stainless steel.', t:'H', s:AQA_CHEM_P2H24},
+  {q:'A student adds zinc oxide to hydrochloric acid until the zinc oxide is in excess. Give one observation showing the zinc oxide is in excess.', a:'Some solid zinc oxide remains/no longer dissolves (unreacted solid is left at the bottom).', t:'H', s:AQA_CHEM_P1H22},
+  {q:'When making zinc chloride from zinc oxide and hydrochloric acid, why is excess zinc oxide used rather than excess hydrochloric acid?', a:'So that all the acid is used up/reacted. The excess solid zinc oxide can then be filtered off, leaving a pure salt solution with no leftover acid.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'Name one compound, other than zinc oxide, that could be added to hydrochloric acid to produce zinc chloride.', a:'Zinc carbonate (or zinc hydroxide).', t:'H', s:AQA_CHEM_P1H22},
+  {q:'Describe how a student should obtain crystals of zinc chloride from a solution of zinc chloride.', a:'Heat the solution to evaporate some of the water (until the point of crystallisation), then leave it to cool so crystals form. Filter/dry the crystals.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'Complete the ionic equation for the displacement reaction: Zn + ____ → Zn²⁺ + ____ (zinc reacts with copper chloride solution).', a:'Zn + Cu²⁺ → Zn²⁺ + Cu', t:'H', s:AQA_CHEM_P1H22},
+  {q:'In the reaction Zn + CuCl₂ → ZnCl₂ + Cu, why is zinc described as being oxidised?', a:'Zinc loses electrons (Zn → Zn²⁺ + 2e⁻), and oxidation is loss of electrons.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'In the electrolysis of molten sodium chloride, suggest one reason why the products must be kept apart.', a:'The products (sodium and chlorine) would react together / react vigorously (and the reaction could be dangerous), so they must be kept apart.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'Aqueous sodium chloride contains sodium ions and chloride ions. Name the two other ions present in the solution.', a:'Hydrogen ions (H⁺) and hydroxide ions (OH⁻), which come from the water.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'Concentrated aqueous sodium chloride is electrolysed, producing two gases and an alkaline solution. Name the alkaline solution produced.', a:'Sodium hydroxide (solution).', t:'H', s:AQA_CHEM_P1H22},
+  {q:'Explain how the alkaline solution (sodium hydroxide) is produced during the electrolysis of aqueous sodium chloride. Refer to the electrodes.', a:'At the cathode H⁺ ions are discharged as hydrogen gas, and at the anode Cl⁻ ions are discharged as chlorine gas. This leaves Na⁺ and OH⁻ ions in solution, forming sodium hydroxide (an alkali).', t:'H', s:AQA_CHEM_P1H22},
+  {q:'Silicon dioxide can be reduced by carbon: 2 C + SiO₂ → Si + 2 CO. Explain what this shows about the position of silicon in the reactivity series.', a:'Carbon displaces silicon from its oxide, so carbon is more reactive than silicon. Therefore silicon is below carbon in the reactivity series.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'Magnesium can reduce silicon dioxide: 2 Mg + SiO₂ → Si + 2 MgO. Give one reason why the products are difficult to separate.', a:'Both products (silicon and magnesium oxide) are solids, so they are difficult to separate from each other.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'Explain why the pH of an acid depends on both the strength of the acid and the concentration of the acid.', a:'Strength: a strong acid is fully ionised in water (releasing more H⁺ ions) while a weak acid is only partially ionised, so for the same concentration a strong acid has a lower pH. Concentration: a higher concentration means more H⁺ ions per unit volume, giving a lower pH. The more H⁺ ions in solution, the lower the pH.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'In a titration the burette readings (cm³) were 23.90, 23.45, 23.55, 23.55 and 23.45. Explain why a student would use 23.50 cm³ as the mean titre.', a:'23.90 is an anomalous result, so it is ignored. The mean is taken of the close/concordant results (23.45, 23.55, 23.55, 23.45), which average to 23.50 cm³.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'Sulfuric acid is titrated with barium hydroxide: H₂SO₄ + Ba(OH)₂ → BaSO₄ + 2 H₂O. Explain why the electrical conductivity of the mixture is zero when the acid has just been neutralised.', a:'All the ions have been removed from solution: the barium and sulfate ions form an insoluble solid (BaSO₄ precipitate) and the H⁺ and OH⁻ ions form water. With no ions left free to move in solution, there is nothing to carry charge, so conductivity is zero.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'After exact neutralisation of sulfuric acid with barium hydroxide, adding a further 10 cm³ of barium hydroxide solution increases the electrical conductivity. Give one reason why.', a:'The extra barium hydroxide adds more ions (Ba²⁺ and OH⁻) to the mixture, and these free ions can carry charge, so conductivity increases.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'DIAGRAM REQUIRED: Draw a simple cell that uses zinc, copper and an electrolyte to light a lamp. Label the zinc, the copper and the other substance.', a:'DIAGRAM REQUIRED: a zinc electrode and a copper electrode both dipping into an electrolyte (e.g. salt/acid solution), connected through wires to a lamp to complete the circuit; label zinc, copper and the electrolyte.', t:'H', s:AQA_CHEM_P1H22},
 ], mc: [
+  {q:'What type of aqueous solution has a pH of 11?', o:['Acidic','Alkaline','Neutral','Cannot be determined'], c:1, e:'pH above 7 is alkaline; pH 11 is alkaline.', t:'F', s:AQA_CHEM_P1F23},
+  {q:'Which piece of apparatus should be used to measure an accurate fixed volume of 25.0 cm3 of solution in a titration?', o:['Beaker','Pipette','Ruler','Measuring cylinder'], c:1, e:'A pipette measures an accurate fixed volume (e.g. 25.0 cm3).', t:'F', s:AQA_CHEM_P1F23},
+  {q:'Which piece of apparatus should be used to add acid drop by drop in a titration?', o:['Balance','Burette','Measuring cylinder','Pipette'], c:1, e:'A burette delivers a variable volume drop by drop and is read to find the volume added.', t:'F', s:AQA_CHEM_P1F23},
+  {q:'In a titration the volumes of acid added were 24.3, 24.5, 28.1 and 24.4 cm3. Which is the anomalous result?', o:['24.3 cm3','24.5 cm3','28.1 cm3','24.4 cm3'], c:2, e:'28.1 cm3 is much larger than the other concordant results, so it is anomalous.', s:AQA_CHEM_P1F23},
+  {q:'Aluminium is extracted by electrolysis using a molten mixture of aluminium oxide and cryolite. Why is the mixture used instead of pure aluminium oxide?', o:['The mixture has a lower melting point than pure aluminium oxide','The mixture has the same melting point','The mixture has a higher melting point','The mixture conducts less electricity'], c:0, e:'Cryolite lowers the melting point, saving energy compared with melting pure aluminium oxide.', s:AQA_CHEM_P1F23},
+  {q:'Electrolysis of aqueous sodium sulfate produces hydrogen and oxygen. What is the source of the hydrogen and oxygen?', o:['Air','Sulfate ions','Water','Sodium ions'], c:2, e:'The water in the solution is the source of both the hydrogen and the oxygen.', t:'H', s:AQA_CHEM_P1F23},
+  {q:'In the electrolysis of aqueous sodium sulfate, why is hydrogen produced at the negative electrode instead of sodium?', o:['Hydrogen is less reactive than sodium','Hydrogen has the same reactivity as sodium','Hydrogen is more reactive than sodium','Sodium ions are not present'], c:0, e:'When a metal is more reactive than hydrogen, hydrogen is discharged at the negative electrode instead of the metal.', t:'H', s:AQA_CHEM_P1F23},
+  {q:'Copper is a transition metal and sodium is a Group 1 metal. Which statement is a correct difference between them?', o:['Copper is harder than sodium','Copper has a lower melting point','Copper is less dense','Copper is more reactive'], c:0, e:'Transition metals like copper are harder, denser, stronger, have higher melting points and are less reactive than Group 1 metals.', t:'F', s:AQA_CHEM_P1F23},
   {q:'What is the half equation at the positive electrode when aqueous calcium chloride is electrolysed?', o:['2 Cl⁻ → Cl₂ + 2 e⁻','Cl₂ + 2 e⁻ → 2 Cl⁻','4 OH⁻ → O₂ + 2 H₂O + 4 e⁻','O₂ + 2 H₂O + 4 e⁻ → 4 OH⁻'], c:0, e:'At the positive electrode (anode) chloride ions are oxidised (lose electrons): 2 Cl⁻ → Cl₂ + 2 e⁻.', t:'H', s:AQA_CHEM_P1H24},
   {q:'Ionic equation: A + 2 B⁺ → 2 B + A²⁺. Why is this a redox reaction?', o:['A gains electrons and B⁺ loses electrons','A loses electrons and B⁺ gains electrons','Both A and B⁺ gain electrons','Both A and B⁺ lose electrons'], c:1, e:'A goes from 0 to +2, so it loses electrons (oxidised). B⁺ goes to B (0), so it gains electrons (reduced). Loss and gain together = redox.', t:'H', s:AQA_CHEM_P1H23},
   {q:'From the reactivity data D > C > A > B, which metal has the greatest tendency to form positive ions?', o:['A','B','C','D'], c:3, e:'The most reactive metal loses electrons most readily, forming positive ions most easily. D is the most reactive.', t:'H', s:AQA_CHEM_P1H23},
@@ -1892,9 +2160,15 @@ const QB_CHEM = {
   {q:'What are the products of reacting hydrochloric acid with sodium hydroxide?', o:['Sodium + water','Sodium chloride + hydrogen','Sodium chloride + water','Sodium carbonate + water'], c:2, e:'HCl + NaOH → NaCl + H₂O. Acid + alkali → salt + water. This is neutralisation.', t:'F'},
   {q:'In the reaction Fe + CuSO₄ → FeSO₄ + Cu, iron is:', o:['Reduced and is the oxidising agent','Oxidised and is the reducing agent','Neither oxidised nor reduced','The catalyst'], c:1, e:'Fe → Fe²⁺ (loses electrons) = oxidised. The species that is oxidised is the reducing agent.', t:'H'},
   {q:'Why can\'t carbon reduce aluminium oxide?', o:['Al₂O₃ has too high a melting point','Aluminium is more reactive than carbon so carbon cannot displace it','Carbon reacts with Al to make carbide','Al₂O₃ dissolves in carbon'], c:1, e:'Carbon can only reduce metals below it in the reactivity series. Aluminium is above carbon, so electrolysis is required.'},
+  {q:'Which is the correct half equation for the production of sodium during electrolysis of molten sodium chloride?', o:['Na + e⁻ → Na⁺','Na → Na⁺ + e⁻','Na⁺ + e⁻ → Na','Na⁺ → Na + e⁻'], c:2, e:'Sodium ions gain an electron (reduction) at the cathode: Na⁺ + e⁻ → Na.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'Which type of particle passes through the mesh between the electrodes in the electrolysis of molten sodium chloride?', o:['Atom','Electron','Ion','Molecule'], c:2, e:'In molten sodium chloride the charge is carried by the mobile ions (Na⁺ and Cl⁻), so ions move through the cell.', t:'H', s:AQA_CHEM_P1H22},
 ]},
 
 'energy-changes': { name: 'Energy Changes', fc: [
+  {q:'When ammonium nitrate is dissolved in water the temperature of the solution decreases. How does this show that dissolving ammonium nitrate is endothermic?', a:'The temperature decreased, which shows that energy was taken in from the surroundings (an endothermic change).', s:AQA_CHEM_P1F23},
+  {q:'A student dissolves different masses of ammonium nitrate in 200 cm3 of water and records the lowest temperature reached. State the independent variable and the dependent variable.', a:'Independent variable: the mass of ammonium nitrate added. Dependent variable: the (lowest) temperature of the solution.', s:AQA_CHEM_P1F23},
+  {q:'A mean lowest temperature is recorded as 16.5 +/- 0.3 C. Explain why +/- 0.3 C is included after the mean.', a:'The 0.3 C is the uncertainty - it shows the range of the repeated values either side of the mean (values lie up to 0.3 C above or below 16.5 C).', s:AQA_CHEM_P1F23},
+  {q:'DIAGRAM REQUIRED: Masses of ammonium nitrate from 4.0 to 24.0 g dissolved in 200 cm3 of water give lowest temperatures falling from 18.2 C to 10.6 C. Plot a graph and use the line of best fit to find the initial temperature of the water.', a:'DIAGRAM REQUIRED: plot temperature against mass, draw a line of best fit and extrapolate it back to mass = 0 (the y-axis) to read off the initial water temperature.', s:AQA_CHEM_P1F23},
   {q:'A student dissolves different masses of ammonium nitrate in 200 cm³ of water and records the lowest temperature reached. Give the independent and dependent variables.', a:'Independent variable: mass of ammonium nitrate added. Dependent variable: lowest temperature of the solution.', s:AQA_CHEM_P1H23},
   {q:'Using temperature results, plot the data and draw a line of best fit, then find the initial temperature of the water by extending the line.', a:'DIAGRAM REQUIRED: Plot lowest temperature against mass of ammonium nitrate, draw a line of best fit and extend it back to 0 g; the intercept gives the initial water temperature (≈20 °C).', s:AQA_CHEM_P1H23},
   {q:'How do the results show that dissolving ammonium nitrate in water is endothermic?', a:'The temperature of the solution decreases (falls below the starting temperature), showing energy is taken in from the surroundings.', s:AQA_CHEM_P1H23},
@@ -1922,7 +2196,12 @@ const QB_CHEM = {
   {q:'Is combustion exothermic or endothermic? How do you know?', a:'Exothermic — it releases energy to the surroundings as heat and light. The temperature of the surroundings increases.', t:'F'},
   {q:'How would a reaction profile for the reaction of ammonia with oxygen differ if no catalyst were used?', a:'The line would reach a higher peak, because without a catalyst the activation energy is higher.', t:'H', s:AQA_CHEM_P2H24},
   {q:'On a reaction profile for the catalysed reaction of ammonia and oxygen, what must you label and where?', a:'DIAGRAM REQUIRED: Label the reactants (ammonia and oxygen) on the left and products (nitric acid and water) on the right, and draw a vertical arrow from the dotted reactant level up to the peak to show the activation energy.', t:'H', s:AQA_CHEM_P2H24},
+  {q:'How can a reaction profile show that a reaction is exothermic?', a:'The products are at a lower energy than the reactants (the energy level goes down), showing energy is released to the surroundings.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'On a reaction profile, what do the activation energy and the overall energy change represent?', a:'The activation energy is the minimum energy needed for reactant particles to react (the height from the reactants up to the peak). The overall energy change is the difference in energy between the reactants and the products.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'A student plans to find the highest temperature reached when different masses of sodium carbonate powder react with hydrochloric acid (an exothermic reaction). Outline a suitable method.', a:'Measure a fixed volume of hydrochloric acid into an insulated cup and record its temperature. Add a known mass of sodium carbonate, stir, and record the highest temperature reached. Repeat with different masses of sodium carbonate, keeping the volume and concentration of acid the same. Plot highest temperature against mass.', t:'H', s:AQA_CHEM_P1H22},
+  {q:'DIAGRAM REQUIRED: Sketch the graph of highest temperature reached against mass of sodium carbonate when sodium carbonate is added to a fixed amount of hydrochloric acid until the carbonate is in excess.', a:'DIAGRAM REQUIRED: temperature rises in a straight line as mass increases (more reaction, more heat) and then levels off to a horizontal line once the acid is used up and the sodium carbonate is in excess.', t:'H', s:AQA_CHEM_P1H22},
 ], mc: [
+  {q:'Four repeat trials of an experiment give lowest temperatures of 16.2, 16.6, 16.8 and 16.4 C, scattered around the mean. What type of error does this scatter show?', o:['Random error','Systematic error','Zero error','Human error only'], c:0, e:'Small unpredictable variation scattered around the mean is random error.', s:AQA_CHEM_P1F23},
   {q:'The reaction between propane and oxygen is exothermic. Which reaction profile is correct?', o:['Products higher in energy than reactants','Products lower in energy than reactants, with an activation energy hump','Reactants and products at equal energy','A straight downward line with no activation energy'], c:1, e:'In an exothermic reaction the products are at a lower energy than the reactants; the activation energy is the energy hump from reactants up to the peak.', t:'H', s:AQA_CHEM_P1H24},
   {q:'H₂ + Cl₂ → 2 HCl. Bond energies (kJ/mol): H–H 436, Cl–Cl 346, H–Cl 432. Which expression gives the overall energy change?', o:['436 + 346 + 432','436 + 346 + (2 × 432)','436 + 346 − 432','436 + 346 − (2 × 432)'], c:3, e:'Energy change = bonds broken − bonds made. Broken: H–H + Cl–Cl = 436 + 346. Made: 2 × H–Cl = 2 × 432. So 436 + 346 − (2 × 432).', t:'H', s:AQA_CHEM_P1H23},
   {q:'In a repeat experiment the lowest temperatures recorded were 16.2, 16.6, 16.8 and 16.4 °C. What type of error do these varying results show?', o:['Random error','Systematic error','Zero error','Human error of judgement only'], c:0, e:'Readings scattered randomly around the mean indicate random error.', s:AQA_CHEM_P1H23},
@@ -2402,6 +2681,7 @@ function toggleAdmin(){
   const btn=document.getElementById('btn-admin');
   if(ADMIN){
     ADMIN=false; btn.classList.remove('on'); btn.textContent='🔒'; btn.title='Admin tools';
+    document.getElementById('btn-add-q').style.display='none';
     renderCard();
     return;
   }
@@ -2409,6 +2689,7 @@ function toggleAdmin(){
   if(code===null)return;
   if(code===ADMIN_CODE){
     ADMIN=true; btn.classList.add('on'); btn.textContent='🛠'; btn.title='Admin ON — tap to exit';
+    document.getElementById('btn-add-q').style.display='';
     renderCard();
   } else {
     alert('Incorrect passcode.');
@@ -2448,6 +2729,115 @@ async function deleteCard(card){
     render();
   }catch(e){
     alert('Could not delete: '+e.message);
+  }
+}
+
+// ── ADMIN-AUTHORED QUESTIONS (stored in Firestore, injected at runtime) ────────
+let injectedCustomIds = new Set();   // guards against double-injecting on reload
+
+// Push one custom question into the live in-memory question bank for its subject/topic.
+function injectCustom(rec){
+  const subj=SUBJECTS[rec.subject];
+  if(!subj||!subj.data)return;
+  if(!subj.data[rec.topic]){
+    subj.data[rec.topic]={name:prettyTopicKey(rec.topic),fc:[],mc:[]};
+  }
+  const topic=subj.data[rec.topic];
+  const dedupeId=rec.subject+':'+rec.topic+':'+hashStr(rec.q||'');
+  if(injectedCustomIds.has(dedupeId))return;
+  if(rec.type==='mc'){
+    if(!topic.mc)topic.mc=[];
+    topic.mc.push({q:rec.q,o:rec.o||[],c:rec.c||0,e:rec.e||'',t:rec.t||'H',s:'Custom',custom:true});
+  } else {
+    if(!topic.fc)topic.fc=[];
+    topic.fc.push({q:rec.q,a:rec.a||'',t:rec.t||'H',s:'Custom',custom:true});
+  }
+  injectedCustomIds.add(dedupeId);
+}
+function prettyTopicKey(t){ return (t||'').replace(/-/g,' ').replace(/^./,c=>c.toUpperCase())||'Custom'; }
+
+// Load all admin-authored questions and inject them into the decks.
+async function loadCustomQuestions(){
+  try{
+    const snap=await db.collection('customQuestions').limit(2000).get();
+    snap.docs.forEach(d=>{ const r=d.data(); if(r&&r.subject&&r.topic&&r.q)injectCustom(r); });
+  }catch(e){console.log('customQuestions load error:',e);}
+}
+
+// ── ADD-QUESTION MODAL ─────────────────────────────────────────────────────────
+function populateAddqTopics(){
+  const sjSel=document.getElementById('addq-subject');
+  const tpSel=document.getElementById('addq-topic');
+  const subj=SUBJECTS[sjSel.value];
+  tpSel.innerHTML='';
+  if(subj&&subj.data){
+    for(const[key,topic] of Object.entries(subj.data)){
+      const o=document.createElement('option');
+      o.value=key; o.textContent=topic.name||prettyTopicKey(key); tpSel.appendChild(o);
+    }
+  }
+}
+function openAddQuestion(){
+  const sjSel=document.getElementById('addq-subject');
+  sjSel.innerHTML='';
+  for(const[key,s] of Object.entries(SUBJECTS)){
+    const o=document.createElement('option'); o.value=key; o.textContent=s.icon+' '+s.name; sjSel.appendChild(o);
+  }
+  sjSel.value=S.subject;
+  populateAddqTopics();
+  // reset fields
+  document.getElementById('addq-type').value=S.mode==='mc'?'mc':'fc';
+  document.getElementById('addq-tier').value=S.tier;
+  document.getElementById('addq-q').value='';
+  document.getElementById('addq-a').value='';
+  ['addq-o0','addq-o1','addq-o2','addq-o3'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('addq-e').value='';
+  document.querySelector('input[name="addq-correct"][value="0"]').checked=true;
+  document.getElementById('addq-msg').textContent='';
+  toggleAddqType();
+  document.getElementById('addq-modal').style.display='flex';
+}
+function toggleAddqType(){
+  const mc=document.getElementById('addq-type').value==='mc';
+  document.getElementById('addq-mc-fields').style.display=mc?'block':'none';
+  document.getElementById('addq-fc-fields').style.display=mc?'none':'block';
+}
+async function saveCustomQuestion(){
+  const msg=document.getElementById('addq-msg');
+  const subject=document.getElementById('addq-subject').value;
+  const topic=document.getElementById('addq-topic').value;
+  const type=document.getElementById('addq-type').value;
+  const t=document.getElementById('addq-tier').value;
+  const q=document.getElementById('addq-q').value.trim();
+  if(!q){msg.style.color='#dc2626';msg.textContent='Please enter a question.';return;}
+  const rec={subject,topic,type,t,q,
+    createdBy:currentUser||'admin',
+    createdAt:firebase.firestore.FieldValue.serverTimestamp()};
+  if(type==='mc'){
+    const o=['addq-o0','addq-o1','addq-o2','addq-o3'].map(id=>document.getElementById(id).value.trim());
+    if(o.filter(Boolean).length<2){msg.style.color='#dc2626';msg.textContent='Enter at least two options.';return;}
+    rec.o=o.filter(Boolean);
+    rec.c=parseInt(document.querySelector('input[name="addq-correct"]:checked').value);
+    if(rec.c>=rec.o.length)rec.c=0;
+    rec.e=document.getElementById('addq-e').value.trim();
+  } else {
+    const a=document.getElementById('addq-a').value.trim();
+    if(!a){msg.style.color='#dc2626';msg.textContent='Please enter an answer.';return;}
+    rec.a=a;
+  }
+  msg.style.color='#64748b';msg.textContent='Saving…';
+  try{
+    await db.collection('customQuestions').add(rec);
+    injectCustom(rec);
+    loadCards(); render();
+    msg.style.color='#16a34a';msg.textContent='Saved! Added to '+SUBJECTS[subject].name+'.';
+    // clear question text so they can add another quickly
+    document.getElementById('addq-q').value='';
+    document.getElementById('addq-a').value='';
+    ['addq-o0','addq-o1','addq-o2','addq-o3'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('addq-e').value='';
+  }catch(e){
+    msg.style.color='#dc2626';msg.textContent='Could not save: '+e.message;
   }
 }
 
@@ -2497,8 +2887,9 @@ function loginSuccess(name){
   document.getElementById('user-greeting').textContent=display;
   startApp();
   loadCardStats();
-  // Pull the admin-deleted list, then refresh the deck so hidden cards drop out.
-  loadDeletedCards().then(function(){ loadCards(); render(); });
+  // Pull the admin-deleted list + any admin-authored questions, then refresh
+  // the deck so hidden cards drop out and custom ones appear.
+  Promise.all([loadDeletedCards(),loadCustomQuestions()]).then(function(){ loadCards(); render(); });
 }
 
 async function tryAutoLogin(){
@@ -2581,8 +2972,13 @@ function gradeCard(card,grade){
 }
 
 function reviewCount(){
+  // Count only the tricky cards for the subject currently being studied, so the
+  // badge reflects this subject rather than summing every subject together.
   let n=0;
-  for(const k in cardStatsCache){if(cardStatsCache[k].state==='review')n++;}
+  for(const k in cardStatsCache){
+    const r=cardStatsCache[k];
+    if(r.state==='review' && r.subject===S.subject)n++;
+  }
   return n;
 }
 
@@ -2842,8 +3238,8 @@ function render(){
     b.classList.toggle('active',b.dataset.mode===S.mode));
   renderProgress();
   renderCard();
-  // KaTeX auto-render walks text nodes and can strip the Next button's label
-  // after the first card. Re-assert it every render so it never disappears.
+  updateReviewBadge();   // keep the per-subject tricky count current
+  // Re-assert the Next label every render so it never disappears.
   document.getElementById('btn-next').textContent='Next →';
 }
 
@@ -2866,6 +3262,9 @@ function renderProgress(){
   const btnPrev=document.getElementById('btn-prev');
   btnPrev.disabled=S.index===0||S.done;
   btnNext.disabled=(S.mode==='mc'&&!S.mcAnswered&&!S.done)||(S.index>=n-1&&S.mode==='fc')||S.done;
+  // Re-assert here too: flipping a card calls renderProgress() directly (not
+  // render()), so this guarantees the label survives on every code path.
+  btnNext.textContent='Next →';
 }
 
 function renderCard(){
@@ -3128,6 +3527,16 @@ document.getElementById('login-name').addEventListener('keydown',function(e){
 
 document.getElementById('btn-progress').addEventListener('click',showProgress);
 document.getElementById('btn-admin').addEventListener('click',toggleAdmin);
+document.getElementById('btn-add-q').addEventListener('click',openAddQuestion);
+document.getElementById('addq-subject').addEventListener('change',populateAddqTopics);
+document.getElementById('addq-type').addEventListener('change',toggleAddqType);
+document.getElementById('addq-save').addEventListener('click',saveCustomQuestion);
+document.getElementById('addq-close').addEventListener('click',function(){
+  document.getElementById('addq-modal').style.display='none';
+});
+document.getElementById('addq-modal').addEventListener('click',function(e){
+  if(e.target===this)this.style.display='none';
+});
 document.getElementById('prog-close').addEventListener('click',function(){
   document.getElementById('progress-modal').style.display='none';
 });
