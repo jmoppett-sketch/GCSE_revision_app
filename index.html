@@ -112,6 +112,10 @@ header{margin-bottom:16px;padding-top:10px}
 .admin-del{margin-top:14px;width:100%;padding:9px;border-radius:8px;border:2px solid #fecaca;
   background:#fef2f2;color:#dc2626;font-family:var(--font);font-size:12px;font-weight:700;cursor:pointer}
 .admin-del:hover{background:#fee2e2;border-color:#dc2626}
+.explain-btn{display:block;margin:12px auto 0;padding:8px 20px;border-radius:8px;
+  border:1.5px solid #bae6fd;background:#f0f9ff;color:#0369a1;font-family:var(--font);
+  font-size:13px;font-weight:700;cursor:pointer;letter-spacing:.01em}
+.explain-btn:hover{background:#e0f2fe;border-color:#7dd3fc}
 .flip-back{cursor:pointer;margin-top:12px;color:var(--accent);font-weight:700;text-align:center}
 .flip-back:hover{text-decoration:underline}
 #btn-add-q{padding:6px 10px;border-radius:8px;border:2px solid var(--accent);
@@ -502,10 +506,49 @@ const AQA_BIO_P2H_NOV20='AQA Nov 2020 Biology Paper 2H';
 const AQA_BIO_P2H_NOV21='AQA Nov 2021 Biology Paper 2H';
 const AQA_BIO_P2H_SQP24='AQA Specimen 2024 Biology Paper 2H';
 const AQA_BIO_P1F_NOV20='AQA Nov 2020 Biology Paper 1F';
+const AQA_BIO_P1F_NOV21='AQA Nov 2021 Biology Paper 1F';
+const AQA_BIO_P1F_JUN23='AQA Jun 2023 Biology Paper 1F';
+const AQA_BIO_P1F_JUN24='AQA Jun 2024 Biology Paper 1F';
+const AQA_BIO_P1F_SQP24='AQA Specimen 2024 Biology Paper 1F';
+const AQA_BIO_P2F_JUN22='AQA Jun 2022 Biology Paper 2F';
+const AQA_BIO_P2F_JUN23='AQA Jun 2023 Biology Paper 2F';
+const AQA_BIO_P2F_NOV20='AQA Nov 2020 Biology Paper 2F';
 
 const QB = {
 
 'cell-biology': { name: 'Cell Biology', fc: [
+  {q:'Cheek cells are body cells that grow by cell division. What is the name of this type of cell division that produces two identical body cells?', a:'Mitosis.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Ribosomes and mitochondria cannot be seen in a cheek cell under a light microscope. Which type of microscope is needed to see them, and why?', a:'An electron microscope, because it has a much higher magnification (and resolution) than a light microscope.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'A cheek cell is magnified 250 times. In the magnified image the width of the cell measures 45 mm. Calculate the real width of the cell in micrometres (um). Show your steps.', a:'Real width = image size / magnification = 45 / 250 = 0.18 mm. Convert to um: 0.18 x 1000 = 180 um.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Sugars are moved from one phloem cell into another against the concentration gradient. Name this transport process and state why it requires energy.', a:'Active transport. It moves substances against (up) the concentration gradient, which cannot happen by diffusion, so energy released by respiration is needed.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Which cell structures release the energy needed to move sugars by active transport in a phloem cell?', o:['Chloroplasts','Chromosomes','Mitochondria','Ribosomes'], c:2, e:'Mitochondria carry out aerobic respiration, releasing the energy needed for active transport.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'A cell moves sugar molecules from a low concentration to a high concentration. Which process is this?', o:['Active transport','Diffusion','Osmosis','Filtration'], c:0, e:'Movement against the concentration gradient (low to high) is active transport and requires energy.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Cancer occurs when there is uncontrolled cell division. Name the type of cell division that produces the extra cells in a tumour.', a:'Mitosis.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Which two factors can cause cancer?', o:['Antibiotics and Salmonella','Ionising radiation and viruses','Monoclonal antibodies and salmonella','Vaccines and antibiotics'], c:1, e:'Carcinogens such as ionising radiation and some viruses can cause the mutations that lead to cancer.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Before a cell divides by mitosis, give two things that must happen to the cell first.', a:'The cell must grow (increase in size) and increase the number of sub-cellular structures such as mitochondria and ribosomes; and the DNA in the nucleus must replicate (so each new cell gets a copy).', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'The image of a cell is magnified 800 times and has a width of 50 mm. Calculate the real width of the cell in micrometres. (1 mm = 1000 micrometres)', a:'real width = image width / magnification = 50 / 800 = 0.0625 mm; 0.0625 x 1000 = 62.5 micrometres.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Preclinical testing of a new drug is carried out first on which of the following?', o:['Healthy human volunteers','Patients with the illness','Cells, tissues and animals','Pregnant women'], c:2, e:'Preclinical testing uses cells, tissues and live animals before any human trials begin.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'In a drug trial, some patients are given a tablet that does not contain the drug. What is the name for such a tablet?', a:'A placebo.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'A piece of potato placed in concentrated salt solution decreased in mass. Name the process responsible and explain why the mass decreased.', a:'Osmosis. The salt solution had a lower water concentration than the cell contents, so water moved out of the potato cells across their partially permeable membranes, down the water concentration gradient, reducing the mass.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'In a potato osmosis practical, give two control variables that should be kept the same.', a:'Any two: the size/surface area of the potato pieces; the volume of solution; the time left in the solution; the temperature.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Before measuring the final mass of potato pieces removed from a solution, what should be done to each piece and why?', a:'Gently blot/dry the surface with a paper towel to remove excess solution, so only the change in mass of the potato is measured (accurate result).', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'A balance gives potato masses such as 6.2 g and 5.8 g. What is the resolution of this balance?', o:['0.01 g','0.1 g','1.0 g','1.1 g'], c:1, e:'The smallest difference the readings show is 0.1 g, so the resolution is 0.1 g.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Calculate the percentage change in mass of a potato piece that started at 6.0 g and changed by -1.1 g. Give your answer to 1 decimal place.', a:'percentage change = change / starting mass x 100 = (-1.1 / 6.0) x 100 = -18.3%.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Which structure surrounds a potato cell and is described as partially permeable?', o:['Cell wall','Cell membrane','Nucleus','Vacuole'], c:1, e:'The cell membrane is partially permeable, controlling which substances pass in and out; the cell wall is fully permeable.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Three repeat measurements of the change in mass of a potato piece in dilute salt solution were +1.1 g, +1.1 g and +1.4 g. Calculate the mean change in mass.', a:'(1.1 + 1.1 + 1.4) / 3 = 1.2 g.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'A potato piece was placed in concentrated salt solution and the test repeated three times. The changes in mass were -7.2 g, -6.8 g and -32.4 g. Which result is anomalous?', a:'-32.4 g, because it is very different from the other two repeats.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'When calculating a mean from repeat results, what should be done with an anomalous result?', a:'Ignore it - do not include it when calculating the mean.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'In an investigation into the effect of salt concentration on potato pieces, name two control variables (variables kept the same) other than the concentration of the solution.', a:'Any two: the size/surface area of the potato pieces; the time left in the solution; the temperature; the volume of solution.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'A piece of potato placed in concentrated salt solution decreased in mass. Name the process by which water moved out of the potato, and explain why it happened.', a:'Osmosis. Water moved from the potato cells (higher water concentration) to the solution (lower water concentration) across the partially permeable cell membranes, down the water concentration gradient.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'What does it mean to describe a cell membrane as partially permeable?', a:'It allows only some particles (e.g. small molecules such as water) to pass through, while preventing others from passing.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'Name the type of plant tissue, found at the tips of roots and shoots, that contains stem cells able to differentiate into any type of plant cell.', a:'Meristem (tissue).', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'Plant cells absorb substances from the soil. State which process is used to absorb water, which process is used to absorb mineral ions, and what active transport needs to work.', a:'Water is absorbed by osmosis; mineral ions are absorbed by active transport; active transport moves substances against the concentration gradient and needs energy (released by respiration).', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'Name the type of specialised cell that absorbs water and mineral ions from the soil, and describe one way it is adapted to increase absorption.', a:'Root hair cell; it has a large surface area (a long projection/extension), thin walls, and many mitochondria (to release energy for active transport).', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'Give two features of a sperm cell and explain how each helps it carry out its function.', a:'It contains a nucleus, which provides the chromosomes (genetic material) for fertilisation; it has a long tail, which helps the cell swim to the egg.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'On a light microscope, name the part you look down through (the lens at the top) and state the function of the focusing knob.', a:'The lens you look through is the eyepiece (lens); the focusing knob focuses the image / makes the cells appear clear and sharp.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'A student looked down a light microscope but could not see any cells. Suggest one reason why.', a:'Any one: there were no cells in the field of view; the slide was not in the correct position; the objective lens was not clicked into place; the microscope was not focused; the cells were not stained; the light/lamp was not switched on.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'Compare the structure of a red blood cell with the structure of a plant cell. Give three differences.', a:'A red blood cell has no nucleus (a plant cell has one); a red blood cell has no cell wall (a plant cell has a cellulose cell wall); a red blood cell has no chloroplasts or permanent vacuole (a plant cell has these); a red blood cell is a biconcave disc and contains haemoglobin, whereas plant cells do not. Both have cytoplasm and a cell membrane.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'When placed in a beaker of pure water a red blood cell bursts but a plant cell does not. Explain why.', a:'Water enters both cells by osmosis, so they swell. A plant cell has a strong cellulose cell wall that resists the pressure and stops it bursting; a red blood cell has no cell wall, so it keeps swelling and bursts.', t:'F', s:AQA_BIO_P1F_NOV21},
   {q:'Sub-cellular structures: state the function of (a) the cell membrane, (b) the mitochondria, (c) the ribosomes.', a:'(a) Cell membrane - controls the transport of substances into and out of the cell; (b) mitochondria - where energy is released (by aerobic respiration); (c) ribosomes - where proteins are made.', t:'F', s:AQA_BIO_P1F_NOV20},
   {q:'The image width of a cell is 40 mm and its real width is 0.1 mm. Calculate the magnification.', a:'magnification = size of image / size of real object = 40 / 0.1 = x400.', t:'F', s:AQA_BIO_P1F_NOV20},
   {q:'Name the chemical that the genetic material in chromosomes is made from.', a:'DNA (deoxyribonucleic acid).', t:'F', s:AQA_BIO_P1F_NOV20},
@@ -589,6 +632,17 @@ const QB = {
   {q:'A clear zone where no bacteria grew around an antibiotic disc is a circle of radius 1.1 cm. Calculate its area using pi = 3.14 and give the unit.', a:'Area = pi x r-squared = 3.14 x 1.1-squared = 3.80 cm-squared (3.7994 cm2).', t:'H', s:AQA_BIO_P1H_NOV21},
   {q:'Suggest one way to improve an investigation comparing the effectiveness of different antibiotics on bacteria.', a:'Any one: repeat and calculate a mean; repeat and eliminate anomalies; use a control disc (e.g. soaked in water only); test on different types of bacteria.', t:'H', s:AQA_BIO_P1H_NOV21},
 ], mc: [
+  {q:'Body cells grow and repair by a type of cell division that produces two genetically identical cells. What is it called?', o:['Differentiation','Mitosis','Specialisation','Meiosis'], c:1, e:'Mitosis produces two genetically identical daughter cells, used for growth and repair. Meiosis makes gametes; differentiation and specialisation are not types of division.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Which type of microscope is needed to see very small structures such as ribosomes and mitochondria?', o:['Light microscope','Electron microscope','Hand lens','Telescope'], c:1, e:'An electron microscope has a much higher magnification and resolution than a light microscope, so it can show small sub-cellular structures.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'What is the advantage of using an electron microscope compared with a light microscope?', o:['It is cheaper','It has a higher magnification','It has a lower resolution','It is easier to carry'], c:1, e:'An electron microscope gives a much higher magnification (and resolution), revealing smaller structures, although it is larger and more expensive.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'A red blood cell is 8 um in diameter. A bacterial cell is 40 times smaller. What is the diameter of the bacterial cell?', o:['0.02 um','0.2 um','2.0 um','20.0 um'], c:1, e:'8 / 40 = 0.2 um.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Which part of a plant is the largest organ?', o:['A guard cell','A leaf','A root hair cell','A chloroplast'], c:1, e:'A leaf is a plant organ; a guard cell and root hair cell are single cells, and a chloroplast is a sub-cellular structure.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'What name is given to a variable that is kept the same during an investigation?', o:['Control variable','Dependent variable','Independent variable','Anomalous variable'], c:0, e:'A control variable is kept the same; the independent variable is changed and the dependent variable is measured.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'A potato piece loses mass when placed in concentrated salt solution. By which process does water leave the cells?', o:['Excretion','Osmosis','Respiration','Active transport'], c:1, e:'Water moves out by osmosis, from a higher water concentration in the cells to a lower water concentration in the solution.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'Which particles can pass through a partially permeable membrane?', o:['No particles','Some particles','All particles','Only large particles'], c:1, e:'A partially permeable membrane lets only some particles through (e.g. small molecules such as water).', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'A malarial protist has 14 chromosomes and reproduces asexually by mitosis. How many chromosomes will each new cell have after mitosis?', o:['7','14','21','28'], c:1, e:'Mitosis produces genetically identical cells with the same number of chromosomes as the parent cell, so each has 14.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'Which process moves mineral ions into a root hair cell when they are at a lower concentration in the soil than inside the cell?', o:['Diffusion','Osmosis','Active transport','Filtration'], c:2, e:'The ions move against the concentration gradient (low to high), so it must be active transport, which requires energy from respiration. Diffusion and osmosis only move substances down a gradient.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'Which part of a light microscope do you look down through to view the specimen?', o:['Objective lens','Eyepiece lens','Stage','Mirror'], c:1, e:'You look through the eyepiece lens at the top. The objective lens is just above the specimen, the stage holds the slide, and the mirror/lamp provides light.', t:'F', s:AQA_BIO_P1F_NOV21},
   {q:'What is the function of the cell wall in a plant or algal cell?', o:['To contain the genetic material','To stop the chloroplasts leaking out','To strengthen the cell','To release energy'], c:2, e:'The cell wall (made of cellulose in plants/algae) strengthens and supports the cell.', t:'F', s:AQA_BIO_P1F_NOV20},
   {q:'Which part of an algal cell makes it green in colour?', o:['Cellulose','Chloroplast','Cytoplasm','Nucleus'], c:1, e:'Chloroplasts contain the green pigment chlorophyll, which absorbs light for photosynthesis.', t:'F', s:AQA_BIO_P1F_NOV20},
   {q:'A microscope image of a cell is blurred. What should the student do to get a clear image?', o:['Adjust the focus knob','Make the light dimmer','Put water on the slide','Increase the magnification'], c:0, e:'Adjusting the focus knob sharpens the image; the other changes do not bring it into focus.', t:'F', s:AQA_BIO_P1F_NOV20},
@@ -619,6 +673,64 @@ const QB = {
 ]},
 
 'organisation': { name: 'Organisation', fc: [
+  {q:'Describe two ways a healthy artery is different from an artery affected by coronary heart disease.', a:'A healthy artery has no fatty deposits (no build-up of plaque) and has a wider lumen (bigger hole), so it allows more blood flow.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Suggest two risk factors for coronary heart disease.', a:'Any two: smoking; a high-fat diet; lack of exercise; being overweight/obese; high blood pressure; high blood cholesterol.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'In an enzyme experiment, why does a student carry out the test three times at each temperature?', a:'To check the results are repeatable (so a reliable mean can be calculated and anomalies spotted).', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'A student thinks the optimum temperature for an enzyme is between 30 C and 40 C. How could the investigation be improved to find a more precise value?', a:'Repeat the experiment at smaller temperature intervals within that range, e.g. at 30 C, 35 C and 40 C.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Describe how a student could investigate the effect of pH on the breakdown of starch by the enzyme amylase.', a:'Mix amylase, starch and a buffer solution at a set pH; keep temperature and the amounts/concentrations of starch and amylase the same (control variables); at regular times take a sample and add iodine solution to test for starch (blue-black = starch still present, orange-brown = broken down); record the time taken for the starch to disappear; repeat across a range of at least three pH values and repeat at each pH.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Why does the concentration of glucose in the small intestine rise as food is digested (e.g. between 100 cm and 300 cm along it)?', a:'Carbohydrates (starch) are broken down/digested into sugars (glucose) by carbohydrase/amylase, increasing the glucose concentration.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Why does the concentration of glucose in the small intestine fall further along it (e.g. between 300 cm and 700 cm)?', a:'The glucose is absorbed into the blood (through the wall of the small intestine), partly by active transport, so its concentration in the intestine decreases.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'A plant is grown in soil with no nitrate ions added. Describe and explain the effect on the plant.', a:'It shows stunted/poor growth because nitrate ions are needed to make amino acids and therefore proteins for growth.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'A plant is grown in soil with no magnesium ions added. Describe and explain the effect on its leaves.', a:'The leaves become yellow (chlorosis) because magnesium ions are needed to make chlorophyll.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'In an experiment comparing how plants grow with different minerals, give one variable that should be kept constant.', a:'Any one: the same type/species of plant; the same amount of water given to each; the same light/temperature.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Cow manure contains 0.4% phosphate and 0.5% potassium ions; chicken manure pellets contain 2.5% phosphate and 2.3% potassium ions. Suggest one advantage and one disadvantage of using the chicken manure pellets instead of the cow manure.', a:'Advantage: the pellets contain a higher percentage of minerals (more phosphate and potassium). Disadvantage: the pellets cost money to buy, whereas the cow manure is free from the farm.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Describe how water moves from the roots to the leaves of a plant.', a:'It is pulled up through the xylem in the transpiration stream (water evaporates from the leaves, pulling more water up).', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'A leaf has very few stomata on its upper surface. Explain why this is an advantage to the plant.', a:'Less water is lost (by evaporation/transpiration) from the upper surface, which is warmer in sunlight, so the plant is less likely to wilt/dry out.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'The numbers of stomata in five areas of the lower surface of a leaf were 44, 41, 40, 42 and 39. Calculate the mean number of stomata, giving your answer to 2 significant figures.', a:'(44 + 41 + 40 + 42 + 39) / 5 = 206 / 5 = 41.2, which is 41 to 2 significant figures.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Which term describes a group of different tissues working together to perform a function?', o:['Organ','Organism','Organ system','Cell'], c:0, e:'An organ is made of several tissues working together; an organ system is a group of organs.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Name the tissue in a leaf that contains the most chloroplasts and state its function.', a:'The palisade mesophyll; it is the main site of photosynthesis, so it is packed with chloroplasts near the top of the leaf.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Name the process by which water is lost from the leaves of a plant.', a:'Transpiration.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Which substance strengthens xylem tissue?', o:['Glucose','Lignin','Starch','Cellulose'], c:1, e:'Xylem vessels are strengthened by lignin, which also makes the cells waterproof and dead.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'The upper epidermis of a leaf is transparent. Explain why this is important for the leaf.', a:'Being transparent lets light pass through it to reach the palisade mesophyll cells below, so they can carry out photosynthesis.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Name the pores in the lower epidermis of a leaf, and name the cells that control their opening and closing.', a:'The pores are stomata; they are opened and closed by guard cells.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Describe the chemical tests for starch and for sugar, including the positive result for each.', a:'Starch: add iodine solution - it turns from orange/brown to blue-black if starch is present. Sugar (reducing sugar): add Benedict\'s solution and heat in a water bath - it turns from blue to green/yellow/orange/brick-red if sugar is present.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Starch in bread is broken down in the mouth. Name the enzyme responsible and name the product it forms.', a:'Amylase breaks down starch into sugar (maltose/glucose).', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'A student timed how long different breads took to taste sweet. What was the independent variable?', o:['The size of the piece of bread','The temperature of the mouth','The type of bread','The time taken to taste sweet'], c:2, e:'The independent variable is the one deliberately changed - here the type of bread.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Why should a taste-timing investigation be repeated with more people?', a:'Each person\'s sense of taste (and amount of amylase in saliva) is different, so testing more people gives more reliable, representative results.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Coronary heart disease affects which blood vessels?', o:['Arteries','Capillaries','Veins','Venules'], c:0, e:'Coronary heart disease is the narrowing of the coronary arteries that supply the heart muscle.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Explain how a stent is used to treat coronary heart disease.', a:'A stent is a wire mesh tube inserted into a narrowed coronary artery; it holds the artery open so blood (carrying oxygen) can keep flowing to the heart muscle.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Name one type of drug used to lower the level of cholesterol in the blood.', a:'Statins.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'During CPR a first-aider pushes down on the chest. Explain how this helps a person whose heart has stopped.', a:'Pressing on the chest squeezes the heart, pushing blood out and around the body, so oxygenated blood keeps reaching the brain and other organs.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'A first-aider blows air into a person\'s lungs during CPR. Describe how this helps.', a:'It forces air containing oxygen into the lungs, so oxygen can diffuse into the blood to be carried to the body\'s cells/tissues.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Describe one lifestyle factor, other than smoking, that increases the risk of cardiovascular disease.', a:'Any one: a diet high in saturated fat / high cholesterol; lack of exercise; being overweight/obese; high alcohol intake; high stress.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Cystic fibrosis is caused by a faulty gene. Where in a cell is this gene found?', o:['In the cytoplasm','In the cell membrane','In the nucleus (on a chromosome)','In a mitochondrion'], c:2, e:'Genes are sections of DNA found on chromosomes inside the nucleus.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'In cystic fibrosis the pancreas releases less digestive enzyme into the small intestine. Explain why this causes difficulty digesting food and gaining body mass.', a:'With fewer enzymes, large food molecules (starch, proteins, fats) are broken down more slowly and less completely into small soluble molecules, so less is absorbed into the blood; the body therefore takes in fewer nutrients/less energy and finds it harder to gain mass.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Describe three features of alveoli that maximise the rate of gas exchange.', a:'Any three: a large surface area (many alveoli); thin walls/short diffusion distance (one cell thick); a good (rich) blood supply to maintain a concentration gradient; moist surface so gases dissolve; ventilation maintaining steep concentration gradients.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Explain how a reduced amount of oxygen entering the blood would affect the body.', a:'Less oxygen reaches the cells, so the rate of aerobic respiration falls and less energy is released; this causes tiredness/fatigue and the person may become breathless and unable to exercise; cells may respire anaerobically.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Proteins are needed to make new body cells by mitosis. Give one reason why a person needs new body cells.', a:'Any one: for growth; for development; to repair/replace damaged or old cells; to heal wounds.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'Name the two characteristics of an enzyme described here and state the effect of each: (a) it has a special (complementary) shape; (b) it is a catalyst.', a:'(a) Having a special shape means only one type of molecule (the substrate) fits into it; (b) being a catalyst means it speeds up reactions (without being used up).', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'A protein-digesting enzyme works fastest in the stomach. Explain why it works best there.', a:'The stomach contains hydrochloric acid, giving a low pH (acidic conditions), which is the optimum pH for this enzyme.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'An enzyme stops breaking down its substrate when the pH changes too far from its optimum. Name the part of the enzyme that changes shape, and state what the enzyme can then no longer bind to.', a:'The part that changes shape is the active site; the enzyme can then no longer bind to the substrate.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'Describe a method to investigate the effect of pH on the rate of starch breakdown by amylase, using iodine solution on a spotting tile.', a:'Mix amylase, starch and a pH buffer solution together and start a timer. At regular intervals (e.g. every 30 s) remove a drop with a pipette and add it to iodine solution on a spotting tile. Iodine turns blue-black if starch is present and stays orange/brown when starch has gone. Record the time for the iodine to stay orange. Repeat at different pH values, keeping volumes, concentrations and temperature the same, and compare the times.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'What is a tissue?', a:'A group of similar cells that work together to carry out a (specific) function.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'Describe two ways the structure of an artery is different from the structure of a vein.', a:'Any two: an artery has a thicker layer of muscle and elastic tissue (thicker wall); an artery has a narrower lumen; an artery does not contain valves (veins do).', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'As a coronary artery becomes more blocked, blood flow through it falls. Describe this trend.', a:'As the percentage of the artery that is blocked increases, the blood flow through it decreases (a negative correlation).', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'Explain the effect of a partly blocked coronary artery on the body.', a:'Less blood, and so less oxygen and glucose, reaches the heart muscle, so there is less aerobic respiration and less energy released. More anaerobic respiration occurs, producing lactic acid, causing chest pain/muscle fatigue. The heart contracts less, so less blood/oxygen is pumped around the body, causing breathlessness and tiredness.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'Name one substance transported through the xylem in the stem of a plant.', a:'Water (or dissolved mineral ions).', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'Name the plant tissue that transports dissolved sugars through the stem.', a:'Phloem (tissue).', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'In an enzyme experiment, the starch solution and amylase solution were each left in a 10 degrees C water bath for five minutes before being mixed together. Why?', a:'So that both solutions could reach the test temperature (10 degrees C) before the reaction started, making it a fair test.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'In an experiment, amylase broke down starch fastest at 35 degrees C and the iodine stayed blue-black (no breakdown) at 80 degrees C. Explain why no starch was broken down at 80 degrees C.', a:'At 80 degrees C the enzyme (amylase) was denatured - its active site changed shape - so it stopped working and the starch was not broken down (starch remained, keeping iodine blue-black).', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'A coronary artery supplying the heart muscle becomes blocked. Explain why this could cause cells in the heart to die.', a:'Less blood (and so less oxygen and glucose) flows to the heart muscle, so there is less aerobic respiration and less energy released, so the heart muscle cells die.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'Explain how a stent works as a treatment for a person with a blockage in a coronary artery.', a:'The stent opens up / widens the artery (pushing the blockage to the side), so that more blood - and therefore more oxygen - can flow through to the heart muscle.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'In a bell-jar model of the human breathing system, give two reasons why the model does not represent the real breathing system very well.', a:'Any two: it has only one air space per balloon, so the alveoli are not represented; blood vessels/capillaries are not represented; the bronchioles are not represented; the glass tube is not flexible like the trachea; the bell jar does not move during breathing like the ribs; the rib muscles/pleural cavity are not represented.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'A scientist measured the breathing rate of ten male non-smokers running on a treadmill. Give two variables the scientist should have controlled.', a:'Any two: the speed of the treadmill; the type of exercise (all running); the biological sex (all male); all non-smokers; the time spent running.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'Explain why a person\'s breathing rate increases when they are running.', a:'To get more oxygen into the blood for increased (aerobic) respiration, which releases more energy for muscle contraction, and to remove the extra carbon dioxide produced.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'Give one measurement, other than breathing rate, that could be taken to show an effect of exercise on the body.', a:'Any one: heart/pulse rate; depth or volume of breathing; volume of sweat produced; body temperature.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'Calculate value X, the Body Mass Index (BMI) of a person with a body mass of 92 kg and a height of 1.71 m. Use BMI = body mass / height squared. Give your answer to 3 significant figures.', a:'BMI = 92 / 1.71^2 = 92 / 2.9241 = 31.5 kg/m2 (3 s.f.).', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'A study of men after age 50 found: normal BMI 19.06 years in good health and 4.98 in bad health; clinically obese 13.07 years in good health and 10.10 in bad health. Describe two patterns this shows about the effect of BMI category.', a:'The higher the BMI category, the fewer years lived in good health; the higher the BMI category, the more years lived in bad health (and the lower the total life expectancy).', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'Explain the financial impact on the UK economy of an increasing number of people who are obese.', a:'It costs the NHS/Government more money to pay for the extra surgery, medication and hospital care needed to treat conditions such as type 2 diabetes, heart attacks and strokes; and more people take time off work or cannot work, reducing productivity so the Government must give more financial support.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'A person who is obese is more at risk of arthritis, which damages joints. Suggest how arthritis could affect a person\'s lifestyle.', a:'Any one: movement/mobility problems; loss of job or income; disability; negative impact on mental health from pain or lack of movement; needing to visit the doctor, take medication regularly or have surgery.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'Name two health conditions (other than arthritis) that might develop if a person eats a diet high in saturated fat.', a:'Any two: type 2 diabetes; cardiovascular/coronary heart disease (heart attack or stroke); high blood pressure; high blood cholesterol. (Also accept: liver disease, cancer.)', t:'F', s:AQA_BIO_P1F_NOV21},
   {q:'The safe maximum heart rate for exercise is calculated as 220 minus age in years. Calculate the safe maximum heart rate for a 45-year-old man.', a:'220 - 45 = 175 beats per minute.', t:'F', s:AQA_BIO_P1F_NOV20},
   {q:'Explain the ways the body responds to vigorous exercise.', a:'Heart rate increases to pump more blood (oxygen and glucose) to the muscles and remove carbon dioxide/lactic acid faster; breathing rate and depth increase to take in more oxygen and remove more carbon dioxide; this supplies the muscles for increased (aerobic) respiration. If oxygen supply is insufficient, anaerobic respiration occurs, producing lactic acid and an oxygen debt.', t:'F', s:AQA_BIO_P1F_NOV20},
   {q:'Explain how the structure of an artery is related to its function.', a:'Arteries have thick muscular and elastic walls and a narrow lumen, which withstand and maintain the high blood pressure of blood being pushed away from the heart.', t:'F', s:AQA_BIO_P1F_NOV20},
@@ -743,7 +855,26 @@ const QB = {
   {q:'Explain why it is dangerous for a patient with blood group A to receive red blood cells from a group B donor.', a:'The patient has anti-B antibodies, which bind to the B antigens on the donor red blood cells and make them clump together; the clumps are wider than capillaries and block them, so cells get a reduced supply of oxygen/glucose and cannot respire.', t:'H', s:AQA_BIO_P1H_NOV21},
   {q:'Explain why blood group O red blood cells can be given to patients of any blood group.', a:'Group O red blood cells have no antigens on their surface, so the recipient\'s antibodies cannot bind to them and no clumping occurs.', t:'H', s:AQA_BIO_P1H_NOV21},
   {q:'A tumour blocks the tube leading from the gall bladder to the small intestine. Explain why this person has difficulty digesting fat.', a:'No/less bile reaches the small intestine, so there is less emulsification of fat and therefore a smaller surface area for lipase to work on; bile also neutralises stomach acid, so without it the small intestine is too acidic for lipase to work at its optimum pH.', t:'H', s:AQA_BIO_P1H_NOV21},
+
+  {q:'Which component of the diet is made of amino acids?', a:'Proteins (proteins are built from amino acids).', t:'F', s:AQA_BIO_P2F_JUN22},
 ], mc: [
+  {q:'Where does the pulmonary artery carry blood to?', o:['Brain','Liver','Lungs','Stomach'], c:2, e:'The pulmonary artery carries deoxygenated blood from the right ventricle to the lungs.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Which two of these can be used to treat people with coronary heart disease?', o:['Antibiotics and vaccines','Statins and a stent','Hormones and antibiotics','Vaccination and hormones'], c:1, e:'Statins lower blood cholesterol and a stent holds a narrowed artery open. Antibiotics, hormones and vaccines do not treat coronary heart disease.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Why is an enzyme experiment repeated three times at each temperature?', o:['To prove the experiment was correct','To make the experiment more accurate','To show the results are repeatable','To save time'], c:2, e:'Repeating allows you to check the results are repeatable and to calculate a mean; a single result could be anomalous.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Glucose concentrations along a small intestine are: 100 cm = 50, 300 cm = 500, 500 cm = 250, 700 cm = 0 (mol dm-3). At what distance is the glucose concentration highest?', o:['100 cm','300 cm','500 cm','700 cm'], c:1, e:'The highest value, 500, is at 300 cm.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'A student counts the stomata on the upper surface of a leaf in five areas: 3, 0, 1, 5, 1. What is the median number?', o:['0','1','2','5'], c:1, e:'Placed in order: 0, 1, 1, 3, 5. The middle (median) value is 1.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'What are proteins made of?', o:['Amino acids','Fatty acids','Glucose','Starch'], c:0, e:'Proteins are made of long chains of amino acids. Fats are made of fatty acids and glycerol; starch is made of glucose units.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'Which chemical is used to test a food for protein?', o:['Benedict\'s reagent','Biuret reagent','Ethanol','Iodine solution'], c:1, e:'Biuret reagent tests for protein (turns purple). Benedict\'s tests for sugars, ethanol for lipids and iodine for starch.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'What colour shows a positive result in the Biuret test for protein?', o:['Black','Purple','Red','White'], c:1, e:'Biuret reagent turns from blue to purple (lilac) when protein is present.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'Where in the heart is the pacemaker (the group of cells that controls resting heart rate) found?', o:['Left atrium','Left ventricle','Right atrium','Right ventricle'], c:2, e:'The pacemaker (sino-atrial node) is found in the wall of the right atrium.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'What name is given to a group of different tissues working together?', o:['Organ','Organism','Organ system','Cell'], c:0, e:'An organ is a group of different tissues working together to perform a function. An organ system is several organs working together; an organism is the whole living thing.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'Which chemical formula represents glucose?', o:['C6H12O6','CO2','H2O','O2'], c:0, e:'Glucose is C6H12O6. CO2 is carbon dioxide, H2O is water and O2 is oxygen.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'Which type of digestive enzyme breaks down starch?', o:['Carbohydrase','Lipase','Protease','Amylase only at acid pH'], c:0, e:'Carbohydrases (such as amylase) break down carbohydrates like starch into sugars. Lipase breaks down lipids and protease breaks down proteins.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'In an experiment, amylase broke down starch in: 5 min at 20 degrees C, 2 min at 35 degrees C, 7 min at 50 degrees C and 12 min at 65 degrees C. At which temperature did the enzyme work quickest?', o:['20 degrees C','35 degrees C','50 degrees C','65 degrees C'], c:1, e:'The shortest time (2 minutes) was at 35 degrees C, so the enzyme worked fastest there - close to its optimum temperature.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'A student tested an enzyme reaction with iodine once every minute. How could a more accurate time for the reaction be obtained?', o:['Add more iodine solution to the tile','Test the mixture with iodine every 30 seconds','Test the mixture for a longer total time','Use two drops of the mixture in each test'], c:1, e:'Testing more frequently (every 30 seconds) narrows down the moment the reaction finishes, giving a more accurate time.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'Which part of the blood starts the blood clotting process?', o:['Antibodies','Plasma','Platelets','Red blood cells'], c:2, e:'Platelets are cell fragments that trigger the clotting process. Plasma is the liquid, red blood cells carry oxygen, and antibodies fight pathogens.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'In a bell-jar model of breathing, the glass tube at the top represents which part of the human breathing system?', o:['Alveoli','Capillaries','Lung','Trachea'], c:3, e:'The single glass tube that air passes down represents the trachea (windpipe). The balloons represent the lungs.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'Which BMI category does a person with a BMI of 23.1 kg/m2 fall into, given that the normal range is about 18.5 to 24.9?', o:['Underweight','Normal','Overweight','Obese'], c:1, e:'A BMI of 23.1 lies within the normal healthy range of roughly 18.5-24.9 kg/m2.', t:'F', s:AQA_BIO_P1F_NOV21},
   {q:'What is the name of the liquid part of the blood that carries the blood cells around the body?', o:['Cell sap','Plasma','Saliva','Urine'], c:1, e:'Plasma is the straw-coloured liquid that transports blood cells, nutrients, hormones, carbon dioxide and urea.', t:'F', s:AQA_BIO_P1F_NOV20},
   {q:'Excess amino acids are broken down in which organ, forming urea?', o:['Kidney','Liver','Pancreas','Small intestine'], c:1, e:'The liver deaminates excess amino acids to form ammonia, which is converted to urea. The kidney then removes urea from the blood.', t:'H', s:AQA_BIO_P2H_JUN22},
   {q:'A toxic substance in the blood ends up in the urine because, in the kidney, it is:', o:['Filtered out and not reabsorbed','Reabsorbed completely','Broken down by enzymes','Turned into glucose'], c:0, e:'Small molecules are filtered from the blood in the kidney; substances the body does not reabsorb (like this toxin) pass out in the urine.', t:'H', s:AQA_BIO_P2H_JUN22},
@@ -769,6 +900,42 @@ const QB = {
 ]},
 
 'infection': { name: 'Infection & Response', fc: [
+  {q:'Gonorrhoea is a sexually transmitted disease caused by a bacterium. Give two symptoms of gonorrhoea.', a:'Pain when urinating and a yellow (or green) discharge.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Explain why prescribing an antibiotic will not cure HIV.', a:'HIV is caused by a virus, and antibiotics only kill bacteria (they are not effective against viruses, which live inside the body cells).', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'A nettle plant has stinging hairs. Explain how this adapts the nettle for defence and protection.', a:'The stinging hairs sting/harm herbivores so they are deterred from eating it, meaning less of the plant is removed or damaged.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'A student found that a plant oil stopped bacterial growth and concluded it could replace antibiotics for treating infections. Give one reason why this is not a valid conclusion.', a:'The oil was not compared against (tested alongside) antibiotics, so you cannot conclude it is as good as or better than antibiotics. (It was also only tested on bacteria growing on a plate, not in the human body.)', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Tools used on plants infected with tobacco mosaic virus (TMV) should be washed in disinfectant afterwards. Suggest why.', a:'To kill the virus and prevent it being spread to other (healthy) plants.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Scientists have produced a single plant containing a TMV-resistant gene. Suggest how they could produce many plants that all have this gene.', a:'Use tissue culture (or take cuttings) to clone the plant, producing many genetically identical copies that all carry the resistant gene.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'TMV reduces the amount of chlorophyll in a plant. Explain why infected plants have stunted growth.', a:'Less chlorophyll means less photosynthesis, so less glucose is made; with less glucose there is less energy from respiration and fewer materials (such as proteins/cellulose) for growth, so growth is stunted.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Describe two ways the human body prevents the entry of microorganisms.', a:'Any two: the skin acts as a physical barrier; acid in the stomach kills pathogens in food; hairs and mucus in the nose trap pathogens; the trachea and bronchi produce mucus and have cilia that waft pathogens away.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'A drug company has developed a new drug to treat a disease. Describe the testing that must be done before it can be used to treat patients.', a:'First preclinical testing on cells, tissues and live animals to check toxicity, dosage and efficacy; then clinical trials starting with healthy volunteers at very low doses to check for safety/side effects, then patients to find the optimum dose and test effectiveness; often a double-blind trial using a placebo with random allocation of patients; finally the results are peer reviewed before claims are accepted.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'State one way the skin defends the human body against pathogens.', a:'It acts as a physical barrier preventing pathogens entering the body (and it produces antimicrobial secretions/sebum).', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'The stomach contains acid. Explain how this helps defend against pathogens.', a:'The acid kills (most) pathogens/bacteria in food and drink before they can enter the body and cause infection.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'In an investigation, a tube of bacteria at pH3 contained 210 live bacteria at the start and 63 after 24 hours. Write the fraction surviving in its simplest form.', a:'63/210 = 3/10.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'At pH1 the live bacteria fell from 210 to 23 and at pH5 from 216 to 185 over 24 hours. Calculate how many more bacteria were killed at pH1 than at pH5.', a:'Killed at pH1 = 210 - 23 = 187; killed at pH5 = 216 - 185 = 31; difference = 187 - 31 = 156.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Which blood component produces antibodies after a vaccination?', o:['Platelets','Red blood cells','White blood cells','Plasma'], c:2, e:'Certain white blood cells (lymphocytes) produce antibodies against the antigens introduced by the vaccine.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'State the function of platelets when someone is injected with a vaccine.', a:'Platelets help the blood to clot at the site of the injection.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'How can scientists help to detect false claims in a piece of scientific research?', o:['Publish it on the internet','Have the research peer reviewed','Send a questionnaire to the public','Keep the results secret'], c:1, e:'Peer review by other scientists checks methods and conclusions, helping detect false or invalid claims.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'A scientist was paid by an interested party to research a link they then claimed to find. Why might their claims be considered not valid?', a:'The funding/payment creates bias (a conflict of interest), so the work may not be objective; the results were also not reproduced by other scientists through peer review.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Why might a (later disproven) paper linking a vaccine to a harmful condition reduce the percentage of children vaccinated?', o:['The pathogen no longer existed','Parents were worried their children would get the condition','There were no vaccines available','Vaccines became illegal'], c:1, e:'Fear of the claimed side-effect made parents less willing to have their children vaccinated.', t:'F', s:AQA_BIO_P1F_JUN24},
+  {q:'Name two non-specific human body defences that stop pathogens entering, and state what each does.', a:'Any two: the skin acts as a physical barrier that stops pathogens entering; mucus (e.g. in the nose) traps pathogens; cilia waft mucus away; stomach acid kills pathogens; tears/saliva contain enzymes (lysozyme) that kill bacteria.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'A tumour can form when changes to cells cause uncontrolled cell what?', a:'Uncontrolled cell division.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'Give two features of malignant tumours.', a:'They have cells that can spread (invade) to other parts of the body (in the blood), and they can form secondary tumours.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'In the UK most 12 to 13-year-old females are vaccinated against HPV. The percentage of older females with HPV has fallen over time. Suggest the reason for this fall.', a:'More females have been vaccinated against HPV over time (so fewer become infected).', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'Suggest one reason (other than fear of the pain of injection) why some parents refuse to allow their children to have the HPV vaccine.', a:'Any one: they are afraid of side effects/unknown effects; religious or cultural objections; they believe vaccines do not work; they think the HPV vaccine encourages sexual activity.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'Malaria is caused by a protist passed between people by mosquitoes. Describe two ways (other than mosquito nets) that people can reduce the chance of being bitten by mosquitoes.', a:'Any two: wear long sleeves/clothing to cover skin; use insect repellent or insecticides; stay indoors / close windows in the evening; avoid areas with mosquitoes; destroy mosquito breeding grounds (e.g. drain standing water); release sterile male mosquitoes.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'It is estimated that 210 million people are infected with malaria each year and half survive. Calculate how many would survive over 3 years, giving your answer in standard form.', a:'210 million / 2 = 105 000 000 survive per year; 105 000 000 x 3 = 315 000 000 = 3.15 x 10^8 people.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'A study found the percentage chance of children with a blood disorder getting malaria was 70% at age 2, 65% at age 4, 50% at age 6 and 45% at age 8. Describe the trend.', a:'As age increases, the percentage chance of getting malaria decreases (e.g. it falls from 70% at age 2 to 45% at age 8).', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'From which plant does the painkiller aspirin originate?', a:'The willow (tree).', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'A drug can be extracted from a plant\'s berries, leaves or roots. Suggest one reason why berries might be chosen.', a:'Any one: berries are easy to access/pick (not underground); it is easier to extract the chemical; taking the berries does not harm or kill the plant.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'A type of nightshade leaf normally contains 1.2 g of a drug per 100 g of tissue. In a diseased plant the leaves contain only 60% of this. Calculate the mass of the drug in 200 g of the diseased leaves, in mg.', a:'0.6 x 1.2 = 0.72 g per 100 g; in 200 g = 0.72 x 2 = 1.44 g; 1.44 x 1000 = 1440 mg.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'A plant has chlorosis (yellow leaves). Suggest one reason why.', a:'Any one: a lack of chlorophyll/chloroplasts; a lack of magnesium ions (needed to make chlorophyll); a lack of light; disease/infection.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'Give two reasons why it is important for new drugs to be tested in clinical trials before being approved for public use.', a:'Any two: to check toxicity / that it is safe / for side effects; to check the correct dosage / how much is needed; to check its efficacy / that it works.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'There are many online reports making claims about a new drug. Suggest one reason why such a report might be biased.', a:'The writer or company may gain financially from promoting the drug (or a competitor may suffer financial loss), so they present it favourably.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'Suggest one reason why viruses are not classed as cells.', a:'Any one: they do not have a cell membrane; they do not have cytoplasm; they do not have a nucleus; they do not have mitochondria; they do not have ribosomes. (A virus is just genetic material in a protein coat.)', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'A student investigating antibiotics used aseptic techniques so that only one type of bacterium grew on the agar. Describe two aseptic techniques they should have used.', a:'Any two: sterilise the equipment/work surfaces before use; use sterilised agar; secure the lid of the Petri dish with adhesive tape; only lift the lid of the Petri dish a little / at an angle when setting up the plate.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'A student compared the effectiveness of three antibiotics on one agar plate. Suggest one way the student could improve the investigation.', a:'Any one: repeat the experiment and calculate a mean; repeat to identify and eliminate anomalies; use a control disc (e.g. a disc soaked in water); test the antibiotics on different types of bacteria.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'The clear zone where no bacteria grew around an antibiotic disc was a circle of radius 1.1 cm. Calculate the area of this zone. Use pi = 3.14 and give the unit.', a:'Area = pi x r^2 = 3.14 x 1.1^2 = 3.14 x 1.21 = 3.80 cm2 (cm squared).', t:'F', s:AQA_BIO_P1F_NOV21},
   {q:'Name one type of microorganism, other than a virus, that causes disease in humans.', a:'Bacteria (also accept fungi or protists).', t:'F', s:AQA_BIO_P1F_NOV20},
   {q:'Give two defence systems that prevent microorganisms infecting the human body.', a:'Any two: hydrochloric acid produced by the stomach; the skin acting as a barrier covering the whole body. (Also acceptable: mucus/cilia in airways, tears/lysozyme.)', t:'F', s:AQA_BIO_P1F_NOV20},
   {q:'Complete: in a vaccine the measles virus is ____, and if the virus later enters the body the immune system reaction will be ____.', a:'Weakened (or dead/inactive); fast (because memory cells produce antibodies rapidly).', t:'F', s:AQA_BIO_P1F_NOV20},
@@ -840,7 +1007,23 @@ const QB = {
   {q:'Suggest the purpose of the control area in a monoclonal antibody test strip.', a:'To show that the test has worked correctly / that the urine moved through the strip. If the control area turns blue, the test is valid. If the control does not turn blue, the test has failed/not worked.', s:AQA_BIO_P1H_JUN23},
   {q:'In a monoclonal antibody urine test (Figure 6), describe the evidence that shows athlete B\'s test did not work and suggest a reason why.', a:'Evidence: the control area for athlete B did not turn blue (no blue band in the control area). Reason: the urine did not move through the strip — e.g. incorrect urine volume used / strip damaged or faulty / strip not fully dipped in urine.', img:'bio_jun23_fig6', s:AQA_BIO_P1H_JUN23},
   {q:'Describe how scientists make monoclonal antibodies using a hybridoma cell.', a:'1. Hybridoma cells divide rapidly and produce the specific antibody. 2. The hybridoma cells are cloned (grown in large quantities). 3. The monoclonal antibodies are collected and purified from the culture medium.', s:AQA_BIO_P1H_JUN23},
+  {q:'A species of bacterium that infects cows has become resistant to several antibiotics. Why is the production of millions of antibiotic-resistant bacteria a problem for farmers?', a:'The bacteria can no longer be killed by the antibiotic, so many cows become ill or die, the disease spreads between animals, the animals are less productive (less meat and milk), and the farmer loses money.', t:'F', s:AQA_BIO_P2F_JUN23},
 ], mc: [
+  {q:'Gonorrhoea is a sexually transmitted disease. What kind of pathogen causes it?', o:['A virus','A bacterium','A fungus','A protist'], c:1, e:'Gonorrhoea is caused by a bacterium, which is why it can be treated with antibiotics.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Why will an antibiotic not cure a person who has HIV?', o:['HIV is a virus and antibiotics only kill bacteria','HIV is too small for antibiotics','Antibiotics make viruses stronger','HIV is not a disease'], c:0, e:'HIV is caused by a virus. Antibiotics only kill bacteria, so they have no effect on a viral infection.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Which test is used to show the presence of glucose (a reducing sugar) in a food sample?', o:['Iodine solution','Biuret reagent','Benedict\'s solution','Ethanol'], c:2, e:'Benedict\'s solution is heated with the sample; it changes from blue to orange/brick-red if a reducing sugar such as glucose is present.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'A virus that can cause cancer enters the body. Which part of the blood responds to it?', o:['Platelets','Red blood cells','White blood cells','Plasma'], c:2, e:'White blood cells respond to pathogens, e.g. by producing antibodies. Platelets help clotting and red blood cells carry oxygen.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'What is produced by the body in response to an inactive virus in a vaccine?', o:['Antibiotics','Antibodies','Antiseptics','Antigens'], c:1, e:'White blood cells produce antibodies in response to the antigens on the inactive virus, giving immunity. Antibiotics and antiseptics are not made by the body.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'Which term describes a mosquito that passes the malarial protist from one person to another?', o:['Bacterium','Gene','Vector','Pathogen'], c:2, e:'A vector is an organism that carries and transmits a pathogen. The mosquito carries the protist but is not itself the disease-causing pathogen.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'Which of these organisms is prokaryotic?', o:['Cow','Grass','Salmonella','Yeast'], c:2, e:'Salmonella is a bacterium, which is prokaryotic. A cow, grass and yeast are all eukaryotic.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'What is a feature of asexual reproduction, as used by the malarial protist?', o:['Only one parent is involved','The offspring show genetic variation','Two gametes fuse','The offspring are all male'], c:0, e:'Asexual reproduction involves only one parent and produces genetically identical offspring (no gametes fuse, so no variation).', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'When malarial protists destroy red blood cells, what change happens in the blood?', o:['Decreased antibodies','Decreased haemoglobin','Increased plasma','Increased platelets'], c:1, e:'Red blood cells contain haemoglobin, so destroying them decreases the amount of haemoglobin in the blood.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'How can scientists be sure that claims about a new drug are valid?', o:['Advertise the claims on social media','Ask a large company to produce the drug','Have the claims peer reviewed','Publish the claims in a newspaper'], c:2, e:'Peer review by other scientists checks the work for validity before it is accepted. The other options do not test whether the claims are reliable.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'What name is given to microorganisms that cause disease?', o:['Pathogens','Predators','Prokaryotes','Producers'], c:0, e:'Pathogens are microorganisms (bacteria, viruses, fungi, protists) that cause disease.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'How do viruses cause the symptoms of disease?', o:['They engulf and destroy white blood cells','They produce antibodies that damage tissues','They reproduce inside cells, damaging them','They digest the cell walls of body cells'], c:2, e:'Viruses reproduce rapidly inside the body\'s cells; when the cell bursts to release new viruses it is damaged, causing the symptoms of disease.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'What does a vaccine contain?', o:['A toxic form of a virus','A weakened (or inactive) form of a pathogen','An active, fully infectious form of a virus','Antibodies taken from another person'], c:1, e:'A vaccine contains a small amount of a dead or weakened (inactive) form of a pathogen, which triggers white blood cells to make antibodies without causing the disease.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'Tobacco mosaic virus (TMV) infects tobacco plants. Which part of the plant shows the discolouration it causes?', o:['Flower','Leaf','Root','Stem'], c:1, e:'TMV causes a distinctive mosaic discolouration on the leaves, which reduces the area available for photosynthesis.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'A plant produces poisons that make animals that eat it unwell. What type of defence mechanism is this?', o:['Chemical','Mechanical','Physical','Cellular'], c:0, e:'Producing poisons (toxins) is a chemical defence. Physical/mechanical defences include thorns, tough waxy layers and hairy leaves.', t:'F', s:AQA_BIO_P1F_NOV21},
   {q:'How does the immune system destroy microorganisms that enter the body?', o:['Platelets kill the microorganisms','Red blood cells stick to the microorganisms','White blood cells engulf the microorganisms','Plasma dissolves the microorganisms'], c:2, e:'Phagocytes (white blood cells) engulf and digest pathogens.', t:'F', s:AQA_BIO_P1F_NOV20},
   {q:'A plant produces poisonous berries to stop animals eating it. Which type of defence mechanism is this?', o:['Chemical','Mechanical','Physical','Structural'], c:0, e:'Poisons/toxins are a chemical defence; thorns are mechanical/physical.', t:'F', s:AQA_BIO_P1F_NOV20},
   {q:'In a drug trial, some patients take tablets made from sugar that contain no drug. What are these tablets called?', o:['Antibiotics','Antibodies','Painkillers','Placebos'], c:3, e:'A placebo contains no active drug and is used as a control/comparison in trials.', t:'F', s:AQA_BIO_P1F_NOV20},
@@ -862,9 +1045,24 @@ const QB = {
   {q:'What type of cell is created when a mouse lymphocyte is fused with a tumour cell?', o:['Embryo cell','Hybridoma cell','Phagocyte','Stem cell'], c:1, e:'A hybridoma cell is created. It combines the antibody-producing ability of the lymphocyte with the rapid division of the tumour cell.', s:AQA_BIO_P1H_JUN23},
   {q:'What property makes a monoclonal antibody useful in detecting an anabolic steroid in urine?', o:['It is quick and easy to produce','It is specific to one person\'s urine only','It only binds to the anabolic steroid','It can identify many different drugs simultaneously'], c:2, e:'Monoclonal antibodies are complementary to a specific antigen (shape). The antibody will only bind to the target steroid molecule, not to other substances in the urine.', s:AQA_BIO_P1H_JUN23},
   {q:'Looking at Figure 6 (urine test strips A–D), which athlete has tested positive for anabolic steroids? (A positive result = test area NOT blue; control area blue = test worked.)', o:['Athlete A (test blue, control blue)','Athlete B (test blank, control blank)','Athlete C (test blank, control blue)','Athlete D (test blue, control blue)'], c:2, e:'Athlete C: blank test area means antibodies already bound to steroids (positive); blue control area confirms the test worked correctly. B is invalid (no control band). A and D are negative (both areas blue).', img:'bio_jun23_fig6', s:AQA_BIO_P1H_JUN23},
+  {q:'Antibiotic resistance first arises in a single bacterium. A change in which molecule causes the resistance?', o:['Carbohydrate','DNA','Lipid','Water'], c:1, e:'A mutation (a change in the bacterium DNA) can make it resistant to an antibiotic.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'A change in one bacterium can cause millions of bacteria to become resistant to an antibiotic. This is because bacteria have a high rate of which process?', o:['Excretion','Feeding','Reproduction','Respiration'], c:2, e:'Bacteria reproduce very rapidly, so one resistant individual can quickly produce millions of resistant offspring.', t:'F', s:AQA_BIO_P2F_JUN23},
 ]},
 
 'bioenergetics': { name: 'Bioenergetics', fc: [
+  {q:'The word equation for anaerobic respiration in muscle cells is: glucose -> lactic acid. How can you tell from the equation that this process is anaerobic?', a:'No oxygen is used (there is no oxygen in the reactants).', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Explain why exercise cannot be sustained for long when muscle cells respire anaerobically.', a:'The muscles become fatigued and stop contracting, because anaerobic respiration transfers (releases) much less energy than aerobic respiration.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'In an experiment, gas bubbles from a tube of respiring yeast pass into a second tube. Describe how you could use the second tube to measure the rate of the reaction.', a:'Count the number of bubbles produced (or measure the volume of gas collected) in a given/fixed time.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Anaerobic respiration in yeast is also called fermentation, which produces ethanol. Give one use of fermentation in the food industry.', a:'Making bread (the carbon dioxide makes it rise) or brewing alcoholic drinks such as beer and wine.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Complete the word equation for photosynthesis: ___ + ___ -> ___ + oxygen.', a:'carbon dioxide + water -> glucose + oxygen.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'Explain how the oxygen made in photosynthesis is used in cells.', a:'It is used in (aerobic) respiration to release/transfer energy (in the mitochondria).', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'A student investigates photosynthesis using pondweed in a beaker of water with a lamp. Give one hazard and the risk it causes.', a:'Any one pair: the lamp/bulb is hot, so it could burn the skin; glassware is breakable, so it could cut the skin; electricity is near water, so there is a risk of electric shock; scissors/scalpel are sharp, so they could cut the skin.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'In a pondweed photosynthesis investigation, describe how the student could keep the temperature of the water the same throughout.', a:'Place the beaker in a water bath (or in a larger beaker of water acting as a heat shield), or use an LED lamp that gives out little heat.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'Explain why the temperature of the water must be kept the same throughout a pondweed photosynthesis investigation.', a:'Temperature affects the rate of photosynthesis (it is a limiting factor / affects enzyme activity), so changing it would change the number of bubbles produced and make the results invalid.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'A student wants to measure the volume of oxygen produced by pondweed in 2 minutes. Name one piece of apparatus that could be used.', a:'Any one: a measuring cylinder; a gas syringe; a burette.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'A study measured the rate of photosynthesis in tobacco plants with different levels of TMV infection: none = 15, mild = 13, medium = 7, high = 3 (arbitrary units). What conclusion can be made from these data?', a:'As the level of TMV infection increases, the rate of photosynthesis decreases.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'Explain why a high level of TMV infection reduces growth in a plant.', a:'The virus destroys chlorophyll (so there are fewer working chloroplasts / less light absorbed), so the rate of photosynthesis falls, so less glucose (and starch/protein) is made for growth.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'The stem of a cactus is green. What is the advantage to the cactus of having a green stem?', a:'The green stem contains chlorophyll so it can photosynthesise (make glucose/sugar), which is useful because the cactus has very few or no leaves.', t:'F', s:AQA_BIO_P1F_NOV21},
   {q:'Complete the word equation for photosynthesis: ____ + ____ -> ____ + oxygen.', a:'carbon dioxide + water -> glucose + oxygen.', t:'F', s:AQA_BIO_P1F_NOV20},
   {q:'Describe how the energy for the photosynthesis reaction is gained by plants.', a:'Light is absorbed (captured) by chlorophyll in the chloroplasts, providing the energy for the reaction.', t:'F', s:AQA_BIO_P1F_NOV20},
   {q:'Three repeat measurements of the rate of photosynthesis were 18.5, 19.3 and 19.5 cm3/hour. Calculate the mean.', a:'(18.5 + 19.3 + 19.5) / 3 = 57.3 / 3 = 19.1 cm3/hour.', t:'F', s:AQA_BIO_P1F_NOV20},
@@ -919,6 +1117,12 @@ const QB = {
   {q:'After a tube containing pondweed and a snail was covered with black paper, the carbon dioxide concentration increased. Suggest why.', a:'With no light there is no photosynthesis, so no CO2 is taken in, but the snail and plant continue to respire and release CO2.', t:'H', s:AQA_BIO_P1H_NOV21},
   {q:'After the snail in the covered tube died, the carbon dioxide concentration increased further. Explain why.', a:'The dead snail is decayed/broken down by decomposers (bacteria/fungi), and the respiration of these decomposers releases carbon dioxide.', t:'H', s:AQA_BIO_P1H_NOV21},
 ], mc: [
+  {q:'Anaerobic respiration in yeast (fermentation) produces ethanol and which gas?', o:['Carbon dioxide','Nitrogen','Oxygen','Water vapour'], c:0, e:'Anaerobic respiration in yeast produces ethanol and carbon dioxide.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'Which equation represents anaerobic respiration in human muscle cells?', o:['glucose + oxygen -> carbon dioxide + water','glucose -> lactic acid','glucose -> ethanol + carbon dioxide','carbon dioxide + water -> glucose + oxygen'], c:1, e:'In muscle cells, anaerobic respiration converts glucose to lactic acid, with no oxygen involved.', t:'F', s:AQA_BIO_P1F_SQP24},
+  {q:'In a pondweed investigation the bubbles of oxygen produced in 2 minutes were: blue light 46, green 8, red 38, yellow 29. Which colour of light gave the highest rate of photosynthesis?', o:['Blue','Green','Red','Yellow'], c:0, e:'Blue light produced the most bubbles (46) in the same time, so it gave the highest rate of photosynthesis.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'A student has results for the number of oxygen bubbles produced under four different colours of light (categories). What is the best way to display these data?', o:['Bar graph','Line graph','Scatter graph','Pie chart'], c:0, e:'Colour of light is a categoric (discontinuous) variable, so a bar graph is the best way to display the data.', t:'F', s:AQA_BIO_P1F_JUN23},
+  {q:'The stem of a cactus is green. What causes the green colour?', o:['Chlorophyll (in chloroplasts)','Cellulose','Glucose','Nitrate ions'], c:0, e:'The green colour is due to chlorophyll, the pigment in chloroplasts that absorbs light for photosynthesis.', t:'F', s:AQA_BIO_P1F_NOV21},
+  {q:'Some desert plants drop their leaves as soon as the soil dries out. How is this an advantage in a dry environment?', o:['The plant is less likely to reproduce','The plant will not lose as much water','The plant will photosynthesise faster','The plant will absorb more sunlight'], c:1, e:'Most water is lost from leaves by transpiration through the stomata, so dropping the leaves greatly reduces water loss when water is scarce.', t:'F', s:AQA_BIO_P1F_NOV21},
   {q:'In an experiment on anaerobic respiration in yeast, what is the purpose of the liquid paraffin layer on top of the yeast?', o:['To prevent evaporation','To stop air getting in','To stop the temperature rising','To stop water getting in'], c:1, e:'The paraffin seals out oxygen so that respiration is anaerobic.', t:'H', s:AQA_BIO_P1H_SQP24},
   {q:'An indicator is blue at very low CO2, green at low CO2 and yellow at high CO2. What colour is expected during maximum anaerobic respiration in yeast?', o:['Blue','Green','Yellow','Colourless'], c:2, e:'Maximum respiration releases the most CO2, turning the indicator yellow.', t:'H', s:AQA_BIO_P1H_SQP24},
   {q:'Which organelle is the site of photosynthesis?', o:['Mitochondria','Nucleus','Chloroplast','Ribosome'], c:2, e:'Chloroplasts contain chlorophyll and the enzymes needed for photosynthesis. Only found in plant and algal cells.'},
@@ -1022,6 +1226,52 @@ const QB = {
   {q:'Hyperthyroidism is caused by an overactive thyroid gland. Suggest what would happen in the body.', a:'Too much thyroxine is released into the blood, which raises the basal metabolic rate, increasing the rate of respiration and the breakdown/formation of proteins, lipids and glycogen.', t:'H', s:AQA_BIO_P2H_SQP24},
   {q:'Describe the roles of FSH and LH in the menstrual cycle.', a:'FSH causes an egg to mature in the ovary and stimulates the ovaries to produce oestrogen; LH stimulates the release of the mature egg (ovulation).', t:'H', s:AQA_BIO_P2H_SQP24},
   {q:'The progesterone-only mini-pill must be taken at the same time each day. Explain why missing a dose reduces how well it prevents pregnancy.', a:'Missing a dose causes the progesterone level to drop; FSH is then no longer inhibited, so an egg matures, and LH is no longer inhibited, so the egg is released - it can then be fertilised, so pregnancy becomes possible.', t:'H', s:AQA_BIO_P2H_SQP24},
+
+  {q:'List the parts of a reflex arc in the correct order from stimulus to response.', a:'Receptor, sensory neurone, relay neurone (in the spinal cord/CNS), motor neurone, effector (muscle or gland).', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Give two factors that might affect a persons reaction time.', a:'Any two of: age, drugs (e.g. alcohol or caffeine), tiredness/lack of sleep, sex, practice, or distractions.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'What name is given to the growth response of a plant shoot towards light shining from one side?', a:'A tropism (specifically positive phototropism).', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'In an experiment on the effect of one-sided light on shoots, why is a control set up in which the seedling receives no one-sided light?', a:'To show that any response seen is caused by the one-sided light, by comparing with the control.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Give one stimulus, other than light, that a plant root responds to.', a:'Gravity (or water/moisture, or chemicals/minerals such as nitrate ions).', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Give two reasons why scientists repeat an investigation several times.', a:'To identify and eliminate anomalies (because of variation in results), and to calculate a mean that is more representative/typical.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Name two female reproductive hormones involved in the menstrual cycle.', a:'Oestrogen and progesterone (FSH and LH are also involved).', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'What is the function of FSH (follicle stimulating hormone) in the menstrual cycle?', a:'It causes an egg to mature in the ovary.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Sperm can survive about 5 days inside the female reproductive system and an egg about 1 day after ovulation. If ovulation occurs on day 14, on which range of days could intercourse lead to fertilisation?', a:'From day 9 to day 15 (5 days before ovulation up to 1 day after).', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Which process in cells releases energy from stored food?', a:'Respiration.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Give one way energy is used in a mammals body other than to evaporate sweat.', a:'Any one of: movement, muscle contraction, keeping warm, growth/repair, active transport.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'An athlete lost 3200 cm3 of water as sweat. If evaporating 1 cm3 of sweat requires 2.5 kJ, calculate the energy used for evaporation.', a:'3200 x 2.5 = 8000 kJ.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'An athlete used 6000 kJ of energy to evaporate sweat from an energy intake of 24000 kJ. Calculate the percentage of energy intake used for evaporation.', a:'6000/24000 x 100 = 25%.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Explain the effect a high concentration of insulin has on blood glucose concentration.', a:'It lowers blood glucose. Insulin makes cells (e.g. liver and muscle) take in glucose and convert it to glycogen for storage.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'A doctor suspects Type 2 diabetes. Compared with non-diabetics, the patient has higher blood glucose and higher blood insulin. Why do these results suggest Type 2 diabetes?', a:'In Type 2 diabetes body cells respond poorly to insulin, so glucose stays high; the body makes extra insulin to try to compensate, so insulin is also high.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Give two ways a person can reduce their chance of developing Type 2 diabetes.', a:'Eat a healthy/balanced diet (low in sugar/carbohydrate) and lose weight; take regular exercise.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Which gland in the human body produces the hormone insulin?', a:'The pancreas.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Insulin is a hormone that controls blood glucose concentration. Which organ does insulin mainly affect?', a:'The liver.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Give one effect of insulin in the body.', a:'It lowers the blood glucose concentration by making cells (such as liver and muscle cells) take up glucose and convert it to glycogen for storage.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Some hormones control the menstrual cycle. Which hormone causes an egg to mature in the ovary?', a:'Follicle stimulating hormone (FSH).', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Name the two hormones that help to maintain the lining of the uterus during pregnancy.', a:'Oestrogen and progesterone.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Give two methods of contraception that use hormones.', a:'Any two of: the oral contraceptive (the pill), a contraceptive injection, an implant, a skin patch, or a hormonal IUD/IUS.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'In the kidney, glucose molecules are found in both the blood plasma and the filtrate, but protein molecules are found only in the blood plasma. Explain why.', a:'Glucose molecules are small enough to pass through the filter into the filtrate, but protein molecules are too large to pass through the filter, so they stay in the plasma.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'In one day a person filters 160.0 dm3 of water from the blood and loses 1.9 dm3 of water in the urine. Calculate the volume of water reabsorbed into the blood.', a:'160.0 - 1.9 = 158.1 dm3.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'A kidney transplant costs 17000 pounds in the first year and then 5000 pounds in each of the following years for drugs. Calculate the total cost of treatment by kidney transplant over the first 5 years.', a:'Years 2 to 5 = 4 x 5000 = 20000; total = 20000 + 17000 = 37000 pounds.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Give two reasons why treating kidney disease with a transplant may be better for a patient than dialysis.', a:'Any two of: it is cheaper in the long term; there is less inconvenience (no regular hospital visits); fewer restrictions on diet and fluid intake; no risk of infection from dialysis equipment; the kidney keeps water, urea and ions at the correct level all the time so the patient feels well.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Give two disadvantages of treating kidney disease with a transplant rather than with dialysis.', a:'Any two of: risk of rejection (the immune system may attack the kidney); donor kidneys are in short supply; risk from the anaesthetic and surgery; the patient must take immunosuppressant drugs for life and may catch other infections; the transplant only lasts about 10 years so may need repeating.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'What is the name of the process by which the eye changes focus from a distant object to a near object?', a:'Accommodation.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'What happens to the shape of the lens in the eye when focusing on a near object?', a:'It becomes fatter (thicker, more convex and more rounded).', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Describe how the muscles in the iris help a person to see clearly when moving from a dimly-lit area into a brightly-lit area.', a:'The muscles in the iris contract to make the pupil smaller (constrict it), which reduces the amount of light entering the eye and reaching the retina.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Describe a simple test that could be used to measure reaction time, and give one variable that should be controlled to make the test valid.', a:'Use the ruler drop test: a ruler is dropped between an open finger and thumb and the distance it falls before being caught is measured and converted to a reaction time. Control variables such as the height the ruler is dropped from, the hand used, and caffeine intake before the test.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'What must marathon runners do to prevent themselves becoming dehydrated?', a:'Drink water to replace the water lost as sweat.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'What happens to the volume of water a person loses as sweat when they run a marathon?', a:'It increases (more water is lost as sweat).', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Blood entering the kidneys goes through which process to remove substances from the blood?', a:'Filtration.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Why is glucose not normally found in the urine?', a:'It is taken back into the blood by selective reabsorption in the kidney.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'What name is given to the process by which urine is removed from the body?', a:'Excretion.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Describe the advantages and disadvantages of having a kidney transplant instead of dialysis.', a:'Advantages: the patient does not need regular dialysis sessions, has more freedom and a more normal life, and it is cheaper in the long term. Disadvantages: a donor kidney is needed, it requires major surgery, the kidney may be rejected, and the patient must take immunosuppressant drugs.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Which part of the brain controls balance, for example when riding a bicycle?', a:'The cerebellum.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'In a reflex or response, the brain receives information and coordinates a response. Which term describes this role of the brain: receptor, effector or coordinator?', a:'Coordinator.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'What type of cell carries electrical impulses from the ears to the brain?', a:'A (sensory) neurone.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Which part of the eye contains the cells that detect light?', a:'The retina.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Some birds can detect ultraviolet (UV) light, and some fruits reflect UV light. Explain why being able to detect UV light is an advantage to these birds.', a:'They can find and identify the fruit more easily, so they can obtain more food.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'What is the name of the process that occurs in the eye when a person changes focus from a near book to distant trees?', a:'Accommodation.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'When the eye focuses on a distant object, how do the light rays need to be refracted compared with focusing on a near object?', a:'They are refracted less - the lens becomes thinner because the ciliary muscles relax and the suspensory ligaments pull tight.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Name the common defect of the eye in which distant objects appear out of focus.', a:'Myopia (short-sightedness).', t:'F', s:AQA_BIO_P2F_NOV20},
 ], mc: [
   {q:'In dim light, what happens to the pupil of the eye?', o:['It constricts','It dilates','It stays the same size','It changes colour'], c:1, e:'In dim light the radial muscles contract and circular muscles relax, dilating the pupil to let in more light.', t:'H', s:AQA_BIO_P2H_SQP24},
   {q:'In bright light, which iris muscles contract to make the pupil smaller?', o:['Radial muscles','Circular muscles','Ciliary muscles','Suspensory ligaments'], c:1, e:'In bright light the circular muscles contract (and radial relax), constricting the pupil.', t:'H', s:AQA_BIO_P2H_SQP24},
@@ -1052,6 +1302,23 @@ const QB = {
   {q:'What is the purpose of a reflex arc?', o:['To allow conscious decision-making','To produce a rapid automatic response without waiting for the brain to process it','To connect the two hemispheres of the brain','To regulate blood glucose'], c:1, e:'Reflex arcs bypass the brain — the response is coordinated by the spinal cord, making it much faster than a conscious reaction.', t:'F'},
   {q:'What is the term for the adjustment of the eye\'s focus from a distant to a near object?', o:['Adaptation','Myopia','Accommodation','Hyperopia'], c:2, e:'Accommodation is the process by which the lens changes shape to focus on objects at different distances. Myopia and hyperopia are eye defects.', s:AQA_BIO_P2H_JUN23},
   {q:'Which TWO of these are reasons for surrounding seedlings with damp blotting paper in a gravitropism investigation?', o:['To prevent photosynthesis in roots','To prevent mould growth on roots','To prevent water affecting root growth direction','To provide enough water for root growth'], c:3, e:'The damp blotting paper provides water needed for root growth (so the root can elongate and respond) and prevents mould/desiccation. It is NOT to provide minerals or prevent photosynthesis in roots. In this question, tick "To prevent growth of mould" and "To provide enough water for root growth".', s:AQA_BIO_P2H_JUN24},
+
+  {q:'Which statement correctly describes a reflex action?', o:['A reflex action is a slow action','A reflex action is automatic','A reflex action does not need a sense organ','A reflex action must be learned'], c:1, e:'Reflex actions are rapid and automatic (involuntary), protecting the body. They still require a receptor/sense organ.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Which two of these are reflex actions? (one correct answer pairs them)', o:['Writing a message to a friend','Playing a musical instrument','Catching a ball in a game','Blinking when an insect flies into the eye, and removing the hand from a hot object'], c:3, e:'Reflexes are automatic and not consciously controlled: blinking at an insect and pulling the hand off a hot object are both reflexes; writing, playing music and catching a ball are learned/voluntary.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'A student investigates how one-sided light affects seedlings. Which is a suitable control variable to keep the same?', o:['The direction the light comes from','The temperature of each seedling','Whether the seedling receives light','The age of the investigator'], c:1, e:'Control variables are kept constant; temperature should be the same for each seedling. The light direction is the independent variable being tested.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Which is the function of FSH in the menstrual cycle?', o:['It causes the uterus lining to break down','It causes breast development','It causes an egg to mature in the ovary','It thickens the uterus lining'], c:2, e:'FSH (follicle stimulating hormone) causes an egg to mature in a follicle in the ovary and stimulates oestrogen release.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'During hibernation an echidna uses food stored in its body cells to provide energy. Which process releases this energy?', o:['Diffusion','Excretion','Respiration','Digestion'], c:2, e:'Respiration releases energy from food molecules such as glucose in every living cell.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'How does resting at home all day, instead of training, affect the volume of sweat an athlete produces?', o:['It increases the sweat produced','It reduces the sweat produced','It has no effect on sweat','It stops sweating completely'], c:1, e:'Less activity means less heat is generated by muscles, so less sweating is needed to cool the body: sweat volume is reduced.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Which organ system has glands that produce hormones?', o:['The circulatory system','The endocrine system','The nervous system','The digestive system'], c:1, e:'The endocrine system is made up of glands that secrete hormones into the blood.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'How are hormones transported around the body?', o:['By the blood','By the muscles','By the nerves','By the lymph only'], c:0, e:'Hormones are chemical messengers carried in the bloodstream to their target organs.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Which hormone causes an egg to mature in the ovary?', o:['Adrenaline','Follicle stimulating hormone (FSH)','Testosterone','Insulin'], c:1, e:'FSH, released by the pituitary gland, causes an egg to mature in the ovary and stimulates oestrogen production.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Insulin controls blood glucose. Which organ does it mainly affect?', o:['The brain','The liver','The ovary','The lungs'], c:1, e:'Insulin acts mainly on the liver, causing it to take up glucose and store it as glycogen.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Which term describes the adjustment the eye makes to focus from a distant object to a near object?', o:['Accommodation','Adaptation','Hyperopia','Myopia'], c:0, e:'Accommodation is the change in lens shape that lets the eye focus on objects at different distances.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Which part of the brain controls balance when riding a bicycle?', o:['Cerebellum','Medulla','Pituitary gland','Cerebral cortex'], c:0, e:'The cerebellum coordinates muscular activity and balance.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'The ears send information about sound to the brain. Which word best describes the role of the brain here?', o:['Coordinator','Effector','Receptor','Stimulus'], c:0, e:'The brain coordinates the response to information from receptors.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Which part of the eye contains cells that detect light?', o:['Iris','Lens','Retina','Cornea'], c:2, e:'Light receptor cells are found in the retina.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'What process occurs in the eye when a person changes focus from a near object to a distant one?', o:['Accommodation','Magnification','Reflection','Reabsorption'], c:0, e:'Accommodation is the eye changing the shape of the lens to focus on near or distant objects.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'What change happens in the eyes when a person looks at a distant object instead of a near one?', o:['Light rays are refracted less','More light is reflected','The optic nerves move','The retina moves forward'], c:0, e:'The lens becomes thinner and refracts the light rays less to focus distant objects.', t:'F', s:AQA_BIO_P2F_NOV20},
 ]},
 
 'inheritance': { name: 'Inheritance & Evolution', fc: [
@@ -1137,6 +1404,43 @@ const QB = {
   {q:'A chemical called Fel D1 triggers cat allergies, and different cats make different amounts. Explain how selective breeding could produce cats that make very little Fel D1.', a:'Select the parents that produce the least Fel D1; breed them together; from the offspring select those producing the least Fel D1 and breed them; repeat over many generations until the cats produce very little Fel D1.', t:'H', s:AQA_BIO_P2H_SQP24},
   {q:'A single-base mutation changes one triplet/codon in a gene so the enzyme it codes for no longer works. Explain how the mutation stops the enzyme working.', a:'The change alters the amino acid coded for, changing the sequence of amino acids in the protein; the protein folds into a different shape, so the active site shape changes; the substrate no longer fits the active site, so the enzyme cannot catalyse its reaction.', t:'H', s:AQA_BIO_P2H_SQP24},
   {q:'A recessive allele (a) causes a condition. A heterozygous mother (Aa) and a homozygous recessive father (aa) have a child. Use a Punnett square to give the probability and genotype of an affected child.', a:'Cross Aa x aa gives offspring Aa, Aa, aa, aa. Probability of being affected = 1/2 (50%), and affected children have genotype aa.', t:'H', s:AQA_BIO_P2H_SQP24},
+
+  {q:'A genetic condition is caused by a recessive allele. What does it mean for an allele to be recessive?', a:'It is only expressed (shows in the phenotype) if the person has two copies of it.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'In a cell, where are alleles found and what chemical substance are they made from?', a:'Alleles are found in the nucleus and are made from DNA (deoxyribonucleic acid).', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Who invented the binomial classification system still used to name living organisms?', a:'Carl Linnaeus.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'What are the levels of biological classification in order from largest to smallest?', a:'Kingdom, phylum, class, order, family, genus, species.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'In the binomial naming system, which two classification levels make up an organisms scientific name?', a:'The genus (first, capital letter) and the species (second).', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Describe how the fossil of a sea animal with hard and soft parts is usually formed.', a:'The animal dies and falls to the sea bed and is buried in sediments. The soft parts decay, and the hard parts that do not decay are gradually replaced by minerals.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Give three possible causes of the extinction of a species.', a:'Any three of: new predators; new disease/pathogen; competition (for food/mates); catastrophic events such as volcanic activity or asteroid collision; climate change/ice age/global warming; loss or change of habitat.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Why can scientists not be completely sure what caused an ancient species such as the trilobites to become extinct?', a:'There is no/insufficient direct evidence and no experiment or observation can be made of events that happened millions of years ago.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Fossils of a simpler species are found in older rocks and a more complex species in newer rocks above them. Why does this support the idea that the complex species evolved from the simpler one?', a:'The simpler species existed earlier (older rocks) and the more complex species appears later, consistent with gradual evolutionary change over time.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Compare cell division, fertilisation and offspring in sexual versus asexual reproduction.', a:'Both involve cell division and both pass genes from parent to offspring. Fertilisation occurs only in sexual reproduction. Offspring are genetically identical to each other only in asexual reproduction.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Name the male gamete formed in flowering plants.', a:'Pollen (the pollen grain / nucleus in the pollen grain).', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'How many times does a cell divide during meiosis, and what does this produce?', a:'It divides twice, producing four gametes (sex cells) each with half the normal number of chromosomes.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Farmers grow tomato plants to sell. Suggest one advantage of growing tomato plants that are genetically different from each other.', a:'There is variation, so the plants are not all susceptible to the same disease, and they may have a range of useful characteristics (such as different flavours or colours).', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Suggest one advantage to a farmer of growing tomato plants that are genetically identical.', a:'They all have the same desirable characteristic (for example all high-yielding), grow at the same rate, and are ready to harvest at the same time.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Scientists can produce genetically identical plants using tissue culture. What is tissue culture?', a:'A small group of cells from a plant is grown (on a growth medium) into a new, identical plant.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Genetically identical tomato plants grown in the same garden do not all grow to the same height. Give one reason why.', a:'They experience different environmental conditions, such as different amounts of water, light or mineral ions.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'In dogs, sex is determined by X and Y chromosomes in the same way as in humans (female XX, male XY). Using a Punnett square, state the expected ratio of male to female offspring and explain why.', a:'The female gametes are all X; the male gametes are X or Y. The offspring are XX, XX, XY and XY, giving a 1:1 (50:50) ratio of female to male, because there is an equal chance of an X or a Y sperm fertilising the egg.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'A female dog gives birth to six puppies. Using the inheritance of sex by X and Y chromosomes, explain why you would expect about three males and three females.', a:'There is an equal probability (50%) of an X or a Y sperm fertilising the egg, so on average half the offspring are XX (female) and half are XY (male).', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'A farmer compared the growth rate and egg production of two varieties of chicken. Suggest two control variables the farmer should keep the same.', a:'Any two of: temperature, type and amount of food (and water), light, whether the chickens are kept indoors or outdoors, the amount of space or movement allowed, the age of the chickens, and the time of year.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'A farmer measured the mean growth of 500 chickens of each variety rather than just a few. Give the reason for using a large number of chickens.', a:'A larger sample gives more valid and representative results and a more accurate (reliable) mean, reducing the effect of any anomalies.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Variety A chickens grow quickly (good for meat) and variety B chickens lay many eggs. Describe how selective breeding could produce a new variety that is good for both meat and egg production.', a:'Breed (cross) the best of variety A and variety B together; from the offspring, select those with both the fastest growth and the highest egg numbers; breed these selected offspring together; and repeat this process over many generations.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Two birds have the scientific names Fringilla montifringilla (brambling) and Fringilla coelebs (chaffinch). A third bird is Pyrrhula pyrrhula (bullfinch). Which two birds are most closely related, and how do their names tell you this?', a:'The brambling and the chaffinch are most closely related, because they share the same first name (genus), Fringilla, so they belong to the same genus.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'A cell divides by meiosis to form gametes. How many sperm cells are formed from one cell?', a:'Four.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Human body cells contain 46 chromosomes. How many chromosomes are in each human egg cell?', a:'23.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'What is an allele?', a:'A different form (version) of a gene.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'A person has the genotype Dd for a characteristic. What word describes a genotype with two different alleles?', a:'Heterozygous.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Dupuytren\'s disorder is caused by a dominant allele D. A man with genotype Dd has a child with a woman with genotype dd. What is the chance the child will have Dupuytren\'s?', a:'50 percent (the offspring are Dd or dd in a 1:1 ratio).', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'What scientific term describes a change in a gene?', a:'A mutation.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Suggest one way embryo screening can help a couple with a family history of a genetic disorder.', a:'Embryos can be tested so that only those without the faulty allele are implanted (or it helps the couple make informed decisions).', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Describe the shape of a DNA molecule.', a:'A double helix - two strands twisted (coiled) around each other.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'In DNA, which part forms the code for a particular amino acid?', a:'The bases.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Which type of substance is produced when amino acids are joined together?', a:'A protein.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'DNA is made of repeating units. What is the name of one of these repeating units?', a:'A nucleotide.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'The DNA in one human body cell is 6000 million repeating units long and each unit is 0.34 nm long. Calculate the length of the DNA in millions of nm.', a:'6000 x 0.34 = 2040 million nm.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'A length of DNA is 2040 million nm. Give this length in metres. (1 metre = 1 x 10^9 nm.)', a:'2040 million nm = 2040 x 10^6 = 2.04 x 10^9 nm; divided by 1 x 10^9 = 2.04 m.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Patients with certain cancers, and their families, can be offered DNA analysis. Suggest one advantage of this.', a:'It can show whether a person has inherited a faulty allele that increases their risk of the cancer, so they can be screened or take preventative action.', t:'F', s:AQA_BIO_P2F_NOV20},
 ], mc: [
   {q:'The theory that characteristics acquired during an organism\'s lifetime are passed to its offspring was proposed by whom?', o:['Charles Darwin','Jean-Baptiste Lamarck','Gregor Mendel','Alfred Wallace'], c:1, e:'Lamarck proposed the inheritance of acquired characteristics; Darwin (and Wallace) proposed natural selection, and Mendel founded genetics.', t:'H', s:AQA_BIO_P2H_SQP24},
   {q:'Most snakes in a grassy habitat are green. Which statement best explains how green colour became common?', o:['Individual snakes turned green during their lives','Green snakes were camouflaged, so survived and bred more','The grass stained the snakes green','Snakes chose to become green'], c:1, e:'Better-camouflaged green snakes avoid predators and catch prey, so they survive, breed and pass on the alleles for green colour - this is natural selection.', t:'H', s:AQA_BIO_P2H_SQP24},
@@ -1164,6 +1468,23 @@ const QB = {
   {q:'What are the bases A, C, G and T in a DNA molecule?', o:['Amino acids','Sugars','Nucleotide (nitrogen-containing) bases','Phosphate groups'], c:2, e:'A (adenine), T (thymine), C (cytosine) and G (guanine) are the four nucleotide bases in DNA. A pairs with T; C pairs with G. They are part of nucleotides.', s:AQA_BIO_P2H_JUN23},
   {q:'Which two scientists suggested the theory of evolution by natural selection?', o:['Alexander Fleming and Carl Woese','Alfred Wallace and Alexander Fleming','Alfred Wallace and Charles Darwin','Charles Darwin and Carl Woese'], c:2, e:'Alfred Wallace and Charles Darwin independently developed the theory of evolution by natural selection. Wallace wrote to Darwin and they published jointly in 1858.', s:AQA_BIO_P2H_JUN24},
   {q:'Polydactyly is caused by a dominant allele. A person without polydactyly has which genotype?', o:['DD','Dd','dd','Dd or DD'], c:2, e:'A dominant allele is expressed even in one copy (Dd would show polydactyly). For the person to have no polydactyly (recessive phenotype), they must have two recessive alleles: dd.', s:AQA_BIO_P2H_JUN24},
+
+  {q:'A condition is caused by a recessive allele n; the healthy allele N is dominant. What is the phenotype of a person with the genotype Nn?', o:['They have the condition','They do not have the condition','They have a mild form of the condition','They cannot be determined'], c:1, e:'N is dominant, so a single copy of N is expressed. Nn therefore shows the healthy phenotype, though the person is a carrier of n.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Two parents are both Nn, where n is a recessive disease allele. What percentage of their offspring are expected to have the disease (nn)?', o:['25%','50%','75%','100%'], c:0, e:'A cross Nn x Nn gives genotypes NN, Nn, Nn, nn in a 1:2:1 ratio, so 1 in 4 (25%) are nn and have the disease.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'A disease allele n is recessive and the healthy allele N is dominant. Which scientific term describes allele N?', o:['Recessive','Heterozygous','Dominant','Genetic'], c:2, e:'N is expressed even when only one copy is present, so it is the dominant allele. Heterozygous describes a genotype (Nn), not an allele.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'A trilobite has the genus Elrathia and the species name kingii. What is its full binomial (scientific) name?', o:['Elrathia kingii','Trilobita kingii','Arthropoda kingii','kingii Elrathia'], c:0, e:'The binomial name is genus then species, both from the organisms classification: Elrathia kingii.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Cells divide twice during meiosis to form gametes. Compared with a normal body cell, how much DNA/chromosomes does each gamete contain?', o:['The same amount','Twice as much','Half as much','Four times as much'], c:2, e:'Meiosis halves the chromosome number, so each gamete has half the DNA of a body cell. Fertilisation then restores the full number.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'A farmer wants a crop of tomato plants that all ripen at the same time and have the same high yield. Which type of plants should the farmer grow?', o:['Genetically identical plants','Genetically different plants','Plants grown from random seeds','Wild plants'], c:0, e:'Genetically identical plants (for example from tissue culture) share the same characteristics, so they grow and ripen together.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Which technique is used to produce many genetically identical plants from a small group of cells?', o:['Tissue culture','Selective breeding','Sexual reproduction','Genetic engineering'], c:0, e:'In tissue culture a small group of cells is grown into new identical plants, a form of cloning.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'In dogs (as in humans) females are XX and males are XY. What is the expected ratio of male to female puppies in a large litter?', o:['1 male : 1 female','3 male : 1 female','1 male : 2 female','All male'], c:0, e:'Half the sperm carry X and half carry Y, so on average half the offspring are male (XY) and half female (XX), a 1:1 ratio.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Two bird species are named Fringilla montifringilla and Fringilla coelebs. What does the shared first part of the name tell you?', o:['They belong to the same genus and are closely related','They are exactly the same species','They live in different countries','They cannot be related'], c:0, e:'The first word of a binomial name is the genus; sharing it means the two species are closely related.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Why does selective breeding to produce a new variety of chicken take many generations?', o:['Because the best offspring must be selected and bred together repeatedly','Because chickens cannot reproduce','Because it uses cloning','Because the chickens must be genetically identical to start'], c:0, e:'In each generation the breeder selects the offspring with the best characteristics and breeds them; repeating this over many generations gradually develops the desired variety.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'What is an allele?', o:['A different form of a chromosome','A different form of a gamete','A different form of a gene','A different form of a protein'], c:2, e:'An allele is a version of a gene.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'A man has the genotype Dd. Which word describes this genotype?', o:['Heterozygous','Homozygous','Phenotype','Recessive'], c:0, e:'Two different alleles (Dd) means heterozygous.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Dupuytren\'s is caused by a dominant allele D. A man (Dd) and a woman (dd) have a child. What is the chance the child will have Dupuytren\'s?', o:['25%','50%','75%','100%'], c:1, e:'Dd x dd gives 1 Dd : 1 dd, so a 50 percent chance of being affected.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'In DNA, which part forms the code for a particular amino acid?', o:['Bases','Phosphates','Sugars','Helices'], c:0, e:'The sequence of bases codes for the sequence of amino acids.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Which substance is produced when amino acids are joined together?', o:['Carbohydrate','Fat','Protein','Lipid'], c:2, e:'A chain of amino acids forms a protein.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'What is the name of the repeating unit that DNA is made of?', o:['Chromosome','Enzyme','Nucleotide','Ribosome'], c:2, e:'DNA is a polymer of nucleotides.', t:'F', s:AQA_BIO_P2F_NOV20},
 ]},
 
 'ecology': { name: 'Ecology', fc: [
@@ -1255,7 +1576,56 @@ const QB = {
   {q:'Explain how keeping pigs in a warm, enclosed environment increases the efficiency of food production.', a:'Less energy/heat is lost keeping the body warm, and less energy is used in movement, so more of the energy from food is available for growth - more of the food is converted into body mass.', t:'H', s:AQA_BIO_P2H_SQP24},
   {q:'The number of seals caught fell from 362 thousand in 2004 to 67 thousand in 2010. Calculate the percentage decrease.', a:'(362 - 67) / 362 x 100 = 81.5% (accept 81 or 81.49%).', t:'H', s:AQA_BIO_P2H_SQP24},
   {q:'A newspaper claimed that food security is poor in some communities because they eat fewer traditional foods such as seal. Suggest two reasons this conclusion might not be correct.', a:'They may eat other foods instead, so might still have food security; and we do not know whether other (traditional) food sources have also declined.', t:'H', s:AQA_BIO_P2H_SQP24},
+
+  {q:'When untreated sewage enters a river it provides food for microorganisms. Which type of organism increases in number most rapidly first?', a:'Bacteria (they feed on the sewage and multiply rapidly).', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'When sewage enters a river the dissolved oxygen concentration falls. Which life process carried out by the organisms in the water uses up this oxygen?', a:'(Aerobic) respiration.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'As green algae increase in a river, the dissolved oxygen concentration rises. Explain why.', a:'The algae carry out photosynthesis, which produces oxygen that dissolves in the water.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Sludge worms live where oxygen is low and mayfly nymphs need high oxygen. How can the animals present at a river site be used as evidence of its oxygen level?', a:'They act as indicator species: many sludge worms and no mayfly nymphs indicate low oxygen, whereas mayfly nymphs present indicate higher oxygen.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Give two abiotic and two biotic factors that could affect the size of an earthworm population in soil.', a:'Abiotic (any two): water/moisture, oxygen/air in soil, pH, mineral/ion content, temperature, soil particle size. Biotic (any two): availability of food (dead/decaying matter), predators, disease/pathogens.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Outline how you could use a quadrat to fairly compare the number of earthworms per m2 in two different areas of soil.', a:'Apply the same volume and concentration of the worm-raising chemical to equal, randomly chosen sample areas (using a quadrat) in each area, leave for the same time, count the worms, repeat at least 5 times in each area and compare the mean number per m2.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Students estimated the population of buttercup plants on a lawn by placing a 1 metre by 1 metre square frame at sample locations. What is the name of this square frame?', a:'A quadrat.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'When estimating a plant population on a lawn, why should the sample locations be chosen at random?', a:'Random sampling avoids bias, so the sample is representative of the whole area and gives a more reliable estimate.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Students placed five 1 m by 1 m quadrats on a lawn and counted the buttercup plants in each. Describe how they would use these results to estimate the total population of buttercups on the lawn.', a:'Work out the mean number of plants per quadrat (add the five counts and divide by 5), calculate the total area of the lawn (length x width), then multiply the mean number per square metre by the total area.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'When estimating the population of plants on a lawn using quadrats, give one way the students could improve the accuracy of their estimate.', a:'Count and record more samples (use more quadrats).', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Soil pH is one abiotic factor that affects the number of buttercup plants on a lawn. Give two other abiotic factors that could affect the number of plants.', a:'Any two of: amount of water/moisture, light intensity, temperature, wind, amount of mineral ions in the soil, or oxygen in the soil.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'In a food chain, grass is the first organism. What is the source of energy that the grass uses to grow?', a:'Light energy from the Sun.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'In the food chain grass -> snowshoe hare -> lynx, name the producer, the primary consumer and the secondary consumer.', a:'Producer = grass; primary consumer = snowshoe hare; secondary consumer = lynx.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'In the food chain grass -> snowshoe hare -> lynx, which organism is the predator and which is the prey?', a:'The lynx is the predator and the snowshoe hare is the prey.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'A snowshoe hare has white fur in winter (when there is snow) and brown fur in summer. Explain how the change in fur colour increases its chance of survival.', a:'The fur colour camouflages the hare against its surroundings so it is not easily seen by predators such as the lynx, so it is less likely to be caught and eaten and more likely to survive (and reproduce).', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'In a predator-prey relationship between snowshoe hares and lynx, suggest two reasons why the number of snowshoe hares might increase.', a:'Any two of: there are fewer lynx (predators) to eat them; there is more food/grass available; the hares reproduce and multiply.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'In a predator-prey relationship, what effect does an increase in the number of snowshoe hares (the prey) have on the number of lynx (the predators)?', a:'The number of lynx increases, because there is more food available for them.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'When a snowshoe hare eats grass, about 90% of the biomass of the grass is not passed on to the hare. Give two ways this biomass is lost.', a:'Any two of: lost in respiration (released as carbon dioxide and water), lost in egestion as faeces, lost in excretion (such as urea in urine), and not all of the grass is eaten.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'A farmer keeps cows outdoors. The energy inputs are 5950 kJ/m2/year as food and 50 kJ/m2/year as fossil fuel. Calculate the total energy input for keeping the cows outdoors.', a:'5950 + 50 = 6000 kJ/m2/year.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'For cows kept indoors the total energy input is 16000 kJ/m2/year and the energy output as meat and milk is 40 kJ/m2/year. Calculate the percentage efficiency, using percentage efficiency = (energy output / total energy input) x 100.', a:'(40 / 16000) x 100 = 0.25%.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Cows kept indoors transfer energy to meat and milk more efficiently than cows kept outdoors. Give two reasons why keeping cows indoors is more energy efficient.', a:'The cows move less indoors (so less energy is lost in movement) and it is warmer indoors (so less energy is lost as heat to keep the body warm).', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Suggest why diseases spread more quickly between cows when they are kept indoors than when they are kept outdoors in fields.', a:'The cows are kept close together in an enclosed space, so pathogens pass from one animal to another more easily.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Bacteria are one type of organism that causes the decay of dead material. Name another type of organism that causes decay.', a:'Fungi.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'As milk decays, bacteria digest the fats in the milk. What type of acid is produced when fats are digested?', a:'Fatty acids.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'In an experiment on decaying milk, the digestion of fat was faster at 30 C than at 5 C. Give one reason why the rate of digestion was faster at the higher temperature.', a:'At the higher temperature the particles have more kinetic energy and move faster (more collisions), the enzymes work faster, and the bacteria reproduce faster.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'What name is given to all of the organisms, of all the different species, living together in the same habitat?', a:'A community.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'What evidence do scientists use to decide that two similar birds belong to different species?', a:'They cannot breed together to produce fertile offspring.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Name the process that plants such as wheat use to make glucose.', a:'Photosynthesis.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'In a food chain, give one reason why not all of the biomass in a chicken eaten by a dog becomes part of the dog\'s biomass.', a:'Some is lost as waste in faeces (egested undigested) and some is used in respiration and lost as heat.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Give two reasons why dog food made from farmed insects is more sustainable than dog food made from beef.', a:'Farming cows needs more land than farming insects; and fewer cows being farmed means less methane is released, which slows global warming.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'An organism has the scientific (binomial) name Elasmotherium sibiricum. What is its genus?', a:'Elasmotherium (the first word of the binomial name is the genus).', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'In the three-domain system of classification, which domain does an animal such as a rhinoceros belong to?', a:'Eukaryota (Eukarya) - its cells have a nucleus.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Who developed the three-domain system of classification?', a:'Carl Woese.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'When an animal dies, suggest why only its bones are likely to become fossils and not its soft tissues.', a:'Bones are hard and do not decay easily, whereas the soft tissues are broken down (decomposed) by microorganisms.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Suggest how scientists can estimate when an extinct animal, known only from fossils, was alive.', a:'By dating the rock layers in which the fossils are found (or by carbon dating the fossil).', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Suggest two factors that may cause a species to become extinct.', a:'Any two of: climate change, a new predator, a new disease, loss of habitat or food, or hunting by humans.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Describe how fishing quotas can help return fish stocks to a sustainable level.', a:'They limit the number or mass of fish that can be caught, so more fish survive and reach breeding age to reproduce, allowing the population to recover.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Explain why more land is being used for farming as the human population increases.', a:'A larger population needs more food, so more land is cleared and used to grow crops and rear animals.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Describe how increased farming can decrease biodiversity.', a:'Land is cleared (deforestation) and hedgerows removed, destroying habitats; monoculture growing of a single crop reduces the variety of plants and the animals that depend on them.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Golden rice is a genetically modified crop. What is its advantage compared with non-GM rice?', a:'It has improved nutritional value - it contains beta-carotene, which the body uses to make vitamin A.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Suggest one reason why some people are concerned about growing a genetically modified crop such as golden rice.', a:'Any one of: concerns about possible effects on human health, effects on wild populations or the environment, or ethical objections to changing genes.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Name two types of microorganism that cause food to decay.', a:'Bacteria and fungi.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'As milk decays, lipids are broken down. Name the type of product formed that causes the pH of the milk to decrease.', a:'Fatty acids (acids).', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Give one way the pH of milk can be measured during a decay investigation.', a:'Use a pH meter (pH probe), or universal indicator solution / pH paper and a colour chart.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'In an investigation into the effect of temperature on milk decay, give two control variables that should be kept the same.', a:'Any two of: the volume of milk, the type/source of milk, the starting pH, and measuring the pH at the same time each day.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Cow\'s milk reaches pH 5 faster at 10 degrees C than at 5 degrees C. Suggest why.', a:'Microorganisms reproduce and respire faster at the warmer temperature, so the milk decays more quickly.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Suggest two reasons why different types of milk take different lengths of time to decay (reach pH 5).', a:'Different milks contain different nutrients (sugars, proteins, fats) for the microorganisms, and may start with different numbers or types of microorganisms.', t:'F', s:AQA_BIO_P2F_NOV20},
 ], mc: [
+  {q:'Which adaptation of a cactus helps to prevent it from being eaten by animals?', o:['Spikes / thorns / prickles','A wide shallow root system','A green stem','A swollen water-storing stem'], c:0, e:'Spikes or thorns (and a tough outer layer) are a physical defence that deters animals from eating the cactus. The roots and water-storing stem are adaptations for getting and conserving water.', t:'F', s:AQA_BIO_P1F_NOV21},
   {q:'Anaerobic decay in an airtight compost heap produces which gas?', o:['Oxygen','Methane','Nitrogen','Chlorine'], c:1, e:'Anaerobic (no oxygen) decay by microorganisms produces methane, a greenhouse gas.', t:'H', s:AQA_BIO_P2H_SQP24},
   {q:'A composting material contains 9.80 g of carbon and 0.20 g of nitrogen. What is its carbon:nitrogen ratio?', o:['10:1','20:1','49:1','25:1'], c:2, e:'9.80 / 0.20 = 49, so the ratio is 49:1.', t:'H', s:AQA_BIO_P2H_SQP24},
   {q:'Fertile compost needs a carbon:nitrogen ratio of about 25:1. Which material is best to use?', o:['A material with ratio 7:1','A material with ratio 20:1','A material with ratio 49:1','A material with ratio 100:1'], c:1, e:'20:1 is closest to the ideal 25:1.', t:'H', s:AQA_BIO_P2H_SQP24},
@@ -1284,6 +1654,21 @@ const QB = {
   {q:'The sundew plant absorbs phosphates from digested insects. Which substance can it make using phosphates?', o:['Cellulose','DNA','Glycerol','Starch'], c:1, e:'DNA contains phosphate groups as part of its nucleotide structure. Phosphates are also needed for ATP. Cellulose and starch are carbohydrates; glycerol is a lipid component — none require phosphate.', s:AQA_BIO_P2H_JUN24},
   {q:'The sundew plant absorbs nitrogen compounds from digested insects. Which substance can it make using nitrogen?', o:['Fatty acid','Glucose','Lactic acid','Protein'], c:3, e:'Proteins are made from amino acids, which all contain nitrogen. Fatty acids, glucose, and lactic acid are carbon-based and do not require nitrogen.', s:AQA_BIO_P2H_JUN24},
   {q:'Which amino acids are found in significantly higher proportions in Quality Protein Maize (QPM) compared to normal maize?', o:['Lysine and tryptophan','Lysine and valine','Threonine and tryptophan','Threonine and valine'], c:0, e:'From Table 2: lysine increases from 28.9 to 41.9 g/kg (+45%) and tryptophan from 7.3 to 16.3 g/kg (+123%). Valine and threonine show smaller relative increases.', s:AQA_BIO_P2H_JUN24},
+
+  {q:'Trilobites are now extinct. Which of these is a possible cause of extinction of a species?', o:['Increased biodiversity','A new disease or predator','A stable, unchanging climate','Plentiful food and space'], c:1, e:'Extinction can be caused by new predators or disease, climate change, habitat loss, or catastrophic events. Stable conditions and plentiful resources do not cause extinction.', t:'F', s:AQA_BIO_P2F_JUN22},
+  {q:'Students want to measure the length and width of a lawn to estimate a plant population. Which piece of equipment should they use?', o:['A 15 cm ruler','A 30 m tape measure','A balance','A quadrat'], c:1, e:'A long (30 m) tape measure is used to measure the length and width of the lawn; the quadrat is used to sample the plants.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'How should students choose the locations to place their quadrats when estimating a plant population on a lawn?', o:['Choose locations at random','Choose locations at the corners of the lawn','Choose locations with lots of plants','Choose locations with no plants'], c:0, e:'Locations should be chosen at random to avoid bias and make the sample representative.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Bacteria are one type of organism that causes decay. Which other type of organism causes decay?', o:['Fungi','Plants','Viruses','Mammals'], c:0, e:'Fungi, like decay bacteria, are decomposers that break down dead material.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'As milk decays, bacteria digest the fats in the milk. What type of acid is produced?', o:['Amino acid','Fatty acid','Hydrochloric acid','Nucleic acid'], c:1, e:'Digestion of fats (lipids) produces fatty acids (and glycerol), which lower the pH of the milk.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'In a decay experiment the pH of milk at 20 C stopped falling at pH 4.5 and did not go any lower. What is the most likely reason?', o:['All the fat had been digested','The reaction was too fast','The temperature was too low','The milk had frozen'], c:0, e:'Once all the fat had been digested, no more fatty acids could be produced, so the pH stopped falling.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'What name is given to all the organisms of all species living in the same habitat?', o:['A community','A food chain','A population','An ecosystem'], c:0, e:'A community is all the organisms of all species in a habitat; a population is one species, and an ecosystem also includes the non-living environment.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'Scientists think a brambling and a bullfinch are different species. What evidence is used to classify them as different species?', o:['They are different sizes','They cannot breed together to give fertile offspring','They live in different parts of the habitat','They eat different foods'], c:1, e:'Two organisms are classed as different species if they cannot interbreed to produce fertile offspring.', t:'F', s:AQA_BIO_P2F_JUN23},
+  {q:'In the food chain wheat to chicken to dog, what is the trophic level of the dog?', o:['1','2','3','4'], c:2, e:'Wheat is level 1 (producer), chicken level 2, dog level 3.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Which is a reason why some of the biomass in a chicken does not become part of a dog that eats it?', o:['Some of the chicken is used for the dog to grow','The dog produces waste in faeces','The wheat is eaten by the dog','All of the chicken is digested'], c:1, e:'Biomass is lost as undigested waste egested in faeces (and through respiration).', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'Who developed the three-domain system of classification?', o:['Carl Woese','Charles Darwin','Gregor Mendel','Carl Linnaeus'], c:0, e:'Carl Woese proposed the three domains: Archaea, Bacteria and Eukaryota.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'An organism has the binomial name Elasmotherium sibiricum. What is its genus?', o:['Elasmotherium','sibiricum','Elasmotherium sibiricum','Rhinoceros'], c:0, e:'The first word of a binomial name is the genus.', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'What is the advantage of genetically modified golden rice compared with non-GM rice?', o:['Golden rice contains protein-rich mycoprotein','Golden rice has improved nutritional value','Golden rice produces human insulin','Golden rice grows without water'], c:1, e:'Golden rice contains beta-carotene, improving its nutritional value (a source of vitamin A).', t:'F', s:AQA_BIO_P2F_NOV20},
+  {q:'A student wants to find out whether the temperature milk is stored at affects how likely it is to cause food poisoning. How could the investigation be developed?', o:['Determine the types of bacteria present in the milk','Record the pH every 12 hours','Use more than three different types of milk','Measure the mass of the milk'], c:0, e:'Identifying the bacteria present shows whether harmful (food-poisoning) bacteria have grown.', t:'F', s:AQA_BIO_P2F_NOV20},
 ]}
 
 }; // end QB
@@ -2507,7 +2892,7 @@ const IMGS_MATHS = {
   // 'maths_jun23_q5': 'data:image/png;base64,...'
 };
 
-// Edexcel GCSE (9-1) Mathematics Question Bank — Foundation focus
+// Edexcel GCSE (9-1) Mathematics Question Bank — Higher Tier
 // Specification: Edexcel 1MA1
 // Format: fc = flashcards {q, a, t, s}, mc = multiple choice {q, o, c, e, t, s}
 // t:'H' = Higher only | t:'F' = Foundation only | no t = both tiers
@@ -2519,38 +2904,55 @@ const QB_MATHS = {
 // ── NUMBER ──────────────────────────────────────────────────────────────────
 'number': { name: 'Number', fc: [
   {q:'Write $0.000\\,42$ in standard form.', a:'$4.2 \\times 10^{-4}$. Move the decimal point 4 places right to get $4.2$, so the power is $-4$.'},
-  {q:'Work out $\\frac{2}{3} + \\frac{1}{4}$.', a:'$\\frac{8}{12} + \\frac{3}{12} = \\frac{11}{12}$. Use a common denominator of $12$.'},
+  {q:'Work out $\\dfrac{2}{3} + \\dfrac{1}{4}$.', a:'$\\dfrac{8}{12} + \\dfrac{3}{12} = \\dfrac{11}{12}$. Use a common denominator of $12$.'},
   {q:'Find the Highest Common Factor (HCF) of $24$ and $36$.', a:'$12$. $24 = 2^3 \\times 3$ and $36 = 2^2 \\times 3^2$; take the lowest power of each shared prime: $2^2 \\times 3 = 12$.'},
   {q:'Find the Lowest Common Multiple (LCM) of $6$ and $8$.', a:'$24$. $6 = 2 \\times 3$, $8 = 2^3$; take the highest power of each prime: $2^3 \\times 3 = 24$.'},
   {q:'Round $3.846$ to $2$ significant figures.', a:'$3.8$. The third significant figure is $4$, so round down.'},
-  {q:'Estimate $\\frac{29.8 \\times 4.1}{0.49}$ by rounding each number to 1 s.f.', a:'$\\frac{30 \\times 4}{0.5} = \\frac{120}{0.5} = 240$.'},
-  {q:'Write $\\frac{3}{8}$ as a decimal.', a:'$0.375$. Divide $3 \\div 8$.', t:'F'},
+  {q:'Estimate $\\dfrac{29.8 \\times 4.1}{0.49}$ by rounding each number to 1 s.f.', a:'$\\dfrac{30 \\times 4}{0.5} = \\dfrac{120}{0.5} = 240$.'},
+  {q:'Write $\\dfrac{3}{8}$ as a decimal.', a:'$0.375$. Divide $3 \\div 8$.', t:'F'},
   {q:'What is $5^0$?', a:'$1$. Any non-zero number to the power $0$ equals $1$.'},
-  {q:'Work out $2^{-3}$.', a:'$\\frac{1}{2^3} = \\frac{1}{8}$. A negative power means the reciprocal.'},
+  {q:'Work out $2^{-3}$.', a:'$\\dfrac{1}{2^3} = \\dfrac{1}{8}$. A negative power means the reciprocal.'},
   {q:'Increase $\\pounds 80$ by $15\\%$.', a:'$\\pounds 92$. $15\\%$ of $80 = 12$, so $80 + 12 = 92$ (or multiply by $1.15$).'},
   {q:'Write the number $18\\,475$ correct to the nearest thousand.', a:'$18\\,000$. The hundreds digit is $4$, so round down.', t:'F'},
   {q:'Write $0.3$ as a percentage.', a:'$30\\%$. Multiply by $100$.', t:'F'},
   {q:'Find the square root of $64$.', a:'$8$. $8 \\times 8 = 64$.', t:'F'},
   {q:'Work out $-12 \\div -4$.', a:'$3$. A negative divided by a negative gives a positive.', t:'F'},
-  {q:'Write $23\\%$ as a fraction.', a:'$\\frac{23}{100}$.', t:'F'},
+  {q:'Write $23\\%$ as a fraction.', a:'$\\dfrac{23}{100}$.', t:'F'},
   {q:'Write down the value of the $3$ in the number $62\\,837$.', a:'$30$ (it is in the tens column).', t:'F'},
   {q:'Write down three prime numbers between $20$ and $40$.', a:'Any three of $23, 29, 31, 37$.', t:'F'},
   {q:'Write $5.3 \\times 10^{4}$ as an ordinary number.', a:'$53\\,000$.', t:'F'},
   {q:'Write $90$ as a product of its prime factors.', a:'$2 \\times 3^2 \\times 5$.', t:'F'},
   {q:'Find the HCF of $63$ and $105$.', a:'$21$. $63 = 3^2 \\times 7$ and $105 = 3 \\times 5 \\times 7$; shared factors give $3 \\times 7 = 21$.', t:'F'},
+  // ── Higher only ──
+  {q:'Simplify $\\sqrt{50}$.', a:'$5\\sqrt{2}$. $\\sqrt{50} = \\sqrt{25 \\times 2} = 5\\sqrt{2}$.', t:'H'},
+  {q:'Simplify $\\sqrt{72}$.', a:'$6\\sqrt{2}$. $\\sqrt{72} = \\sqrt{36 \\times 2} = 6\\sqrt{2}$.', t:'H'},
+  {q:'Rationalise the denominator of $\\dfrac{5}{\\sqrt{3}}$.', a:'$\\dfrac{5\\sqrt{3}}{3}$. Multiply numerator and denominator by $\\sqrt{3}$.', t:'H'},
+  {q:'Expand and simplify $(2 + \\sqrt{3})(4 - \\sqrt{3})$.', a:'$8 - 2\\sqrt{3} + 4\\sqrt{3} - 3 = 5 + 2\\sqrt{3}$.', t:'H'},
+  {q:'Work out $16^{\\frac{3}{4}}$.', a:'$8$. $16^{\\frac{1}{4}} = 2$, so $16^{\\frac{3}{4}} = 2^3 = 8$.', t:'H'},
+  {q:'Work out $27^{-\\frac{2}{3}}$.', a:'$\\dfrac{1}{9}$. $27^{\\frac{1}{3}} = 3$, so $27^{\\frac{2}{3}} = 9$; the negative power gives the reciprocal: $\\dfrac{1}{9}$.', t:'H'},
+  {q:'$x = 3.7$ rounded to 1 d.p. Write down the error interval for $x$.', a:'$3.65 \\le x < 3.75$. Lower bound $= 3.65$, upper bound $= 3.75$.', t:'H'},
+  {q:'Show that $0.\\overline{36} = \\dfrac{4}{11}$.', a:'Let $x = 0.363636\\ldots$ Then $100x = 36.363636\\ldots$ Subtract: $99x = 36$, so $x = \\dfrac{36}{99} = \\dfrac{4}{11}$.', t:'H'},
+  {q:'A price after a $20\\%$ increase is $\\pounds 72$. Find the original price.', a:'$\\pounds 60$. Divide by the multiplier: $72 \\div 1.20 = 60$.', t:'H'},
+  {q:'A car costs $\\pounds 8000$ and depreciates by $15\\%$ each year. Find its value after $3$ years.', a:'$\\pounds 8000 \\times 0.85^3 = \\pounds 4913$.', t:'H'},
+  {q:'Simplify $\\dfrac{3^8 \\times 3^{-2}}{3^3}$.', a:'$3^3 = 27$. Add/subtract indices: $8 + (-2) - 3 = 3$.', t:'H'},
+  {q:'Write $(3 \\times 10^4) \\times (2 \\times 10^5)$ in standard form.', a:'$6 \\times 10^9$. $3 \\times 2 = 6$ and $10^4 \\times 10^5 = 10^9$.', t:'H'},
+  {q:'Convert $0.1\\overline{5}$ to a fraction.', a:'$\\dfrac{7}{45}$. Let $x = 0.1555\\ldots$; $10x = 1.555\\ldots$; $100x = 15.555\\ldots$ Subtract: $90x = 14$, so $x = \\dfrac{14}{90} = \\dfrac{7}{45}$.', t:'H'},
+  {q:'Simplify $\\dfrac{\\sqrt{8} + \\sqrt{18}}{\\sqrt{2}}$.', a:'$5$. $\\sqrt{8} = 2\\sqrt{2}$, $\\sqrt{18} = 3\\sqrt{2}$; sum $= 5\\sqrt{2}$; divide by $\\sqrt{2} = 5$.', t:'H'},
 ], mc: [
   {q:'$0.000\\,067$ in standard form is:', o:['$6.7 \\times 10^{-5}$','$6.7 \\times 10^{5}$','$67 \\times 10^{-6}$','$6.7 \\times 10^{-6}$'], c:0, e:'Move the point 5 places right to reach $6.7$, so the index is $-5$: $6.7 \\times 10^{-5}$.'},
-  {q:'$\\frac{3}{4} \\times \\frac{2}{9}$ simplifies to:', o:['$\\frac{6}{36}$','$\\frac{1}{6}$','$\\frac{5}{13}$','$\\frac{6}{13}$'], c:1, e:'$\\frac{3 \\times 2}{4 \\times 9} = \\frac{6}{36} = \\frac{1}{6}$.'},
+  {q:'$\\dfrac{3}{4} \\times \\dfrac{2}{9}$ simplifies to:', o:['$\\dfrac{6}{36}$','$\\dfrac{1}{6}$','$\\dfrac{5}{13}$','$\\dfrac{6}{13}$'], c:1, e:'$\\dfrac{3 \\times 2}{4 \\times 9} = \\dfrac{6}{36} = \\dfrac{1}{6}$.'},
   {q:'The LCM of $4$ and $10$ is:', o:['$2$','$40$','$20$','$14$'], c:2, e:'$4 = 2^2$, $10 = 2 \\times 5$. LCM $= 2^2 \\times 5 = 20$.'},
   {q:'$\\sqrt{144}$ equals:', o:['$11$','$12$','$72$','$14$'], c:1, e:'$12 \\times 12 = 144$.', t:'F'},
-  {q:'$45\\%$ written as a fraction in simplest form is:', o:['$\\frac{45}{100}$','$\\frac{9}{20}$','$\\frac{4}{5}$','$\\frac{1}{2}$'], c:1, e:'$\\frac{45}{100} = \\frac{9}{20}$ dividing top and bottom by $5$.'},
+  {q:'$45\\%$ written as a fraction in simplest form is:', o:['$\\dfrac{45}{100}$','$\\dfrac{9}{20}$','$\\dfrac{4}{5}$','$\\dfrac{1}{2}$'], c:1, e:'$\\dfrac{45}{100} = \\dfrac{9}{20}$ dividing top and bottom by $5$.'},
   {q:'$3^4$ equals:', o:['$12$','$27$','$81$','$64$'], c:2, e:'$3 \\times 3 \\times 3 \\times 3 = 81$.'},
   {q:'$5000$ millilitres changed to litres is:', o:['$5$ litres','$50$ litres','$0.5$ litres','$500$ litres'], c:0, e:'$1000\\text{ ml} = 1$ litre, so $5000 \\div 1000 = 5$.', t:'F'},
-  {q:'The multiple of $7$ between $30$ and $40$ is:', o:['$32$','$35$','$36$','$28$'], c:1, e:'$7 \\times 5 = 35$.', t:'F'},
-  {q:'$\\frac{31}{100}$ written as a decimal is:', o:['$0.031$','$3.1$','$0.31$','$31.0$'], c:2, e:'Hundredths, so $0.31$.', t:'F'},
-  {q:'The list $0.21,\\ 0.2,\\ 0.03,\\ 0.1,\\ 0.16$ in order, smallest first, starts with:', o:['$0.1$','$0.03$','$0.16$','$0.2$'], c:1, e:'$0.03$ is the smallest value.', t:'F'},
-  {q:'$273 \\times 54$ equals:', o:['$14\\,742$','$13\\,742$','$1\\,638$','$14\\,642$'], c:0, e:'$273 \\times 54 = 14\\,742$.', t:'F'},
-  {q:'$7.4 \\times 10^{-5}$ as an ordinary number is:', o:['$0.000074$','$0.0000074$','$740000$','$0.00074$'], c:0, e:'Move the point $5$ places left: $0.000074$.', t:'F'},
+  {q:'$\\sqrt{12}$ simplifies to:', o:['$2\\sqrt{3}$','$3\\sqrt{4}$','$4\\sqrt{3}$','$2\\sqrt{6}$'], c:0, e:'$\\sqrt{12} = \\sqrt{4 \\times 3} = 2\\sqrt{3}$.', t:'H'},
+  {q:'$8^{\\frac{2}{3}}$ equals:', o:['$4$','$\\dfrac{4}{3}$','$2$','$16$'], c:0, e:'$8^{\\frac{1}{3}} = 2$, so $8^{\\frac{2}{3}} = 2^2 = 4$.', t:'H'},
+  {q:'$16^{\\frac{3}{4}}$ equals:', o:['$12$','$8$','$4$','$64$'], c:1, e:'$16^{\\frac{1}{4}} = 2$, so $16^{\\frac{3}{4}} = 2^3 = 8$.', t:'H'},
+  {q:'$\\dfrac{1}{\\sqrt{5}}$ rationalised is:', o:['$\\dfrac{\\sqrt{5}}{5}$','$\\dfrac{1}{5}$','$\\dfrac{5}{\\sqrt{5}}$','$\\sqrt{5}$'], c:0, e:'Multiply top and bottom by $\\sqrt{5}$: $\\dfrac{\\sqrt{5}}{5}$.', t:'H'},
+  {q:'The upper bound of a length measured as $4.3\\text{ cm}$ (to 1 d.p.) is:', o:['$4.35\\text{ cm}$','$4.4\\text{ cm}$','$4.30\\text{ cm}$','$4.34\\text{ cm}$'], c:0, e:'Half the precision ($0.05$) added to $4.3$: upper bound $= 4.35$.', t:'H'},
+  {q:'$0.\\overline{3}$ as a fraction is:', o:['$\\dfrac{3}{10}$','$\\dfrac{1}{3}$','$\\dfrac{3}{9}$','$\\dfrac{1}{9}$'], c:1, e:'Let $x = 0.333\\ldots$; $10x = 3.333\\ldots$; $9x = 3$; $x = \\dfrac{1}{3}$.', t:'H'},
+  {q:'$(3 \\times 10^4) \\div (6 \\times 10^6)$ in standard form is:', o:['$5 \\times 10^{-3}$','$0.5 \\times 10^{-3}$','$5 \\times 10^{-2}$','$2 \\times 10^{2}$'], c:0, e:'$3 \\div 6 = 0.5$ and $10^{4-6} = 10^{-2}$, giving $0.5 \\times 10^{-2} = 5 \\times 10^{-3}$.', t:'H'},
 ]},
 
 // ── ALGEBRA ─────────────────────────────────────────────────────────────────
@@ -2558,134 +2960,196 @@ const QB_MATHS = {
   {q:'Solve $3x + 7 = 22$.', a:'$x = 5$. Subtract $7$: $3x = 15$; divide by $3$: $x = 5$.'},
   {q:'Expand and simplify $3(x + 4) + 2(x - 1)$.', a:'$5x + 10$. $3x + 12 + 2x - 2 = 5x + 10$.'},
   {q:'Factorise $x^2 + 7x + 12$.', a:'$(x + 3)(x + 4)$. Two numbers multiplying to $12$ and adding to $7$ are $3$ and $4$.'},
-  {q:'Make $y$ the subject of $4x + 2y = 10$.', a:'$y = \\frac{10 - 4x}{2} = 5 - 2x$.'},
+  {q:'Make $y$ the subject of $4x + 2y = 10$.', a:'$y = \\dfrac{10 - 4x}{2} = 5 - 2x$.'},
   {q:'Solve the simultaneous equations $x + y = 10$ and $x - y = 4$.', a:'$x = 7$, $y = 3$. Add the equations: $2x = 14$, so $x = 7$; then $y = 3$.'},
   {q:'Write the $n$th term of the sequence $5, 8, 11, 14, \\dots$', a:'$3n + 2$. Common difference $3$, and $3 \\times 1 + 2 = 5$.'},
-  {q:'Simplify $\\frac{x^5}{x^2}$.', a:'$x^3$. Subtract the indices: $5 - 2 = 3$.'},
+  {q:'Simplify $\\dfrac{x^5}{x^2}$.', a:'$x^3$. Subtract the indices: $5 - 2 = 3$.'},
   {q:'Solve $2(x - 3) = 8$.', a:'$x = 7$. Expand: $2x - 6 = 8$, so $2x = 14$, $x = 7$.', t:'F'},
   {q:'Expand $(x + 5)(x + 2)$.', a:'$x^2 + 7x + 10$. Multiply each pair (FOIL).'},
   {q:'Simplify $7a + a - 5a$.', a:'$3a$. $7 + 1 - 5 = 3$.', t:'F'},
-  {q:'Solve $2(4x - 5) = 18$.', a:'$x = 3.5$. Expand: $8x - 10 = 18$, so $8x = 28$, $x = 3.5$.', t:'F'},
-  {q:'Find the $n$th term of the sequence $1, 5, 9, 13, \\dots$', a:'$4n - 3$. Common difference $4$, and $4 \\times 1 - 3 = 1$.', t:'F'},
   {q:'Factorise $6x - 15$.', a:'$3(2x - 5)$. The HCF of $6$ and $15$ is $3$.', t:'F'},
   {q:'Factorise $m^2 + 5m$.', a:'$m(m + 5)$. Take out the common factor $m$.', t:'F'},
-  {q:'Simplify $2c \\times 3d$.', a:'$6cd$. Multiply the numbers: $2 \\times 3 = 6$.', t:'F'},
   {q:'$w = 40 - t^2$. Work out $w$ when $t = -5$.', a:'$15$. $(-5)^2 = 25$, so $w = 40 - 25 = 15$.', t:'F'},
-  {q:'A number machine does $\\times 2$ then $-10$. Find the output when the input is $13$.', a:'$16$. $13 \\times 2 = 26$, then $26 - 10 = 16$.', t:'F'},
-  {q:'Simplify $m \\times m \\times m \\times m$.', a:'$m^4$.', t:'F'},
+  // ── Higher only ──
+  {q:'Solve $x^2 + 5x + 6 = 0$ by factorising.', a:'$(x + 2)(x + 3) = 0$, so $x = -2$ or $x = -3$.', t:'H'},
+  {q:'State the quadratic formula for $ax^2 + bx + c = 0$.', a:'$x = \\dfrac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$.', t:'H'},
+  {q:'Use the quadratic formula to solve $2x^2 - 5x - 3 = 0$.', a:'$a=2, b=-5, c=-3$. Discriminant $= 25 + 24 = 49$. $x = \\dfrac{5 \\pm 7}{4}$, so $x = 3$ or $x = -\\dfrac{1}{2}$.', t:'H'},
+  {q:'Write $x^2 + 6x + 2$ in completed-square form $(x + a)^2 + b$.', a:'$(x + 3)^2 - 7$. Half of $6$ is $3$; $3^2 = 9$; adjust: $9 - 2 = 7$ to subtract.', t:'H'},
+  {q:'Find the coordinates of the turning point of $y = x^2 - 8x + 20$.', a:'$(4, 4)$. Complete the square: $y = (x-4)^2 + 4$; minimum at $(4, 4)$.', t:'H'},
+  {q:'Simplify the algebraic fraction $\\dfrac{x^2 - 9}{x + 3}$.', a:'$x - 3$. Factorise numerator: $\\dfrac{(x-3)(x+3)}{x+3} = x - 3$.', t:'H'},
+  {q:'Simplify $\\dfrac{2x^2 + x}{4x + 2}$.', a:'$\\dfrac{x}{2}$. Factor: $\\dfrac{x(2x+1)}{2(2x+1)} = \\dfrac{x}{2}$.', t:'H'},
+  {q:'Solve simultaneously $y = x + 1$ and $y = x^2 - 5$.', a:'$x + 1 = x^2 - 5 \\Rightarrow x^2 - x - 6 = 0 \\Rightarrow (x-3)(x+2) = 0$. So $x = 3, y = 4$ or $x = -2, y = -1$.', t:'H'},
+  {q:'$f(x) = 2x^2 - x + 1$. Find $f(3)$.', a:'$f(3) = 2(9) - 3 + 1 = 16$.', t:'H'},
+  {q:'$f(x) = 2x + 1$ and $g(x) = x^2$. Find $fg(x)$.', a:'$fg(x) = f(g(x)) = f(x^2) = 2x^2 + 1$.', t:'H'},
+  {q:'$f(x) = 3x - 4$. Find $f^{-1}(x)$.', a:'$f^{-1}(x) = \\dfrac{x + 4}{3}$. Let $y = 3x - 4$; add $4$, then divide by $3$.', t:'H'},
+  {q:'Find the $n$th term of the quadratic sequence $3, 8, 15, 24, 35, \\dots$', a:'$n^2 + 2n$. First differences: $5, 7, 9, 11$; second difference $2$, so coefficient of $n^2$ is $1$.', t:'H'},
+  {q:'Prove that the product of two consecutive odd numbers is always odd.', a:'Let the odd numbers be $2n-1$ and $2n+1$. Product $= (2n-1)(2n+1) = 4n^2 - 1 = 2(2n^2) - 1$, which is odd.', t:'H'},
+  {q:'Solve the inequality $x^2 > 16$.', a:'$x > 4$ or $x < -4$. The parabola is above $16$ outside $x = \\pm 4$.', t:'H'},
+  {q:'Make $r$ the subject of $V = \\dfrac{4}{3}\\pi r^3$.', a:'$r = \\sqrt[3]{\\dfrac{3V}{4\\pi}}$. Multiply by $\\dfrac{3}{4\\pi}$, then take the cube root.', t:'H'},
+  {q:'Simplify $\\dfrac{3}{x+1} + \\dfrac{2}{x-1}$.', a:'$\\dfrac{3(x-1) + 2(x+1)}{(x+1)(x-1)} = \\dfrac{5x - 1}{x^2 - 1}$.', t:'H'},
 ], mc: [
   {q:'Solve $5x - 4 = 16$.', o:['$x = 4$','$x = 2.4$','$x = 100$','$x = 3$'], c:0, e:'$5x = 20$, so $x = 4$.'},
   {q:'Factorise fully $6x + 9$.', o:['$3(2x + 3)$','$6(x + 9)$','$3(2x + 9)$','$2(3x + 9)$'], c:0, e:'HCF of $6$ and $9$ is $3$: $3(2x + 3)$.'},
   {q:'The $n$th term of $7, 12, 17, 22, \\dots$ is:', o:['$5n + 7$','$5n + 2$','$7n + 5$','$n + 5$'], c:1, e:'Difference $5$, and $5(1) + 2 = 7$, so $5n + 2$.'},
-  {q:'Simplify $4a + 3b - a + 2b$.', o:['$3a + 5b$','$5a + 5b$','$3a + b$','$4a + 6b$'], c:0, e:'$4a - a = 3a$ and $3b + 2b = 5b$.', t:'F'},
-  {q:'Solve $\\frac{x}{3} = 6$.', o:['$x = 2$','$x = 9$','$x = 18$','$x = 3$'], c:2, e:'Multiply both sides by $3$: $x = 18$.'},
   {q:'Expand $(x - 4)(x + 4)$.', o:['$x^2 - 16$','$x^2 + 16$','$x^2 - 8x - 16$','$x^2 - 8$'], c:0, e:'Difference of two squares: $x^2 - 16$.'},
-  {q:'Simplify $7a + a - 5a$.', o:['$3a$','$2a$','$13a$','$a$'], c:0, e:'$7 + 1 - 5 = 3$, giving $3a$.', t:'F'},
-  {q:'Factorise $6x - 15$.', o:['$3(2x - 5)$','$2(3x - 15)$','$3(2x - 15)$','$6(x - 15)$'], c:0, e:'HCF is $3$: $3(2x - 5)$.', t:'F'},
-  {q:'The $n$th term of $1, 5, 9, 13, \\dots$ is:', o:['$4n + 1$','$4n - 3$','$n + 4$','$5n - 4$'], c:1, e:'Difference $4$, and $4(1) - 3 = 1$.', t:'F'},
-  {q:'$T = x + 2y$. When $x = 3$ and $y = -4$, $T$ equals:', o:['$-5$','$11$','$-1$','$5$'], c:0, e:'$3 + 2(-4) = 3 - 8 = -5$.', t:'F'},
-  {q:'A number machine does $\\times 2$ then $-10$. Which input gives output $28$?', o:['$9$','$19$','$38$','$23$'], c:1, e:'Reverse: $28 + 10 = 38$, then $\\div 2 = 19$.', t:'F'},
+  {q:'Solve $\\dfrac{x}{3} = 6$.', o:['$x = 2$','$x = 9$','$x = 18$','$x = 3$'], c:2, e:'Multiply both sides by $3$: $x = 18$.'},
+  // ── Higher only ──
+  {q:'The quadratic formula for $ax^2 + bx + c = 0$ is:', o:['$x = \\dfrac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$','$x = \\dfrac{b \\pm \\sqrt{b^2 + 4ac}}{2a}$','$x = \\dfrac{-b \\pm \\sqrt{b^2 - 4ac}}{a}$','$x = \\dfrac{-b \\pm \\sqrt{4ac - b^2}}{2a}$'], c:0, e:'The quadratic formula is $x = \\dfrac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$.', t:'H'},
+  {q:'$x^2 - 6x + 9$ written as a perfect square is:', o:['$(x - 3)^2$','$(x + 3)^2$','$(x - 6)^2$','$(x - 3)^2 + 9$'], c:0, e:'$x^2 - 6x + 9 = (x - 3)^2$ since $(-3)^2 = 9$.', t:'H'},
+  {q:'The turning point of $y = (x - 3)^2 + 5$ is:', o:['$(3, 5)$','$(-3, 5)$','$(3, -5)$','$(5, 3)$'], c:0, e:'The bracket is zero when $x = 3$, giving minimum $y = 5$.', t:'H'},
+  {q:'$f(x) = x^2 + 1$. $f(4)$ equals:', o:['$9$','$17$','$5$','$16$'], c:1, e:'$f(4) = 16 + 1 = 17$.', t:'H'},
+  {q:'$f(x) = 2x + 1$, $g(x) = x - 3$. $fg(2)$ equals:', o:['$3$','$-1$','$4$','$1$'], c:1, e:'$g(2) = -1$; $f(-1) = 2(-1) + 1 = -1$.', t:'H'},
+  {q:'$f(x) = 5x - 2$. $f^{-1}(x)$ is:', o:['$\\dfrac{x + 2}{5}$','$5x + 2$','$\\dfrac{x - 2}{5}$','$\\dfrac{2 - x}{5}$'], c:0, e:'Let $y = 5x - 2$; rearrange: $x = \\dfrac{y+2}{5}$.', t:'H'},
+  {q:'The solutions of $x^2 - 5x + 6 = 0$ are:', o:['$x = 2$ or $x = 3$','$x = -2$ or $x = -3$','$x = 1$ or $x = 6$','$x = 5$ or $x = 1$'], c:0, e:'$(x-2)(x-3) = 0$.', t:'H'},
+  {q:'$\\dfrac{x^2 - 4}{x + 2}$ simplifies to:', o:['$x - 2$','$x + 2$','$x^2 - 2$','$x - 4$'], c:0, e:'$\\dfrac{(x-2)(x+2)}{x+2} = x - 2$.', t:'H'},
 ]},
 
 // ── RATIO, PROPORTION & RATES OF CHANGE ─────────────────────────────────────
 'ratio-proportion-rates': { name: 'Ratio, Proportion & Rates of Change', fc: [
-  {q:'Share $\\pounds 60$ in the ratio $2 : 3$.', a:'$\\pounds 24$ and $\\pounds 36$. There are $5$ parts; $60 \\div 5 = 12$ per part, so $2 \\times 12 = 24$ and $3 \\times 12 = 36$.'},
-  {q:'A car travels $150\\text{ km}$ in $2$ hours. What is its average speed?', a:'$75\\text{ km/h}$. Speed $= \\frac{\\text{distance}}{\\text{time}} = \\frac{150}{2}$.'},
-  {q:'$5$ pens cost $\\pounds 2.00$. How much do $8$ pens cost?', a:'$\\pounds 3.20$. One pen costs $40\\text{p}$, so $8 \\times 40\\text{p} = \\pounds 3.20$.'},
+  {q:'Share $\\pounds 60$ in the ratio $2 : 3$.', a:'$\\pounds 24$ and $\\pounds 36$. There are $5$ parts; $60 \\div 5 = 12$ per part.'},
+  {q:'A car travels $150\\text{ km}$ in $2$ hours. What is its average speed?', a:'$75\\text{ km/h}$. Speed $= \\dfrac{\\text{distance}}{\\text{time}} = \\dfrac{150}{2}$.'},
+  {q:'$5$ pens cost $\\pounds 2.00$. How much do $8$ pens cost?', a:'$\\pounds 3.20$. One pen $= 40\\text{p}$; $8 \\times 40\\text{p} = \\pounds 3.20$.'},
   {q:'Simplify the ratio $12 : 18$.', a:'$2 : 3$. Divide both parts by the HCF, $6$.'},
-  {q:'A recipe for $4$ people uses $200\\text{ g}$ of flour. How much for $6$ people?', a:'$300\\text{ g}$. $200 \\div 4 = 50\\text{ g}$ per person; $50 \\times 6 = 300\\text{ g}$.'},
-  {q:'Convert $\\pounds 1 = \\$1.25$. How many dollars is $\\pounds 40$?', a:'$\\$50$. $40 \\times 1.25 = 50$.', t:'F'},
-  {q:'The density of a metal is $8\\text{ g/cm}^3$. What is the mass of $5\\text{ cm}^3$?', a:'$40\\text{ g}$. Mass $= \\text{density} \\times \\text{volume} = 8 \\times 5$.'},
-  {q:'Write $24 : 36$ as a ratio in its simplest form.', a:'$2 : 3$. Divide both parts by the HCF, $12$.', t:'F'},
-  {q:'A map scale is $1\\text{ cm}$ represents $4\\text{ km}$. How far apart in real life are two towns $8\\text{ cm}$ apart on the map?', a:'$32\\text{ km}$. $8 \\times 4 = 32$.', t:'F'},
-  {q:'A recipe for $20$ biscuits needs $200\\text{ g}$ of flour. How much flour is needed for $30$ biscuits?', a:'$300\\text{ g}$. $30$ is $1.5 \\times 20$, so $200 \\times 1.5 = 300\\text{ g}$.', t:'F'},
-  {q:'Lizzie cycles $36\\text{ km}$ in $3$ hours. What is her average speed?', a:'$12\\text{ km/h}$. $\\frac{36}{3} = 12$.', t:'F'},
-  {q:'$\\pounds 3500$ is invested for $6$ years at $2.5\\%$ simple interest per year. How much interest is paid in total?', a:'$\\pounds 525$. $3500 \\times 0.025 = 87.5$ per year; $87.5 \\times 6 = 525$.', t:'F'},
-  {q:'Packs of batteries: $4$ for $\\pounds 1.80$, $8$ for $\\pounds 3.20$, $12$ for $\\pounds 6.00$. Which is best value?', a:'The pack of $8$. Cost per battery: $45\\text{p}$, $40\\text{p}$, $50\\text{p}$ — the pack of $8$ is cheapest each.', t:'F'},
+  {q:'The density of a metal is $8\\text{ g/cm}^3$. What is the mass of $5\\text{ cm}^3$?', a:'$40\\text{ g}$. Mass $= \\text{density} \\times \\text{volume}$.'},
+  {q:'A recipe for $4$ people uses $200\\text{ g}$ of flour. How much for $6$ people?', a:'$300\\text{ g}$. $50\\text{ g}$ per person; $50 \\times 6 = 300\\text{ g}$.', t:'F'},
+  {q:'Lizzie cycles $36\\text{ km}$ in $3$ hours. What is her average speed?', a:'$12\\text{ km/h}$. $\\dfrac{36}{3} = 12$.', t:'F'},
+  // ── Higher only ──
+  {q:'$y$ is directly proportional to $x^2$. When $x = 3$, $y = 18$. Find $y$ when $x = 5$.', a:'$y = kx^2$; $18 = 9k$, so $k = 2$. When $x = 5$: $y = 2 \\times 25 = 50$.', t:'H'},
+  {q:'$y$ is inversely proportional to $x$. When $x = 4$, $y = 12$. Find $y$ when $x = 6$.', a:'$y = \\dfrac{k}{x}$; $12 = \\dfrac{k}{4}$, so $k = 48$. When $x = 6$: $y = \\dfrac{48}{6} = 8$.', t:'H'},
+  {q:'A car worth $\\pounds 10\\,000$ depreciates $20\\%$ each year. Find the value after $4$ years.', a:'$\\pounds 10\\,000 \\times 0.8^4 = \\pounds 4096$.', t:'H'},
+  {q:'A population of $20\\,000$ grows at $3\\%$ per year. Find the population after $5$ years.', a:'$20\\,000 \\times 1.03^5 \\approx 23\\,185$.', t:'H'},
+  {q:'Two similar shapes have areas $36\\text{ cm}^2$ and $100\\text{ cm}^2$. The smaller has perimeter $24\\text{ cm}$. Find the larger\'s perimeter.', a:'Linear scale factor $= \\sqrt{\\dfrac{100}{36}} = \\dfrac{5}{3}$. Perimeter $= 24 \\times \\dfrac{5}{3} = 40\\text{ cm}$.', t:'H'},
+  {q:'After a $35\\%$ increase a price is $\\pounds 675$. Find the original price.', a:'$\\pounds 500$. $675 \\div 1.35 = 500$.', t:'H'},
+  {q:'What does the gradient of a distance-time graph represent?', a:'Speed (or velocity).', t:'H'},
+  {q:'What does the area under a velocity-time graph represent?', a:'The total distance (or displacement) travelled.', t:'H'},
+  {q:'$y$ is directly proportional to $\\sqrt{x}$. When $x = 9$, $y = 15$. Find $y$ when $x = 25$.', a:'$y = k\\sqrt{x}$; $15 = 3k$, so $k = 5$. When $x = 25$: $y = 5 \\times 5 = 25$.', t:'H'},
+  {q:'Convert $90\\text{ km/h}$ to $\\text{m/s}$.', a:'$25\\text{ m/s}$. Divide by $3.6$: $90 \\div 3.6 = 25$.', t:'H'},
+  {q:'$\\pounds 3500$ is invested for $6$ years at $2.5\\%$ simple interest per year. How much interest is earned?', a:'$\\pounds 525$. $3500 \\times 0.025 = 87.50$ per year; $87.50 \\times 6 = 525$.', t:'F'},
 ], mc: [
   {q:'Share $\\pounds 45$ in the ratio $4 : 5$. The larger share is:', o:['$\\pounds 20$','$\\pounds 25$','$\\pounds 5$','$\\pounds 9$'], c:1, e:'$9$ parts; $45 \\div 9 = 5$. Larger share $= 5 \\times 5 = \\pounds 25$.'},
-  {q:'A train covers $240\\text{ km}$ in $3$ hours. Its average speed is:', o:['$80\\text{ km/h}$','$720\\text{ km/h}$','$60\\text{ km/h}$','$8\\text{ km/h}$'], c:0, e:'$\\frac{240}{3} = 80\\text{ km/h}$.'},
-  {q:'The ratio $20 : 30 : 50$ in simplest form is:', o:['$2 : 3 : 5$','$1 : 2 : 3$','$4 : 6 : 10$','$2 : 3 : 4$'], c:0, e:'Divide each part by $10$.', t:'F'},
-  {q:'$3\\text{ kg}$ of apples cost $\\pounds 4.50$. The cost of $5\\text{ kg}$ is:', o:['$\\pounds 7.50$','$\\pounds 9.00$','$\\pounds 1.50$','$\\pounds 6.00$'], c:0, e:'$1\\text{ kg} = \\pounds 1.50$, so $5\\text{ kg} = \\pounds 7.50$.'},
-  {q:'$30\\%$ of a number is $18$. The number is:', o:['$54$','$60$','$48$','$5.4$'], c:1, e:'$1\\% = \\frac{18}{30} = 0.6$, so $100\\% = 60$.'},
-  {q:'$24$ cows to $36$ sheep as a ratio in simplest form is:', o:['$2 : 3$','$3 : 2$','$4 : 6$','$1 : 2$'], c:0, e:'Divide both by $12$: $2 : 3$.', t:'F'},
-  {q:'A map scale is $1\\text{ cm} : 4\\text{ km}$. A road $10\\text{ km}$ long is how long on the map?', o:['$40\\text{ cm}$','$2.5\\text{ cm}$','$14\\text{ cm}$','$6\\text{ cm}$'], c:1, e:'$10 \\div 4 = 2.5\\text{ cm}$.', t:'F'},
-  {q:'A shortbread recipe for $20$ biscuits uses $120\\text{ g}$ of butter. For $30$ biscuits you need:', o:['$180\\text{ g}$','$150\\text{ g}$','$240\\text{ g}$','$200\\text{ g}$'], c:0, e:'$30 = 1.5 \\times 20$, so $120 \\times 1.5 = 180\\text{ g}$.', t:'F'},
-  {q:'A company of $25\\,000$ workers grows by $6\\%$ per year for $3$ years. The total is about:', o:['$29\\,775$','$29\\,500$','$32\\,000$','$26\\,500$'], c:0, e:'$25\\,000 \\times 1.06^3 \\approx 29\\,775$.', t:'F'},
+  {q:'A train covers $240\\text{ km}$ in $3$ hours. Its average speed is:', o:['$80\\text{ km/h}$','$720\\text{ km/h}$','$60\\text{ km/h}$','$8\\text{ km/h}$'], c:0, e:'$\\dfrac{240}{3} = 80\\text{ km/h}$.'},
+  {q:'$30\\%$ of a number is $18$. The number is:', o:['$54$','$60$','$48$','$5.4$'], c:1, e:'$1\\% = 0.6$, so $100\\% = 60$.'},
+  // ── Higher only ──
+  {q:'$y \\propto x^2$ and $y = 12$ when $x = 2$. $y$ when $x = 5$ is:', o:['$75$','$30$','$60$','$15$'], c:0, e:'$k = 12/4 = 3$, so $y = 3 \\times 25 = 75$.', t:'H'},
+  {q:'$y \\propto \\dfrac{1}{x}$ and $y = 8$ when $x = 3$. $x$ when $y = 12$ is:', o:['$4$','$2$','$36$','$6$'], c:1, e:'$k = 24$. $12 = 24/x$, so $x = 2$.', t:'H'},
+  {q:'Convert $90\\text{ km/h}$ to $\\text{m/s}$:', o:['$15\\text{ m/s}$','$25\\text{ m/s}$','$90\\text{ m/s}$','$9\\text{ m/s}$'], c:1, e:'Divide by $3.6$: $90 \\div 3.6 = 25\\text{ m/s}$.', t:'H'},
+  {q:'Two similar rectangles have linear scale factor $3:5$. Their area scale factor is:', o:['$3:5$','$9:25$','$6:10$','$27:125$'], c:1, e:'Area scale factor $= (\\text{linear})^2 = 9:25$.', t:'H'},
+  {q:'A car costs $\\pounds 12\\,000$ and depreciates $10\\%$ per year. Value after $3$ years:', o:['$\\pounds 8748$','$\\pounds 9000$','$\\pounds 8400$','$\\pounds 9720$'], c:0, e:'$12\\,000 \\times 0.9^3 = 12\\,000 \\times 0.729 = \\pounds 8748$.', t:'H'},
+  {q:'After a $25\\%$ increase a price is $\\pounds 500$. The original price was:', o:['$\\pounds 375$','$\\pounds 400$','$\\pounds 475$','$\\pounds 425$'], c:1, e:'$500 \\div 1.25 = \\pounds 400$.', t:'H'},
 ]},
 
 // ── GEOMETRY & MEASURES ─────────────────────────────────────────────────────
 'geometry-measures': { name: 'Geometry & Measures', fc: [
   {q:'What is the sum of the interior angles of a triangle?', a:'$180^\\circ$.'},
-  {q:'Find the area of a circle with radius $5\\text{ cm}$. (Use $\\pi = 3.14$.)', a:'$78.5\\text{ cm}^2$. Area $= \\pi r^2 = 3.14 \\times 5^2 = 3.14 \\times 25$.'},
-  {q:'State Pythagoras’ theorem.', a:'$a^2 + b^2 = c^2$, where $c$ is the hypotenuse (the longest side, opposite the right angle).'},
-  {q:'Find the hypotenuse of a right triangle with legs $3\\text{ cm}$ and $4\\text{ cm}$.', a:'$5\\text{ cm}$. $c = \\sqrt{3^2 + 4^2} = \\sqrt{25} = 5$.'},
-  {q:'What is the sum of the interior angles of a pentagon?', a:'$540^\\circ$. Use $(n-2) \\times 180 = 3 \\times 180$.'},
-  {q:'Find the circumference of a circle with diameter $10\\text{ cm}$. (Use $\\pi = 3.14$.)', a:'$31.4\\text{ cm}$. Circumference $= \\pi d = 3.14 \\times 10$.'},
-  {q:'How many degrees are in each exterior angle of a regular hexagon?', a:'$60^\\circ$. Exterior angles sum to $360^\\circ$; $360 \\div 6 = 60$.'},
+  {q:'Find the area of a circle with radius $5\\text{ cm}$.', a:'$25\\pi \\approx 78.5\\text{ cm}^2$. Area $= \\pi r^2$.'},
+  {q:'State Pythagoras\' theorem.', a:'$a^2 + b^2 = c^2$, where $c$ is the hypotenuse.'},
+  {q:'Find the hypotenuse of a right triangle with legs $3\\text{ cm}$ and $4\\text{ cm}$.', a:'$5\\text{ cm}$. $c = \\sqrt{9 + 16} = \\sqrt{25} = 5$.'},
+  {q:'What is the sum of the interior angles of a pentagon?', a:'$540^\\circ$. $(n-2) \\times 180 = 3 \\times 180$.'},
+  {q:'How many degrees are in each exterior angle of a regular hexagon?', a:'$60^\\circ$. $360 \\div 6 = 60$.'},
+  {q:'What is the area of a triangle with base $8\\text{ cm}$ and height $5\\text{ cm}$?', a:'$20\\text{ cm}^2$. Area $= \\dfrac{1}{2} \\times 8 \\times 5$.'},
   {q:'Find the volume of a cuboid $2\\text{ cm} \\times 3\\text{ cm} \\times 4\\text{ cm}$.', a:'$24\\text{ cm}^3$. Volume $= l \\times w \\times h$.', t:'F'},
-  {q:'What is the area of a triangle with base $8\\text{ cm}$ and height $5\\text{ cm}$?', a:'$20\\text{ cm}^2$. Area $= \\frac{1}{2} \\times b \\times h = \\frac{1}{2} \\times 8 \\times 5$.'},
-  {q:'Three straight lines meet at a point. Two of the angles are $220^\\circ$ and $90^\\circ$. Find the third angle $x$.', a:'$50^\\circ$. Angles around a point sum to $360^\\circ$: $360 - 220 - 90 = 50$.', t:'F'},
-  {q:'Change $800\\text{ cm}$ to metres.', a:'$8\\text{ m}$. $100\\text{ cm} = 1\\text{ m}$, so $800 \\div 100 = 8$.', t:'F'},
-  {q:'Write down the mathematical name for the straight line that goes from one side of a circle to the other through the centre.', a:'The diameter.', t:'F'},
-  {q:'A right-angled triangle has hypotenuse $19\\text{ cm}$ and one short side $10\\text{ cm}$. Find the other side (to 3 s.f.).', a:'$16.2\\text{ cm}$. $\\sqrt{19^2 - 10^2} = \\sqrt{261} = 16.155\\ldots$', t:'F'},
-  {q:'Change $5000\\text{ millilitres}$ to litres.', a:'$5\\text{ litres}$.', t:'F'},
+  {q:'Change $800\\text{ cm}$ to metres.', a:'$8\\text{ m}$. $100\\text{ cm} = 1\\text{ m}$.', t:'F'},
+  // ── Higher only ──
+  {q:'State the angle in a semicircle theorem.', a:'The angle subtended by a diameter at the circumference is always $90^\\circ$.', t:'H'},
+  {q:'State the angles in the same segment theorem.', a:'Angles subtended by the same arc in the same segment are equal.', t:'H'},
+  {q:'The angle at the centre is $70^\\circ$. What is the angle at the circumference subtending the same arc?', a:'$35^\\circ$. The angle at the centre is twice the angle at the circumference.', t:'H'},
+  {q:'State the alternate segment theorem.', a:'The angle between a tangent and a chord equals the inscribed angle in the alternate segment.', t:'H'},
+  {q:'Opposite angles of a cyclic quadrilateral are $110^\\circ$ and $x^\\circ$. Find $x$.', a:'$70^\\circ$. Opposite angles in a cyclic quadrilateral sum to $180^\\circ$.', t:'H'},
+  {q:'A tangent meets a radius at the point of contact. What angle do they make?', a:'$90^\\circ$. A tangent is perpendicular to the radius at the point of tangency.', t:'H'},
+  {q:'State the sine rule.', a:'$\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C}$.', t:'H'},
+  {q:'In a triangle, $a = 8\\text{ cm}$, $b = 6\\text{ cm}$, $B = 40^\\circ$. Use the sine rule to find angle $A$.', a:'$\\sin A = \\dfrac{8 \\sin 40^\\circ}{6} \\approx 0.857$, so $A \\approx 59^\\circ$.', t:'H'},
+  {q:'State the cosine rule for finding a side.', a:'$a^2 = b^2 + c^2 - 2bc\\cos A$.', t:'H'},
+  {q:'A triangle has $b = 7\\text{ cm}$, $c = 10\\text{ cm}$, $A = 60^\\circ$. Find side $a$.', a:'$a^2 = 49 + 100 - 140\\cos 60^\\circ = 149 - 70 = 79$, so $a = \\sqrt{79} \\approx 8.9\\text{ cm}$.', t:'H'},
+  {q:'Write the formula for the area of a triangle given two sides and the included angle.', a:'Area $= \\dfrac{1}{2}ab\\sin C$.', t:'H'},
+  {q:'A triangle has $a = 5\\text{ cm}$, $b = 8\\text{ cm}$, $C = 30^\\circ$. Find the area.', a:'Area $= \\dfrac{1}{2}(5)(8)\\sin 30^\\circ = 20 \\times 0.5 = 10\\text{ cm}^2$.', t:'H'},
+  {q:'Write the exact values of $\\sin 30^\\circ$, $\\cos 60^\\circ$, and $\\tan 45^\\circ$.', a:'$\\sin 30^\\circ = \\dfrac{1}{2}$; $\\cos 60^\\circ = \\dfrac{1}{2}$; $\\tan 45^\\circ = 1$.', t:'H'},
+  {q:'Write the exact value of $\\sin 60^\\circ$.', a:'$\\dfrac{\\sqrt{3}}{2}$.', t:'H'},
+  {q:'A cuboid is $3\\text{ cm} \\times 4\\text{ cm} \\times 5\\text{ cm}$. Find the length of the main diagonal.', a:'$\\sqrt{3^2 + 4^2 + 5^2} = \\sqrt{50} = 5\\sqrt{2} \\approx 7.07\\text{ cm}$.', t:'H'},
+  {q:'$\\mathbf{a} = \\begin{pmatrix}3\\\\2\\end{pmatrix}$ and $\\mathbf{b} = \\begin{pmatrix}1\\\\-4\\end{pmatrix}$. Find $\\mathbf{a} - \\mathbf{b}$.', a:'$\\begin{pmatrix}2\\\\6\\end{pmatrix}$. Subtract component by component.', t:'H'},
+  {q:'$\\overrightarrow{OA} = \\mathbf{a}$ and $\\overrightarrow{OB} = \\mathbf{b}$. Express $\\overrightarrow{AB}$ in terms of $\\mathbf{a}$ and $\\mathbf{b}$.', a:'$\\overrightarrow{AB} = -\\mathbf{a} + \\mathbf{b} = \\mathbf{b} - \\mathbf{a}$.', t:'H'},
+  {q:'Write the formula for arc length and sector area (radius $r$, angle $\\theta^\\circ$).', a:'Arc length $= \\dfrac{\\theta}{360} \\times 2\\pi r$. Sector area $= \\dfrac{\\theta}{360} \\times \\pi r^2$.', t:'H'},
+  {q:'Write the formula for the volume of a sphere.', a:'$V = \\dfrac{4}{3}\\pi r^3$.', t:'H'},
+  {q:'Two similar cones have a linear scale factor of $2:5$. Find the ratio of their volumes.', a:'$8:125$. Volume scale factor $= (\\text{linear})^3 = 2^3 : 5^3$.', t:'H'},
 ], mc: [
   {q:'Angles on a straight line add up to:', o:['$90^\\circ$','$180^\\circ$','$360^\\circ$','$270^\\circ$'], c:1, e:'Angles on a straight line sum to $180^\\circ$.', t:'F'},
-  {q:'The area of a rectangle $7\\text{ cm}$ by $4\\text{ cm}$ is:', o:['$11\\text{ cm}^2$','$22\\text{ cm}^2$','$28\\text{ cm}^2$','$28\\text{ cm}$'], c:2, e:'Area $= 7 \\times 4 = 28\\text{ cm}^2$.'},
-  {q:'In a right triangle the hypotenuse is:', o:['The shortest side','The side opposite the right angle','Always vertical','The side next to the right angle'], c:1, e:'The hypotenuse is the longest side, opposite the right angle.'},
   {q:'The interior angles of a quadrilateral sum to:', o:['$180^\\circ$','$360^\\circ$','$540^\\circ$','$90^\\circ$'], c:1, e:'$(4-2) \\times 180 = 360^\\circ$.'},
-  {q:'A circle has radius $7\\text{ cm}$. Using $\\pi = \\frac{22}{7}$, its circumference is:', o:['$22\\text{ cm}$','$44\\text{ cm}$','$154\\text{ cm}$','$14\\text{ cm}$'], c:1, e:'$C = 2\\pi r = 2 \\times \\frac{22}{7} \\times 7 = 44\\text{ cm}$.'},
-  {q:'Angles around a point add up to:', o:['$180^\\circ$','$360^\\circ$','$90^\\circ$','$270^\\circ$'], c:1, e:'A full turn is $360^\\circ$.', t:'F'},
-  {q:'Change $800\\text{ cm}$ to metres:', o:['$8\\text{ m}$','$80\\text{ m}$','$0.8\\text{ m}$','$8000\\text{ m}$'], c:0, e:'$800 \\div 100 = 8\\text{ m}$.', t:'F'},
-  {q:'The mathematical name for a straight line from the centre of a circle to its edge is the:', o:['Diameter','Radius','Chord','Tangent'], c:1, e:'A radius goes from the centre to the circumference.', t:'F'},
-  {q:'The volume of a cuboid $2\\text{ cm} \\times 5\\text{ cm} \\times 3\\text{ cm}$ is:', o:['$10\\text{ cm}^3$','$30\\text{ cm}^3$','$25\\text{ cm}^3$','$15\\text{ cm}^3$'], c:1, e:'$2 \\times 5 \\times 3 = 30\\text{ cm}^3$.', t:'F'},
+  {q:'A circle has radius $7\\text{ cm}$. Its circumference (use $\\pi = \\frac{22}{7}$) is:', o:['$22\\text{ cm}$','$44\\text{ cm}$','$154\\text{ cm}$','$14\\text{ cm}$'], c:1, e:'$C = 2\\pi r = 2 \\times \\frac{22}{7} \\times 7 = 44\\text{ cm}$.'},
+  // ── Higher only ──
+  {q:'The angle inscribed in a semicircle is always:', o:['$45^\\circ$','$90^\\circ$','$60^\\circ$','$180^\\circ$'], c:1, e:'The angle in a semicircle is $90^\\circ$.', t:'H'},
+  {q:'A cyclic quadrilateral has one angle of $110^\\circ$. The opposite angle is:', o:['$110^\\circ$','$70^\\circ$','$80^\\circ$','$250^\\circ$'], c:1, e:'Opposite angles in a cyclic quadrilateral sum to $180^\\circ$.', t:'H'},
+  {q:'Which correctly states the sine rule?', o:['$\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B}$','$\\dfrac{\\sin A}{a} = \\dfrac{b}{\\sin B}$','$a \\sin A = b \\sin B$','$a^2 = b^2 + c^2 - 2bc \\cos A$'], c:0, e:'The sine rule is $\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C}$.', t:'H'},
+  {q:'Area of a triangle with $a = 6$, $b = 9$, $C = 30^\\circ$ is:', o:['$27\\text{ cm}^2$','$13.5\\text{ cm}^2$','$54\\text{ cm}^2$','$24\\text{ cm}^2$'], c:1, e:'$\\frac{1}{2}(6)(9)\\sin 30^\\circ = 27 \\times 0.5 = 13.5\\text{ cm}^2$.', t:'H'},
+  {q:'The exact value of $\\sin 60^\\circ$ is:', o:['$\\dfrac{1}{2}$','$\\dfrac{\\sqrt{3}}{2}$','$\\sqrt{3}$','$\\dfrac{\\sqrt{2}}{2}$'], c:1, e:'From the 30-60-90 triangle: $\\sin 60^\\circ = \\dfrac{\\sqrt{3}}{2}$.', t:'H'},
+  {q:'Volume of a sphere with radius $3\\text{ cm}$ is:', o:['$36\\pi\\text{ cm}^3$','$12\\pi\\text{ cm}^3$','$9\\pi\\text{ cm}^3$','$108\\pi\\text{ cm}^3$'], c:0, e:'$V = \\dfrac{4}{3}\\pi(3)^3 = \\dfrac{4}{3}\\pi(27) = 36\\pi\\text{ cm}^3$.', t:'H'},
+  {q:'Arc length of a sector with radius $10\\text{ cm}$ and angle $72^\\circ$:', o:['$4\\pi\\text{ cm}$','$2\\pi\\text{ cm}$','$72\\pi\\text{ cm}$','$20\\pi\\text{ cm}$'], c:0, e:'$\\dfrac{72}{360} \\times 2\\pi(10) = \\dfrac{1}{5} \\times 20\\pi = 4\\pi\\text{ cm}$.', t:'H'},
+  {q:'Two similar shapes have linear scale factor $3:4$. Their area scale factor is:', o:['$3:4$','$9:16$','$27:64$','$6:8$'], c:1, e:'Area scale factor $= (\\text{linear})^2 = 9:16$.', t:'H'},
 ]},
 
 // ── PROBABILITY ─────────────────────────────────────────────────────────────
 'probability': { name: 'Probability', fc: [
-  {q:'A fair six-sided die is rolled. What is the probability of rolling an even number?', a:'$\\frac{3}{6} = \\frac{1}{2}$. Even numbers are $2, 4, 6$.'},
-  {q:'The probability it rains is $0.3$. What is the probability it does NOT rain?', a:'$0.7$. Probabilities of complementary events sum to $1$: $1 - 0.3$.'},
-  {q:'A bag has $4$ red and $6$ blue counters. What is $P(\\text{red})$?', a:'$\\frac{4}{10} = \\frac{2}{5}$.'},
+  {q:'A fair six-sided die is rolled. What is the probability of rolling an even number?', a:'$\\dfrac{1}{2}$. Even numbers: $2, 4, 6$ — three out of six.'},
+  {q:'The probability it rains is $0.3$. What is the probability it does NOT rain?', a:'$0.7$. Complementary events sum to $1$.'},
+  {q:'A bag has $4$ red and $6$ blue counters. What is $P(\\text{red})$?', a:'$\\dfrac{4}{10} = \\dfrac{2}{5}$.'},
   {q:'A spinner is spun $200$ times. $P(\\text{green}) = 0.25$. How many greens are expected?', a:'$50$. Expected frequency $= 0.25 \\times 200$.'},
-  {q:'Two coins are flipped. What is the probability of two heads?', a:'$\\frac{1}{4}$. The outcomes are HH, HT, TH, TT — one of four gives two heads.'},
+  {q:'Two coins are flipped. What is the probability of getting two heads?', a:'$\\dfrac{1}{4}$. Four equally likely outcomes (HH, HT, TH, TT); one gives HH.'},
   {q:'What does a probability of $0$ mean?', a:'The event is impossible — it cannot happen.', t:'F'},
-  {q:'Coin A lands heads with probability $0.6$ and coin B with probability $0.55$. What is the probability both land heads?', a:'$0.33$. Multiply independent probabilities: $0.6 \\times 0.55 = 0.33$.', t:'F'},
-  {q:'A bag of $1$p and $2$p coins totals $40$p. The value of the $1$p coins equals the value of the $2$p coins. What is $P(\\text{taking a }1\\text{p coin})$?', a:'$\\frac{2}{3}$. Each value is $20$p, so $20$ one-pennies and $10$ two-pennies: $\\frac{20}{30} = \\frac{2}{3}$.', t:'F'},
-  {q:'A coin is flipped $3$ times. How many possible outcomes (e.g. HHT) are there?', a:'$8$. $2 \\times 2 \\times 2 = 8$.', t:'F'},
-  {q:'$24$ yellow discs are in a bag and $P(\\text{yellow}) = 0.16$. How many discs are in the bag altogether?', a:'$150$. $24 \\div 0.16 = 150$.', t:'F'},
+  {q:'A coin is flipped $3$ times. How many possible outcomes are there?', a:'$8$. $2^3 = 8$.', t:'F'},
+  {q:'$24$ yellow discs are in a bag and $P(\\text{yellow}) = 0.16$. How many discs altogether?', a:'$150$. $24 \\div 0.16 = 150$.', t:'F'},
+  // ── Higher only ──
+  {q:'A bag has $3$ red and $5$ blue counters. One is drawn and not replaced, then another. Find $P(\\text{both red})$.', a:'$\\dfrac{3}{8} \\times \\dfrac{2}{7} = \\dfrac{6}{56} = \\dfrac{3}{28}$.', t:'H'},
+  {q:'$P(A) = 0.4$ and $P(B) = 0.3$, and $A$ and $B$ are independent. Find $P(A \\cap B)$.', a:'$P(A) \\times P(B) = 0.4 \\times 0.3 = 0.12$.', t:'H'},
+  {q:'State the addition rule for probability.', a:'$P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$.', t:'H'},
+  {q:'Write the formula for conditional probability.', a:'$P(A|B) = \\dfrac{P(A \\cap B)}{P(B)}$. This is the probability of $A$ given that $B$ has occurred.', t:'H'},
+  {q:'$P(A) = 0.5$, $P(B) = 0.4$, $P(A \\cap B) = 0.2$. Are $A$ and $B$ independent?', a:'Yes. Independent if $P(A) \\times P(B) = P(A \\cap B)$: $0.5 \\times 0.4 = 0.2$. ✓', t:'H'},
+  {q:'What does it mean for two events to be mutually exclusive?', a:'They cannot both occur: $P(A \\cap B) = 0$, so $P(A \\cup B) = P(A) + P(B)$.', t:'H'},
+  {q:'In a Venn diagram: only $A = 8$, only $B = 7$, both $= 3$, neither $= 2$. Total $= 20$. Find $P(A | B)$.', a:'$P(A|B) = \\dfrac{P(A \\cap B)}{P(B)} = \\dfrac{3/20}{10/20} = \\dfrac{3}{10}$.', t:'H'},
+  {q:'A bag has $4$ red, $3$ blue, $3$ green counters. Two drawn without replacement. Find $P(\\text{same colour})$.', a:'$\\dfrac{4}{10}\\cdot\\dfrac{3}{9} + \\dfrac{3}{10}\\cdot\\dfrac{2}{9} + \\dfrac{3}{10}\\cdot\\dfrac{2}{9} = \\dfrac{12+6+6}{90} = \\dfrac{24}{90} = \\dfrac{4}{15}$.', t:'H'},
 ], mc: [
-  {q:'A fair die is rolled. $P(\\text{rolling a } 5)$ is:', o:['$\\frac{1}{5}$','$\\frac{1}{6}$','$\\frac{5}{6}$','$\\frac{1}{2}$'], c:1, e:'One favourable outcome out of six equally likely: $\\frac{1}{6}$.', t:'F'},
+  {q:'A fair die is rolled. $P(\\text{rolling a } 5)$ is:', o:['$\\dfrac{1}{5}$','$\\dfrac{1}{6}$','$\\dfrac{5}{6}$','$\\dfrac{1}{2}$'], c:1, e:'One favourable outcome out of six: $\\dfrac{1}{6}$.', t:'F'},
   {q:'$P(\\text{event}) = 0.85$. The probability it does not happen is:', o:['$0.15$','$0.85$','$1.85$','$0$'], c:0, e:'$1 - 0.85 = 0.15$.'},
-  {q:'A bag has $3$ green, $5$ yellow and $2$ red sweets. $P(\\text{yellow})$ is:', o:['$\\frac{5}{10}$','$\\frac{1}{5}$','$\\frac{3}{10}$','$\\frac{1}{2}$'], c:0, e:'$\\frac{5}{10} = \\frac{1}{2}$ — both $\\frac{5}{10}$ shown is correct as written.'},
-  {q:'Which value could NOT be a probability?', o:['$0$','$0.5$','$1$','$1.4$'], c:3, e:'Probabilities lie between $0$ and $1$ inclusive, so $1.4$ is impossible.'},
-  {q:'Coin A lands heads with probability $0.6$, coin B with probability $0.55$. $P(\\text{both heads})$ is:', o:['$1.15$','$0.33$','$0.575$','$0.3$'], c:1, e:'$0.6 \\times 0.55 = 0.33$.', t:'F'},
-  {q:'A spinner has three sections marked $1, 2, 3$ but they are different sizes. The probability of landing on $2$ is:', o:['Always $\\frac{1}{3}$','Not necessarily $\\frac{1}{3}$, as sections differ','$\\frac{1}{2}$','$0$'], c:1, e:'Equal probability needs equal-sized sections.', t:'F'},
-  {q:'A coin is flipped $3$ times. The number of possible outcomes is:', o:['$3$','$6$','$8$','$9$'], c:2, e:'$2^3 = 8$.', t:'F'},
-  {q:'$24$ yellow discs give $P(\\text{yellow}) = 0.16$. The total number of discs is:', o:['$100$','$120$','$150$','$144$'], c:2, e:'$24 \\div 0.16 = 150$.', t:'F'},
+  {q:'Which value could NOT be a probability?', o:['$0$','$0.5$','$1$','$1.4$'], c:3, e:'Probabilities lie between $0$ and $1$ inclusive.'},
+  // ── Higher only ──
+  {q:'A bag has $4$ red and $3$ blue counters. $P(\\text{R then R})$ without replacement is:', o:['$\\dfrac{2}{7}$','$\\dfrac{12}{42}$','$\\dfrac{4}{7}$','$\\dfrac{16}{49}$'], c:1, e:'$\\dfrac{4}{7} \\times \\dfrac{3}{6} = \\dfrac{12}{42} = \\dfrac{2}{7}$.', t:'H'},
+  {q:'$P(A) = 0.3$, $P(B) = 0.5$, independent. $P(A \\cap B)$ is:', o:['$0.8$','$0.15$','$0.2$','$0.85$'], c:1, e:'$P(A \\cap B) = 0.3 \\times 0.5 = 0.15$.', t:'H'},
+  {q:'$P(A|B)$ means:', o:['$P(A)$ multiplied by $P(B)$','$P(A)$ given $B$ has occurred','$P(A) + P(B)$','$P(B)$ given $A$'], c:1, e:'Conditional probability: the probability of $A$ given $B$ has already occurred.', t:'H'},
+  {q:'$P(A) = 0.4$, $P(B) = 0.35$, $P(A \\cap B) = 0.1$. $P(A \\cup B)$ is:', o:['$0.75$','$0.65$','$0.14$','$0.85$'], c:1, e:'$P(A \\cup B) = 0.4 + 0.35 - 0.1 = 0.65$.', t:'H'},
+  {q:'For mutually exclusive events $A$ and $B$, $P(A \\cap B)$ equals:', o:['$P(A) + P(B)$','$0$','$P(A) \\times P(B)$','$1$'], c:1, e:'Mutually exclusive: $P(A \\cap B) = 0$.', t:'H'},
+  {q:'$P(A \\cap B) = 0.12$, $P(B) = 0.4$. $P(A|B)$ is:', o:['$0.3$','$0.048$','$0.52$','$0.12$'], c:0, e:'$P(A|B) = \\dfrac{0.12}{0.4} = 0.3$.', t:'H'},
 ]},
 
 // ── STATISTICS ──────────────────────────────────────────────────────────────
 'statistics': { name: 'Statistics', fc: [
-  {q:'Find the mean of $4, 7, 9, 4, 6$.', a:'$6$. Sum $= 30$, and $30 \\div 5 = 6$.'},
-  {q:'Find the median of $3, 8, 1, 6, 9$.', a:'$6$. In order: $1, 3, 6, 8, 9$; the middle value is $6$.'},
-  {q:'Find the mode of $2, 5, 5, 7, 9, 5$.', a:'$5$. It appears most often (three times).'},
-  {q:'Find the range of $12, 5, 8, 20, 3$.', a:'$17$. Range $= 20 - 3$ (largest minus smallest).'},
-  {q:'What type of correlation does a scatter graph show if points rise from left to right?', a:'Positive correlation — as one variable increases, so does the other.'},
-  {q:'Find the median of $4, 1, 7, 2$.', a:'$3$. In order: $1, 2, 4, 7$; the median is the mean of the two middle values $\\frac{2+4}{2} = 3$.', t:'F'},
-  {q:'The drinks ordered in a cafe were: coffee $30$, hot chocolate $10$, tea $50$. Which is the mode?', a:'Tea — it was ordered most often ($50$).', t:'F'},
-  {q:'In a travel survey the bars show: bus $8$, car $5$, cycle $3$, walk $7$. How many more students walk than cycle?', a:'$4$. $7 - 3 = 4$.', t:'F'},
-  {q:'A stem-and-leaf diagram shows $15$ values. Which value is the median?', a:'The $8$th value when listed in order (the middle of $15$).', t:'F'},
-  {q:'Find the range of $45, 53, 81, 61, 47$.', a:'$36$. $81 - 45 = 36$ (largest minus smallest).', t:'F'},
+  {q:'Find the mean of $4, 7, 9, 4, 6$.', a:'$6$. Sum $= 30$; $30 \\div 5 = 6$.'},
+  {q:'Find the median of $3, 8, 1, 6, 9$.', a:'$6$. In order: $1, 3, 6, 8, 9$; middle value is $6$.'},
+  {q:'Find the mode of $2, 5, 5, 7, 9, 5$.', a:'$5$. Appears most often (three times).'},
+  {q:'Find the range of $12, 5, 8, 20, 3$.', a:'$17$. $20 - 3 = 17$.'},
+  {q:'What type of correlation is shown if points rise left to right on a scatter graph?', a:'Positive correlation.'},
+  {q:'Find the median of $4, 1, 7, 2$.', a:'$3$. In order: $1, 2, 4, 7$; median $= \\dfrac{2+4}{2} = 3$.', t:'F'},
+  {q:'Find the range of $45, 53, 81, 61, 47$.', a:'$36$. $81 - 45 = 36$.', t:'F'},
+  // ── Higher only ──
+  {q:'What is frequency density and how is it calculated?', a:'Frequency density $= \\dfrac{\\text{frequency}}{\\text{class width}}$. It is plotted on the vertical axis of a histogram.', t:'H'},
+  {q:'In a histogram, how do you find the frequency for a class?', a:'Frequency $= \\text{frequency density} \\times \\text{class width}$ (the area of the bar).', t:'H'},
+  {q:'A histogram bar for the class $10 \\le x < 20$ has frequency density $3.5$. What is the frequency?', a:'$35$. $3.5 \\times 10 = 35$.', t:'H'},
+  {q:'A cumulative frequency graph shows $80$ data values. At what cumulative frequency is the median?', a:'At $40$ (halfway). Draw a horizontal from $40$ to the curve, then read down.', t:'H'},
+  {q:'How do you find the IQR from a cumulative frequency graph?', a:'$\\text{IQR} = Q_3 - Q_1$. Read $Q_1$ at $\\dfrac{n}{4}$ and $Q_3$ at $\\dfrac{3n}{4}$.', t:'H'},
+  {q:'What is stratified sampling?', a:'Dividing the population into groups (strata) and sampling from each in proportion to its size.', t:'H'},
+  {q:'A school has $200$ girls and $300$ boys. A stratified sample of $50$ is taken. How many boys?', a:'$30$. Boys are $\\dfrac{300}{500} = 0.6$ of total; $0.6 \\times 50 = 30$.', t:'H'},
+  {q:'What are the five values shown on a box plot?', a:'Minimum, $Q_1$ (lower quartile), median ($Q_2$), $Q_3$ (upper quartile), maximum.', t:'H'},
+  {q:'$Q_1 = 15$ and $Q_3 = 31$. Find the IQR.', a:'$\\text{IQR} = 31 - 15 = 16$.', t:'H'},
+  {q:'How do you compare two distributions?', a:'Compare medians for typical values; compare IQRs (or ranges) for spread. Lower IQR means more consistent data.', t:'H'},
 ], mc: [
   {q:'The mean of $5, 5, 8, 10, 12$ is:', o:['$8$','$10$','$40$','$5$'], c:0, e:'Sum $= 40$; $40 \\div 5 = 8$.', t:'F'},
   {q:'The range of $15, 22, 8, 30, 11$ is:', o:['$22$','$30$','$8$','$15$'], c:0, e:'$30 - 8 = 22$.'},
   {q:'The mode of $1, 2, 2, 3, 3, 3, 4$ is:', o:['$2$','$3$','$4$','$1$'], c:1, e:'$3$ occurs most frequently.'},
-  {q:'The median of $9, 2, 7, 4, 10, 6$ (6 values) is:', o:['$6.5$','$7$','$6$','$5$'], c:0, e:'Ordered: $2,4,6,7,9,10$; median $= \\frac{6+7}{2} = 6.5$.'},
-  {q:'Drinks ordered: coffee $30$, hot chocolate $10$, tea $50$. The mode is:', o:['Coffee','Hot chocolate','Tea','No mode'], c:2, e:'Tea has the highest frequency.', t:'F'},
-  {q:'In a chart, walk $= 7$ and cycle $= 3$. How many more walk than cycle?', o:['$3$','$4$','$10$','$7$'], c:1, e:'$7 - 3 = 4$.', t:'F'},
-  {q:'The median of an ordered list of $15$ values is the:', o:['$7$th value','$8$th value','mean of $7$th and $8$th','$15$th value'], c:1, e:'For $15$ values the middle is the $8$th.', t:'F'},
-  {q:'The range of $45, 53, 81, 61, 47$ is:', o:['$36$','$34$','$81$','$45$'], c:0, e:'$81 - 45 = 36$.', t:'F'},
+  {q:'The median of $9, 2, 7, 4, 10, 6$ ($6$ values) is:', o:['$6.5$','$7$','$6$','$5$'], c:0, e:'Ordered: $2,4,6,7,9,10$; median $= \\dfrac{6+7}{2} = 6.5$.'},
+  // ── Higher only ──
+  {q:'Frequency density is:', o:['$\\text{frequency} \\times \\text{class width}$','$\\dfrac{\\text{frequency}}{\\text{class width}}$','$\\dfrac{\\text{class width}}{\\text{frequency}}$','$\\text{frequency} + \\text{class width}$'], c:1, e:'Frequency density $= \\dfrac{\\text{frequency}}{\\text{class width}}$.', t:'H'},
+  {q:'A cumulative frequency graph shows $80$ values. The median is read at:', o:['$20$','$40$','$60$','$80$'], c:1, e:'Median at $80 \\div 2 = 40$.', t:'H'},
+  {q:'$Q_1 = 12$ and $Q_3 = 28$. The IQR is:', o:['$28$','$12$','$16$','$20$'], c:2, e:'$\\text{IQR} = 28 - 12 = 16$.', t:'H'},
+  {q:'Which is NOT a recognised sampling method?', o:['Random','Stratified','Systematic','Diagonal'], c:3, e:'"Diagonal" is not a sampling method.', t:'H'},
+  {q:'A class of $30$ has $12$ boys. In a stratified sample of $10$, how many boys?', o:['$4$','$5$','$6$','$3$'], c:0, e:'$\\dfrac{12}{30} \\times 10 = 4$.', t:'H'},
+  {q:'A histogram bar for $20 \\le x < 30$ has frequency density $2.4$. Its frequency is:', o:['$24$','$2.4$','$4.8$','$12$'], c:0, e:'$2.4 \\times 10 = 24$.', t:'H'},
+  {q:'The IQR measures:', o:['The full range of data','The spread of the middle $50\\%$','The mean of the quartiles','The range divided by $4$'], c:1, e:'The IQR covers $Q_1$ to $Q_3$ — the middle $50\\%$.', t:'H'},
 ]}
 
 };
@@ -3360,6 +3824,25 @@ function wireAdminDel(card){
   if(b)b.addEventListener('click',function(e){e.stopPropagation();deleteCard(card);});
 }
 
+// 💡 Explain button — opens Wolfram Alpha (maths) or Perplexity (other subjects)
+function explainBtn(){
+  return '<button class="explain-btn" id="explain-btn">💡 Explain this</button>';
+}
+function wireExplain(card){
+  const b=document.getElementById('explain-btn');
+  if(!b)return;
+  b.addEventListener('click',function(e){
+    e.stopPropagation();
+    // Strip LaTeX $ delimiters and tidy up backslash commands for cleaner search
+    const raw=card.q.replace(/\$\$?/g,'').replace(/\\([a-zA-Z]+)\{([^}]*)\}/g,'$2').replace(/\\/g,' ').replace(/\s+/g,' ').trim();
+    const prefix=S.subject==='maths'?'':'GCSE '+S.subject+' ';
+    const url=S.subject==='maths'
+      ?'https://www.wolframalpha.com/input?i='+encodeURIComponent(raw)
+      :'https://www.perplexity.ai/search?q='+encodeURIComponent(prefix+raw);
+    window.open(url,'_blank');
+  });
+}
+
 function cardImg(card){
   if(!card.img) return '';
   let src = (typeof IMGS !== 'undefined' && IMGS[card.img]) ? IMGS[card.img] : '';
@@ -3376,11 +3859,14 @@ function renderFC(area,card){
       +'<p class="card-text">'+card.q+'</p>'
       +cardImg(card)
       +'<div class="tap-hint">Tap card to reveal answer</div>'
+      +explainBtn()
       +adminDelBtn(card)
       +'</div>';
-    document.getElementById('fc-front').addEventListener('click',()=>{
+    document.getElementById('fc-front').addEventListener('click',function(e){
+      if(e.target.closest('#explain-btn'))return;
       S.flipped=true; renderCard(); renderProgress();
     });
+    wireExplain(card);
     wireAdminDel(card);
   } else {
     area.innerHTML='<div class="fc-panel answer-panel" id="fc-back">'
@@ -3394,6 +3880,7 @@ function renderFC(area,card){
       +'<button class="fc-btn fc-yes" id="fc-yes">✓ Got it</button>'
       +'</div>'
       +'<div class="tap-hint flip-back" id="fc-flip-back">↩ Tap to see the question</div>'
+      +explainBtn()
       +adminDelBtn(card)
       +'</div>';
     document.getElementById('fc-no').addEventListener('click',()=>fcAnswer('red'));
@@ -3402,6 +3889,7 @@ function renderFC(area,card){
     document.getElementById('fc-flip-back').addEventListener('click',()=>{
       S.flipped=false; renderCard(); renderProgress();
     });
+    wireExplain(card);
     wireAdminDel(card);
   }
 }
@@ -3438,6 +3926,7 @@ function renderMC(area,card){
     +cardImg(card)
     +'<div class="mc-opts">'+opts+'</div>'
     +expl
+    +explainBtn()
     +adminDelBtn(card)
     +'</div>';
 
@@ -3446,6 +3935,7 @@ function renderMC(area,card){
       btn.addEventListener('click',()=>answerMC(parseInt(btn.dataset.i)));
     });
   }
+  wireExplain(card);
   wireAdminDel(card);
 }
 
